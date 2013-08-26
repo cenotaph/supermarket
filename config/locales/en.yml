@@ -1,0 +1,107 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  all_done: 'All done!'
+  edit_link: ' [edit details]'
+  hello: "Hello world"
+  next: ' Next'
+  finish: ' Finish'
+  back: ' Previous'
+  sign_in: ' Sign in'
+  sign_out: ' Sign out'
+  sign_up: ' Sign up!'
+  sign_in_page_text: 'Sign in to your account here.'
+  need_help: 'Need help?'
+  already_have_account: 'Already have an account?'
+  forgot_your_password: 'Forgot your password?'
+  forgot_password_text: 'Enter the email address through which you registered for the Supermarket website, and we will email you instructions on how to reset your password.'
+  send_password_button: ' Send me password reset instructions'
+  recaptcha_blurb: 'Enter these two words, so we know you are human'
+  complete_your_application: ' Complete your application'
+  supermarket2014:
+    account_creation_blurb: 'Do you represent an artist-run space or gallery? Registering with Supermarket is easy! It just takes a few minutes, and then you can:'
+    address1: 'Address'
+    address2: 'Address line 2 (optional)'
+    apply_to_supermarket: 'Apply to the Supermarket art fair'
+
+    application_address_text: 'Please review your contact address. If your gallery or project is located in a different location, you will be able to enter that on the next page.'
+    application_intro_text: 'Welcome to the Supermarket 2014 application form. We will begin by reviewing that your details are current.'
+    apply_to_supermarket_2014: 'Apply to Supermarket 2014!'
+    register_in_aim: 'Register your gallery or space in our database of worldwide artist-run initiatives'
+    apply_to_malongen: 'Yes, we''d like to apply to the Nordic Art Association/Supermarket residency for 2014'
+    authorised_users: 'The following email addresses are currently linked to the %{space} account (x''d out for privacy here):'
+    no_spaces: 'You have not yet added your gallery or other art space.'
+    basic_details: 'Essential information'
+    business_type_fieldset: 'Which type of initiative are you?'
+    business_type_hint: 'Check at least one, but as many as apply.'
+    change_image: 'Change image?'
+    choose_existing_space: 'Do we already know about you?'
+    confirm_contact_details: 'Please again verify your contact details. We will use this address to contact you regarding your application.'
+    confirm_submit: 'Are you sure your application is complete? You will not be able to edit it after you submit it.'
+    contact_if_problems: 'If there is a problem, such as these email addresses no longer being accessible, please contact contact@supermarketartfair.com and we will attempt to resolve the situation.'
+    contact_info: 'Contact information'
+    contact_info_text: 'Please review the contact information we have recorded. If your gallery or space is located in a different physical address, you will be able to change that on the next page.'
+    country_of_space: 'Which country is your gallery, exhibition space, or other project located in?'
+    create_a_space: 'Add a gallery or space that you manage'
+    create_an_account: 'Create a user account'
+    create_new_space: 'Create a new gallery, exhibition space or project'
+    decision_makers_organisation: 'Are the decision makers of the organisation more than 50% artists?'
+    decision_makers_programming: 'Are the decision makers of the programming more than 50% artists?'
+    exhibition_space_type: 'Exhibition space type'
+    finished_space_blurb: 'Thank you for telling us about your gallery/space. We will add it to our database of artist-run initiatives we are building. Now, would you like to apply to exhibit at Supermarket? The application form only takes a few minutes, as we already have most of the details.'
+    founding_year: 'Year of founding?'
+    hang_on_a_minute: 'Hang on just a minute ....!'
+    hometown_explanation: 'Hometown (in English)'
+    hometown_hint: 'The town stated in our listings (sometimes different from post town).'
+    is_active: 'Is this currently active?'
+    login_to_reclaim: 'If you already have access to one of these accounts on the Supermarket website, please sign out and log in as one of them to update the %{space} information.'
+    email_to_reclaim: "Or, you may request access to this exhibition space/gallery from these users. Requesting access sends an email to the above user account(s), allowing them to authorise your account for the %{space} space."
+    malongen_blurb: 'The Nordic Art Association offers one of the participating galleries to access their residency studio for a month before Supermarket 2014. The gallery can nominate an artist or group who may live and work in the studio. During the fair, up to 6-8 people can stay there.'
+    malongen_use: 'How do you intend to use the studio?'
+    mostly_members: 'Mostly members'
+    mixed_members: 'Mixed, members and invited'
+    mostly_invited: 'Mostly invited'
+    no_exhibitions: 'No exhibitions'
+    no_space_yet: 'You have not yet told us about your exhibition space or gallery.'
+    name_of_space: 'Enter the name of your gallery, exhibition space or other project:'
+    new_space_info: 'Apply to Supermarket 2014 and also register your space in our online database!'
+    one_last_step: 'One last step!'
+    or: 'or ...'
+    past_applications: 'Past applications'
+    pending_space: 'Awaiting access to...'
+    pending_spaces_explanation: 'You have requested access to manage a space or gallery. The current account holders have received an email containing instructions on how to approve your access. If you believe there is an error, please contact info@supermarketartfair.com.'
+    please_choose_a_country: 'Please select a country....'
+    request_authorisation: ' Request access'
+    return_to_your_application: 'Edit your application'
+    search_database_blurb: 'The Supermarket database already contains information about past exhibitors and other associated organisations. If you represent one of the following organisations, please choose it from the list.'
+    secondary_info_application_blurb: 'We just need a little bit more information about your organisation, and then your application will be complete!'
+    space_additional_details: 'Additional details'
+    space_basic_details: 'Basic details'    
+    space_handoff_needed: 'This gallery/space already exists in our database, but your user account is not authorised to update or change the information for it.'
+    supermarket_proposal: 'How will you utilise your booth at Supermarket 2014?'
+    visiting_address_different: 'Visiting address (if different than contact address):'
+    we_sent_emails_blurb: 'We have sent emails to the owners of the %{space} account, asking them to approve your access. You will receive an email notification when this has been done.'
+    year_of_closing: 'If not active, what year did it close?'
+    your_applications: 'Your applications'
+    your_application_image: 'Your application image'
+    your_control_panel: 'Your control panel'
+    your_organisation: 'Your are a representative of:'

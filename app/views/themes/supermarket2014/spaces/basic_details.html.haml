@@ -1,0 +1,31 @@
+%h3= t "supermarket2014.space_basic_details"
+= semantic_nested_form_for(@space, :url => wizard_path(step, :space_id => @space.id), :method => :put, :html => {:id => :space_form}) do |f|
+  = f.input :contact_person, :input_html => {:required => true, :value => (@space.contact_person.blank? ? current_user.display_name  : @space.contact_person) }
+  = f.input :contact_email,  :input_html => {:required => true,  :value => (@space.contact_email.blank? ? current_user.email : @space.contact_email) }
+  = f.input :contact_phone, :input_html => {:required => true}
+  = f.input :website1, :input_html => {:required => true}
+  = f.input :website2
+  %p= t "supermarket2014.visiting_address_different"
+  = f.input :visiting_address1, :input_html => { :value => (@space.visiting_address1.blank? ? @space.address1 : @space.visiting_address1) }
+  = f.input :visiting_address2, :input_html => { :value => (@space.visiting_address2.blank? ? @space.address2 : @space.visiting_address2) }
+  = f.input :visiting_city, :input_html => { :value => (@space.visiting_city.blank? ? @space.city : @space.visiting_city) }
+  = f.input :visiting_state, :input_html => { :value => (@space.visiting_state.blank? ? @space.state : @space.visiting_state) }
+  = f.input :visiting_postcode, :input_html => { :value => (@space.visiting_postcode.blank? ? @space.postcode : @space.visiting_postcode) }
+  = f.input :visiting_country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country"), :input_html => {:required => true}
+
+  = f.input :form_direction, :value => "forward", :as => :hidden
+  = f.actions do
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button
+
+    
+
+:javascript
+  $(document).ready(function() {
+    $('#space_form').validate();
+    $('form button').click(function() {
+
+      $("#space_form_direction").val($(this).attr('class'));
+
+    });
+  });

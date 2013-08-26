@@ -1,0 +1,30 @@
+
+- unless @hits.empty?
+  %h2= t "supermarket2014.choose_existing_space"
+  
+  %p= t "supermarket2014.search_database_blurb"
+  
+  .hits
+    - @hits.each do |hit|
+      .hit
+        = link_to hit.business_name, select_existing_space_path(hit)
+        %span.location
+          %em= hit.city
+          - unless hit.country.blank?
+            = " / " + Country[hit.country].name
+
+  %h2= t "supermarket2014.or"
+  
+%h2= t "supermarket2014.basic_details"
+  
+= semantic_form_for(@space, :url => wizard_path(:find_name, :space_id => @space.id), :method => :put, :html => {:id => :space_form}) do |f|
+  = f.input :business_name, :value => params[:searchterm], :label => t("supermarket2014.name_of_space"), :input_html => {:required => true }
+  = f.input :address1, :label => t("supermarket2014.address1"), :input_html => {:required => true }
+  = f.input :address2, :label => t("supermarket2014.address2")
+  = f.input :city, :label => t("supermarket2014.city"), :input_html => {:required => true }
+  = f.input :state, :label => t("supermarket2014.state")
+  = f.input :country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country"), :input_html => {:required => true }
+  = f.input :businesstypes, :as => :check_boxes, :label => t("supermarket2014.business_type_fieldset"), :hint => t("supermarket2014.business_type_hint")
+  %button.next.icon-circle-arrow-right.icon-large= t :next
+:javascript
+  $('#space_form').validate();

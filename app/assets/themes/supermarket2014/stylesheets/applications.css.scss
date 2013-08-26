@@ -1,0 +1,136 @@
+@import 'variables';
+
+.clearer {
+  clear: both;
+}
+form {
+  p.inline-hints {
+    font-size: 11px;
+    line-height: 13px;
+    width: 250px;
+    text-align: right;
+    margin-top: -30px;
+    font-style: italic;
+  }
+  #recaptcha_area {
+    float: left;
+  }
+  li {
+    list-style-type: none;
+    clear: both;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    &.text {
+      float: left;
+    }
+    &.boolean {
+      margin-top: 10px;
+      float: left;
+      margin-bottom: 15px;
+    }
+    &.check_boxes {
+      p.inline-hints {
+        margin-top: 10px;
+        color: #666;
+      }
+    }
+    label {
+      clear: left;
+      width: 250px;
+      float: left;
+      text-align: right;
+      margin-right: 25px;
+      font-size: 13px;
+      line-height: 15px;
+      color: #666;
+      &.error{
+        clear: both;
+        color: red;
+        font-size: 0.8em;
+      }
+    }
+    &.boolean {
+      margin-left: 275px;
+      label {
+        text-align: left !important;
+      }
+    }
+  }
+  textarea {
+    float: left;
+    width: 250px;
+    height: 180px;
+  }
+  input[type=text], input[type=email], input[type=tel], select  {
+    font-size: 18px;
+    width: 250px;
+  }
+  fieldset {
+    border: none;
+    margin-top: 15px;
+    legend.label {
+      label {
+        float: none;
+        font-size: 15px;
+        color: #333;
+      }
+    }
+    ol  {
+      li {
+        label {
+          font-size: 14px;
+          color: #333;
+        }
+        float: left;
+        clear: none;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .subtitle {
+    margin-top: 30px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+    font: $small-link;
+  }
+}
+
+li.autocomplete {
+  margin-bottom: 25px;
+}
+button.next {
+  margin-left: 275px;
+  margin-top: 25px;
+}
+button.previous, button.start {
+
+  margin-left: 75px;
+  margin-right: 10px;
+}
+
+form#new_user {
+
+  li {
+    list-style-type: none;
+    clear: both;
+    label {
+      float: left;
+      width: 250px;
+      text-align: right;
+      margin-right: 25px;
+    }
+  }
+  input {
+    float: left;
+    font-size: 18px;
+  }
+
+}
+
+.login_links {
+  clear: left;
+  margin-top: 25px;
+  a {
+    color: $orange1;
+  }
+}

@@ -1,0 +1,29 @@
+# specific stuff that you should put for your local instance
+
+
+Aim::Application.config.secret_key_base = 'e6sdgsdg23t4gd4jgo34jgoieh98f3489he4ifih45ierhgieu'
+
+
+if Rails.env.production?
+  CarrierWave.configure do |config|
+    config.fog_credentials = {
+      :provider               => 'AWS',       # required
+      :aws_access_key_id      => 'insert here',       # required
+      :aws_secret_access_key  => 'your secret key',       # required
+      :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
+    }
+    config.fog_directory  = 'aim-production'                     # required
+    # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
+  end  
+else
+  CarrierWave.configure do |config|    config.fog_credentials = {
+      :provider               => 'AWS',       # required
+      :aws_access_key_id      => 'insert hre',       # required
+      :aws_secret_access_key  => 'your secret',       # required
+      :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
+    }
+    config.fog_directory  = 'aim-development'                     # required
+    # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
+  end
+end
+

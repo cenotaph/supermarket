@@ -1,0 +1,25 @@
+= semantic_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :method => :put, :html => {:id => :application_2014}) do |f|
+  %p= t "supermarket2014.application_address_text"
+  = f.input :contact_address1,  :input_html => {:required => true,  :value => (@application.contact_address1.blank? ? @application.space.address1 : @application.contact_address1) }
+  = f.input :contact_address2,  :input_html => { :value => (@application.contact_address2.blank? ? @application.space.address2 : @application.contact_address2) }
+  = f.input :contact_city,  :input_html => {:required => true, :value => (@application.contact_city.blank? ? @application.space.city : @application.contact_city) }
+  = f.input :contact_state,  :input_html => { :value => (@application.contact_state.blank? ? @application.space.state : @application.contact_state) }      
+  = f.input :contact_country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country"), :input_html => {:required => true }
+
+  = f.input :contact_postcode,  :input_html => {:required => true,  :value => (@application.contact_postcode.blank? ? @application.space.postcode : @application.contact_postcode) }  
+  = f.input :form_direction, :value => "forward", :as => :hidden
+  = f.actions do
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :start}
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button
+
+    
+
+:javascript
+  $(document).ready(function() {
+    $('#application_2014').validate();
+    $('form button').click(function() {
+
+      $("#application_form_direction").val($(this).attr('class'));
+
+    });
+  });

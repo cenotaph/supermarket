@@ -1,0 +1,25 @@
+= semantic_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :method => :put, :html => {:id => :application_2014} ) do |f|
+  .subtitle= t "supermarket2014.visiting_address_different"
+  = f.input :exhibitor_address1,  :input_html => {:required => true, :value => (@application.exhibitor_address1.blank? ? (@application.space.visiting_address1.blank? ? @application.space.address1 : @application.space.visiting_address1) : @application.exhibitor_address1) }
+  = f.input :exhibitor_address2,  :input_html => {:value => (@application.exhibitor_address2.blank? ? (@application.space.visiting_address2.blank? ? @application.space.address2 : @application.space.visiting_address2 ) : @application.exhibitor_address2) }
+  = f.input :exhibitor_city,  :input_html => {:required => true,  :value => (@application.exhibitor_city.blank? ? (@application.space.visiting_city.blank? ? @application.space.city : @application.space.visiting_city) : @application.exhibitor_city) }
+  = f.input :exhibitor_state,  :input_html => {:required => true,  :value => (@application.exhibitor_state.blank? ? (@application.space.visiting_state.blank? ? @application.space.state :  @application.space.visiting_state) : @application.exhibitor_state) }      
+  = f.input :exhibitor_country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country"), :input_html => {:required => true}
+
+  = f.input :exhibitor_postcode,  :input_html => {:required => true,  :value => (@application.exhibitor_postcode.blank? ? (@application.space.visiting_postcode.blank? ? @application.space.postcode : @application.space.visiting_postcode) : @application.exhibitor_postcode) }
+  = f.input :form_direction, :value => "forward", :as => :hidden
+  = f.actions do
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button
+
+    
+
+:javascript
+  $(document).ready(function() {
+    $('#application_2014').validate();
+    $('form button').click(function() {
+
+      $("#application_form_direction").val($(this).attr('class'));
+
+    });
+  });

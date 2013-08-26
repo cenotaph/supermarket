@@ -1,0 +1,16 @@
+/*
+ *= require_self
+ *= require layout
+ *= require skeleton1200
+ *= require supermarket2014/stylesheets/supermarket2014
+ *= require supermarket2014/stylesheets/applications
+ *= require supermarket2014/stylesheets/sidebar
+ */
+
+
+
+body {
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}
+

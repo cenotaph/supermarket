@@ -1,0 +1,384 @@
+$box0: #DC8278;
+$box1: #B2DECE;
+$box2: #F4C359;
+$box3: #F7B3C0;
+$box4: #BEA7CF;
+$box5: #C5DCF1;
+$backdrop: #F5FBF1;
+$helv: "Helvetica", "Verdana", "Arial", sans-serif;
+
+.admin_stuff {
+  clear: left;
+  padding-top: 13px;
+  a {
+    color: red;
+    font-size: 8pt;
+    font-weight: bold;
+  
+  }
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $helv;
+}
+span.small_paginator {
+  text-transform: uppercase;
+  color: #999;
+  font-size: 10pt;
+}
+span.address-form, .address-form  {
+  display: inline-block;
+  margin: 10px 5px 0 0;
+  white-space: nowrap;
+  select, input[type=text] {
+    margin-bottom: 0;
+  }
+  input[type=checkbox] {
+    margin-left: 20px;
+  }
+  input[type=text] {
+    clear: left;
+  }
+}
+
+.address-form {
+  margin-left: 20px;
+}
+
+label.sub {
+  font-size: 0.786em;
+  margin-top: 3px;
+  color: #999;
+}
+.browse_box {
+  width: 184px;
+  height: 166px;
+  margin-right: 20px;
+  padding: 18px;
+  float: left;
+  overflow: hidden;
+  cursor:pointer;
+  &.box0 {
+     background-color: $box0; 
+  }
+  &.box1 { 
+    background-color: $box1;
+   }
+  &.box2 { 
+    background-color: $box2; 
+  }
+  &.box3 {
+     background-color: $box3;
+  }
+  &.box4 {
+     background-color: $box4; 
+  }        
+  &.box5 { 
+    background-color: $box5; 
+  }
+  .space_name {
+    font-family: $helv;
+    font-size: 24pt;
+    line-height: 22pt;
+    font-weight: bold;
+    color: #ffffff;
+  }
+}
+
+#space_map {
+  width: 460px;
+  height: 300px;
+  margin: 20px 0 20px 0;
+}
+
+.logo {
+  width: 300px;
+  float: left;
+  margin-right: 20px;
+}
+
+.address {
+  width: 140px;
+  float: left;
+}
+#google-map {
+  width: 100%;
+  height: 100%;
+}
+
+input.shadow {
+  -moz-box-shadow:    0px 2px 2px 0px #000;
+  -webkit-box-shadow: 2px 2px 2px 0px #000;
+  box-shadow:         2px 2px 2px 0px #000;
+  margin-right: 5px;
+}
+.search {
+  #menu {
+    select {
+      background-color: black;
+      color: white;
+      overflow:hidden;
+      width: 120%;
+      option {
+          background-color: black;
+          color: white;
+          overflow:hidden;
+          width: 120%;
+      }
+    }
+ }
+  .search_title {
+    font-size: 12pt;
+    font-family: $helv;
+    color: #999999;
+    text-transform: uppercase;
+  }
+  .quotes {
+    font-family: $helv;
+    font-size: 24pt;
+    color: #000000;
+    font-weight: bold;
+  }
+  input[type=text] {
+    height: 30px;
+    padding: 2px;
+    float: left;
+    font-size: 26px;
+  }
+  input[type=submit] {
+    float: left;
+    background: url("/images/aim_icons.png") no-repeat 0px -51px;
+    width: 48px;
+    height: 48px;
+    border: none;
+  }
+}
+
+.space {
+  width: 460px;
+  .title_and_web {
+    height: 36px;
+    .space_title {
+      float: left;
+      font-family: $helv;
+      font-weight: bold;
+      font-size: 36pt;
+      color: #000000;
+    }
+    .space_web {
+      float: right;
+      font-family: $helv;
+      font-size: 12pt;
+      color: #000;
+      font-weight: bold;
+    }
+  }
+  .section_heading {
+    font-family: $helv;
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000;
+  }
+  
+  .business_type {
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    font-size: 12pt;
+    color: #999;
+    font-family: $helv;
+    margin: 18px 0 18px 0;
+  }
+  .section_content {
+    font-family: $helv;
+    font-size: 12pt;
+    color: #333;
+    ul {
+      padding-left: 20px;
+      list-style-type: disc;
+      li {
+        font-family: $helv;
+        color: #333;
+        font-size: 12pt;
+      }
+    }
+  }
+  .address {
+    float: left;
+  }
+  
+}
+
+.page_title {
+  font-size: 14pt;
+  font-weight: bold;
+  font-family: $helv;
+  margin-bottom: 10px;
+}
+.support {
+  text-align: center;
+}
+
+.support img {
+  padding: 10px;
+}
+.button_to {
+  float: left;
+  margin-right: 30px;
+}
+.subtitle {
+  clear: left;
+}
+
+.redbar {
+  height: 25px;
+  background-color: $box0;
+  margin-bottom: 20px;
+}
+.filter_info {
+  .quotes {
+    font-size: 24px;
+  }
+}
+.header {
+  margin: 36px 0 36px 0;
+  height: 100%;
+  font-family: $helv;
+  
+  .subtitle {
+    font-family: $helv;
+    font-weight: bold;
+    font-size: 21pt;
+  }
+  .languages {
+    float: right;
+    font-family: $helv;
+    font-size: 10pt;
+    color: #000000;
+    text-transform: uppercase;
+  }
+  .login_stuff {
+    clear: both;
+    float: right;
+    font-family: $helv;
+    font-size: 8pt;
+  }
+}
+
+.filter_container {
+  float: left;
+  border-left: 1px dotted #000000;
+  border-right: 1px dotted #000000;
+  margin-bottom: 20px;
+}
+.filter_column {
+  overflow: hidden;
+  float: left;
+  width: 320px;
+  padding: 0px 10px 0px 10px;
+  .title {
+    font-family: $helv;
+    font-size: 12pt;
+    font-weight: bold;
+  }
+  ul {
+    li {
+      a {
+        text-decoration: none;
+      }
+      line-height: 18px;
+      margin-bottom: 0;
+      font-family: $helv;
+      font-size: 12pt;
+      font-weight: normal;
+      color: #333333;
+      
+    }
+  }
+
+  &.last {
+    border-left: 1px dotted black;
+  }
+}
+
+#map {
+  width: 100%;
+  height: 500px;
+
+}
+
+#browse_map {
+  width: 820px;
+  height: 320px;
+}
+
+label.error {
+  color: red;
+}
+
+.map_small {
+  width: 300px;
+  height: 250px;
+  float: right;
+}
+
+.profile_image {
+  float: left;
+  margin-right: 50px;
+}
+
+.browse {
+  
+  .space_description {
+    margin-top: 5px;
+  }
+  .space {
+    margin-left: 0px;
+    clear: right;
+    border-bottom: 1px dotted #cdbdcd;
+
+    &:hover {
+      background-color: #efefef;
+    };
+    .space_name {
+      font-size: 13pt;
+    }
+    
+    .space_other {
+      clear: both;
+      p {
+        margin-bottom: 5px;
+      }
+      .space_address {
+        float: left;
+      }
+      .space_link {
+      }
+    }
+    .space_description {
+       float: left;
+    }
+    .space_logo {
+      float: left;
+    }
+    .space_images {
+      float: left;
+    }
+  }
+}
+.slide {
+  float: left;
+  margin-right: 5px;
+}
+.footer {
+  margin-top: 20px;
+  border-top: 1px dotted black;
+  a {
+    text-decoration: none;
+
+  }
+}
+
+

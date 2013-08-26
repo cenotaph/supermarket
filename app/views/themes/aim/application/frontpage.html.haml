@@ -1,0 +1,6 @@
+
+- unless @page.nil?
+  .page_title= @page.title
+  .page_body= @page.body
+
+#map= render :partial =>  "shared/google_map", :locals => { :organizations => Space.approved }

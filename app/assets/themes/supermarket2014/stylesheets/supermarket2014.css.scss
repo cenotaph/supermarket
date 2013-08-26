@@ -1,0 +1,127 @@
+@import 'variables';
+
+a {
+  text-decoration: none;
+  color: $orange1;
+  &:hover {
+    color: $orange2;
+  }
+}
+
+p {
+  font: $body-text;
+  
+}
+
+.small_link a, span.small_link a {
+  font-size: 11px;
+}
+.flash {
+  float: left;
+  padding-top: 20px;
+}
+
+button {
+  font-size: 20px;
+  cursor: pointer;
+}
+header {
+  background-color: $orange1;
+  padding-top: 15px;
+
+  nav.top_bar {
+    float: right;
+    margin-bottom: 20px;
+    ul {
+      li {
+        list-style-type: none;
+        float: left;
+        margin-right: 15px;
+        font-size: 12px;
+        a {
+          color: white;
+        }
+      }
+    }
+    
+    input {
+      background-color: $orange2;
+      margin-top: 0px;
+      border: none;
+      font-size: 12px;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      -moz-box-shadow: 0px;
+      -webkit-box-shadow: 0px;
+      box-shadow: 0px;   
+      &:focus {
+        -webkit-focus-ring-color: auto 2px;
+      }
+    }
+  }
+  
+  .header_main {
+    margin-bottom: 25px;
+  
+    .header_logo {
+      float: left;
+    }
+  
+    nav.social_icons {
+      float: right;
+      ul {
+        display: inline;
+        li {
+          float: left;
+          list-style-type: none;
+          margin-right: 10px;
+        }
+      }
+    }
+  }  
+}
+
+#menu_base {
+  background-color: $orange2;
+}
+
+#submenu_base {
+  background-color: $orange3;
+}
+
+.horiz_menu {
+
+
+  padding: 12px 0px;
+
+  
+  nav.page_menu {
+    ul {
+
+      display: inline;
+      li {
+        font-size: 16px;
+        float: left;
+        list-style-type: none;
+        padding: 0px 15px;
+        border-left: 1px solid $gray;
+        a {
+          color: $gray;
+        }
+        &.active {
+          color: black;
+        }
+        &.first {
+          border-left: none;
+        }
+      }
+    }    
+  }
+}
+
+ul.existing_accounts {
+  i {
+    color: $grey;
+  }
+}

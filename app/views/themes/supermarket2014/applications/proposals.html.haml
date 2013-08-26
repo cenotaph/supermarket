@@ -1,0 +1,18 @@
+= semantic_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014}, :method => :put) do |f|
+  %p= t "supermarket2014.secondary_info_application_blurb"
+  = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), :input_html => {:required => true}
+  %p{:style => 'clear: left'}= t("supermarket2014.malongen_blurb")
+  = f.input :apply_to_malongen, :as => :boolean, :label => t("supermarket2014.apply_to_malongen")
+  = f.input :malongen_use,  :label => t("supermarket2014.malongen_use")
+  = f.input :form_direction, :input_html => { :value => "forward"}, :as => :hidden
+  = f.actions do
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button
+    
+:javascript
+  $(document).ready(function() {
+    $('#application_2014').validate();
+    $('form button').click(function() {
+      $("#application_form_direction").val($(this).attr('class'));
+    });
+  });  

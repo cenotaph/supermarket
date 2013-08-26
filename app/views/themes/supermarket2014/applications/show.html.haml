@@ -1,0 +1,14 @@
+%h1= t :application_for_supermarket_2014
+
+
+%h2= @application.space.name
+- if @application.finished?
+  .submitted
+    = t(:submitted) + ":"
+    = l @application.submitted_at, :format => :long
+    
+%h3= t :contact_details
+
+%h3= t :address_and_location
+
+will fill this in later

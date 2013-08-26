@@ -1,0 +1,30 @@
+= semantic_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014}, :method => :put) do |f|
+  %p= t "supermarket2014.secondary_info_application_blurb"
+  = f.semantic_fields_for :space, @application.space do |ff|
+    = ff.input :exhibitionspacetype_id, :as => :select, :collection => Exhibitionspacetype.all, :label => t("supermarket2014.exhibition_space_type"), :input_html => {:required => true}
+    = ff.input :exhibitors, :as => :select, :collection => [[t("supermarket2014.mostly_members"),'mostly members'], [t("supermarket2014.mixed_members"), 'mixed members and invited' ], [t("supermarket2014.mostly_invited"), 'Mostly invited' ], [t("supermarket2014.no_exhibitions"), 'no exhibitions' ]], :label => t("supermarket2014.exhibitors"), :input_html => {:required => true}
+  - if f.object.application_image?
+    %li
+      %label= t("supermarket2014.your_application_image")
+      .image= image_tag f.object.application_image.url(:sidebar)
+    = f.input :application_image, :label => t("supermarket2014.change_image")
+  - else
+    = f.input :application_image
+  = f.input :hometown, :label => t("supermarket2014.hometown_explanation"), :hint => t("supermarket2014.hometown_hint"), :input_html => {:required => true, :value => (@application.hometown.blank? ? (@application.space.city.to_s + ", " + Country[@application.space.country].name) : @application.hometown) }
+  = f.input :staff
+  = f.input :form_direction, :input_html => { :value => "forward"}, :as => :hidden
+  = f.actions do
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button
+
+    
+
+:javascript
+  $(document).ready(function() {
+    $('#application_2014').validate();
+    $('form button').click(function() {
+
+      $("#application_form_direction").val($(this).attr('class'));
+
+    });
+  });

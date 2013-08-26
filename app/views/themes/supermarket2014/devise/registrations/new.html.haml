@@ -1,0 +1,28 @@
+%h2= t "supermarket2014.create_an_account"
+
+%p
+  = t "supermarket2014.account_creation_blurb"
+  %ul
+    %li= t "supermarket2014.apply_to_supermarket"
+    %li= t "supermarket2014.register_in_aim"
+    %li= t "supermarket2014.apply_to_malongen"
+
+= semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| 
+  = devise_error_messages! 
+
+  = f.input :email, :autofocus => true 
+  = f.input :display_name, :label => 'Your real name'
+  = f.input :password 
+
+  = f.input :password_confirmation 
+  %li
+    %label= t(:recaptcha_blurb)
+    = recaptcha_tags 
+  %li
+    %label &nbsp;
+    = f.action :submit, :label => raw("<i class='icon-ok icon-large'></i>") + t(:sign_up), :as => :button,  :button_html => {:class => :next}
+
+= content_for :sidebar do
+  .sidebar_box
+    %h2= t :already_have_account
+    = render "devise/shared/links" 

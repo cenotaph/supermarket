@@ -1,0 +1,34 @@
+@import 'variables';
+
+
+.sidebar_box {
+  margin-top: 25px;
+  border: 2px solid $light-orange;
+  padding: 15px;
+  h2 {
+    margin-top: 0px;
+  }
+  .title {
+    font: $small-heading;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    font: $small-link;
+  }
+  .content {
+    a {
+      color: $orange1;
+      font: $small-link;
+    }
+  }
+  li {
+    margin-bottom: 5px;
+    .year {
+      font-weight: bold;
+    }
+    .submitted_at {
+      font: 10px/12px Helvetiva, Arial, sans-serif;
+      color: #666;
+    }
+  }
+}

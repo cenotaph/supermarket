@@ -1,0 +1,34 @@
+%h3= t "supermarket2014.space_additional_details"
+= semantic_form_for(@space, :url => wizard_path(step, :space_id => @space.id), :html => {:multipart => true, :id => :space_form}, :method => :put) do |f|
+  = f.input :short_description, :input_html => {:required => true}
+  = f.input :decisionmakers_organisation, :label => t("supermarket2014.decision_makers_organisation")
+  = f.input :decisionmakers_programming, :label => t("supermarket2014.decision_makers_programming")
+  = f.input :founding_year, :label => t("supermarket2014.founding_year"), :input_html => {:required => true}
+  = f.input :is_active, :label => t("supermarket2014.is_active")
+  = f.input :year_of_closing, :label => t("supermarket2014.year_of_closing")
+  = f.input :exhibitors, :as => :select, :collection => [[t("supermarket2014.mostly_members"),'mostly members'], [t("supermarket2014.mixed_members"), 'mixed members and invited' ], [t("supermarket2014.mostly_invited"), 'Mostly invited' ], [t("supermarket2014.no_exhibitions"), 'no exhibitions' ]], :label => t("supermarket2014.exhibitors"), :input_html => {:required => true}
+  
+  - if f.object.logo?
+    %li
+      %label= t("supermarket2014.your_application_image")
+      .image= image_tag f.object.logo.url(:sidebar)
+    = f.input :logo, :label => t("supermarket2014.change_image")
+  - else
+    = f.input :logo
+
+  = f.input :form_direction, :input_html => {:value => "forward"}, :as => :hidden
+  = f.actions do
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
+    = f.action :submit, :label => raw("<i class='icon-check icon-large'></i>") + t(:finish), :as => :button
+
+    
+
+:javascript
+  $(document).ready(function() {
+    $('#space_form').validate();
+    $('form button').click(function() {
+
+      $("#space_form_direction").val($(this).attr('class'));
+
+    });
+  });
