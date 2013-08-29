@@ -56,7 +56,7 @@ gem 'country_select'
 gem 'devise'
 gem 'devise-encryptable'
 gem 'fog', '~> 1.3.1'
-gem 'font-awesome-sass-rails'
+gem 'font-awesome-rails'
 gem 'formtastic', github: 'justinfrench/formtastic', branch: 'master'
 gem "friendly_id", '~> 5.0.0.alpha1', :github => "FriendlyId/friendly_id"
 gem 'geocoder'
