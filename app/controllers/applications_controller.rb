@@ -62,6 +62,7 @@ class ApplicationsController < ApplicationController
     if params[:application][:form_direction] == 'completed'
       params[:application][:status] = 'active'
       @application.submitted_at = Time.now.localtime.to_date
+      ApplicationMailer.application_confirmation(@application, current_user).deliver
       flash[:notice] = 'Thank you for completing your application. You will hear from us soon.'
     end
   
@@ -83,7 +84,7 @@ class ApplicationsController < ApplicationController
   private
   
   def application_params
-    params.require(:application).permit(:space_id, :year_id, :user_id, :organisation_name, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :form_direction, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use, :supermarket_proposal,  space_attributes: [:exhibitors, :id, :exhibitionspacetype_id]
+    params.require(:application).permit(:space_id, :year_id, :user_id, :organisation_name, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :form_direction, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use, :supermarket_proposal,  space_attributes: [:exhibitors, :id, :exhibitionspacetype_id], website_attributes: [:id, :url, :application_id], applicationlink_attributes: [:id, :url, :title, :application_id], videolink_attributes: [:id, :application_id, :video_provider, :title, :url], applicationwebimage_attributes: [:id, :application_id, :imagefile, :title, :sortorder]
 
     )
   end

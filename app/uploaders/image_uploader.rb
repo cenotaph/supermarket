@@ -5,7 +5,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :fog  
 
   def store_dir
-    "images/#{model.id}"
+    "images/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
   
   version :sidebar do

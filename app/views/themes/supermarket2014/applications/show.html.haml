@@ -1,14 +1,94 @@
-%h1= t :application_for_supermarket_2014
+.show_view
+  %h1
+    = t :application_for_supermarket
+    = @application.year.year
 
 
-%h2= @application.space.name
-- if @application.finished?
-  .submitted
-    = t(:submitted) + ":"
-    = l @application.submitted_at, :format => :long
+  %h2= @application.space.name
+  %h3= @application.hometown
+
+  - if @application.finished?
+    .submitted
+      = t(:submitted) + ":"
+      = l @application.submitted_at, :format => :long
+  
+  .six.columns.alpha
+    %h3= t :contact_details
+    %ul.application_show
+      %li
+        %label= t :contact_name
+        .appval= @application.contact_full_name
+      %li
+        %label= t :contact_phone
+        .appval= @application.contact_phone
+      %li
+        %label= t :contact_email
+        .appval= @application.contact_email    
+      
+      %li
+        %label= t :contact_address
+        .appval= raw @application.contact_full_address
     
-%h3= t :contact_details
-
-%h3= t :address_and_location
-
-will fill this in later
+  .six.columns.omega
+    %h3= t :address_and_location
+    %ul.application_show
+      %li
+        %label= t :address
+        .appval= raw @application.exhibitor_full_address
+      %li
+        %label= t :phone
+        .appval= @application.exhibitor_phone
+      - unless @application.websites.empty?
+        %li
+          %label= t :websites
+          .appval
+            - @application.websites.each do |website|
+              %p= link_to website.url, website.url
+  - unless @application.applicationwebimages.empty? && @application.videolinks.empty?
+    .twelve.columns
+      %h3= t :images_and_video
+      .application_show
+        - @application.applicationwebimages.each do |aw|
+          .asset_container.column.two
+            .asset= image_tag aw.imagefile.url(:sidebar)
+            .title= aw.title
+        - @application.videolinks.each do |v|
+          .asset_container.column.two
+            .asset= figure_video_type(v, 320, 200)
+            .title= v.title
+  .twelve.columns
+    %h3= t :details
+    %ul.application_show
+      %li
+        %label= t("supermarket2014.exhibition_space_type")
+        .appval= @application.space.exhibitionspacetype.name
+      %li
+        %label= t("supermarket2014.exhibitors")
+        .appval= @application.space.exhibitors
+      - if @application.application_image?
+        %li
+          %label= t("supermarket2014.your_application_image")
+          .appval= image_tag(@application.application_image.url(:normal))
+      %li
+        %label= t(:staff)
+        .appval.blocktext
+          %span.bigquote= raw("&#8220;")
+          = raw @application.staff
+          %span.bigquote= raw("&#8221;")
+  .twelve.columns
+    %h3= t :supermarket_proposal
+    %ul.application_show
+      - unless @application.booth_applied.blank?
+        %li
+          %label= t :booth_applied_for
+          .appval= t ("supermarket2014.booth_#{@application.booth_type}")
+      %li
+        %label= t :supermarket_proposal
+        .appval.blocktext
+          %span.bigquote= raw("&#8220;")
+          = raw @application.supermarket_proposal
+          %span.bigquote= raw("&#8221;")
+      - unless @application.booth_granted.blank?
+        %li
+          %label= t :booth_result
+          .appval= t ("supermarket2014.granted_#{@application.granted_result}")      

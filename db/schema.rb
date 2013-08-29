@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130826175306) do
+ActiveRecord::Schema.define(version: 20130828120335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 20130826175306) do
   end
 
   add_index "activity_translations", ["activity_id", "locale"], name: "unique_activity_translations_locales", unique: true, using: :btree
+
+  create_table "applicationlinks", force: true do |t|
+    t.string   "url"
+    t.text     "title"
+    t.integer  "application_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "applicationlinks", ["application_id"], name: "index_applicationlinks_on_application_id", using: :btree
 
   create_table "applications", force: true do |t|
     t.integer  "year_id"
@@ -89,6 +99,17 @@ ActiveRecord::Schema.define(version: 20130826175306) do
   end
 
   add_index "applications", ["year_id"], name: "index_applications_on_year_id", using: :btree
+
+  create_table "applicationwebimages", force: true do |t|
+    t.string   "imagefile"
+    t.text     "title"
+    t.integer  "sortorder"
+    t.integer  "application_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "applicationwebimages", ["application_id"], name: "index_applicationwebimages_on_application_id", using: :btree
 
   create_table "attachments", force: true do |t|
     t.string "image"
@@ -311,6 +332,18 @@ ActiveRecord::Schema.define(version: 20130826175306) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+
+  create_table "videolinks", force: true do |t|
+    t.text     "url"
+    t.integer  "application_id"
+    t.string   "video_provider"
+    t.text     "title"
+    t.string   "sortorder"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "videolinks", ["application_id"], name: "index_videolinks_on_application_id", using: :btree
 
   create_table "websites", force: true do |t|
     t.string   "url"

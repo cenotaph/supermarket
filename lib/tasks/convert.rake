@@ -240,6 +240,53 @@ class Oldcmscmscontentfieldappwebsite < ActiveRecord::Base
   )
   self.table_name =  "_cmscontent_field_app_website"
 end
+
+class Oldcmscmscontentfieldapplicationlink < ActiveRecord::Base
+  establish_connection(
+    :adapter  => "mysql2",
+    :host     => "localhost",
+    :username => "root",
+    :password => "",
+    :database => "supermarketartfair_com"
+  )
+  self.table_name =  "_cmscontent_field_application_link"
+end
+
+class Oldcmscmscontentfieldemvideo < ActiveRecord::Base
+  establish_connection(
+    :adapter  => "mysql2",
+    :host     => "localhost",
+    :username => "root",
+    :password => "",
+    :database => "supermarketartfair_com"
+  )
+  self.table_name =  "_cmscontent_field_em_video"
+end
+
+
+class Oldcmscmscontentfieldwebimage < ActiveRecord::Base
+  establish_connection(
+    :adapter  => "mysql2",
+    :host     => "localhost",
+    :username => "root",
+    :password => "",
+    :database => "supermarketartfair_com"
+  )
+  self.table_name =  "_cmscontent_field_web_images"
+end
+
+class Oldcmscmscontentcmsfiles < ActiveRecord::Base
+  establish_connection(
+    :adapter  => "mysql2",
+    :host     => "localhost",
+    :username => "root",
+    :password => "",
+    :database => "supermarketartfair_com"
+  )
+  self.table_name =  "_cmsfiles"
+end
+
+
 class Oldusers < ActiveRecord::Base
   establish_connection(
     :adapter  => "mysql2",
@@ -337,6 +384,7 @@ namespace :aim do
         next unless cmsnode.type =~ /^application/
         year = cmsnode.type.match(/\_(\d{4})$/)[1] rescue next
         user = Olduser.find(cmsnode.uid)
+        next unless Application.find_by(:user => User.where(:email => user.mail).first, :year => Year.where(:year => year).first ).nil?
         application = Application.new(:year => Year.where(:year => year).first, 
                                       :submitted_at => Time.at(cmsnode[:created]).to_date,
                                       :status => 'active',
@@ -344,6 +392,52 @@ namespace :aim do
                                       
         nid = cmsnode.nid
         vid = cmsnode.vid
+        
+        # websites first
+        
+        Oldcmscmscontentfieldappwebsite.where(:nid => nid, :vid => vid).each do |site|
+          application.websites << Website.new(:url => site.field_app_website_url) unless site.field_app_website_url.nil?
+        end
+        
+        
+        # now, images
+        Oldcmscmscontentfieldwebimage.where(:nid => nid, :vid => vid).each do |wi|
+          f = Oldcmscmscontentcmsfiles.find_by(:fid => wi.field_web_images_fid)
+          next if f.nil?
+          next if f.filepath.blank?
+          title = ''
+          unless wi.field_web_images_data.blank?
+            wi.field_web_images_data.split(/s:\d*\:\"/).each_with_index do |str, index| 
+              if str =~ /^title/
+                title =  wi.field_web_images_data.split(/s:\d*\:\"/)[index+1].gsub(/\"\;$/, '')
+              end
+            end
+          end
+          application.applicationwebimages << Applicationwebimage.new(:remote_imagefile_url => "http://supermarketartfair.com/#{f.filepath}", :sortorder => wi.delta, :title => title)
+        end
+        
+        
+        # now video links
+        Oldcmscmscontentfieldemvideo.where(:nid => nid, :vid => vid).each do |vlink|
+          next if vlink.field_em_video_embed.blank?
+          vtitle = ''
+          unless vlink.field_em_video_data.blank?
+            vlink.field_em_video_data.split(/s:\d*\:\"/).each_with_index do |str, index| 
+              if str =~ /^title/
+                vtitle = vlink.field_em_video_data.split(/s:\d*\:\"/)[index+1].gsub(/\"\;$/, '')
+              end
+            end
+          end
+          application.videolinks << Videolink.new(:url => vlink.field_em_video_embed, :video_provider => vlink.field_em_video_provider, :title => vtitle, :sortorder => vlink.delta )
+        end
+        
+        
+        # now external attachment links
+        Oldcmscmscontentfieldapplicationlink.where(:nid => nid, :vid => vid).each do |alink|
+          next if alink.field_application_link_url.blank?
+          application.applicationlinks << Applicationlink.new(:url => alink.field_application_link_url, :title => alink.field_application_link_title)
+        end
+        
         begin
           application.organisation_name = Oldcmscmscontentfieldapporganizationname.where(:nid => nid, :vid => vid).first.field_app_organization_name_value
           application.contact_first_name = Oldcmscmscontentfieldappcontactfirstname.where(:nid => nid, :vid => vid).first.field_app_contact_first_name_value
@@ -365,13 +459,19 @@ namespace :aim do
           application.exhibitor_city = Oldcmscmscontentfieldappposttown.where(:nid => nid, :vid => vid).first.field_app_post_town_value
           application.exhibitor_postcode = Oldcmscmscontentfieldapppostcode.where(:nid => nid, :vid => vid).first.field_app_postcode_value
           application.exhibitor_country = application.contact_country
-          Oldcmscmscontentfieldappwebsite.where(:nid => nid, :vid => vid).each do |site|
-            application.websites << site.field_app_website_url
-          end
         rescue
           nil
         end
         application.save(validate: false)
+      end
+    end
+    
+    task :clean_titles => :environment do
+      Applicationwebimage.all.each do |aw|
+        if aw.title.strip == '";}'
+          aw.title = nil
+          aw.save
+        end
       end
     end
     

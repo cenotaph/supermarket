@@ -61,7 +61,7 @@ form {
     width: 250px;
     height: 180px;
   }
-  input[type=text], input[type=email], input[type=tel], select  {
+  input[type=text], input[type=email], input[type=tel], input[type=password], select  {
     font-size: 18px;
     width: 250px;
   }
@@ -132,5 +132,50 @@ form#new_user {
   margin-top: 25px;
   a {
     color: $orange1;
+  }
+}
+
+.show_view {
+  ul.application_show {
+    li {
+      float: left;
+      clear: both;
+      margin: 5px 0px 10px 0px;
+      list-style-type: none;
+      label {
+        float: left;
+        color: #666;
+        font: $small-text;
+        text-align: right;
+        margin-right: 10px;
+        width: 80px;
+      }
+      .appval {
+        float: left;
+        font: $body-text;
+        p {
+          margin-top: 0px;
+        }
+        span.bigquote {
+          font-size: 35px;
+          float: left;
+        }
+        &.blocktext {
+          width: 75%;
+          p {
+            margin: 0px 0px 5px 0px;
+            font: 13px/16px Helvetiva, Arial, sans-serif;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+  .asset_container {
+    float: left;
+    
+    .title {
+      font: $small-caption;
+    }
   }
 }
