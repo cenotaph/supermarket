@@ -9,4 +9,48 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-# Aim::Application.config.secret_key_base = 'e6b71c31cd4a9c34d846a4a98094c39d00d5b134b6f5e2b24f9f502c007cc84f046b1f548a39a4298e9c2ee44f4511e95e8a13434fec50ff1fd1f480f8b60aa6'
+Aim::Application.config.secret_key_base = ENV['SECRET_KEY']
+
+
+if Rails.env.production?
+  CarrierWave.configure do |config|
+    config.fog_credentials = {
+      :provider               => 'AWS',       # required
+      :aws_access_key_id      => ENV['AWS_ACCESS_KEY'],       # required
+      :aws_secret_access_key  => ENV['AWS_SECRET_KEY'],       # required
+      :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
+    }
+    config.fog_directory  = 'aim-production'                     # required
+    # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
+  end  
+else
+  CarrierWave.configure do |config|    config.fog_credentials = {
+      :provider               => 'AWS',       # required
+      :aws_access_key_id      => ENV['AWS_ACCESS_KEY'],       # required
+      :aws_secret_access_key  => ENV['AWS_SECRET_KEY'],       # required
+      :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
+    }
+    config.fog_directory  = 'aim-development'                     # required
+    # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
+  end
+end
+
+
+I18n.available_locales = [:en, :'sv-SE']
+
+class Hash
+  def flat_each(prefix="", &blk)
+    each do |k,v|
+      if v.is_a?(Hash)
+        v.flat_each(prefix+k+": ", &blk)
+      else
+        yield prefix+k, v
+      end
+    end
+  end
+end
+
+Recaptcha.configure do |config|
+  config.public_key  = ENV['RECAPTCHA_PUBLIC']
+  config.private_key = ENV['RECAPTCHA_PRIVATE']
+end
