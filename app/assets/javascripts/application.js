@@ -15,6 +15,7 @@
 //= require jquery.ui.core
 //= require jquery.validate
 //= require jquery.validate.additional-methods
+//= require ckeditor/init
 //= require jquery.ui.autocomplete
 //= require autocomplete-rails
 //= require turbolinks

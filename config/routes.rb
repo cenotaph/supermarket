@@ -1,5 +1,6 @@
 Aim::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   resources :spaces do
     # resources :build, controller: 'spaces/build'
     get :autocomplete_space_business_name, :on => :collection
@@ -18,6 +19,7 @@ Aim::Application.routes.draw do
   ActiveAdmin.routes(self)
   themes_for_rails
 
+  
   root 'application#frontpage'
   get '/apply/2014/:space_id', to: 'applications#new', :year => 2014
 

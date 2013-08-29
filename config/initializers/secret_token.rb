@@ -36,7 +36,7 @@ else
 end
 
 
-I18n.available_locales = [:en, :'sv-SE']
+I18n.available_locales = [:en ] # :'sv-SE']
 
 class Hash
   def flat_each(prefix="", &blk)
