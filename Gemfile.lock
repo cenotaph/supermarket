@@ -171,9 +171,8 @@ GEM
       net-ssh (>= 2.1.3)
       nokogiri (~> 1.5.0)
       ruby-hmac
-    font-awesome-sass-rails (3.0.2.2)
-      railties (>= 3.1.1)
-      sass-rails (>= 3.1.1)
+    font-awesome-rails (3.2.1.3)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     geocoder (1.1.8)
     haml (4.0.3)
@@ -348,7 +347,7 @@ DEPENDENCIES
   devise
   devise-encryptable
   fog (~> 1.3.1)
-  font-awesome-sass-rails
+  font-awesome-rails
   formtastic!
   friendly_id (~> 5.0.0.alpha1)!
   geocoder
