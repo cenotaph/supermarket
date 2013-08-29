@@ -147,6 +147,7 @@ ActiveAdmin.setup do |config|
   #   config.register_javascript 'my_javascript.js'
 
   config.register_javascript 'ckeditor/init.js'
+  config.register_javascript 'jquery.ui.core'
   # == CSV options
   #
   # Set the CSV builder separator
