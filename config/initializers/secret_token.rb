@@ -20,7 +20,7 @@ if Rails.env.production?
       :aws_secret_access_key  => ENV['AWS_SECRET_KEY'],       # required
       :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
     }
-    config.fog_directory  = 'aim-production'                     # required
+    config.fog_directory  = 'aim-development'                     # required
     # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
   end  
 else
@@ -30,7 +30,7 @@ else
       :aws_secret_access_key  => ENV['AWS_SECRET_KEY'],       # required
       :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
     }
-    config.fog_directory  = 'aim-development'                     # required
+    config.fog_directory  = 'aim-developmentraw'                     # required
     # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
   end
 end
