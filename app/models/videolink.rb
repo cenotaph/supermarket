@@ -1,5 +1,5 @@
 class Videolink < ActiveRecord::Base
   belongs_to :application
-  validates_presence_of :url, :video_provider, :application_id
+  validates_presence_of :url, :application_id
 
 end

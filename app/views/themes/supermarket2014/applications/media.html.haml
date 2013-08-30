@@ -1,0 +1,130 @@
+= semantic_nested_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014, :novalidate => true}, :method => :put) do |f|
+  .subtitle= t("supermarket2014.media_fields")
+
+  .section.column  
+    .subsubtitle= t("supermarket2014.websites_form")
+  
+    = f.fields_for :applicationlinks do |ff|
+      = ff.input :url
+      = ff.input :title, :as => :string
+      = ff.link_to_remove raw("<i class=\"icon-trash\"></i> ") + t(:remove_url)
+    .add_link= f.link_to_add raw("<i class=\"icon-plus-sign\"></i> ") + t(:add_a_website), :applicationlinks
+  
+  
+  .section.column
+    .subsubtitle= t("supermarket2014.images_form")
+    = f.fields_for :applicationwebimages do |ff|
+      .fields_image
+        - if ff.object.imagefile?
+          .image.nine.columns
+            = image_tag ff.object.imagefile.url(:sidebar)
+            = ff.input :imagefile, :label => t(:replace_image)
+            = ff.link_to_remove raw("<i class=\"icon-trash\"></i> ") + t(:remove_image)
+        - else
+          = ff.input :imagefile, :label => t(:image)
+    .add_link.image= f.link_to_add raw("<i class=\"icon-plus-sign\"></i> ") + t(:add_an_image), :applicationwebimages, :class => :image
+  
+  
+  
+  .section.column
+    .subsubtitle= t("supermarket2014.videolinks_form")
+    = f.fields_for :videolinks do |ff|
+      .fields_video
+        - if ff.object.url?
+          .video.nine.columns
+            .title= ff.object.try(:title)
+            %span.url= ff.object.url
+            = ff.input :url, :as => :string, :label => t(:replace_video)
+            = ff.input :title, :as => :string, :label => t(:replace_video_title)
+            = ff.link_to_remove raw("<i class=\"icon-trash\"></i> ") + t(:remove_video)
+        - else
+          = ff.input :url, :as => :string, :label => t(:url_to_video)
+          = ff.input :title, :as => :string, :label => t(:video_title)
+    .add_link.video= f.link_to_add raw("<i class=\"icon-plus-sign\"></i> ") + t(:add_a_video), :videolinks, :class => :video
+  
+  .section.column    
+    .subsubtitle= t("supermarket2014.attachment_files")
+    - if f.object.upload1?
+      .uploaded
+        = t("supermarket2014.you_uploaded")
+        = f.object.upload1.file.filename
+        = f.input :upload1, :label => t("supermarket2014.replace_file")
+        = f.check_box :remove_upload1
+        = t(:remove) + " " + f.object.upload1.file.filename
+    - else
+      = f.input :upload1, :label => t("supermarket2014.choose_attachment")
+    - if f.object.upload2?
+      .uploaded
+        = t("supermarket2014.you_uploaded")
+        = f.object.upload2.file.filename
+        = f.input :upload2, :label => t("supermarket2014.replace_file")
+        = f.check_box :remove_upload2
+        = t(:remove) + " " + f.object.upload2.file.filename
+    - else
+      = f.input :upload2, :label => t("supermarket2014.choose_attachment")
+
+  
+  = f.input :form_direction, :input_html => { :value => "forward"}, :as => :hidden
+  = f.actions do
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button
+
+    
+
+:javascript
+  $(document).ready(function() {
+
+    
+    var imagefieldsCount,
+    videofieldsCount,
+    imagemaxFieldsCount = 5,
+    videomaxFieldsCount = 4,
+    $imageaddLink = $('a.add_nested_fields.image');
+    $videoaddLink = $('a.add_nested_fields.video');
+    
+    function toggleImageAddLink() {
+      $imageaddLink.toggle(imagefieldsCount <= imagemaxFieldsCount)
+    }
+
+    function toggleVideoAddLink() {
+      $videoaddLink.toggle(videofieldsCount <= videomaxFieldsCount)
+    }
+    
+    $(document).on('nested:fieldAdded', function(event) {
+      var ttype = event.field.parent().attr('class').replace(/add_link\s*/, '');
+      if (ttype == 'image') {
+        imagefieldsCount += 1;
+        toggleImageAddLink();
+      } 
+      if (ttype == 'video') {
+        videofieldsCount += 1;
+        toggleVideoAddLink();
+      }
+      
+    });
+
+    $(document).on('nested:fieldRemoved', function(event) {
+      var ttype = event.field.children().attr('class').replace(/fields_\s*/, '');
+      if (ttype == 'image') {
+        imagefieldsCount -= 1;
+        toggleImageAddLink();
+      }
+      if (ttype == 'video') {
+        videofieldsCount -= 1;
+        alert('video count is ' + videofieldsCount);
+        toggleVideoAddLink();
+      }
+    });  
+
+    // count existing nested fields after page was loaded
+    imagefieldsCount = $('form .fields_image').length;
+    videofieldsCount = $('form .fields_video').length;
+    toggleVideoAddLink();
+    toggleImageAddLink();
+
+    $('form button').click(function() {
+
+      $("#application_form_direction").val($(this).attr('class'));
+
+    });
+  });

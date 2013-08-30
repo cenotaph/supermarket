@@ -1,10 +1,16 @@
 class ApplicationsController < ApplicationController
   include Wicked::Wizard
   before_filter :authenticate_user!
-  steps :address_and_location, :basic_info, :proposals, :secondary_info, :confirm
+  steps :address_and_location, :basic_info, :proposals, :secondary_info, :media, :confirm
   
   def create
     @application = Application.create(params[:application])
+    unless @application.space.website1.blank?
+      @application.applicationlinks << Applicationlink.create(:url => @application.space.website1)
+    end
+    unless @application.space.website2.blank?
+      @application.applicationlinks << Applicationlink.create(:url => @application.space.website2)
+    end
     redirect_to wizard_path(steps.first, :application_id => @application.id)
   end
     
@@ -67,13 +73,14 @@ class ApplicationsController < ApplicationController
     end
   
     @application.update_attributes(params[:application])
+
     if params[:application][:form_direction] == 'previous'
       redirect_to wizard_path(previous_step, :application_id => @application.id)
     elsif params[:application][:form_direction] == 'start'
       redirect_to edit_application_path(@application)
     else
 
-      if step.nil? && !params[:application][:contact_city].blank?
+      if step.nil? && params[:application][:form_direction] == 'start'
         redirect_to wizard_path(steps.first, :application_id => @application.id)
       else
         redirect_to wizard_path(next_step, :application_id => @application.id)
@@ -84,7 +91,7 @@ class ApplicationsController < ApplicationController
   private
   
   def application_params
-    params.require(:application).permit(:space_id, :year_id, :user_id, :organisation_name, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :form_direction, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use, :supermarket_proposal,  space_attributes: [:exhibitors, :id, :exhibitionspacetype_id], website_attributes: [:id, :url, :application_id], applicationlink_attributes: [:id, :url, :title, :application_id], videolink_attributes: [:id, :application_id, :video_provider, :title, :url], applicationwebimage_attributes: [:id, :application_id, :imagefile, :title, :sortorder]
+    params.require(:application).permit(:space_id, :year_id, :user_id, :organisation_name, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :contact_address1, :contact_address2, :contact_city, :contact_state, :contact_country, :contact_postcode, :form_direction, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use, :upload1, :upload2, :remove_upload1, :remove_upload2, :supermarket_proposal,  space_attributes: [:exhibitors, :id, :exhibitionspacetype_id], website_attributes: [:id, :url, :application_id], applicationlinks_attributes: [:id, :_destroy, :url, :title, :application_id], videolinks_attributes: [:id, :application_id, :_destroy, :video_provider, :title, :url], applicationwebimages_attributes: [:id, :application_id, :_destroy, :imagefile, :title, :sortorder]
 
     )
   end

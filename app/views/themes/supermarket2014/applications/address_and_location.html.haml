@@ -7,9 +7,9 @@
   = f.input :contact_country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country"), :input_html => {:required => true }
 
   = f.input :contact_postcode,  :input_html => {:required => true,  :value => (@application.contact_postcode.blank? ? @application.space.postcode : @application.contact_postcode) }  
-  = f.input :form_direction, :value => "forward", :as => :hidden
+  = f.input :form_direction,  :input_html => {:value => "forward"}, :as => :hidden
   = f.actions do
-    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :start}
+    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:start), :as => :button,  :button_html => {:class => :start}
     = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button
 
     

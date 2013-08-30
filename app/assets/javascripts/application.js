@@ -17,6 +17,7 @@
 //= require jquery.validate.additional-methods
 //= require ckeditor/init
 //= require jquery.ui.autocomplete
+//= require jquery_nested_form
 //= require autocomplete-rails
 //= require turbolinks
 //= require_tree .

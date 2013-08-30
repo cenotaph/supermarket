@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130829182532) do
+ActiveRecord::Schema.define(version: 20130830084427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(version: 20130829182532) do
     t.integer  "booth_granted"
     t.boolean  "apply_to_malongen"
     t.text     "malongen_use"
+    t.string   "upload1"
+    t.string   "upload2"
   end
 
   add_index "applications", ["year_id"], name: "index_applications_on_year_id", using: :btree

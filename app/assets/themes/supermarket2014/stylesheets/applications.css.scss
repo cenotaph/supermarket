@@ -4,6 +4,100 @@
   clear: both;
 }
 form {
+  
+  .section {
+    clear: both;
+    margin-top: 30px;
+
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+  
+  input#application_remove_upload1, input#application_remove_upload2 {
+    margin-left: 180px;
+    margin-bottom: 25px;
+  }
+  .uploaded {
+    margin-top: 30px;
+    font: $body-text;
+    margin-left: 125px;
+  }
+  
+  .fields {
+    .fields_video {
+      margin-top: 25px;
+    }
+    li {
+      margin-top: 20px;
+      margin-left: 50px;
+    }
+    label {
+      width: 100px;
+    }
+    margin-bottom: 10px;
+    .image, .video {
+        float: left;
+        margin-left: 150px;
+      img {
+        margin-right: 30px;
+        float: left;
+      }
+      .title {
+        font: $small-heading;
+      }
+      span.url {
+        font-size: 10px;
+        font-weight: italic;
+        color: #666;
+      }
+      li {
+        clear: right;
+        label {
+          clear: none;
+          width: inherit;
+        }
+      }
+      .remove_nested_fields {
+        margin-left: 0px;
+      }
+    }
+  }
+  .add_link {
+    clear: both;
+    margin-bottom: 25px;
+    padding-top: 10px;
+
+    font: $small-text;
+    text-transform: uppercase;
+    font-weight: bold;
+    &.image, &.video {
+      .fields { 
+        margin-left: 125px;
+      }
+    }
+  }
+  
+  p, .subsubtitle {
+    font: $body-text;
+    margin-left: 100px;
+  }
+  .subsubtitle {
+    margin-bottom: 20px;
+  }
+  .add_nested_fields {
+    margin-left: 125px;
+
+    font-weight: bold;
+    clear: both;
+    float: left;
+  }
+  .remove_nested_fields {
+    margin-left: 125px; 
+    font: $small-text;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+    
   p.inline-hints {
     font-size: 11px;
     line-height: 13px;
@@ -61,8 +155,8 @@ form {
     width: 250px;
     height: 180px;
   }
-  input[type=text], input[type=email], input[type=tel], input[type=password], select  {
-    font-size: 18px;
+  input[type=text], input[type=email], input[type=tel], input[type=url], input[type=password], select  {
+    font-size: 15px;
     width: 250px;
   }
   fieldset {
