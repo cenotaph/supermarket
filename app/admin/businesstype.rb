@@ -17,4 +17,11 @@ ActiveAdmin.register Businesstype do
     end
   end
   
+  controller do
+    def permitted_params
+      params.permit(:businesstype => [
+                                        translations_attributes: [:locale, :id, :name] ]) 
+    end
+  end
+  
 end
