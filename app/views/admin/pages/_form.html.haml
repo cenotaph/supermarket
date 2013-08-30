@@ -14,6 +14,7 @@
 
   = f.input :parent, :as => :select, :collection => recurse_options_from_tree_collection_for_select(Page.roots, :id, :name), :hint => 'Leave blank for top level menu'
   = f.input :subsite_ids, :as => :check_boxes, :collection => Subsite.all, :label => "Show page on which sites/themes:"
+  = f.input :not_in_menu, :as => :boolean, :label => "Don't include in menu structure"
   = f.input :published
   = f.submit
 :javascript

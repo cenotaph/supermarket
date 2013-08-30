@@ -43,14 +43,14 @@
         .sixteen_columns.horiz_menu
           %nav.page_menu
             %ul
-              - Page.by_subsite(@subsite.id).each_with_index do |page, index|
+              - Page.by_subsite(@subsite.id).where(:not_in_menu => false).each_with_index do |page, index|
                 %li{:class => (index == 0 ? :first : false)}= link_to page.title, page
     #submenu_base
       .container
         .sixteen_columns.horiz_menu
           %nav.page_menu
             %ul
-              - Page.by_subsite(@subsite.id).each_with_index do |page, index|
+              - Page.by_subsite(@subsite.id).where(:not_in_menu => false).each_with_index do |page, index|
                 %li{:class => (index == 0 ? :first : false)}= link_to page.title, page                
     .container
       .twelve.alpha.columns= yield
