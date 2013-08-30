@@ -88,6 +88,8 @@ header {
 
 .submenu_base {
   background-color: $orange3;
+  height: 42px;
+  overflow: hidden;
 }
 
 .horiz_menu {
@@ -97,6 +99,7 @@ header {
 
   
   nav.page_menu, nav.page_submenu  {
+
     ul {
 
       display: inline;
