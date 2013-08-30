@@ -21,7 +21,7 @@
                   = value
           %nav.top_bar
             %ul
-              %li= link_to t(:faqs), page_path('faqs')
+              %li= link_to t(:faqs), page_path('faq')
               - if current_user
                 %li= current_user.display_name
                 %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
