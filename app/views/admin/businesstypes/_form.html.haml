@@ -1,0 +1,14 @@
+= semantic_nested_form_for([:admin, @businesstype]) do |f|
+  #language-tabs
+    %ul.language-selection
+      - I18n.available_locales.each do |locale|
+        %li{:id => "lang-#{locale}"}= link_to locale.to_s, "#lang-#{locale}"
+    - I18n.available_locales.each do |locale|
+      %div{:id => "lang-#{locale}"}
+        = f.globalize_fields_for locale do |en|
+          %b
+            Name of page in
+            = locale
+          = en.text_field :name
+
+  = f.submit

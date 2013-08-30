@@ -103,7 +103,8 @@ form {
     line-height: 13px;
     width: 250px;
     text-align: right;
-    margin-top: -30px;
+    margin-left: 0px;
+    padding-left: 50px;
     font-style: italic;
   }
   #recaptcha_area {
@@ -197,11 +198,13 @@ button.next {
   margin-top: 25px;
 }
 button.previous, button.start {
-
-  margin-left: 75px;
+  margin-left: 110px;
   margin-right: 10px;
 }
 
+button.beginning  {
+  margin-left: 275px;
+}
 form#new_user {
 
   li {

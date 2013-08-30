@@ -82,6 +82,8 @@ class ApplicationsController < ApplicationController
 
       if step.nil? && params[:application][:form_direction] == 'start'
         redirect_to wizard_path(steps.first, :application_id => @application.id)
+      elsif step.nil? && params[:application][:form_direction] == 'beginning'
+        redirect_to wizard_path(:address_and_location, :application_id => @application.id)
       else
         redirect_to wizard_path(next_step, :application_id => @application.id)
       end

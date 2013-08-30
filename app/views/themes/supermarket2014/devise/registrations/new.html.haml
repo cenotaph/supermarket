@@ -12,7 +12,7 @@
 
   = f.input :email, :autofocus => true 
   = f.input :display_name, :label => 'Your real name'
-  = f.input :password 
+  = f.input :password , :hint => t("supermarket2014.min_8_chars")
 
   = f.input :password_confirmation 
   %li

@@ -137,6 +137,7 @@ en:
     you_uploaded: "You uploaded "
     request_authorisation: ' Request access'
     return_to_your_application: 'Edit your application'
+    min_8_chars: 'Minimum 8 characters'
     search_database_blurb: 'The Supermarket database already contains information about past exhibitors and other associated organisations. If you represent one of the following organisations, please choose it from the list.'
     secondary_info_application_blurb: 'We just need a little bit more information about your organisation, and then your application will be complete!'
     space_additional_details: 'Additional details'
