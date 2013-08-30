@@ -4,4 +4,5 @@ class PagesController < ApplicationController
     @page = Page.friendly.find(params[:id])
   end
   
+
 end

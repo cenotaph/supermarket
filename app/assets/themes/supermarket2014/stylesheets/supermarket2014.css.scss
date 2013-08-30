@@ -86,7 +86,7 @@ header {
   background-color: $orange2;
 }
 
-#submenu_base {
+.submenu_base {
   background-color: $orange3;
 }
 
@@ -96,7 +96,7 @@ header {
   padding: 12px 0px;
 
   
-  nav.page_menu {
+  nav.page_menu, nav.page_submenu  {
     ul {
 
       display: inline;
