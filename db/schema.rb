@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130831094824) do
+ActiveRecord::Schema.define(version: 20130831113156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,6 +180,24 @@ ActiveRecord::Schema.define(version: 20130831094824) do
   add_index "exhibitionspacetype_translations", ["exhibitionspacetype_id", "locale"], name: "unique_exhibitionspacetype_translations_locales", unique: true, using: :btree
 
   create_table "exhibitionspacetypes", force: true do |t|
+  end
+
+  create_table "funders", force: true do |t|
+    t.string   "logo"
+    t.string   "name"
+    t.string   "url"
+    t.integer  "fundertype_id"
+    t.integer  "sortorder"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "funders", ["fundertype_id"], name: "index_funders_on_fundertype_id", using: :btree
+
+  create_table "fundertypes", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "organisationtype_spaces", id: false, force: true do |t|
