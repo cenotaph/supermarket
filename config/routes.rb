@@ -24,6 +24,7 @@ Aim::Application.routes.draw do
   get '/apply/2014/:space_id', to: 'applications#new', :year => 2014
 
   resources :pages
+  resources :posts
   resources :applications
 
   

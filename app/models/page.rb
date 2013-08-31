@@ -14,7 +14,9 @@ class Page < ActiveRecord::Base
 
   scope :published, -> { where(published: true) }
   scope :by_subsite, ->(x) { includes(:subsites).where(['subsites.id = ?', x]).references(:subsites)}
-
+  scope :promoted, -> { where(show_on_bottom: true) }
+  
+  mount_uploader :postimage, SlidingmenuUploader
   
   def name_en
     title(:en)

@@ -43,7 +43,7 @@ ActiveAdmin.register Page do
     end
           
     def permitted_params
-      params.permit(:page => [:published, :parent_id , :not_in_menu,  
+      params.permit(:page => [:published, :parent_id , :not_in_menu,  :postimage, :show_postimage_on_page, :show_on_bottom,
         subsite_ids: [], 
         translations_attributes: [:locale, :id, :title, :body] ]) 
     end

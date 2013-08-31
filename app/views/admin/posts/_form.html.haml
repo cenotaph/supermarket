@@ -1,0 +1,26 @@
+= semantic_nested_form_for([:admin, @post], :html => {:multipart => true}) do |f|
+  #language-tabs
+    %ul.language-selection
+      - I18n.available_locales.each do |locale|
+        %li{:id => "lang-#{locale}"}= link_to locale.to_s, "#lang-#{locale}"
+    - I18n.available_locales.each do |locale|
+      %div{:id => "lang-#{locale}"}
+        = f.globalize_fields_for locale do |en|
+          %b
+            Name of post in
+            = locale
+          = en.text_field :subject
+          = en.text_area :body, :class => :ckeditor
+  - if f.object.postimage?
+    = image_tag f.object.postimage.url(:frontsmall)
+  = f.input :postimage, :label => "Image for post browser (post icon)", :hint => "Minimum resolution 580x405."
+  = f.input :dont_show_image, :label => "Don't show post browser image in stand-alone post view", :hint => "Check this if you are using in-post images and don't want the post icon to appear atop the body "
+  = f.input :promoted, :as => :boolean, :label => "Promoted?", :hint => "Keep sticky on frontpage and in bottom carousel"
+  = f.input :posted_by, :as => :select, :collection => User.all_staff.sort_by(&:display_name)
+  = f.input :subsite, :as => :select, :collection => Subsite.all, :label => "Show post on which sites/themes:"
+  = f.input :post_as_supermarket, :as => :boolean, :label => "Don't put staff member's name on post, put 'Posted by Supermarket' instead"
+  = f.input :published, :as => :boolean, :label => "Published?", :hint => "If blank, only logged-in staff will be able to see it"
+  = f.input :published_at, :as => :date_picker, :label => "Date of post"
+  = f.submit
+:javascript
+  $('#language-tabs').tabs();

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130830114053) do
+ActiveRecord::Schema.define(version: 20130831094824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20130830114053) do
     t.string   "exhibitor_state"
     t.string   "hometown"
     t.string   "application_image"
-    t.text     "staff",                    default: "Please pick suitable titles from these alternatives.\n\nMembers: If you have more than 20 members, just write the number of members.\nBoard:\nCo-directors:\nManagers:\nCo-founders:\n! DELETE ALTERNATIVES NOT USED\n"
+    t.text     "staff"
     t.date     "submitted_at"
     t.text     "supermarket_proposal"
     t.integer  "booth_applied"
@@ -223,7 +223,41 @@ ActiveRecord::Schema.define(version: 20130830114053) do
     t.string  "slug"
     t.integer "parent_id"
     t.boolean "not_in_menu"
+    t.string  "postimage"
+    t.boolean "show_on_bottom",         default: false, null: false
+    t.boolean "show_postimage_on_page", default: false, null: false
   end
+
+  create_table "post_translations", force: true do |t|
+    t.integer  "post_id",    null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "subject"
+    t.text     "body"
+  end
+
+  add_index "post_translations", ["locale"], name: "index_post_translations_on_locale", using: :btree
+  add_index "post_translations", ["post_id"], name: "index_post_translations_on_post_id", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.integer  "subsite_id"
+    t.boolean  "promoted",            default: false, null: false
+    t.boolean  "published",           default: false, null: false
+    t.string   "slug"
+    t.datetime "published_at"
+    t.string   "postimage"
+    t.integer  "posted_by_id"
+    t.integer  "last_edited_by_id"
+    t.boolean  "post_as_supermarket", default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "dont_show_image",     default: false, null: false
+  end
+
+  add_index "posts", ["last_edited_by_id"], name: "index_posts_on_last_edited_by_id", using: :btree
+  add_index "posts", ["posted_by_id"], name: "index_posts_on_posted_by_id", using: :btree
+  add_index "posts", ["subsite_id"], name: "index_posts_on_subsite_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

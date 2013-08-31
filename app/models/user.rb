@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :pending_spaces, :through => :space_users, :conditions => { "space_users.approved" => false }, :source => :space
   has_many :space_users
   
+  scope :all_staff, -> { where("id IN (?) OR id IN (?)", User.with_role(:staff), User.with_role(:god)) }
+  
   def protected_email
     first = email.split(/@/).first[0..1] + "<i>" + Array.new(email.split(/@/).first.size - 2, "x").join + "</i>"
     rest = email.split(/\@/).last.split(/\./).map{|x| x[0..1] + "<i>" + Array.new(x.size - 2, "x").join + "</i>"}.join('.')
