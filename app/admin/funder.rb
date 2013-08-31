@@ -5,20 +5,20 @@ ActiveAdmin.register Funder do
     
     def create
       create! do |format|
-        format.html { redirect_to admin_fundertypes_path  }
+        format.html { redirect_to admin_funders_path  }
       end
     end
   
 
     def update
       update! do |format|
-        format.html { redirect_to admin_fundertypes_path }
+        format.html { redirect_to admin_funders_path }
       end
     end
   
     def destroy
       destroy! do |format|
-        format.html { redirect_to admin_fundertypes_path }
+        format.html { redirect_to admin_funders_path }
       end
     end
  
