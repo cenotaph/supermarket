@@ -26,6 +26,7 @@ en:
   url_to_video: 'URL of video'
   remove_url: 'Remove this link'
   remove: 'Remove'
+  funders_and_partners: 'Funders & partners'
   remove_video: 'Remove this video link'
   replace_video_title: 'Change title of video'
   replace_video: 'Change video to different URL'

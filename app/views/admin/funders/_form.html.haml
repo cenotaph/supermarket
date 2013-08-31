@@ -1,0 +1,7 @@
+= semantic_form_for [:admin, @funder], :html => {:multipart => true} do |f|
+  = f.input :fundertype
+  = f.input :logo
+  = f.input :name
+  = f.input :url
+  = f.input :sortorder
+  = f.submit

@@ -5,7 +5,7 @@
   margin-top: 25px;
   border: 2px solid $light-orange;
   padding: 15px;
-  h2 {
+  h2, h3 {
     margin-top: 0px;
   }
   .title {
@@ -29,6 +29,18 @@
     .submitted_at {
       font: 10px/12px Helvetiva, Arial, sans-serif;
       color: #666;
+    }
+  }
+  
+  .funder_type {
+
+    .title {
+      font-size: 13px;
+      color: #333;
+    }
+    .name {
+      font-size: 10px;
+      color: $orange1;
     }
   }
 }

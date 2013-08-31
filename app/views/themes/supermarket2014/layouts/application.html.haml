@@ -130,6 +130,7 @@
                                 .pending_applications
                                   .year= sa.year.year.to_s
                                   .action= link_to t("supermarket2014.return_to_your_application"), edit_application_path(sa)
+            .sidebar_box= render :partial => 'layouts/funders', :locals => {:fundertypes => @fundertypes }
     %footer
       .container
         .posts_ticker.sixteen.columns= render :partial => 'layouts/post_ticker', :locals => {:promoted_posts => @promoted_posts}

@@ -1,0 +1,9 @@
+%h3= t :funders_and_partners
+- fundertypes.each do |ft|
+  .funder_type
+    .title= ft.name
+    - ft.funders.each do |f|
+      = link_to_unless(f.url.blank?, f.url) do
+        = image_tag f.logo.url(:sidebar), :width => 120
+        .name= f.name
+      

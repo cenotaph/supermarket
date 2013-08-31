@@ -49,6 +49,7 @@ class ApplicationController < ActionController::Base
     @promoted_posts = Post.by_subsite(@subsite.id).published.promoted
     @promoted_posts += Page.by_subsite(@subsite.id).published.promoted
     @promoted_posts.compact!
+    @fundertypes = Fundertype.all.delete_if{|x| x.funders.empty? }
     @site
   end
   
