@@ -3,7 +3,11 @@
   .funder_type
     .title= ft.name
     - ft.funders.each do |f|
-      = link_to_unless(f.url.blank?, f.url) do
+      - if f.url.blank?
         = image_tag f.logo.url(:sidebar), :width => 120
         .name= f.name
+      - else
+        = link_to f.url do
+          = image_tag f.logo.url(:sidebar), :width => 120
+          .name= f.name
       
