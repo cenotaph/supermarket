@@ -11,6 +11,11 @@ a {
 p {
   font: $body-text;
   
+  &.front {
+    font-size: 13px;
+    line-height: 19px;
+    color: #666;
+  }
 }
 
 .small_link a, span.small_link a {
