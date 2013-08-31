@@ -3,8 +3,9 @@
 
 .sidebar_box {
   margin-top: 25px;
+
   border: 2px solid $light-orange;
-  padding: 15px;
+  padding: 10px;
   h2, h3 {
     margin-top: 0px;
   }
@@ -21,21 +22,47 @@
       font: $small-link;
     }
   }
+  ul {
+    padding-left: 10px;
+  }
   li {
+    list-style-type: none;
     margin-bottom: 5px;
     .year {
+      margin-top: 15px;
       font-weight: bold;
     }
     .submitted_at {
       font: 10px/12px Helvetiva, Arial, sans-serif;
       color: #666;
     }
+    .view {
+      a {
+        font: $small-text;
+        text-transform: uppercase;
+      }
+    }
   }
   
   .funder_type {
+    clear: both;
+    margin-bottom: 20px;
+    .funder_pair {
 
+      
+    }
+    .funder {
+      padding: 5px;
+      margin-bottom: 15px;
+      width: 40%;
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
     .title {
       font-size: 13px;
+      line-height: 17px;
       color: #333;
     }
     .name {

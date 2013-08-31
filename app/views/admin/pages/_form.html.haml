@@ -15,10 +15,13 @@
   = f.input :parent, :as => :select, :collection => recurse_options_from_tree_collection_for_select(Page.roots, :id, :name), :hint => 'Leave blank for top level menu'
   = f.input :show_on_bottom, :as => :boolean, :label => "Show on post/news ticker at bottom (requires image)"
   - if f.object.postimage?
-    = image_tag f.object.postimage.url(:frontsmall)
-  = f.input :postimage, :label => 'Image for post ticker on bottom', :hint => "Recommended resolution 580px wide"
+    %li
+      %label existing image:
+      = image_tag f.object.postimage.url(:frontsmall)
+  = f.input :postimage, :label => 'Image for post ticker on bottom', :hint => "Recommended resolution 880px wide"
   = f.input :show_postimage_on_page, :label => "If post ticker image, also show hi-res version at top of page view"
-  = f.input :subsite_ids, :as => :check_boxes, :collection => Subsite.all, :label => "Show page on which sites/themes:"
+  = f.input :postticker_title, :label => 'Alternate title to use on post ticker (leave blank to use regular title)'
+  = f.input :subsite_ids, :as => :check_boxes, :collection => Subsite.all, :label => "Show page on which sites/themes (must choose at least one):"
   = f.input :not_in_menu, :as => :boolean, :label => "Don't include in menu structure"
   = f.input :published
   = f.submit

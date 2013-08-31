@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130831113156) do
+ActiveRecord::Schema.define(version: 20130831154540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -244,6 +244,7 @@ ActiveRecord::Schema.define(version: 20130831113156) do
     t.string  "postimage"
     t.boolean "show_on_bottom",         default: false, null: false
     t.boolean "show_postimage_on_page", default: false, null: false
+    t.string  "postticker_title"
   end
 
   create_table "post_translations", force: true do |t|

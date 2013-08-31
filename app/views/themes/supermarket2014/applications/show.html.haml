@@ -61,7 +61,7 @@
     %ul.application_show
       %li
         %label= t("supermarket2014.exhibition_space_type")
-        .appval= @application.space.exhibitionspacetype.name
+        .appval= @application.space.exhibitionspacetype.try(:name)
       %li
         %label= t("supermarket2014.exhibitors")
         .appval= @application.space.exhibitors

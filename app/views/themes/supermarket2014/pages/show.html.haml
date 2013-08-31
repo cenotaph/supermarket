@@ -1,4 +1,11 @@
-%h2= @page.title
+.page
+  %h2= @page.title
 
-.body
-  = raw @page.body
+  - if @page.show_postimage_on_page == true && @page.postimage?
+    .post_image= image_tag @page.postimage.url(:large)
+  .body
+    = raw @page.body
+  
+  - if user_signed_in?
+    - if can? :edit, Page
+      = link_to 'edit this page', edit_admin_page_path(@page)  

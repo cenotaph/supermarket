@@ -23,6 +23,9 @@ class SlidingmenuUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [580, 405]
   end
 
+  version :large do
+    process :resize_to_fit => [880, 660]
+  end
 
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

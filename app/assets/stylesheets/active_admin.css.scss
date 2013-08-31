@@ -27,6 +27,16 @@ form {
   li {
     list-style-type: none;
     margin-bottom: 20px;
+    clear: both;
+    width: 100%;  
+    float: left;
+    fieldset {
+      label {
+        float: none;
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
     label {
       width: 150px;
       text-align: right;

@@ -116,9 +116,12 @@ header {
         border-left: 1px solid $gray;
         a {
           color: $gray;
+          &:hover {
+            color: #333;
+          }
         }
         &.active {
-          color: black;
+          color: #333;
         }
         &.first {
           border-left: none;
@@ -127,9 +130,30 @@ header {
     }    
   }
 }
+nav.page_menu {
+  ul {
+    li.first {
+      a {
+        color: #333;
+      }
+    }
+  }
+}
+nav.page_submenu {
+  display: none;
+}
 
 ul.existing_accounts {
   i {
     color: $grey;
+  }
+}
+
+.page {
+  .post_image {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 }
