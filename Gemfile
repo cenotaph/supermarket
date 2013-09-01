@@ -78,6 +78,7 @@ gem 'nested_form'
 gem 'public_activity'
 gem 'rails-i18n'
 gem 'rails_12factor', group: :production
+gem 'randumb'
 gem 'ransack'
 gem 'rails3-jquery-autocomplete',   github: 'cenotaph/rails3-jquery-autocomplete', branch: 'master'
 gem 'recaptcha'
