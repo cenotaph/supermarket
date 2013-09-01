@@ -73,7 +73,7 @@
         %label= t(:staff)
         .appval.blocktext
           %span.bigquote= raw("&#8220;")
-          = raw @application.staff
+          %p= raw @application.staff
           %span.bigquote= raw("&#8221;")
   .twelve.columns
     %h3= t :supermarket_proposal
@@ -86,9 +86,12 @@
         %label= t :supermarket_proposal
         .appval.blocktext
           %span.bigquote= raw("&#8220;")
-          = raw @application.supermarket_proposal
+          %p= raw @application.supermarket_proposal
           %span.bigquote= raw("&#8221;")
       - unless @application.booth_granted.blank?
         %li
           %label= t :booth_result
           .appval= t ("supermarket2014.granted_#{@application.granted_result}")      
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'      

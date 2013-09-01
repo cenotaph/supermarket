@@ -24,6 +24,8 @@ en:
   add_a_video: 'Add a link to a video (YouTube or Vimeo)'
   video_title: 'Title of video (optional)'
   url_to_video: 'URL of video'
+  search: 'Search'
+  
   remove_url: 'Remove this link'
   remove: 'Remove'
   view_application: 'View application'
@@ -71,12 +73,14 @@ en:
   replace_file: 'Replace file'
   choose_attachment: "Attachment"
   booth_result: 'Decision on application'
-  granted_accepted: 'Application accepted!'
+
   supermarket2014:
+    granted_accepted: 'Application accepted!'
     images_form: 'You may upload up to 6 images to support your application.'
     videolinks_form: 'You may include links to up to 5 videos (YouTube or Vimeo preferred)'
     account_creation_blurb: 'Do you represent an artist-run initiative? Registering with Supermarket is easy! It just takes a few minutes, and then you can:'
     address1: 'Address'
+    funders_and_partners: 'Funders & Partners'
     address2: 'Address line 2 (optional)'
     apply_to_supermarket: 'Apply to the Supermarket art fair'
     application_address_text: 'Please review your contact address. If your gallery or project is located in a different location, you will be able to enter that on the next page.'
@@ -136,6 +140,7 @@ en:
     new_space_info: 'Apply to Supermarket 2014 and also register your space in our online database!'
     one_last_step: 'One last step!'
     or: 'or ...'
+    sign_up_application_period: "Sign up to apply to Supermarket 2014, or just register your initiative in the new AIM Network database of worldwide artists' initiatives."
     past_applications: 'Past applications'
     pending_space: 'Awaiting access to...'
     pending_spaces_explanation: 'You have requested access to manage a space or gallery. The current account holders have received an email containing instructions on how to approve your access. If you believe there is an error, please contact info@supermarketartfair.com.'

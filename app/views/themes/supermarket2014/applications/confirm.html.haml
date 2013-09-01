@@ -8,7 +8,9 @@
   = f.actions do
     = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
     = f.action :submit, :label => raw("<i class='icon-check icon-large'></i>") + t(:complete_your_application), :as => :button,  :button_html => {:class => :completed}
-
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'      
     
 
 :javascript

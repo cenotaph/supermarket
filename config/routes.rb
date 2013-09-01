@@ -10,6 +10,8 @@ Aim::Application.routes.draw do
   end
   
   match '/support' => "funders#index", :via => :get
+  match '/search' => 'search#index', :via => :post
+  
   devise_for :users, ActiveAdmin::Devise.config.merge({ :controllers => ActiveAdmin::Devise.config[:controllers].merge(:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions') }).merge(:path => '/') do
       
     resources :spaces do

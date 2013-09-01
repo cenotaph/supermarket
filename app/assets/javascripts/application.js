@@ -20,4 +20,5 @@
 //= require jquery_nested_form
 //= require autocomplete-rails
 //= require jquery.flexslider-min
+//= require jquery.clearfield
 //= require_tree .

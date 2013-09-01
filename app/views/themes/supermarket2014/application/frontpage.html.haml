@@ -14,7 +14,9 @@
 - else
   .four.columns.omega
     .sidebar_box.sign_up_blurb
-      = t "supermarket2014.sign_up_frontpage_blurb"
+      %h3 Applications open!
+      %h5 Applications can be made online until 15 September 2013.
+      %p= t "supermarket2014.sign_up_application_period"
       = button_to t(:sign_up), new_user_registration_path, :method => :get
       
 - unless @front_carousel.empty?

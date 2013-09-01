@@ -21,3 +21,6 @@
     = button_to(space_request_access_path(:space_id => @space.slug), :method => :get) do
       %i.icon-envelope-alt.icon-large
       = t "supermarket2014.request_authorisation"
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'         

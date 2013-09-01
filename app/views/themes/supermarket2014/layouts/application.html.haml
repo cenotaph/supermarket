@@ -50,14 +50,15 @@
                 %li= link_to t(:sign_up), new_user_registration_path
               %li
                 = form_tag('/search') do |f|
-                  = text_field_tag :searchterm
+                  = text_field_tag :searchterm,  t(:search)
         .sixteen.columns.header_main.alpha
-          .header_logo= link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/'
-          %nav.social_icons
-            %ul
-              %li= link_to image_tag(theme_image_path('facebook_icon.png')), 'https://www.facebook.com/supermarketartfair'
-              %li= link_to image_tag(theme_image_path('twitter_icon.png')), 'https://twitter.com/supermarketart'
-              %li= link_to image_tag(theme_image_path('tv_icon.png')), '#'
+          .twelve.columns.alpha.header_logo= link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/'
+          .four.columns.omega
+            %nav.social_icons
+              %ul
+                %li= link_to image_tag(theme_image_path('facebook_icon.png')), 'https://www.facebook.com/supermarketartfair'
+                %li= link_to image_tag(theme_image_path('twitter_icon.png')), 'https://twitter.com/supermarketart'
+                %li= link_to image_tag(theme_image_path('tv_icon.png')), 'http://v-art.se/#%21events/supermarket-2013-kulturhuset-stockholm'
       #menu_base
         .container
           .sixteen_columns.horiz_menu
@@ -81,6 +82,7 @@
         .footer_text.sixteen.columns= render :partial => 'layouts/footer'                                
   :javascript
     $(document).ready(function() {
+      $('input#searchterm').clearField();
       #{yield :jquery}
     });
 

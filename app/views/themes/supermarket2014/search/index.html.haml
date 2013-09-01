@@ -1,0 +1,9 @@
+
+
+%h2 Search not active
+
+%p The search function will be available soon.
+
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'      

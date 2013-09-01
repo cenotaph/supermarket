@@ -8,7 +8,9 @@
   = f.actions do
     = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
     = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button
-    
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'          
 :javascript
   $(document).ready(function() {
     $('#application_2014').validate();
