@@ -1,6 +1,13 @@
 ActiveAdmin.register Frontcarousel do
 
-  
+  index do
+    div "image" do
+      image_tag x.image.url(:sidebar)
+    end
+    div "title" do |x|
+      x.title
+    end
+  end
   controller do
     
     def create
@@ -25,7 +32,7 @@ ActiveAdmin.register Frontcarousel do
     end
           
     def permitted_params
-      params.permit(:frontcarousel => [:published, :title, :caption, :link_to, :subsite_id, :image, :custom_css  ]) 
+      params.permit(:frontcarousel => [:published, :title, :caption, :link_to, :subsite_id, :image, :customcss  ]) 
     end
 
   end
