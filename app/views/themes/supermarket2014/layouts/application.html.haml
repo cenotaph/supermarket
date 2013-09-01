@@ -3,7 +3,7 @@
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? yield(:title) : "Supermarket"
-      %link{:href => image_path('favicon.ico'), :rel => "shortcut icon"}/
+      %link{:href => theme_image_path('favicon.ico'), :rel => "shortcut icon"}/
       %meta{:content => content_for?(:description) ? yield(:description) : "Supermarket", :name => "description"}
         = stylesheet_link_tag :application
         = stylesheet_link_tag 'supermarket2014/stylesheets/application', :media => :screen
@@ -51,7 +51,7 @@
               %li
                 = form_tag('/search') do |f|
                   = text_field_tag :searchterm
-        .sixteen.columns.header_main
+        .sixteen.columns.header_main.alpha
           .header_logo= link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/'
           %nav.social_icons
             %ul
@@ -68,58 +68,20 @@
                 %li= link_to t("supermarket2014.funders_and_partners"), '/support'
     #main
       .container
-        .sixteen.columns
-          .twelve.alpha.columns= yield
-          .four.omega.columns
-            = content_for :sidebar
-            - if current_user
-              .sidebar_box.columns
-                .title= t "supermarket2014.your_control_panel"
-                .content 
-                  - unless current_user.pending_spaces.empty?
-                    %b= t "supermarket2014.pending_space"
-                    %ul
-                      - current_user.pending_spaces.each do |space|
-                        %li
-                          = space.name
-                          .small_link
-                            %i.icon-pencil
-                            = link_to t(:edit_link), edit_space_path(space)
-                    %p= t "supermarket2014.pending_spaces_explanation"
+        - if user_signed_in?
+          .twelve.columns.alpha= yield
+          .four.columns.omega= yield :sidebar
 
-                  - if current_user.spaces.empty? && current_user.pending_spaces.empty?
-                    %p= t "supermarket2014.no_space_yet"
-                  - if current_user.spaces.empty? 
-                    = link_to t("supermarket2014.create_a_space"), new_space_path
-
-                  .spaces
-                    - current_user.spaces.each do |space|
-                      .space
-                        .title
-                          = space.business_name
-                          .small_link
-                            = link_to edit_space_path(space) do 
-                              %i.icon-pencil
-                              = t(:edit_link)
-                        .subtitle= t "supermarket2014.your_applications"
-                        %ul
-                          - if space.applications.empty? || space.applications.where(:year_id => Year.where(:year => 2014).first.id).empty?
-                            %li= link_to t("supermarket2014.apply_to_supermarket_2014"), '/apply/2014/' + space.slug.to_s                    
-                          - space.applications.sort_by{|x| x.year}.each do |sa|
-                            %li
-                              - if sa.finished?
-                                .submitted_applications
-                                  .year= sa.year.year.to_s
-                                  .submitted_at
-                                    = t(:submitted) + ": "
-                                    = l sa.submitted_at, :format => :long
-                                  .view= link_to t(:view_application), sa
-                              - else
-                                .pending_applications
-                                  .year= sa.year.year.to_s
-                                  .action= link_to t("supermarket2014.return_to_your_application"), edit_application_path(sa)
-            -# .sidebar_box.column= render :partial => 'layouts/funders', :locals => {:fundertypes => @allfunders }
+        -else
+          .sixteen.columns= yield
+          
     %footer
       .container
         .posts_ticker.sixteen.columns= render :partial => 'layouts/post_ticker', :locals => {:promoted_posts => @promoted_posts}
         .footer_text.sixteen.columns= render :partial => 'layouts/footer'                                
+  :javascript
+    $(document).ready(function() {
+      #{yield :jquery}
+    });
+
+      

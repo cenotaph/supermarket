@@ -1,6 +1,43 @@
-.five.columns.alpha
+
+.five.columns.alpha.front_blurb
   %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
 
 .one.column &nbsp;
-.five.columns.omega
+.five.columns.front_blurb
   %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
+
+
+  
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'
+- else
+  .four.columns.omega
+    .sidebar_box.sign_up_blurb
+      = t "supermarket2014.sign_up_frontpage_blurb"
+      = button_to t(:sign_up), new_user_registration_path, :method => :get
+      
+- unless @front_carousel.empty?
+  #front_carousel.columns.alpha.omega{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
+    %ul.slides
+      - @front_carousel.shuffle.each do |fc|
+        .slide
+          - if user_signed_in?
+            .image= image_tag fc.image.url(:eighteighty)
+          - else
+            .image= image_tag fc.image.url(:twelvehundred), :width => 1180
+          - unless fc.title.blank? && fc.caption.blank?
+            .caption
+              .title= fc.title
+              .subtitle= fc.caption
+            
+            
+= content_for :jquery do
+  :plain
+    $('#front_carousel').flexslider({
+        animation: "slide",
+        namespace: "topslider",
+        controlNav: false,
+        directionNav: false,
+        selector: ".slides > .slide"
+    });             

@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
     
   def frontpage
-    
+    @front_carousel = Frontcarousel.by_subsite(@subsite).published
   end
   
   def get_site

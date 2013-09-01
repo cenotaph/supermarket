@@ -15,6 +15,7 @@ p {
     font-size: 13px;
     line-height: 19px;
     color: #666;
+    margin-top: 5px;
   }
 }
 
@@ -87,6 +88,9 @@ header {
   }  
 }
 
+.front_blurb {
+  padding-top: 15px;
+}
 #menu_base {
   background-color: $orange2;
 }
@@ -109,11 +113,15 @@ header {
 
       display: inline;
       li {
+        margin-left: 0px;
         font-size: 16px;
         float: left;
         list-style-type: none;
-        padding: 0px 15px;
+        padding: 0px 15px 0px 15px;
         border-left: 1px solid $gray;
+        &.first {
+          padding-left: 0px !important;
+        }
         a {
           color: $gray;
           &:hover {
@@ -130,15 +138,34 @@ header {
     }    
   }
 }
-nav.page_menu {
-  ul {
-    li.first {
-      a {
-        color: #333;
-      }
+.funder_type {
+  clear: both;
+  margin-bottom: 0px;
+
+  .funder {
+    padding: 7px;
+    margin-bottom: 10px;
+
+    min-height: 110px;
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
   }
+  .title {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  .name {
+    font-size: 12px;
+    color: $orange1;
+  }
 }
+
 nav.page_submenu {
   display: none;
 }

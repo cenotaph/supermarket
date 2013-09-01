@@ -1,0 +1,25 @@
+#front_carousel {
+  margin-top: 30px;
+  clear: left;
+  .slide {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .caption {
+    .title {
+      font-size: 13px;
+      float: left;
+      color: #333;
+      margin-right: 15px;
+    }
+    .subtitle {
+
+      padding-top: 2px;
+      font-size: 11px;
+      color: #666;
+      font-style: italic;
+    }
+  }
+}

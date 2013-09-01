@@ -7,3 +7,8 @@
 - if user_signed_in?
   - if can? :edit, Post
     = link_to 'edit this post', edit_admin_post_path(@post)
+    
+  
+
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'

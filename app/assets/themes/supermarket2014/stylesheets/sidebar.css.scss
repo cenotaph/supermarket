@@ -1,13 +1,64 @@
 @import 'variables';
 
 
-.sidebar_box {
+.sign_up_blurb {
   margin-top: 25px;
-
+  font-size: 14px;
+  input[type=submit] {
+    padding: 5px;
+    margin: 10px 0px 10px 0px;
+    background-color: #f0f0f0;
+    font-size: 16px !important;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: 0px;
+    -webkit-box-shadow: 0px;
+    box-shadow: 0px;
+    &:hover {
+      cursor:pointer;
+      background-color: $orange3;
+    }
+  }
+}
+.sidebar_box {
+  width: 100%;
+  margin-top: 25px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0px;
+  -webkit-box-shadow: 0px;
+  box-shadow: 0px;
   border: 2px solid $light-orange;
   padding: 10px;
   h2, h3 {
     margin-top: 0px;
+  }
+  .spaces {
+    .space {
+      .title {
+        font: $small-link;
+        font-weight: bold;
+        margin-bottom: 0px;
+      }
+      .city {
+        font: $small-link;
+        font-weight: normal;
+        font-style: italic;
+        margin-top: 0px;
+      }
+      ul {
+        margin-top: 15px;
+        li.apply_2014 {
+          a {
+            font-weight: bold;
+            text-transform: none;
+            font-size: 16px;
+          }
+        }
+      }
+    }
   }
   .title {
     font: $small-heading;
@@ -15,12 +66,20 @@
   }
   .subtitle {
     font: $small-link;
+    color: #333;
+    margin-top: 10px;
+    font-style: italic;
   }
   .content {
     a {
       color: $orange1;
-      font: $small-link;
+      font: $small-text;
+      text-transform: none;
     }
+    .submitted_at {
+      font: 10px/12px Helvetiva, Arial, sans-serif;
+      color: #666;
+    }    
   }
   ul {
     padding-left: 10px;
@@ -44,30 +103,5 @@
     }
   }
   
-  .funder_type {
-    clear: both;
-    margin-bottom: 20px;
-    .funder_pair {
 
-      
-    }
-    .funder {
-      padding: 5px;
-      margin-bottom: 15px;
-      width: 40%;
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-    }
-    .title {
-      font-size: 13px;
-      line-height: 17px;
-      color: #333;
-    }
-    .name {
-      font-size: 10px;
-      color: $orange1;
-    }
-  }
 }

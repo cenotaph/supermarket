@@ -46,6 +46,10 @@ class Space < ActiveRecord::Base
     status == 'active'
   end
   
+  def hometown
+    [city, Country[country].name].join(', ')
+  end
+  
   def name
     business_name
   end
