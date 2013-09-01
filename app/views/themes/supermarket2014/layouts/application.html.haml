@@ -3,6 +3,7 @@
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? yield(:title) : "Supermarket"
+      %link{:href => image_path('favicon.ico'), :rel => "shortcut icon"}/
       %meta{:content => content_for?(:description) ? yield(:description) : "Supermarket", :name => "description"}
         = stylesheet_link_tag :application
         = stylesheet_link_tag 'supermarket2014/stylesheets/application', :media => :screen

@@ -1,13 +1,6 @@
 ActiveAdmin.register Frontcarousel do
 
-  index do
-    div "image" do
-      image_tag x.image.url(:sidebar)
-    end
-    div "title" do |x|
-      x.title
-    end
-  end
+
   controller do
     
     def create
