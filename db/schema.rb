@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130831154540) do
+ActiveRecord::Schema.define(version: 20130901115522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,20 @@ ActiveRecord::Schema.define(version: 20130831154540) do
 
   create_table "exhibitionspacetypes", force: true do |t|
   end
+
+  create_table "frontcarousels", force: true do |t|
+    t.string   "image"
+    t.boolean  "published"
+    t.string   "link_to"
+    t.string   "title"
+    t.string   "caption"
+    t.text     "customcss"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "subsite_id"
+  end
+
+  add_index "frontcarousels", ["subsite_id"], name: "index_frontcarousels_on_subsite_id", using: :btree
 
   create_table "funders", force: true do |t|
     t.string   "logo"

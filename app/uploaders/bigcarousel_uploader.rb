@@ -16,8 +16,12 @@ class BigcarouselUploader < CarrierWave::Uploader::Base
     "carousel/#{mounted_as}/#{model.id}"
   end
 
-  version :full_width do
-    process :resize_to_fill => [880, 660]
+  version :twelvehundred do
+    process :resize_to_fit => [1200, 900]
+  end
+  
+  version :eighteighty do
+    process :resize_to_fit => [880, 660]
   end
   
   version :sidebar do

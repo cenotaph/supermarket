@@ -26,4 +26,31 @@ footer {
   .footer_text {
     padding-bottom: 15px;
   }
+  ul.footer_menu {
+    padding-left: 0px;
+    li {
+      float: left;
+      font-size: 12px;
+      list-style-type: none;
+      padding-right: 15px;
+      padding-left: 10px;
+      border-right: 1px solid #333;
+      a {
+        color: #333;
+        &:hover {
+          color: $orange1;
+        }
+      }
+      &.last {
+        border-right: none;
+      }
+    }
+    }
+  .footer_credits {
+    font-size: 12px;
+    em, i {
+      font-style: italic;
+      font-size: 12px;
+    }
+  }
 }

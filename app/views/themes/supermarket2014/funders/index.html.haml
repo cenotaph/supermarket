@@ -1,0 +1,17 @@
+%h3= t :funders_and_partners
+- @allfunders.each do |ft|
+  .funder_type.column.alpha
+    .title= ft.name
+    - ft.funders.in_groups_of(2).each do |g|
+      .funder_pair.alpha.columns
+        - g.each_with_index do |f, index|
+          - next if f.nil?
+          .funder.column{:class => (index == 0 ? :alpha : :omega)}
+            - if f.url.blank?
+              = image_tag f.logo.url
+              .name= f.name
+            - else
+              = link_to f.url do
+                = image_tag f.logo.url
+                .name= f.name
+    

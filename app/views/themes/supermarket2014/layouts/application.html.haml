@@ -64,21 +64,7 @@
               %ul
                 - Page.by_subsite(@subsite.id).where('not_in_menu is not true').roots.order(:id).each_with_index do |page, index|
                   %li{:class => (index == 0 ? :first : false), :id => "page_#{page.id}"}= link_to page.title, page
-      .submenu_base
-        .container
-          .sixteen_columns.horiz_menu
-            - Page.by_subsite(@subsite.id).where('not_in_menu is not true').roots.order(:id).delete_if{|x| x.children.empty?}.each_with_index do |root, i|
-              %nav.page_submenu{:id => "nav_#{root.id}", :class => (i == 0 ? :first : false), :style => "display: " + (i == 0 ? 'block' : 'none') }
-                -# , :style => "display: " + (@page.nil? ? 'none' : (@page.parent == root || @page == root ? 'block' : 'none'))}
-                %ul
-                  - root.children.where('not_in_menu is not true').each_with_index do |page, index|
-                    %li{:class => (index == 0 ? :first : false)}= link_to page.title, page
-              :javascript
-                $('.page_menu ul li#page_#{root.id}').mouseover(function() {
-                  $('nav.page_submenu').css('display', 'none');
-                  $('nav.page_submenu#nav_#{root.id}').css('display','block');
-
-                });
+                %li= link_to t("supermarket2014.funders_and_partners"), '/support'
     #main
       .container
         .sixteen.columns
@@ -131,7 +117,7 @@
                                 .pending_applications
                                   .year= sa.year.year.to_s
                                   .action= link_to t("supermarket2014.return_to_your_application"), edit_application_path(sa)
-            .sidebar_box.column= render :partial => 'layouts/funders', :locals => {:fundertypes => @allfunders }
+            -# .sidebar_box.column= render :partial => 'layouts/funders', :locals => {:fundertypes => @allfunders }
     %footer
       .container
         .posts_ticker.sixteen.columns= render :partial => 'layouts/post_ticker', :locals => {:promoted_posts => @promoted_posts}
