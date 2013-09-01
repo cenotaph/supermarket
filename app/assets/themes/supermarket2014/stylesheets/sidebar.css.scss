@@ -24,16 +24,12 @@
 .sidebar_box {
   width: 100%;
   margin-top: 25px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  -moz-box-shadow: 0px;
-  -webkit-box-shadow: 0px;
-  box-shadow: 0px;
+
   border: 2px solid $light-orange;
   padding: 10px;
-  h2, h3 {
+  h2, h3, h5 {
     margin-top: 0px;
+    margin-bottom: 5px;
   }
   .spaces {
     .space {

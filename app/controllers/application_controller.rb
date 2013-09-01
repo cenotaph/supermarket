@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
     
   def frontpage
-    @front_carousel = Frontcarousel.by_subsite(@subsite).published
+    @front_carousel = Frontcarousel.by_subsite(@subsite).published.random(8)
   end
   
   def get_site
