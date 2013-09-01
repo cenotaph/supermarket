@@ -79,7 +79,7 @@ gem 'public_activity'
 gem 'rails-i18n'
 gem 'rails_12factor', group: :production
 gem 'ransack'
-gem 'rails3-jquery-autocomplete',   github: 'francisd/rails3-jquery-autocomplete', branch: 'master'
+gem 'rails3-jquery-autocomplete',   github: 'cenotaph/rails3-jquery-autocomplete', branch: 'master'
 gem 'recaptcha'
 gem 'rolify', '3.3.0.rc4'
 gem 'safe_attributes'

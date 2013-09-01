@@ -4,5 +4,5 @@
 
 = semantic_form_for(@space) do |f|
   / = f.input :country, :label => t("supermarket2014.country_of_space")
-  = f.input :business_name, :as => :autocomplete, :url => autocomplete_space_business_name_spaces_path, :label => t("supermarket2014.name_of_space")
+  = f.input :business_name, :as => :autocomplete, :url => autocomplete_space_business_name_spaces_path, :label => t("supermarket2014.name_of_space"), :input_html => {:data => {:no_matches_label => 'Nothing found!'}}
   %button.next.icon-circle-arrow-right.icon-large= t :next

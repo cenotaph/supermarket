@@ -12,7 +12,14 @@ form {
     padding-bottom: 15px;
     padding-top: 15px;
   }
-  
+  ul.ui-autocomplete {
+    li {
+      display: none;
+    }
+    li.ui-menu-item {
+      display: block;
+    }
+  }
   input#application_remove_upload1, input#application_remove_upload2 {
     margin-left: 180px;
     margin-bottom: 25px;

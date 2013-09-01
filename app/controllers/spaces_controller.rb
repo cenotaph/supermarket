@@ -4,6 +4,14 @@ class SpacesController < ApplicationController
   before_filter :authenticate_user!, :except => [:grant_access]
   steps :find_name, :basic_details, :secondary_details
   
+  # def get_autocomplete_items parameters
+  #   resp = super(parameters)
+  #   if resp.blank?
+  #     resp = [OpenStruct.new(id: '', label: 'nothing')]
+  #   end
+  #   resp
+  # end
+  
   def create
     @space = Space.create
     redirect_to wizard_path(steps.first, :space_id => @space.id, :searchterm => params[:space][:business_name])
