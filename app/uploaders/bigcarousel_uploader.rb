@@ -17,17 +17,16 @@ class BigcarouselUploader < CarrierWave::Uploader::Base
   end
 
   version :twelvehundred do
-    process :resize_to_fill => [1200, 800]
+    process :resize_to_fill => [1200, 400]
   end
   
   version :eighteighty do
-    process :resize_to_fit => [880, 660]
+    process :resize_to_fit => [880, 292]
   end
   
   version :sidebar do
     process :resize_to_fit => [280, 210]
   end
-  
   
   version :frontsmall do
     process :resize_to_fill => [172, 90]
