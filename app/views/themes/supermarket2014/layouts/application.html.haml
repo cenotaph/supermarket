@@ -52,7 +52,9 @@
                 = form_tag('/search') do |f|
                   = text_field_tag :searchterm,  t(:search)
         .sixteen.columns.header_main.alpha
-          .twelve.columns.alpha.header_logo= link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/'
+          .twelve.columns.alpha.header_logo
+            = link_to image_tag(theme_image_path('supermarket_title.png')), '/'
+            = link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/'
           .four.columns.omega
             %nav.social_icons
               %ul
@@ -64,9 +66,9 @@
           .sixteen_columns.horiz_menu
             %nav.page_menu
               %ul
-                - Page.by_subsite(@subsite.id).where('not_in_menu is not true').roots.order(:id).each_with_index do |page, index|
+                - Page.by_subsite(@subsite.id).where('not_in_menu is not true').roots.published.order(:id).each_with_index do |page, index|
                   %li{:class => (index == 0 ? :first : false), :id => "page_#{page.id}"}= link_to page.title, page
-                %li= link_to t("supermarket2014.funders_and_partners"), '/support'
+                -# %li= link_to t("supermarket2014.funders_and_partners"), '/support'
     #main
       .container
         - if user_signed_in?

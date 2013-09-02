@@ -80,11 +80,19 @@ header {
     margin-bottom: 25px;
   
     .header_logo {
+      img {
+        max-width: 100%;
+        height: auto;
+      }
       float: left;
     }
   
     nav.social_icons {
       float: right;
+      img {
+        max-width: 100%;
+        height: auto; 
+      }
       ul {
         display: block;
         margin:0px; padding: 0px;
