@@ -4,7 +4,21 @@
   clear: both;
 }
 form {
-  
+    .longhint p.inline-hints {
+    font-size: 11px;
+    line-height: 13px;
+    width: 250px;
+    text-align: left;
+    margin-left: 0px;
+    padding-left: 50px;
+    clear: left;
+    margin-top: 10px;
+    font-style: italic;
+  }
+  textarea#application_special_needs {
+    height: 75px;
+    width: 400px;
+  }
   .section {
     clear: both;
     margin-top: 30px;

@@ -1,6 +1,6 @@
 = semantic_nested_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014, :novalidate => true}, :method => :put) do |f|
   .subtitle= t("supermarket2014.media_fields")
-
+  %p= t("supermarket2014.documents_blurb")
   .section.column  
     .subsubtitle= t("supermarket2014.websites_form")
   

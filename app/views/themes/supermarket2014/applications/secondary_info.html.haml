@@ -9,7 +9,7 @@
       .image= image_tag f.object.application_image.url(:sidebar)
     = f.input :application_image, :label => t("supermarket2014.change_image")
   - else
-    = f.input :application_image
+    = f.input :application_image, :label => t("supermarket2014.image_or_logo"), :hint => t("supermarket2014.images_later")
   = f.input :hometown, :label => t("supermarket2014.hometown_explanation"), :hint => t("supermarket2014.hometown_hint"), :input_html => {:required => true, :value => (@application.hometown.blank? ? (@application.space.city.to_s + ", " + Country[@application.space.country].name) : @application.hometown) }
   = f.input :staff
   = f.input :form_direction, :input_html => { :value => "forward"}, :as => :hidden
