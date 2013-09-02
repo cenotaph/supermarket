@@ -174,8 +174,11 @@ form {
   }
   textarea {
     float: left;
-    width: 250px;
-    height: 180px;
+    width: 400px;
+    height: 80px;
+    &#application_supermarket_proposal {
+      height: 160px;
+    }
   }
   input[type=text], input[type=email], input[type=tel], input[type=url], input[type=password], select  {
     font-size: 15px;
