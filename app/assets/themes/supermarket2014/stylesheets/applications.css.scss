@@ -293,8 +293,11 @@ form#new_user {
     }
   }
   .asset_container {
+
     float: left;
-    
+    .hidden {
+      display: none;
+    }
     .title {
       font: $small-caption;
     }

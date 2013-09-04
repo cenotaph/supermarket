@@ -76,7 +76,7 @@ en:
 
   supermarket2014:
     granted_accepted: 'Application accepted!'
-    images_form: 'You may upload up to 6 images to support your application.'
+    images_form: 'You may upload up to 6 images to support your application. .JPG, .PNG or .GIF format only, maximum size 1MB per image.'
     videolinks_form: 'You may include links to up to 5 videos (YouTube or Vimeo preferred)'
     account_creation_blurb: 'Do you represent an artist-run initiative? Registering with Supermarket is easy! It just takes a few minutes, and then you can:'
     address1: 'Address'
@@ -96,6 +96,7 @@ en:
     attachment_files: 'You may optionally upload a PDF or other file here (maximum 2)'
     no_spaces: 'You have not yet added your gallery or other art space.'
     basic_details: 'Essential information'
+    residency_malongen: 'NAA residency'
     booth_large: 'Large exhibition space'
     exhibition_stand_prices: 'Exhibition stand sizes and prices'
     booth_small: 'Small exhibition space'
@@ -164,7 +165,7 @@ en:
     your_application_image: 'Your application image'
     documents_blurb: 'Here you can attach material that will guide us when selecting the exhibitors. Please include materials relevant to what you will show.'
     image_or_logo: 'Image or logo'
-    images_later: 'This can be a logo or one primary image for your initiative. You will be able to upload more supporting images on the next page.'
+    images_later: 'This can be a logo or one primary image for your initiative. .JPG, .PNG or .GIF only, please, maximum file size 1.2MB. You will be able to upload more supporting images on the next page.'
     exhibition_stand_type_wanted: 'Which type of exhibition stand would you like?'
     vat_number: "VAT number (for invoicing)"
     need_darker_room: 'Would you prefer a darker space?'

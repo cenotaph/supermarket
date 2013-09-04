@@ -44,18 +44,6 @@
           .appval
             - @application.websites.each do |website|
               %p= link_to website.url, website.url
-  - unless @application.applicationwebimages.empty? && @application.videolinks.empty?
-    .twelve.columns
-      %h3= t :images_and_video
-      .application_show
-        - @application.applicationwebimages.each do |aw|
-          .asset_container.column.two
-            .asset= image_tag aw.imagefile.url(:sidebar)
-            .title= aw.title
-        - @application.videolinks.each do |v|
-          .asset_container.column.two
-            .asset= figure_video_type(v, 320, 200)
-            .title= v.title
   .twelve.columns
     %h3= t :details
     %ul.application_show
@@ -88,10 +76,66 @@
           %span.bigquote= raw("&#8220;")
           %p= raw @application.supermarket_proposal
           %span.bigquote= raw("&#8221;")
+      %li
+        %label= t("supermarket2014.need_darker_room")
+        .appval= @application.need_darker_room
+      %li
+        %label= t("supermarket2014.wants_open_structure")
+        .appval= @application.wants_open_structure
+      %li
+        %label= t("supermarket2014.special_needs")
+        .appval= @application.special_needs
+    
       - unless @application.booth_granted.blank?
         %li
           %label= t :booth_result
           .appval= t ("supermarket2014.granted_#{@application.granted_result}")      
+  - unless @application.apply_to_malongen == false
+    .twelve.columns
+      %h3= t "supermarket2014.residency_malongen"
+      %ul.application_show
+        %li
+          %label= t "supermarket2014.malongen_use"
+          .appval.blocktext
+            %span.bigquote= raw("&#8220;")
+            %p= @application.malongen_use
+            %span.bigquote= raw("&#8221;")
+  - unless @application.applicationwebimages.empty? && @application.videolinks.empty?
+    .twelve.columns
+      %h3= t :images_and_video
+      .application_show
+        - @application.applicationwebimages.each do |aw|
+          .asset_container.column.two
+            %div{:id => "appwebimage_" + aw.id.to_s + "_orig", :class => :hidden}
+              = image_tag aw.imagefile.url
+            .asset{:id => "appwebimage_" + aw.id.to_s}= link_to image_tag(aw.imagefile.url(:sidebar)), 'javascript:void(0);', :onclick => "return false;", :class => "lightbox_image"
+            .title= aw.title
+            :javascript
+              $('#appwebimage_#{aw.id.to_s} img').click(function() {
+                $('#appwebimage_#{aw.id.to_s}_orig img').lightbox_me();
+              });
+            
+        - @application.videolinks.each do |v|
+          .asset_container.column.two
+            .asset= figure_video_type(v, 320, 200)
+            .title= v.title
+  - unless @application.applicationlinks.empty? && (!@application.upload1? || !@application.upload2?)
+    .twelve.columns
+      %h3= t :websites_and_attachments
+      %ul.application_show
+        %li
+          %label= t :websites
+          .appval
+            - @application.applicationlinks.each do |site|
+              %p= link_to site.title.blank? ? site.url : site.title, site.url, :target => :_blank
+        %li
+          %label= t :attachments
+          .appval
+            - if @application.upload1?
+              %p= link_to @application.upload1.file.filename, @application.upload1.url
+            - if @application.upload2?
+              %p= link_to @application.upload2.file.filename, @application.upload2.url              
+
 - if user_signed_in?
   = content_for :sidebar do
     = render :partial => 'layouts/sidebar'      

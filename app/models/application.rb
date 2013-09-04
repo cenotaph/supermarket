@@ -43,11 +43,11 @@ class Application < ActiveRecord::Base
   end
   
   def contact_full_address
-    [contact_address1, contact_address2, contact_postcode.to_s + " " + contact_city.to_s, contact_state, contact_country].delete_if(&:blank?).join('<br />')
+    [contact_address1, contact_address2, contact_postcode.to_s + " " + contact_city.to_s, contact_state, contact_country.blank? ? nil : Country[contact_country].name].delete_if(&:blank?).join('<br />')
   end
 
   def exhibitor_full_address
-    wouldbe = [exhibitor_address1, exhibitor_address2, exhibitor_postcode.to_s + " " + exhibitor_city.to_s, exhibitor_state, exhibitor_country].delete_if(&:blank?)
+    wouldbe = [exhibitor_address1, exhibitor_address2, exhibitor_postcode.to_s + " " + exhibitor_city.to_s, exhibitor_state, exhibitor_country.blank? ? nil : Country[exhibitor_country].name].delete_if(&:blank?)
     wouldbe.empty? ? contact_full_address : wouldbe.join('<br />')
   end
   

@@ -21,4 +21,5 @@
 //= require autocomplete-rails
 //= require jquery.flexslider-min
 //= require jquery.clearfield
+//= require jquery.lightbox_me
 
