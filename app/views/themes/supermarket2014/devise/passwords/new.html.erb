@@ -1,4 +1,5 @@
-<h2><%= t :forgot_your_password %></h2>
+<div class="eleven columns alpha">
+  <h2><%= t :forgot_your_password %></h2>
 
 <p><%= t :forgot_password_text %></p>
 
@@ -10,10 +11,10 @@
 
   <div><%= f.action :submit, :label => raw("<i class='icon-envelope-alt icon-large'></i>") + t(:send_password_button), :as => :button,  :button_html => {:class => :next} %></div>
 <% end %>
-
-<%= content_for :sidebar do %>
+</div>
+<div class="four columns omega">
 <div class="sidebar_box">
   <h2><%= t :already_have_account %>
   </h2>
   <%= render "devise/shared/links" %>
-<% end %>
+</div>
