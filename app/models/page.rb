@@ -8,7 +8,8 @@ class Page < ActiveRecord::Base
   acts_as_tree
   has_many :subsites, :through => :page_subsites
   has_many :page_subsites
-
+  belongs_to :background
+  
   extend FriendlyId
   friendly_id :name_en, use: :slugged
 
@@ -17,7 +18,7 @@ class Page < ActiveRecord::Base
   scope :promoted, -> { where(show_on_bottom: true) }
   
   mount_uploader :postimage, SlidingmenuUploader
-  
+
   def name_en
     title(:en)
   end

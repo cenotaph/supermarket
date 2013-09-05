@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130902215900) do
+ActiveRecord::Schema.define(version: 20130905142134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,14 @@ ActiveRecord::Schema.define(version: 20130902215900) do
 
   create_table "attachments", force: true do |t|
     t.string "image"
+  end
+
+  create_table "backgrounds", force: true do |t|
+    t.string   "background_image"
+    t.string   "name"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "businesstype_spaces", id: false, force: true do |t|
@@ -263,7 +271,10 @@ ActiveRecord::Schema.define(version: 20130902215900) do
     t.boolean "show_on_bottom",         default: false, null: false
     t.boolean "show_postimage_on_page", default: false, null: false
     t.string  "postticker_title"
+    t.integer "background_id"
   end
+
+  add_index "pages", ["background_id"], name: "index_pages_on_background_id", using: :btree
 
   create_table "post_translations", force: true do |t|
     t.integer  "post_id",    null: false

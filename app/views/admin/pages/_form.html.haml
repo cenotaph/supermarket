@@ -23,6 +23,7 @@
   = f.input :postticker_title, :label => 'Alternate title to use on post ticker (leave blank to use regular title)'
   = f.input :subsite_ids, :as => :check_boxes, :collection => Subsite.all, :label => "Show page on which sites/themes (must choose at least one):"
   = f.input :not_in_menu, :as => :boolean, :label => "Don't include in menu structure"
+  = f.input :background, :label => 'Force background image for this page', :hint => "Leave blank for a random one"
   = f.input :published
   = f.submit
 :javascript

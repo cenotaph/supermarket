@@ -69,7 +69,7 @@
                 - Page.by_subsite(@subsite.id).where('not_in_menu is not true').roots.published.order(:id).each_with_index do |page, index|
                   %li{:class => (index == 0 ? :first : false), :id => "page_#{page.id}"}= link_to page.title, page
                 -# %li= link_to t("supermarket2014.funders_and_partners"), '/support'
-    #main
+    #main{:style => "background: url('#{@background_image.background_image.url}') no-repeat top left"}
       .container
         - if user_signed_in?
           .twelve.columns.alpha= yield
