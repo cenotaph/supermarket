@@ -12,7 +12,7 @@
 
 
 
-if Rails.env.production?
+if Rails.env.production? || Rails.env.staging?
   CarrierWave.configure do |config|
     config.fog_credentials = {
       :provider               => 'AWS',       # required
@@ -20,10 +20,10 @@ if Rails.env.production?
       :aws_secret_access_key  => ENV['AWS_SECRET_KEY'],       # required
       :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
     }
-    config.fog_directory  = 'aim-production'                     # required
+    config.fog_directory  = 'aim-' + Rails.env.to_s                     # required
     # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
   end  
-
+  
 
 
   I18n.available_locales = [:en ] # :'sv-SE']
