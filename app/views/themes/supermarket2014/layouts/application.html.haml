@@ -66,7 +66,7 @@
           .sixteen_columns.horiz_menu
             %nav.page_menu
               %ul
-                - Page.by_subsite(@subsite.id).where('not_in_menu is not true').roots.published.order(:id).each_with_index do |page, index|
+                - Page.by_subsite(@subsite.id).where('not_in_menu is not true').published.order(:id).each_with_index do |page, index|
                   %li{:class => (index == 0 ? :first : false), :id => "page_#{page.id}"}= link_to page.title, page
                 -# %li= link_to t("supermarket2014.funders_and_partners"), '/support'
     #main{:style => (!@background_image.nil? ? "background: url('#{@background_image.background_image.url}') no-repeat top left" : false)}

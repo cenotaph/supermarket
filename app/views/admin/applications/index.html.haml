@@ -1,0 +1,10 @@
+%h3 All applications
+
+%p
+  Restrict by year:
+  = select_tag :year_filter, options_from_collection_for_select(Year.order(:year).reverse, :id, :year, params[:by_year]), {:include_blank => true, :onchange => "document.location.href='/admin/applications?by_year=' + $(this).val()"}
+- @applications.each do |app|
+  .app
+    = link_to app.organisation_name, app
+    
+= paginate @applications

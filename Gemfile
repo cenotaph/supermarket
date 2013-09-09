@@ -43,7 +43,7 @@ group :development do
 end
 
 # gem 'activerecord', :github => 'rails/rails', branch: '4-0-stable'
-gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
+# gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
 # gem 'acts_as_tree', '1.4.0'
 gem 'auto_html'
 gem 'aws-s3'

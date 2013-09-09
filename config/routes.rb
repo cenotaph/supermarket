@@ -12,14 +12,14 @@ Aim::Application.routes.draw do
   match '/support' => "funders#index", :via => :get
   match '/search' => 'search#index', :via => :post
   
-  devise_for :users, ActiveAdmin::Devise.config.merge({ :controllers => ActiveAdmin::Devise.config[:controllers].merge(:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions') }).merge(:path => '/') do
-      
+  # devise_for :users, ActiveAdmin::Devise.config.merge({ :controllers => ActiveAdmin::Devise.config[:controllers].merge(:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions') }).merge(:path => '/') do
+  devise_for :users, :controllers => {:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions'} do
     resources :spaces do
       get :request_access
     end
   end
 
-  ActiveAdmin.routes(self)
+  # ActiveAdmin.routes(self)
   themes_for_rails
 
   
@@ -32,7 +32,9 @@ Aim::Application.routes.draw do
 
   
   namespace :admin do
-    resources :sites
+    resources :applications
+    resources :pages
+    resources :posts    
   end
   # Example resource route within a namespace:
   #   namespace :admin do
