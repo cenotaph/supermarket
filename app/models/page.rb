@@ -1,11 +1,11 @@
 class Page < ActiveRecord::Base
-  include ActsAsTree
-  extend ActsAsTree::Presentation
+  # include ActsAsTree
+  # extend ActsAsTree::Presentation
   resourcify
   
   translates :title, :body
   accepts_nested_attributes_for :translations, :reject_if => proc {|att| att['title'].blank? }
-  acts_as_tree
+  # acts_as_tree
   has_many :subsites, :through => :page_subsites
   has_many :page_subsites
   belongs_to :background

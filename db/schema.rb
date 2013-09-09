@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130905142134) do
+ActiveRecord::Schema.define(version: 20130909140925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -225,6 +225,29 @@ ActiveRecord::Schema.define(version: 20130905142134) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "menu_hierarchies", force: true do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "menu_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "menu_anc_desc_udx", unique: true, using: :btree
+  add_index "menu_hierarchies", ["descendant_id"], name: "menu_desc_idx", using: :btree
+
+  create_table "menus", force: true do |t|
+    t.string   "item_type"
+    t.integer  "item_id"
+    t.integer  "sort_order"
+    t.integer  "parent_id"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "subsite_id"
+    t.integer  "level"
+  end
+
+  add_index "menus", ["subsite_id"], name: "index_menus_on_subsite_id", using: :btree
 
   create_table "organisationtype_spaces", id: false, force: true do |t|
     t.integer "organisationtype_id", null: false
