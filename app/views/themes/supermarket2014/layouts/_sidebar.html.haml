@@ -38,14 +38,13 @@
                 %li.apply_2014= link_to t("supermarket2014.apply_to_supermarket_2014"), '/apply/2014/' + space.slug.to_s                    
               - space.applications.sort_by{|x| x.year}.each do |sa|
                 %li
-                  - if sa.finished?
-                    .submitted_applications
-                      .year= sa.year.year.to_s
-                      .submitted_at
-                        = t(:submitted) + ": "
-                        = l sa.submitted_at, :format => :long
-                      .view= link_to t(:view_application), sa
-                  - else
-                    .pending_applications
-                      .year= sa.year.year.to_s
-                      .action= link_to t("supermarket2014.return_to_your_application"), edit_application_path(sa)
+                  .submitted_applications
+                    .year= sa.year.year.to_s
+                    .submitted_at
+                      = t(:submitted) + ": "
+                      = l sa.submitted_at, :format => :long
+                    .view
+                      = link_to t(:view_application), sa
+                    - if sa.year.year == 2014
+                      .view
+                        = link_to t("supermarket2014.return_to_your_application"), edit_application_path(sa)
