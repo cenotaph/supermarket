@@ -1,0 +1,20 @@
+.search_hit
+  .first
+    %strong= hit.display_name
+    %em= hit.email
+    - if hit.spaces.empty?
+      .sub
+        no galleries/initiatives associated
+    - else
+      - hit.spaces.each do |space|
+        .sub
+          = space.name
+        .sub
+          Applications:
+          - if space.applications.empty?
+            none
+          - else
+            - space.applications.each do |app|
+              = link_to app.year.year, app
+  .details
+    = link_to 'see all details', admin_user_path(hit)

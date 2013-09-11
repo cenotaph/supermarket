@@ -1,0 +1,13 @@
+%h3 all users
+
+%p= link_to 'export to CSV', admin_users_path(:format => :csv)
+.cms_grid
+  = paginate @users
+  - @users.each do |user|
+    .user.ten.columns
+      .three.columns.alpha= link_to user.email, [:admin, user]
+      .three.columns= user.display_name
+      .three.columns= user.last_active_year
+      .one.columns.omega= user.is_staff? ? 'STAFF' : ''
+.sixteen.columns= paginate @users
+    

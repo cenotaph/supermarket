@@ -1,0 +1,8 @@
+
+.search_hit
+  .first
+    %strong= hit.organisation_name
+    = link_to hit.year.try(:year), hit
+  .details
+    status:
+    %em= hit.granted_result

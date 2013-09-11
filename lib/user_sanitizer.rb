@@ -4,6 +4,10 @@ class User::ParameterSanitizer < Devise::ParameterSanitizer
         default_params.permit(:display_name, :photo, :email, :password, :password_confirmation, :current_password)
     end
     
+    def sign_out
+      default_params
+    end
+    
     def sign_up
       default_params.permit(:email, :password, :display_name, :password_confirmation)
     end

@@ -41,6 +41,9 @@ Aim::Application.routes.draw do
     resources :pages
     resources :posts
     resources :users
+    resources :menus
+    resources :spaces
+    resources :search
   end
   # Example resource route within a namespace:
   #   namespace :admin do

@@ -15,6 +15,7 @@
 //= require jquery.ui.core
 //= require jquery.validate
 //= require jquery.validate.additional-methods
+//= require jquery.ui.tabs
 //= require ckeditor/init
 //= require jquery.ui.autocomplete
 //= require jquery_nested_form

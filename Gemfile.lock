@@ -284,6 +284,8 @@ GEM
       sprockets (~> 2.8)
     subexec (0.2.3)
     superfish-rails (1.6.0.1)
+    textacular (3.1.0)
+      activerecord (>= 3.0, < 4.1)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -368,6 +370,7 @@ DEPENDENCIES
   sdoc
   skeleton-rails
   superfish-rails
+  textacular (~> 3.0)
   themes_for_rails!
   thin
   truncate_html

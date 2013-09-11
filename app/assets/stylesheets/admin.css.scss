@@ -1,5 +1,6 @@
 /**
  *= require_self
+ *= require jquery.ui.tabs
 */
 
 $orange1: #fda700;
@@ -25,11 +26,21 @@ ul.staff_menu {
     font-weight: 600;
     
   }
-  .page, .post, .app {
+  .page, .post, .app, .user {
     padding: 5px 0px;
     &:hover{
       background-color: #f0f0f0;
       cursor: pointer;
     }
   }
+}
+
+.sidebar {
+  input[type=text] {
+    width: 100px;
+  }
+}
+.search_hit {
+  padding: 20px 0px;
+  
 }

@@ -10,6 +10,7 @@ class CreateMenuHierarchies < ActiveRecord::Migration
       :unique => true, :name => "menu_anc_desc_udx"
       
     add_index :menu_hierarchies, [:descendant_id],
-        :name => "menu_desc_idx"      
+        :name => "menu_desc_idx"    
+          
   end
 end
