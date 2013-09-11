@@ -8,7 +8,7 @@ class Admin::BaseController < InheritedResources::Base
   # skip_before_filter :require_no_authentication
  
   def authenticate_admin
-    redirect_to root_path unless current_user.has_role?(:staff) || current_user.has_role?(:god)
+    redirect_to root_path unless current_user.is_staff?
   end
   
   def check_permissions

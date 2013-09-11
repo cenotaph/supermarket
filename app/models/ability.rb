@@ -8,13 +8,14 @@ class Ability
         if user.has_role? :god
           can :manage, :all
         elsif user.has_role? :staff
-          can :manage, [Space, Page, Comment, Application, Post]
+          can :manage, [Space, Page, Applicationcomment, Application, Post]
         elsif user.has_role? :exhibitor
-          cannot :manage, ActiveAdmin::Page
+          cannot :manage, Page
           can :manage, Space, :id => Space.with_role(:exhibitor, user).map(&:id)
         else
-          cannot :manage, ActiveAdmin::Page
+          cannot :manage, [Page, Post]
           can :read, :all
+          cannot :read, Applicationcomment
         end
       end
     #

@@ -25,16 +25,22 @@ Aim::Application.routes.draw do
   
   root 'application#frontpage'
   get '/apply/2014/:space_id', to: 'applications#new', :year => 2014
-
+  get '/admin', to: 'admin/dashboard#index'
   resources :pages
   resources :posts
   resources :applications
 
   
   namespace :admin do
-    resources :applications
+    resources :applications do
+      member do
+        post :comment
+      end
+    end
+    resources :dashboard
     resources :pages
-    resources :posts    
+    resources :posts
+    resources :users
   end
   # Example resource route within a namespace:
   #   namespace :admin do

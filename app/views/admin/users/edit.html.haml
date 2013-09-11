@@ -1,0 +1,7 @@
+= semantic_form_for([:admin, @user], :html => {:multipart => true}) do |f|
+  %p You can upload a profile photo here for your account, which will be used in the commenting and other staff features.
+  - if f.object.photo?
+    = image_tag f.object.photo.url(:standard)
+    = f.input :remove_photo, :as => :boolean
+  = f.input :photo
+  = f.submit

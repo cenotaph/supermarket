@@ -1,4 +1,35 @@
 /**
  *= require_self
- *= require active_admin
 */
+
+$orange1: #fda700;
+$orange2: #fec351;
+$orange3: #fed37e;
+$light-orange: #fee6b5;
+
+$gray: #999966;
+$grey: #999966;
+
+
+ul.staff_menu {
+  padding-left: 0px;
+  li {
+    border: 1px solid $light-orange;
+    padding: 5px;
+    list-style-type: none;
+  }
+}
+
+.cms_grid {
+  .heading {
+    font-weight: 600;
+    
+  }
+  .page, .post, .app {
+    padding: 5px 0px;
+    &:hover{
+      background-color: #f0f0f0;
+      cursor: pointer;
+    }
+  }
+}

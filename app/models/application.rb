@@ -8,6 +8,7 @@ class Application < ActiveRecord::Base
   has_many :applicationwebimages
   has_many :applicationlinks
   has_many :videolinks
+  has_many :applicationcomments
   
   validates :organisation_name, :presence => true, :if => :finished?
   validates :space_id, :presence => true

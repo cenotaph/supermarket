@@ -1,0 +1,19 @@
+%h3
+  posts (news, blog, etc.)
+  .new_link= link_to 'create new', new_admin_post_path
+
+.cms_grid
+  - @posts.each do |post|
+    .post.ten.columns
+      .two.columns.alpha
+        = post.published_at.strftime("%d %B %Y")
+      .three.columns= post.name
+      .two.columns= post.subsite.name
+      .two.columns.omega
+        = link_to 'show', post
+        - if can? :edit, Post
+          |
+          = link_to 'edit', edit_admin_post_path(post)
+        - if can? :destroy, Post
+          |
+          = link_to 'delete', [:admin, post], :data => {:confirm => 'are you sure? there is no going back'}

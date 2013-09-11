@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130909140925) do
+ActiveRecord::Schema.define(version: 20130911105840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 20130909140925) do
   end
 
   add_index "activity_translations", ["activity_id", "locale"], name: "unique_activity_translations_locales", unique: true, using: :btree
+
+  create_table "applicationcomments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "application_id"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "applicationcomments", ["application_id"], name: "index_applicationcomments_on_application_id", using: :btree
+  add_index "applicationcomments", ["user_id"], name: "index_applicationcomments_on_user_id", using: :btree
 
   create_table "applicationlinks", force: true do |t|
     t.string   "url"
@@ -268,6 +279,15 @@ ActiveRecord::Schema.define(version: 20130909140925) do
   create_table "organisationtypes", force: true do |t|
   end
 
+  create_table "page_hierarchies", force: true do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "page_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "page_anc_desc_udx", unique: true, using: :btree
+  add_index "page_hierarchies", ["descendant_id"], name: "page_desc_idx", using: :btree
+
   create_table "page_subsites", force: true do |t|
     t.integer "page_id"
     t.integer "subsite_id"
@@ -446,6 +466,7 @@ ActiveRecord::Schema.define(version: 20130909140925) do
     t.string   "display_name"
     t.string   "password_salt"
     t.string   "remember_token"
+    t.string   "photo"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

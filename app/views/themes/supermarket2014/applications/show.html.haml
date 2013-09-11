@@ -137,5 +137,32 @@
               %p= link_to @application.upload2.file.filename, @application.upload2.url              
 
 - if user_signed_in?
+
+  - if current_user.is_staff?
+    .sixteen.columns#comment_area
+      %h2= t("supermarket2014.staff_comments")
+      - @application.applicationcomments.each do |comment|
+        .comment.twelve.columns
+          .two.columns.alpha
+            = image_tag comment.user.avatar
+            %strong= comment.user.display_name
+            .date= l comment.created_at, :format => :short
+              
+          .eight.columns
+            = simple_format(comment.comment)
+      .twelve.columns
+        %p= t("supermarket2014.leave_comment_blurb")
+      .sixteen.columns
+        = semantic_form_for(Applicationcomment.new, :url => comment_admin_application_path(@application)) do |f|
+          .two.columns.alpha
+            = image_tag current_user.avatar
+            %strong
+              = current_user.display_name
+          .eight.columns
+            = f.input :user_id, :as => :hidden, :value => current_user.id
+            = f.input :comment, :as => :text
+          = f.actions do
+            = f.submit
+
   = content_for :sidebar do
     = render :partial => 'layouts/sidebar'      

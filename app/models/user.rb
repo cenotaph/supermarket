@@ -14,6 +14,20 @@ class User < ActiveRecord::Base
   
   scope :all_staff, -> { where("id IN (?) OR id IN (?)", User.with_role(:staff), User.with_role(:god)) }
   
+  mount_uploader :photo, AvatarUploader
+  
+  def avatar
+    if photo?
+      photo.url(:standard)
+    else
+      '/assets/supermarket2014/images/upload_pic.gif'
+    end
+  end
+  
+  def is_staff?
+    return true if has_role?(:staff) || has_role?(:god)
+  end
+  
   def protected_email
     first = email.split(/@/).first[0..1] + "<i>" + Array.new(email.split(/@/).first.size - 2, "x").join + "</i>"
     rest = email.split(/\@/).last.split(/\./).map{|x| x[0..1] + "<i>" + Array.new(x.size - 2, "x").join + "</i>"}.join('.')
