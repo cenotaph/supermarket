@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stored_location_for(resource) ||
       if resource.has_role?(:staff) || resource.has_role?(:god)
-        admin_dashboard_path
+        '/admin'
       else
         '/'
       end
@@ -57,6 +57,15 @@ class ApplicationController < ActionController::Base
   end
   
   protected
+  
+  def devise_parameter_sanitizer
+    if resource_class == User
+      User::ParameterSanitizer.new(User, :user, params)
+    else
+      super
+    end
+  end
+  
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password, :remember_token, :remember_created_at, :sign_in_count) }

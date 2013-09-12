@@ -8,6 +8,7 @@ class Application < ActiveRecord::Base
   has_many :applicationwebimages
   has_many :applicationlinks
   has_many :videolinks
+  has_many :applicationcomments
   
   validates :organisation_name, :presence => true, :if => :finished?
   validates :space_id, :presence => true
@@ -25,6 +26,7 @@ class Application < ActiveRecord::Base
   
   before_save :sync_with_space
   
+  scope :by_year, ->(x) { where(:year_id => x)}
   # attr_accessible :status, :year_id, :organisation_name, :contact_email, :contact_first_name, :contact_last_name, :space_id, :user_id, :application_image, :space_attributes, :hometown, :staff, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :form_direction, :contact_phone
 
   attr_accessor :form_direction

@@ -1,0 +1,15 @@
+Search results for:
+
+= params[:searchterm]
+
+#search_results
+  %ul
+    - @hits.group_by{|x| x.class}.each do |cl|
+      %li= link_to cl.first.to_s, "##{cl.first.to_s}"
+  - @hits.group_by{|x| x.class}.each do |cl|
+    %div{:id => cl.first.to_s}
+      - cl.last.each do |hit|
+        .hit= render :partial => hit.class.to_s.downcase, :locals => {:hit => hit}
+    
+:javascript
+  $('#search_results').tabs();

@@ -1,0 +1,27 @@
+%h3
+  info for user account:
+  = @user.display_name
+
+- if @user.is_staff?
+  %strong SUPERMARKET STAFF
+  - if @user.photo?
+    %div= image_tag @user.photo.url(:standard)
+%p
+  %em= @user.email
+
+%p
+  Representing:
+  %ul
+    - @user.spaces.each do |space|
+      %li= link_to space.name, [:admin, space]
+      - unless space.applications.empty?
+        %ul
+          - space.applications.each do |app|
+            %li= link_to app.year.year, app
+          
+%p
+  Last signed in:
+  = @user.last_sign_in_at.nil? ? 'not recorded' : @user.last_sign_in_at.strftime('%d %b %Y %H:%M')
+  from IP address
+  = @user.last_sign_in_ip
+  

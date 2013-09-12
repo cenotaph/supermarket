@@ -303,3 +303,18 @@ form#new_user {
     }
   }
 }
+
+#comment_area {
+  .comment {
+    padding: 15px 0px;
+    border-bottom: 1px dotted $orange2;
+    .date {
+      font: 11px/16px Helvetiva, Arial, sans-serif;
+      color: #666;      
+    }
+  }
+  fieldset.actions {
+    clear: left;
+    margin-left: 120px;
+  }
+}

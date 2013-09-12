@@ -7,8 +7,7 @@
       %div{:id => "lang-#{locale}"}
         = f.globalize_fields_for locale do |en|
           %b
-            Name of page in
-            = locale
+            Name of page 
           = en.text_field :title
           = en.text_area :body, :class => :ckeditor
 

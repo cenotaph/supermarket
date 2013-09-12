@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
-  include ActsAsTree
-  extend ActsAsTree::Presentation
+  # include ActsAsTree
+  # extend ActsAsTree::Presentation
   resourcify
   
   translates :title, :body
