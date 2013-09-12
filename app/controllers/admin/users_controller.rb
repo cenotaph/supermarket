@@ -20,6 +20,6 @@ class Admin::UsersController < Admin::BaseController
   protected
   
   def permitted_params
-    params.permit(:user => [:photo, :remove_photo])
+    params.permit(:user => [:photo, :remove_photo, :display_name, :email])
   end
 end

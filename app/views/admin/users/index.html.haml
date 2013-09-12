@@ -5,7 +5,9 @@
   = paginate @users
   - @users.each do |user|
     .user.ten.columns
-      .three.columns.alpha= link_to user.email, [:admin, user]
+      .three.columns.alpha
+        = link_to user.email, [:admin, user]
+        %span.edit_link= link_to '[edit details]', edit_admin_user_path(user)
       .three.columns= user.display_name
       .three.columns= user.last_active_year
       .one.columns.omega= user.is_staff? ? 'STAFF' : ''
