@@ -1,1 +1,1 @@
-require Rails.root.to_s + '/lib/user_sanitizer.rb'
+# require Rails.root.to_s + '/lib/user_sanitizer.rb'

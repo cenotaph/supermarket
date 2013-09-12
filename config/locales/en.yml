@@ -25,6 +25,7 @@ en:
   video_title: 'Title of video (optional)'
   url_to_video: 'URL of video'
   search: 'Search'
+  login: 'Sign in'
   subscribe_to_newsletter: 'Subscribe to our newsletter'
   remove_url: 'Remove this link'
   remove: 'Remove'
