@@ -47,7 +47,7 @@ class Space < ActiveRecord::Base
   end
   
   def hometown
-    [city, Country[country].name].join(', ')
+    [city, Country[country].blank? ? nil : Country[country].name].compact.join(', ')
   end
   
   def name
