@@ -1,7 +1,7 @@
 Name,Email,Last Active Year,Initiative,Country
 <%= CSV.generate do |csv|
    @users.each do |cs|
-     csv << [ cs.display_name, cs.email, cs.last_active_year, cs.initiatives, cs.country ]
+     csv << [ cs.display_name, cs.email, cs.last_active_year, cs.initiatives, cs.country.blank? ? 'not specified' : Country[cs.country].name ]
    end 
   end .html_safe
   %>
