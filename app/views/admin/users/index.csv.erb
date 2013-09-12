@@ -3,4 +3,5 @@ Name,Email,Last Active Year,Initiative,Country
    @users.each do |cs|
      csv << [ cs.display_name, cs.email, cs.last_active_year, cs.initiatives, cs.country ]
    end 
-  end %>
+  end .html_safe
+  %>
