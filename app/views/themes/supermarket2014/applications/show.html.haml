@@ -43,7 +43,7 @@
           %label= t :websites
           .appval
             - @application.websites.each do |website|
-              %p= link_to website.url, website.url
+              %p= link_to website.url, website.url_safe
   .twelve.columns
     %h3= t :details
     %ul.application_show
