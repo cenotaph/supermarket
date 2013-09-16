@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130911105840) do
+ActiveRecord::Schema.define(version: 20130916095507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -506,6 +507,7 @@ ActiveRecord::Schema.define(version: 20130911105840) do
     t.boolean  "is_legacy"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "applications_open", default: false, null: false
   end
 
 end

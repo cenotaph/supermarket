@@ -23,7 +23,7 @@
         .appval= @application.contact_phone
       %li
         %label= t :contact_email
-        .appval= @application.contact_email    
+        .appval= link_to @application.contact_email, "mailto:#{@application.contact_email}"
       
       %li
         %label= t :contact_address
@@ -78,10 +78,10 @@
           %span.bigquote= raw("&#8221;")
       %li
         %label= t("supermarket2014.need_darker_room")
-        .appval= @application.need_darker_room
+        .appval= @application.need_darker_room == true ? 'yes' : 'no'
       %li
         %label= t("supermarket2014.wants_open_structure")
-        .appval= @application.wants_open_structure
+        .appval= @application.wants_open_structure == true ? 'yes' : 'no'
       %li
         %label= t("supermarket2014.special_needs")
         .appval= @application.special_needs

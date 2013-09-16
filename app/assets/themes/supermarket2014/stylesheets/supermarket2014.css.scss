@@ -32,6 +32,16 @@ button {
   cursor: pointer;
 }
 
+#error_explanation {
+  ul {
+    li {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+  }
+}
+
 #main {
 //    background: url('/assets/supermarket2014/images/BG_mindmap1.gif') repeat top left;
     padding-bottom: 35px;

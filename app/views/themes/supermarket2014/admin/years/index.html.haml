@@ -1,0 +1,10 @@
+%h3 year setup
+
+
+.cms_grid
+  - @years.each do |year|
+    .year
+      = link_to year.year.to_s, edit_admin_year_path(year)
+      %span.small_text
+        applications
+        = year.applications_open == true ? 'open' : 'closed'

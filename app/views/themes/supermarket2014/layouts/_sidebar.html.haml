@@ -30,8 +30,9 @@
                   %i.icon-pencil
                   = t(:edit_link)
             .subtitle= t "supermarket2014.your_applications"
+            %p= t "supermarket2014.supermarket_is_closed"
             %ul
-              - if space.applications.empty? || space.applications.where(:year_id => Year.where(:year => 2014).first.id).empty?
+              - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2014).id).empty? ) &&  Year.find_by(:year => 2014).open?
                 .year
                   %strong 2014
                 .submitted_at= t("supermarket2014.not_started_2014")
@@ -48,4 +49,7 @@
                       = link_to t(:view_application), sa
                     - if sa.year.year == 2014
                       .view
-                        = link_to t("supermarket2014.return_to_your_application"), edit_application_path(sa)
+                        - if sa.year.open?
+                          = link_to t("supermarket2014.return_to_your_application"), edit_application_path(sa)
+                        - else
+                          = t "supermarket2014.2014_is_closed"

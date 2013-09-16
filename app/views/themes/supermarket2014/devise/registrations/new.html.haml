@@ -1,14 +1,13 @@
 .eleven.columns.alpha
   %h2= t "supermarket2014.create_an_account"
 
+  %p= t "supermarket2014.supermarket_is_closed"
+  
   %p
     = t "supermarket2014.account_creation_blurb"
     %ul
-      %li
-        = t "supermarket2014.apply_to_supermarket"
-        = raw " (#{link_to t("supermarket2014.exhibition_stand_prices"), page_path('exhibition-stand-sizes-and-prices'), :target => :_blank})"
+      
       %li= t "supermarket2014.register_in_aim"
-      %li= t "supermarket2014.apply_to_malongen"
 
   = semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| 
     = devise_error_messages! 
