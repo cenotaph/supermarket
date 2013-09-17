@@ -10,6 +10,7 @@
   = f.input :contact_first_name, :input_html => {:required => true, :value => (@application.contact_first_name.blank? ? current_user.display_name.split(/\s/).first  : @application.contact_first_name rescue "Your First Name")}
   = f.input :contact_last_name, :input_html => {:required => true, :value => (@application.contact_last_name.blank? ? current_user.display_name.split(/\s/).last  : @application.contact_last_name rescue "Your Last Name")}
   = f.input :contact_email,  :input_html => {:required => true, :value => (@application.contact_email.blank? ? current_user.email : @application.contact_email) }
+  = f.input :allow_late, :as => :hidden
   = f.input :form_direction,  :input_html => {:value => "forward"}, :as => :hidden
   .clearer
     = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button,  :button_html => {:class => :beginning}

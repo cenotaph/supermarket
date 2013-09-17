@@ -25,6 +25,9 @@ Aim::Application.routes.draw do
   
   root 'application#frontpage'
   get '/apply/2014/:space_id', to: 'applications#new', :year => 2014
+  get '/invited', to: 'applications#invited'
+  post '/invited', to: 'applications#check_invited'
+  get '/invited/2014/:space_id', to: 'applications#allow_late', :year => 2014
   get '/admin', to: 'admin/dashboard#index'
   resources :pages
   resources :posts

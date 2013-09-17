@@ -1,0 +1,12 @@
+%h2 Invited applications
+
+%p If you have been invited to apply to Supermarket after the deadline has passed, enter the special password below:
+
+= form_tag invited_path do |f|
+  %label Password:
+  = text_field_tag :password
+  = submit_tag 'submit'
+  
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'   
