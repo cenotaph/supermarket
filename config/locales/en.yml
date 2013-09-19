@@ -55,6 +55,7 @@ en:
   hello: "Hello world"
   next: ' Next'
   faqs: 'FAQs'
+  save: 'Save'
   finish: ' Finish'
   back: ' Previous'
   sign_in: ' Sign in'
@@ -133,6 +134,7 @@ en:
     login_to_reclaim: 'If you already have access to one of these accounts on the Supermarket website, please sign out and log in as one of them to update the %{space} information.'
     email_to_reclaim: "Or, you may request access to this exhibition space/gallery from these users. Requesting access sends an email to the above user account(s), allowing them to authorise your account for the %{space} space."
     malongen_blurb: 'The Nordic Art Association offers one of the participating galleries to access their residency studio for a month before Supermarket 2014. The gallery can nominate an artist or group who may live and work in the studio. During the fair, up to 6-8 people can stay there.'
+    the_decision_is: 'The decision is ....'
     malongen_use: 'How do you intend to use the NAA studio?'
     mostly_members: 'Mostly members'
     mixed_members: 'Mixed, members and invited'

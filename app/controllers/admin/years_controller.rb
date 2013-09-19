@@ -11,7 +11,7 @@ class Admin::YearsController < Admin::BaseController
   protected
   
   def permitted_params
-    params.permit(:year => [:applications_open, :year])
+    params.permit(:year => [:applications_open, :reveal_decisions, :year])
   end
   
 end

@@ -1,6 +1,6 @@
 class Admin::ApplicationsController < Admin::BaseController
   respond_to :html, :js, :xml, :json, :csv
-  has_scope :by_year, :default => 1
+  has_scope :by_year
 
   def comment
     @application = Application.find(params[:id])
@@ -15,9 +15,9 @@ class Admin::ApplicationsController < Admin::BaseController
   
   def index
     @applications = apply_scopes(Application).page(params[:page]).per(100)
-    # if params[:nomalongen] == "1"
-    #   @nomalongen = true
-    # end
+    if params[:nomalongen] == "1"
+      @nomalongen = true
+    end
   end
    
   def toggle_late
@@ -27,4 +27,14 @@ class Admin::ApplicationsController < Admin::BaseController
     redirect_to @application
   end
   
+  def update
+    update! { @application }
+  end
+  
+  protected
+  
+  def permitted_params
+    params.permit(:application => [:booth_granted])
+  end
+
 end

@@ -86,10 +86,10 @@
         %label= t("supermarket2014.special_needs")
         .appval= @application.special_needs
     
-      - unless @application.booth_granted.blank?
+      - unless @application.booth_granted.blank? || @application.year.reveal_decisions == false
         %li
           %label= t :booth_result
-          .appval= t ("supermarket2014.granted_#{@application.granted_result}")      
+          .appval= t ("supermarket2014.#{@application.granted_result}")      
   - unless @application.apply_to_malongen == false
     .twelve.columns
       %h3= t "supermarket2014.residency_malongen"
@@ -169,6 +169,13 @@
             = f.input :comment, :as => :text
           = f.actions do
             = f.submit
+      .sixteen.columns
+        %h2 Make decision:
+        = semantic_form_for([:admin, @application]) do |f|
+          = f.input :booth_granted, :as => :select, :collection => [['Accepted - large booth', 1], ['Accepted - small booth', 2], ['Accepted - presentation stand', 3], ['Not accepted', 4]], :label => t("supermarket2014.the_decision_is")
+          %li
+            %label &nbsp;
+            = f.submit t(:save)
 
   = content_for :sidebar do
     = render :partial => 'layouts/sidebar'      

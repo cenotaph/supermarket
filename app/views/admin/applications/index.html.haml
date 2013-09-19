@@ -10,13 +10,15 @@
   
 .cms_grid
   .heading.eleven.columns
-    .three.columns.alpha Name
+    .one.columns.alpha Year
+    .two.columns.alpha Name
     .two.columns Country
     .two.columns # Comments
     .two.columns Decision
   - @applications.each do |app|
     .app.eleven.columns
-      .three.columns.alpha= link_to app.organisation_name, app
+      .one.column.alpha= app.year.year
+      .two.columns= link_to app.organisation_name, app
       .two.columns= raw(app.exhibitor_country.blank? ? "&nbsp;" : Country[app.exhibitor_country].name)
       .two.columns= app.applicationcomments.size.to_s
       .two.columns= app.granted_result

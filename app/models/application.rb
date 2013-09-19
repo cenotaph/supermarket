@@ -45,11 +45,11 @@ class Application < ActiveRecord::Base
   end
   
   def contact_full_address
-    [contact_address1, contact_address2, contact_postcode.to_s + " " + contact_city.to_s, contact_state, contact_country.blank? ? nil : Country[contact_country].name].delete_if(&:blank?).join('<br />')
+    [contact_address1, contact_address2, contact_postcode.to_s + " " + contact_city.to_s, contact_state, contact_country.blank? ? nil : (Country[contact_country].class == FalseClass ? contact_country : Country[contact_country].name)].delete_if(&:blank?).join('<br />')
   end
 
   def exhibitor_full_address
-    wouldbe = [exhibitor_address1, exhibitor_address2, exhibitor_postcode.to_s + " " + exhibitor_city.to_s, exhibitor_state, exhibitor_country.blank? ? nil : Country[exhibitor_country].name].delete_if(&:blank?)
+    wouldbe = [exhibitor_address1, exhibitor_address2, exhibitor_postcode.to_s + " " + exhibitor_city.to_s, exhibitor_state, exhibitor_country.blank? ? nil : (Country[exhibitor_country].class == FalseClass ? exhibitor_country : Country[exhibitor_country].name)].delete_if(&:blank?)
     wouldbe.empty? ? contact_full_address : wouldbe.join('<br />')
   end
   
@@ -64,13 +64,13 @@ class Application < ActiveRecord::Base
   def granted_result
     case booth_granted
     when 1
-      'accepted'
+      'accepted - large booth'
     when 2
-      'not_accepted'
+      'accepted - small booth'
     when 3
-      'huh'
+      'accepted - presentation stand'
     else
-      'unknown'
+      'not accepted'
     end
   end
   
