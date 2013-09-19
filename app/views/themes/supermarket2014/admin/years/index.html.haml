@@ -8,3 +8,6 @@
       %span.small_text
         applications
         = year.applications_open == true ? 'open' : 'closed'
+        , decisions
+        = year.reveal_decisions == true ? '' : ' not '
+        revealed.
