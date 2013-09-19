@@ -139,6 +139,12 @@
 - if user_signed_in?
 
   - if current_user.is_staff?
+    .sixteen.columns
+      %h2 Administrative
+      - if @application.allow_late == true
+        = link_to 'Stop allowing late editing', toggle_late_admin_application_path
+      - else
+        = link_to 'Allow late editing', toggle_late_admin_application_path
     .sixteen.columns#comment_area
       %h2= t("supermarket2014.staff_comments")
       - @application.applicationcomments.each do |comment|

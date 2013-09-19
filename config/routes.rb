@@ -38,6 +38,7 @@ Aim::Application.routes.draw do
     resources :applications do
       member do
         post :comment
+        get :toggle_late
       end
     end
     resources :dashboard
