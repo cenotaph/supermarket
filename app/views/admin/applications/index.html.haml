@@ -5,10 +5,13 @@
   = link_to '(without Malongen)', "/admin/applications.csv?by_year=#{params[:by_year] ||= 1 }&nomalongen=1"
 %p
   Restrict by year:
-  = select_tag :year_filter, options_from_collection_for_select(Year.order(:year).reverse, :id, :year, params[:by_year]), {:include_blank => false, :onchange => "document.location.href='/admin/applications?by_year=' + $(this).val()"}
+  = select_tag :year_filter, options_from_collection_for_select(Year.order(:year).reverse, :id, :year, params[:by_year]), {:include_blank => true, :onchange => "document.location.href='/admin/applications?by_year=' + $(this).val()"}
   
   
 .cms_grid
+      
+  = paginate @applications
+
   .heading.eleven.columns
     .one.columns.alpha Year
     .two.columns.alpha Name
@@ -23,4 +26,4 @@
       .two.columns= app.applicationcomments.size.to_s
       .two.columns= app.granted_result
       
-= paginate @applications
+  = paginate @applications

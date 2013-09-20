@@ -14,7 +14,7 @@ class Admin::ApplicationsController < Admin::BaseController
   end
   
   def index
-    @applications = apply_scopes(Application).page(params[:page]).per(100)
+    @applications = apply_scopes(Application).includes(:year).order("years.year desc").page(params[:page]).per(70)
     if params[:nomalongen] == "1"
       @nomalongen = true
     end
