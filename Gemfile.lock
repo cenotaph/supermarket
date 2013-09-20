@@ -159,6 +159,7 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
+    handles_sortable_columns (0.1.4)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -336,6 +337,7 @@ DEPENDENCIES
   globalize3!
   haml
   haml-rails (>= 0.3.4)
+  handles_sortable_columns
   has_scope
   http_accept_language
   httpclient

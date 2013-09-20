@@ -1,7 +1,8 @@
 class Admin::ApplicationsController < Admin::BaseController
   respond_to :html, :js, :xml, :json, :csv
   has_scope :by_year
-
+  handles_sortable_columns
+  
   def comment
     @application = Application.find(params[:id])
     @application.applicationcomments << Applicationcomment.new(params[:applicationcomment].permit([:user_id, :application_id, :comment]) )
@@ -14,7 +15,20 @@ class Admin::ApplicationsController < Admin::BaseController
   end
   
   def index
-    @applications = apply_scopes(Application).includes(:year).order("years.year desc").page(params[:page]).per(70)
+    order = sortable_column_order do |column, direction|
+      case column
+      when "name"
+        "LOWER(organisation_name) #{direction}"
+      when "year"
+        "years.year #{direction}"
+      when "country"
+        "exhibitor_country #{direction}"
+      else
+        "years.year DESC"
+      end
+    end
+    
+    @applications = apply_scopes(Application).includes(:year).order(order).page(params[:page]).per(70)
     if params[:nomalongen] == "1"
       @nomalongen = true
     end

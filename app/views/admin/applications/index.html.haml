@@ -13,9 +13,9 @@
   = paginate @applications
 
   .heading.eleven.columns
-    .one.columns.alpha Year
-    .two.columns.alpha Name
-    .two.columns Country
+    .one.columns.alpha= sortable_column "Year"
+    .two.columns= sortable_column "Name"
+    .two.columns= sortable_column "Country"
     .two.columns # Comments
     .two.columns Decision
   - @applications.each do |app|
