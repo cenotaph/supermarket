@@ -27,6 +27,8 @@ class Admin::ApplicationsController < Admin::BaseController
         "applicationcomments_count #{direction}"
       when "decision"
         "booth_granted #{direction}"
+      when "last_updated"
+        "updated_at #{direction}"
       else
         "years.year DESC"
       end

@@ -12,18 +12,21 @@
       
   = paginate @applications
 
-  .heading.eleven.columns
+  .heading.twelve.columns
     .one.columns.alpha= sortable_column "Year"
     .two.columns= sortable_column "Name"
     .two.columns= sortable_column "Country"
     .two.columns= sortable_column "Comments"
+    .two.columns= sortable_column "Last updated"
     .two.columns= sortable_column "Decision"
+
   - @applications.each do |app|
-    .app.eleven.columns
+    .app.twelve.columns
       .one.column.alpha= app.year.year
       .two.columns= link_to app.organisation_name, app
       .two.columns= raw(app.exhibitor_country.blank? ? "&nbsp;" : Country[app.exhibitor_country].name)
       .two.columns= app.applicationcomments_count
+      .two.columns= time_ago_in_words(app.updated_at) + " ago"
       .two.columns= app.granted_result
       
   = paginate @applications
