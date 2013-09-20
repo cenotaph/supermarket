@@ -1,0 +1,7 @@
+%h2 sub-site/master config - don't edit this unless you know what you are doing
+
+.cms_grid
+  - @subsites.each do |subsite|
+    .subsite= link_to subsite.name, edit_admin_subsite_path(subsite)
+  
+%p= link_to 'create new sub-site', new_admin_subsite_path
