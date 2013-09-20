@@ -48,6 +48,7 @@ Aim::Application.routes.draw do
     resources :menus
     resources :spaces
     resources :search
+    resources :subsites
     resources :years
   end
   # Example resource route within a namespace:

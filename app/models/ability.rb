@@ -9,7 +9,7 @@ class Ability
           can :manage, :all
         elsif user.has_role? :staff
           can :manage, [Space, Page, Applicationcomment, Application, Post]
-          cannot :manage [Year, User]
+          cannot :manage [Year, User, Subsite]
         elsif user.has_role? :exhibitor
           cannot :manage, Page
           can :manage, Space, :id => Space.with_role(:exhibitor, user).map(&:id)

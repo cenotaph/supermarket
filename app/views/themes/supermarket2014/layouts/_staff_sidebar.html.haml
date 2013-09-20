@@ -17,3 +17,5 @@
       %li= link_to 'All users', admin_users_path
     - if can? :manage, Year
       %li= link_to 'Year setup', admin_years_path
+    - if can? :manage, Subsite
+      %li= link_to 'Master site configuration', admin_subsites_path

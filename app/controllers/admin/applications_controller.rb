@@ -23,6 +23,10 @@ class Admin::ApplicationsController < Admin::BaseController
         "years.year #{direction}"
       when "country"
         "exhibitor_country #{direction}"
+      when "comments"
+        "applicationcomments_count #{direction}"
+      when "decision"
+        "booth_granted #{direction}"
       else
         "years.year DESC"
       end

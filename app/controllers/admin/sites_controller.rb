@@ -1,2 +1,2 @@
-class Admin::SitesController < Admin::BaseController
+class Admin::SubsitesController < Admin::BaseController
 end

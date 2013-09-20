@@ -69,8 +69,10 @@ class Application < ActiveRecord::Base
       'accepted - small booth'
     when 3
       'accepted - presentation stand'
-    else
+    when 4
       'not accepted'
+    else
+      'not decided yet'
     end
   end
   
