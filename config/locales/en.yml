@@ -153,6 +153,7 @@ en:
     pending_space: 'Awaiting access to...'
     pending_spaces_explanation: 'You have requested access to manage a space or gallery. The current account holders have received an email containing instructions on how to approve your access. If you believe there is an error, please contact info@supermarketartfair.com.'
     please_choose_a_country: 'Please select a country....'
+    type_of_initiative: 'Type of initiative'
     you_uploaded: "You uploaded "
     request_authorisation: ' Request access'
     return_to_your_application: 'Edit your application'

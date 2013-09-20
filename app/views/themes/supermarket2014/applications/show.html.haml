@@ -46,23 +46,45 @@
               %p= link_to website.url, website.url_safe
   .twelve.columns
     %h3= t :details
-    %ul.application_show
-      %li
-        %label= t("supermarket2014.exhibition_space_type")
-        .appval= @application.space.exhibitionspacetype.try(:name)
-      %li
-        %label= t("supermarket2014.exhibitors")
-        .appval= @application.space.exhibitors
-      - if @application.application_image?
+    .six.columns.alpha
+      %ul.application_show
         %li
-          %label= t("supermarket2014.your_application_image")
-          .appval= image_tag(@application.application_image.url(:normal))
-      %li
-        %label= t(:staff)
-        .appval.blocktext
-          %span.bigquote= raw("&#8220;")
-          %p= raw @application.staff
-          %span.bigquote= raw("&#8221;")
+          %label= t("supermarket2014.type_of_initiative")
+          .appval= @application.space.businesstypes.map(&:name).join(' / ')
+        %li
+          %label= t("supermarket2014.decision_makers_organisation")
+          .appval= @application.space.decisionmakers_organisation == true ? 'yes' : 'no'
+        %li
+          %label= t("supermarket2014.decision_makers_programming")
+          .appval= @application.space.decisionmakers_programming == true ? 'yes' : 'no'
+    .six.columns.omega
+      %ul.application_show
+        %li
+          %label= t("supermarket2014.founding_year")
+          .appval
+            = @application.space.founding_year
+            - if @application.space.is_active == false
+              =" (closed in #{@application.space.year_of_closing})"
+        %li
+          %label= t :short_description
+          .appval= @application.space.short_description
+        %li
+          %label= t("supermarket2014.exhibition_space_type")
+          .appval= @application.space.exhibitionspacetype.try(:name)
+        %li
+          %label= t("supermarket2014.exhibitors")
+          .appval= @application.space.exhibitors
+        - if @application.application_image?
+          %li
+            %label= t("supermarket2014.your_application_image")
+            .appval= image_tag(@application.application_image.url(:normal))
+        %li
+          %label= t(:staff)
+          .appval
+            %span.bigquote= raw("&#8220;")
+            %p= raw @application.staff
+            %span.bigquote= raw("&#8221;")
+            
   .twelve.columns
     %h3= t :supermarket_proposal
     %ul.application_show
