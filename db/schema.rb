@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920135026) do
+ActiveRecord::Schema.define(version: 20130921135736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20130920135026) do
     t.string   "vat_number"
     t.boolean  "allow_late",                default: false, null: false
     t.integer  "applicationcomments_count", default: 0
+    t.boolean  "red_spot"
   end
 
   add_index "applications", ["year_id"], name: "index_applications_on_year_id", using: :btree

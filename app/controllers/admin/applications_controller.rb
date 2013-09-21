@@ -29,6 +29,8 @@ class Admin::ApplicationsController < Admin::BaseController
         "booth_granted #{direction}"
       when "last_updated"
         "updated_at #{direction}"
+      when "red_spot"
+        "red_spot #{direction}"
       else
         "years.year DESC"
       end
@@ -48,13 +50,13 @@ class Admin::ApplicationsController < Admin::BaseController
   end
   
   def update
-    update! { @application }
+    update! { admin_applications_path }
   end
   
   protected
   
   def permitted_params
-    params.permit(:application => [:booth_granted])
+    params.permit(:application => [:booth_granted, :red_spot])
   end
 
 end
