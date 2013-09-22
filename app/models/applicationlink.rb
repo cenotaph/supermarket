@@ -3,7 +3,9 @@ class Applicationlink < ActiveRecord::Base
   validates_presence_of :url, :application_id
   
   def url_safe
-    unless self.url[/^http:\/\//] || self.url[/^https:\/\//]
+    if self.url[/^http:\/\//] || self.url[/^https:\/\//]
+      self.url
+    else
       self.url = 'http://' + self.url
     end
   end
