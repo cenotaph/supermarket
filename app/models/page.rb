@@ -9,12 +9,14 @@ class Page < ActiveRecord::Base
   has_many :subsites, :through => :page_subsites
   has_many :page_subsites
   belongs_to :background
+  has_many :menus, as: :item
   
   extend FriendlyId
   friendly_id :name_en, use: :slugged
 
   scope :published, -> { where(published: true) }
   scope :by_subsite, ->(x) { includes(:subsites).where(['subsites.id = ?', x]).references(:subsites)}
+
   scope :promoted, -> { where(show_on_bottom: true) }
   
   mount_uploader :postimage, SlidingmenuUploader

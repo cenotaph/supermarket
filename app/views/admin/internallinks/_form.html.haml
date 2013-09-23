@@ -1,0 +1,8 @@
+= semantic_form_for([:admin, @internallink]) do |f|
+  = f.input :subsite, :include_blank => false
+  = f.input :name
+  = f.input :controller
+  = f.input :action
+  = f.input :parameter
+  = f.input :published
+  = f.submit t :save

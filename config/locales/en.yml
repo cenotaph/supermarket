@@ -158,6 +158,7 @@ en:
     you_uploaded: "You uploaded "
     request_authorisation: ' Request access'
     return_to_your_application: 'Edit your application'
+    will_reveal_later: 'The full list of exhibitors will be announced soon.'
     min_8_chars: 'Minimum 8 characters'
     search_database_blurb: 'The Supermarket database already contains information about past exhibitors and other associated organisations. If you represent one of the following organisations, please choose it from the list.'
     secondary_info_application_blurb: 'What type of organisation are you, specifically?'

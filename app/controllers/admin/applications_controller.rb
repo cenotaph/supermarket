@@ -17,6 +17,8 @@ class Admin::ApplicationsController < Admin::BaseController
   def index
     order = sortable_column_order do |column, direction|
       case column
+      when "id"
+        "id #{direction}"
       when "name"
         "LOWER(organisation_name) #{direction}"
       when "year"

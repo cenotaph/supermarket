@@ -29,6 +29,8 @@ Aim::Application.routes.draw do
   post '/invited', to: 'applications#check_invited'
   get '/invited/2014/:space_id', to: 'applications#allow_late', :year => 2014
   get '/admin', to: 'admin/dashboard#index'
+  get '/exhibitors/:year', to: 'exhibitors#index'
+  
   resources :pages
   resources :posts
   resources :applications
@@ -42,10 +44,15 @@ Aim::Application.routes.draw do
       end
     end
     resources :dashboard
+    resources :internallinks
     resources :pages
     resources :posts
     resources :users
-    resources :menus
+    resources :menus do
+      collection do 
+        post :sort
+      end
+    end
     resources :spaces
     resources :search
     resources :subsites

@@ -1,0 +1,43 @@
+= semantic_form_for([:admin, @menu]) do |f|
+  = f.input :subsite, :label => t(:menu_for_which_site?), :include_blank => false
+  = f.input :item_type, :as => :select, :label => t(:type_of_menu_link), :collection => [["Page", "Page"], ["Internal Link", "Internallink"], ["External URL", "external_link"]]
+  = f.input :item_id, :as => :select, :collection => []
+  = f.input :published
+  = f.submit t(:save)
+  
+:javascript
+  $("#menu_item_type").change(function(e) {
+    if ($("#menu_item_type").val() == 'Page') {
+      var subsite = $('#menu_subsite_id').val();
+      $("#menu_item_id_input").fadeIn();
+      $("#menu_item_id").find("option:gt(0)").remove();
+      $("#menu_item_id").find("option:first").text("Loading...");
+      $.getJSON("/admin/pages.json?by_subsite=" + subsite, function (data) {
+        var html = '';
+        var len = data.length;
+        for (var i = 0; i< len; i++) {
+            html += '<option value="' + data[i].id + '">' + data[i].title + '</option>';
+        }
+        $("#menu_item_id").find("option:first").remove();
+        $('select#menu_item_id').append(html);
+      });
+    }
+    else if ($("#menu_item_type").val() == 'Internallink') {
+      var subsite = $('#menu_subsite_id').val();
+      $("#menu_item_id_input").fadeIn();
+      $("#menu_item_id").find("option:gt(0)").remove();
+      $("#menu_item_id").find("option:first").text("Loading...");
+      $.getJSON("/admin/internallinks.json?by_subsite=" + subsite, function (data) {
+        var html = '';
+        var len = data.length;
+        for (var i = 0; i< len; i++) {
+            html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+        }
+        $("#menu_item_id").find("option:first").remove();
+        $('select#menu_item_id').append(html);
+      });      
+    }
+    else {
+      $("#menu_item_id_input").fadeOut();  
+    }
+  });

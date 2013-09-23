@@ -1,0 +1,9 @@
+%h3= t("supermarket2014.exhibitors")
+- if @year.reveal_decisions == true
+  exhibitors
+- else
+  = t("supermarket2014.will_reveal_later")
+  
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'  

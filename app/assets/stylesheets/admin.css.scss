@@ -1,6 +1,7 @@
 /**
  *= require_self
  *= require jquery.ui.tabs
+
 */
 
 $orange1: #fda700;
@@ -76,6 +77,13 @@ ul.staff_menu {
       cursor: pointer;
     }
   }
+  
+  .menu_item {
+    border: 2px dotted $light-orange;
+    padding: 5px;
+    margin: 10px 0px;
+    width: 25%;
+  }
 }
 
 .sidebar {
@@ -87,3 +95,4 @@ ul.staff_menu {
   padding: 20px 0px;
   
 }
+

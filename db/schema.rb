@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921135736) do
+ActiveRecord::Schema.define(version: 20130922130419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -241,6 +241,19 @@ ActiveRecord::Schema.define(version: 20130921135736) do
     t.datetime "updated_at"
   end
 
+  create_table "internallinks", force: true do |t|
+    t.integer  "subsite_id"
+    t.string   "controller"
+    t.string   "action"
+    t.string   "parameter"
+    t.string   "name"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "internallinks", ["subsite_id"], name: "index_internallinks_on_subsite_id", using: :btree
+
   create_table "menu_hierarchies", force: true do |t|
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
@@ -260,6 +273,7 @@ ActiveRecord::Schema.define(version: 20130921135736) do
     t.datetime "updated_at"
     t.integer  "subsite_id"
     t.integer  "level"
+    t.string   "url"
   end
 
   add_index "menus", ["subsite_id"], name: "index_menus_on_subsite_id", using: :btree

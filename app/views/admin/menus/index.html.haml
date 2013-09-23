@@ -1,0 +1,28 @@
+.cms_grid#top_menu
+  - Menu.roots.sort_by(&:sort_order).each do |menu|
+    .menu_item{:id => "menu_#{menu.id.to_s}"}
+      .title= link_to menu.item.name, edit_admin_menu_path(menu)
+      = menu.item_type
+
+      
+= link_to "add new menu item", new_admin_menu_path
+
+:javascript
+  $('#top_menu').sortable({axis: 'y',
+    dropOnEmpty: false,
+    cursor: 'crosshair',
+    items: '.menu_item',
+    opacity: 0.4,
+    scroll: true,
+    update: function(){
+      $.ajax({
+        url: '/admin/menus/sort',
+        type: 'post',
+        data: $('#top_menu').sortable('serialize'),
+        dataType: 'script',
+        complete: function(request){
+          $('#top_menu').append('<div class="highlight">sorted!</div>');
+          $(".highlight").fadeOut();
+        }
+      });
+    }});
