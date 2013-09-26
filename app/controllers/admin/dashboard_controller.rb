@@ -8,7 +8,10 @@ class Admin::DashboardController < ApplicationController
   end
   
   def index
-    
+    unless current_user.photo?
+      flash[:error] = 'You really should upload a profile photo. It will be nicer that way.'
+      redirect_to edit_admin_user_path(current_user)
+    end
   end
   
 end
