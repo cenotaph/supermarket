@@ -1,10 +1,23 @@
 .cms_grid#top_menu
   - Menu.roots.sort_by(&:sort_order).each do |menu|
-    .menu_item{:id => "menu_#{menu.id.to_s}"}
+    .menu_item.twelve.columns{:id => "menu_#{menu.id.to_s}"}
       .title= link_to menu.item.name, edit_admin_menu_path(menu)
       = menu.item_type
+      - unless menu.children.empty?
+        %div
+          submenu:
+          = render :partial => 'recursive_submenu', :locals => {:submenu => menu.children, :parent => menu}
+          
 
-      
+          
+      %p
+        %i.icon-plus-sign-alt
+        = link_to (menu.children.empty? ? ' start a ' : ' add to ') + 'submenu', new_admin_menu_path(:parent_id => menu.id)
+      %p
+        %i.icon-reorder
+        = link_to ' re-order submenu', reorder_admin_menu_path(menu.id)
+
+
 = link_to "add new menu item", new_admin_menu_path
 
 :javascript

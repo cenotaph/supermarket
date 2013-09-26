@@ -1,6 +1,13 @@
 .cms_grid
   - @internallinks.each do |il|
-    .il
-      = link_to il.name, edit_admin_internallink_path(il)
-      
-= link_to 'create new internal link', new_admin_internallink_path
+    .il.ten.columns
+      .three.columns.alpha= link_to il.display_name, edit_admin_internallink_path(il)
+      .two.columns
+        - if il.name != il.display_name && !il.name.blank?
+          = "(#{il.name})"
+        - else
+          &nbsp;
+      .four.columns= [il.controller, il.action, il.parameter].join(' : ')
+
+.ten.columns
+  %p= link_to 'create new internal link', new_admin_internallink_path

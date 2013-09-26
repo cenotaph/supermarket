@@ -1,0 +1,38 @@
+%div{:id => "submenu_#{parent.id.to_s}"}
+  - submenu.sort_by(&:sort_order).each do |sm|
+    .submenu_item.column{:id => "submenu_#{sm.id.to_s}"}
+      .title= link_to sm.item.name, edit_admin_menu_path(sm)
+      - unless sm.children.empty?
+        %div
+          submenu:
+          = render :partial => 'recursive_submenu', :locals => {:submenu => sm.children, :parent => sm}
+      %p
+        %i.icon-plus-sign-alt
+        = link_to (sm.children.empty? ? ' start a ' : ' add to ') + 'submenu', new_admin_menu_path(:parent_id => sm.id)
+      %p
+        %i.icon-reorder
+        = link_to ' re-order submenu', reorder_admin_menu_path(sm.id)
+/ / .clear
+/ /           %p sub-menu:
+/ /           %div{:id => "submenu_#{menu.id.to_s}"}
+/ /             - menu.children.sort_by(&:sort_order).each do |sm|
+/ /               .submenu_item
+/ /                 .title= link_to sm.item.name, edit_admin_menu_path(sm)
+/ /                 %i.icon-plus-sign-alt
+/ /                 = link_to (sm.children.empty? ? ' start a' : ' add to') + ' submenu', new_admin_menu_path(:parent_id => sm.id)
+/ / 
+/ /           .clear
+/ /             %p=link_to 'add to submenu', new_admin_menu_path(:parent_id => menu.id)
+/ / 
+/ /       
+/           %p sub-menu:
+/           %div{:id => "submenu_#{menu.id.to_s}"}
+/             - menu.children.sort_by(&:sort_order).each do |sm|
+/               .submenu_item{:id => "submenu_#{sm.id.to_s}"}
+/                 .title= link_to sm.item.name, edit_admin_menu_path(sm)
+/                 %i.icon-plus-sign-alt
+/                 = link_to (sm.children.empty? ? ' start a' : ' add to') + ' submenu', new_admin_menu_path(:parent_id => sm.id)
+/ 
+/             .clear
+/               %p=link_to 'add to submenu', new_admin_menu_path(:parent_id => menu.id)
+/ / 

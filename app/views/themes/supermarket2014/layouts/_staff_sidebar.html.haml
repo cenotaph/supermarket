@@ -9,17 +9,44 @@
     = submit_tag "search"
   
   %ul.staff_menu
-    %li= link_to 'Applications', admin_applications_path
-    %li= link_to 'News/blog posts', admin_posts_path
-    %li= link_to 'Pages (static)', admin_pages_path
-    %li= link_to 'Edit your profile', edit_admin_user_path(current_user)
+    %li
+      = link_to  admin_applications_path do
+        %i.icon-globe
+        Applications
+    %li
+      = link_to admin_posts_path do
+        %i.icon-bullhorn
+        News/blog posts
+    %li
+      = link_to admin_pages_path do
+        %i.icon-file-text
+        Pages
+    %li
+      = link_to edit_admin_user_path(current_user) do
+        %i.icon-male
+        Edit your profile
     - if can? :manage, Menu
-      %li= link_to 'Menu configuration', admin_menus_path
+      %li
+        = link_to admin_menus_path do
+          %i.icon-list-ul
+          Menu config
     - if can? :manage, User
-      %li= link_to 'All users', admin_users_path
+      %li
+        = link_to admin_users_path do
+          %i.icon-male
+          All users
     - if can? :manage, Background
-      %li= link_to 'Backgrounds', admin_backgrounds_path
+      %li
+        = link_to admin_backgrounds_path do
+          %i.icon-picture
+          Backgrounds
     - if can? :manage, Year
-      %li= link_to 'Year setup', admin_years_path
+      %li
+        = link_to admin_years_path do
+          %i.icon-calendar
+          Year setup
     - if can? :manage, Subsite
-      %li= link_to 'Master site configuration', admin_subsites_path
+      %li
+        = link_to  admin_subsites_path do
+          %i.icon-gears
+          Master site setup

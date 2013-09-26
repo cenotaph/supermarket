@@ -1,6 +1,7 @@
 = semantic_form_for([:admin, @internallink]) do |f|
   = f.input :subsite, :include_blank => false
-  = f.input :name
+  = f.input :display_name, :label => 'Title, will appear in menu'
+  = f.input :name, :label => 'Internal name for this link (optional)'
   = f.input :controller
   = f.input :action
   = f.input :parameter
