@@ -128,12 +128,17 @@ header {
   background-color: $orange2;
 }
 
-.submenu_base {
+.submenu_base_1 {
   background-color: $orange3;
   height: 42px;
   overflow: hidden;
 }
 
+.submenu_base_2 {
+  background-color: $orange4;
+  height: 42px;
+  overflow: hidden;
+}
 .horiz_menu {
 
 
@@ -164,6 +169,9 @@ header {
         }
         &.active {
           color: #333;
+          a {
+            color: #000;
+          }
         }
         &.first {
           border-left: none;
@@ -200,9 +208,7 @@ header {
   }
 }
 
-nav.page_submenu {
-  display: none;
-}
+
 
 ul.existing_accounts {
   i {

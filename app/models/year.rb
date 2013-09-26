@@ -1,5 +1,5 @@
 class Year < ActiveRecord::Base
-
+  has_many :applications
   def name
     year
   end

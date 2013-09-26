@@ -27,6 +27,8 @@ class Application < ActiveRecord::Base
   before_save :sync_with_space
   
   scope :by_year, ->(x) { where(:year_id => x)}
+  scope :approved, -> { where("booth_granted >= 1 and booth_granted <= 3")}
+  
   # attr_accessible :status, :year_id, :organisation_name, :contact_email, :contact_first_name, :contact_last_name, :space_id, :user_id, :application_image, :space_attributes, :hometown, :staff, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :form_direction, :contact_phone
 
   attr_accessor :form_direction
@@ -41,6 +43,18 @@ class Application < ActiveRecord::Base
       'stand'
     else
       'unknown'
+    end
+  end
+  
+  def any_image(size = :sidebar)
+    if application_image?
+      application_image.url(size)
+    elsif space.logo?
+      space.logo.url(size)
+    elsif !applicationwebimages.empty?
+      applicationwebimages.first.imagefile.url(size)
+    else
+      'missing.png'
     end
   end
   
@@ -105,5 +119,20 @@ class Application < ActiveRecord::Base
     end
   end
   
+  def written_country
+    if exhibitor_country.blank?
+      if Country[space.country].class == FalseClass
+        space.country
+      else
+        Country[space.country].name
+      end
+    else
+      if Country[exhibitor_country].class == FalseClass
+        exhibitor_country
+      else
+        Country[exhibitor_country].name
+      end
+    end
+  end
 
 end

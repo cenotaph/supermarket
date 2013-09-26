@@ -1,6 +1,17 @@
-%h3= t("supermarket2014.exhibitors")
+%h3
+  = t("supermarket2014.exhibitors")
+  = " : #{@year.year.to_s}"
+
 - if @year.reveal_decisions == true
-  exhibitors
+  .exhibitors_year
+    - @year.applications.approved.sort_by{|x| x.space.business_name.downcase}.in_groups_of(3).each do |group| 
+      - group.each_with_index do |app, index|
+        - next if app.nil?
+        .space.four.columns{:class => [(index == 0 ? :alpha : false), (index == 2 ? :omega : false)]}
+          .inside
+            .application_image.two.columns= image_tag app.any_image(:sidebar)
+            .title= app.organisation_name
+            .hometown= app.written_country
 - else
   = t("supermarket2014.will_reveal_later")
   

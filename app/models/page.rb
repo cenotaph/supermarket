@@ -20,7 +20,15 @@ class Page < ActiveRecord::Base
   scope :promoted, -> { where(show_on_bottom: true) }
   
   mount_uploader :postimage, SlidingmenuUploader
-
+  
+  def child_of?(menu)
+    menu.self_and_descendants.map(&:item).compact.include?(self)
+  end
+  
+  def display_name
+    name
+  end
+  
   def name_en
     title(:en)
   end

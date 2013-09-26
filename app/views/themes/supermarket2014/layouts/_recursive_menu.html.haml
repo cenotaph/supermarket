@@ -1,0 +1,27 @@
+
+%div{:class => "submenu_base_#{level.to_s}"}
+  .container
+    .sixteen_columns.horiz_menu
+      %nav.page_submenu
+        %ul
+          - items.each_with_index do |menu, index|
+            %li{:class => [(index == 0 ? :first : false) , (!@page.nil? ? (@page.child_of?(menu) ? :active : false) : false), (!@year.nil? ? (@year.year.to_s == menu.item.display_name ? :active : false ) : false) ], :id => "menu_#{menu.id.to_s}"}= link_to menu.item.display_name, menu.link
+
+/           - if entry.menus.map(&:ancestors).flatten.empty?  # first submenu
+/             - entry.menus.reject{|x| x.depth != (level - 1)}.first.children.sort_by(&:sort_order).each_with_index do |menu, index|
+/               %li{:class => [(index == 0 ? :first : false) , (!@page.nil? ? (@page.child_of?(menu) ? :active : false) : false)], :id => "menu_#{menu.id.to_s}"}= link_to menu.item.name, menu.link
+/           - else
+/             - if entry.menus.map(&:ancestors).flatten.empty?
+/               - die
+/             - else
+/               - entry.menus.first.parent.children.sort_by(&:sort_order).each_with_index do |menu, index|
+/                 %li{:class => [(index == 0 ? :first : false) , (!@page.nil? ? (@page.child_of?(menu) ? :active : false) : false)], :id => "menu_#{menu.id.to_s}"}= link_to menu.item.name, menu.link
+/
+
+
+- if !entry.menus.map(&:children).flatten.compact.empty? 
+  - unless entry.menus.first.children.published.sort_by(&:sort_order).delete_if{|x| x.depth != level +1 }.empty?
+    = render :partial => 'layouts/recursive_menu', :locals => {:level => (level + 1), :entry => entry, :items => entry.menus.first.children.published.sort_by(&:sort_order) }
+    
+- elsif items.include?(entry.menus.first.parent)
+  = render :partial => 'layouts/recursive_menu', :locals => {:level => (level + 1), :entry => entry, :items => entry.menus.first.parent.children.published.sort_by(&:sort_order) }
