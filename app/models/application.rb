@@ -4,11 +4,11 @@ class Application < ActiveRecord::Base
   belongs_to :year
   belongs_to :user
   
-  has_many :websites
-  has_many :applicationwebimages
-  has_many :applicationlinks
-  has_many :videolinks
-  has_many :applicationcomments
+  has_many :websites, :dependent => :destroy
+  has_many :applicationwebimages, :dependent => :destroy
+  has_many :applicationlinks, :dependent => :destroy
+  has_many :videolinks, :dependent => :destroy
+  has_many :applicationcomments, :dependent => :destroy
   
   validates :organisation_name, :presence => true, :if => :finished?
   validates :space_id, :presence => true
