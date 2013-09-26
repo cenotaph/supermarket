@@ -1,0 +1,17 @@
+
+%h3 background images
+
+.cms_grid
+  - @backgrounds.each do |background|
+    .background.twelve.columns
+      .three.columns.alpha= image_tag background.background_image.url, :width => 200
+      .five.columns= background.name
+      .one.column
+        = background.published == true ? 'publshed' : 'not published'
+      .three.columns.omega
+        - if can? :edit, Background
+          = link_to 'edit', edit_admin_background_path(background)
+        - if can? :destroy, Background
+          = link_to 'destroy', [:admin, background], :method => :delete, :data => {:confirm => 'Are you sure?'}
+        
+%p= link_to 'create new background image', new_admin_background_path

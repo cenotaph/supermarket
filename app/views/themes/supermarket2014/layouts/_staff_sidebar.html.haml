@@ -12,9 +12,13 @@
     %li= link_to 'Applications', admin_applications_path
     %li= link_to 'News/blog posts', admin_posts_path
     %li= link_to 'Pages (static)', admin_pages_path
-    %li= link_to 'Edit your profile', edit_admin_user_path(current_user) 
+    %li= link_to 'Edit your profile', edit_admin_user_path(current_user)
+    - if can? :manage, Menu
+      %li= link_to 'Menu configuration', admin_menus_path
     - if can? :manage, User
       %li= link_to 'All users', admin_users_path
+    - if can? :manage, Background
+      %li= link_to 'Backgrounds', admin_backgrounds_path
     - if can? :manage, Year
       %li= link_to 'Year setup', admin_years_path
     - if can? :manage, Subsite

@@ -43,6 +43,7 @@ Aim::Application.routes.draw do
         get :toggle_late
       end
     end
+    resources :backgrounds
     resources :dashboard
     resources :internallinks
     resources :pages
