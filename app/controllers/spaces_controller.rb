@@ -1,8 +1,9 @@
 class SpacesController < ApplicationController
   include Wicked::Wizard
   autocomplete :space, :business_name
-  before_filter :authenticate_user!, :except => [:grant_access]
+  before_filter :authenticate_user!, :except => [:grant_access, :browse, :aim_profile]
   steps :find_name, :basic_details, :secondary_details
+  has_scope :by_country
   
   # def get_autocomplete_items parameters
   #   resp = super(parameters)
@@ -11,6 +12,24 @@ class SpacesController < ApplicationController
   #   end
   #   resp
   # end
+  
+  def aim_profile
+    @space = Space.friendly.find(params[:id])
+    @filter = @space.business_name + " <span class='hometown'>#{@space.hometown}</span>"
+    @closedfilters = true
+  end
+  
+  def browse
+    @spaces = apply_scopes(Space).page(params[:page]).per(16)
+    @filter = t("aim.all_initiatives")
+    if params[:by_country]
+      @filter = Country[params[:by_country].downcase].name
+    end
+    @quotes = t("aim.initiatives_in")  + " " + @filter
+    @closedfilters = true
+  end
+  
+
   
   def create
     @space = Space.create

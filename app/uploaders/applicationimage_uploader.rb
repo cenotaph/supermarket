@@ -17,6 +17,10 @@ class ApplicationimageUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [150, 150]
   end
   
+  version :slide do
+    process :resize_to_fill => [240, 240]
+  end
+
   version :normal do
     process :resize_to_fit => [640, 480]
   end

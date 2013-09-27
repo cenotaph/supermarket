@@ -7,6 +7,14 @@ $box5: #C5DCF1;
 $backdrop: #F5FBF1;
 $helv: "Helvetica", "Verdana", "Arial", sans-serif;
 
+* {
+  font-family: HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #444;
+}
+
 .admin_stuff {
   clear: left;
   padding-top: 13px;
@@ -53,12 +61,14 @@ label.sub {
   color: #999;
 }
 .browse_box {
+  font-family: HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 184px;
   height: 166px;
   margin-right: 20px;
   padding: 18px;
   float: left;
   overflow: hidden;
+  color: #444;
   cursor:pointer;
   &.box0 {
      background-color: $box0; 
@@ -84,6 +94,10 @@ label.sub {
     line-height: 22pt;
     font-weight: bold;
     color: #ffffff;
+  }
+  .space_town {
+    margin: 5px 0px;
+    font-style: italic;
   }
 }
 
@@ -120,7 +134,7 @@ input.shadow {
       background-color: black;
       color: white;
       overflow:hidden;
-      width: 120%;
+     
       option {
           background-color: black;
           color: white;
@@ -149,7 +163,7 @@ input.shadow {
   }
   input[type=submit] {
     float: left;
-    background: url("/images/aim_icons.png") no-repeat 0px -51px;
+    background: url("/assets/aim/images/aim_icons.png") no-repeat 0px -51px;
     width: 48px;
     height: 48px;
     border: none;
@@ -160,6 +174,7 @@ input.shadow {
   width: 460px;
   .title_and_web {
     height: 36px;
+    margin-bottom: 35px;
     .space_title {
       float: left;
       font-family: $helv;
@@ -186,7 +201,9 @@ input.shadow {
   .business_type {
     border-top: 1px solid #999;
     border-bottom: 1px solid #999;
-    font-size: 12pt;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 5px 0px;
     color: #999;
     font-family: $helv;
     margin: 18px 0 18px 0;
@@ -241,6 +258,15 @@ input.shadow {
   .quotes {
     font-size: 24px;
   }
+  .filter_toggle {
+    margin: 5px 0px 10px 0px;
+    color: white;
+    a { color: white; }
+    background-color: black;
+    padding: 3px;
+    font-size: 12px;
+    float: left;
+  }
 }
 .header {
   margin: 36px 0 36px 0;
@@ -284,9 +310,12 @@ input.shadow {
     font-weight: bold;
   }
   ul {
+    list-style: none outside;
+    padding-left: 0px;
     li {
       a {
         text-decoration: none;
+        color: #333;
       }
       line-height: 18px;
       margin-bottom: 0;

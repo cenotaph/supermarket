@@ -68,7 +68,7 @@
             = image_tag(theme_image_path('aim_logo.png'))
           - Page.by_subsite(@subsite.id).published.each do |page|
             = button_to page.title, page, :method => :get
-        .subtitle= t :header_text
+        .subtitle= t "aim.header_text"
       .sixteen.columns.search{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
 
         .search_dropdown.eight.columns.alpha
@@ -89,8 +89,11 @@
               = "\"" + @quotes + "\""
             - else
               All spaces
-      .sixteen.columns{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
-        %a{:href => '#', :onClick => '$(".filter_container").slideToggle();'} toggle filters                
+          .eight.omega.columns{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
+            .filter_toggle
+              %i.icon-chevron-sign-right
+              %a{:href => '#', :onClick => '$(".filter_container").slideToggle();'}= t "aim.toggle_filters"
+              
       .sixteen.columns.filter_container{:style => "display: " + (@closedfilters.nil? && @nofilters.nil? ? 'inline' : 'none')}
         .five.alpha.columns.filter_column
           .title= t :location
@@ -112,8 +115,8 @@
                         %ul
                           - subregion.last.sort_by{|x| x.last['name'] }.each do |country|
                             - next if country.first.blank?
-                            - next if @tree[region.first][subregion.first][country.first].nil?
-                            %li= link_to country.last['name'] + " (#{@tree[region.first][subregion.first][country.first].size})", '/browse/country/' + country.first
+                            - next if @tree[region.first][subregion.first][country.first.downcase].nil?
+                            %li= link_to country.last['name'] + " (#{@tree[region.first][subregion.first][country.first.downcase].size})", '/browse?by_country=' + country.first
         .five.alpha.columns.filter_column{:style => "border-left: 1px dotted #000;"}
           / .title= t.activities
           / %ul
@@ -122,7 +125,7 @@
           /       = link_to activity.translate(:name, session[:locale]), '/browse/activity/' + activity.id.to_s
           /       - unless activity.spaces.delete_if{|x| x.approved == false}.empty?
           /         = "(#{activity.spaces.size})"
-          .title= t :business_type
+          .title= t "aim.type_of_initiative"
           %ul
             - Businesstype.all.each do |bt|
               %li
@@ -130,14 +133,14 @@
                 - unless bt.spaces.delete_if{|x| x.approved == false}.empty?
                   = "(#{bt.spaces.size})"
         .five.alpha.columns.filter_column.last                  
-          .title= t :organisation_type
+          .title= t "aim.organisation_structure"
           %ul
             - Organisationtype.all.each do |ot|
               %li
                 = link_to ot.name, '/browse/organisation_type/' + ot.id.to_s
                 - unless ot.spaces.delete_if{|x| x.approved == false}.empty?
                   = "(#{ot.spaces.size})"
-          .title= t :exhibition_space_type
+          .title= t "aim.exhibition_space_type"
           %ul
             - Exhibitionspacetype.all.each do |est|
               %li
@@ -173,16 +176,17 @@
         = image_tag theme_image_path('kknord.png')
         = image_tag theme_image_path('supermarket_no_year_black.png')
         
-
-:javascript
-  $(document).ready(function(){
-    $('#tree').jstree({
-      "themes" : {
-        "theme" :  "apple",
-        "dots" : true,
-        "icons" : false
-        },
-      core : { "initially_open" : [ "Europe" ] },
-      plugins : ["themes", "html_data"]
+  :javascript
+    $(document).ready(function() {
+      $('input#searchterm').clearField();
+      $('#tree').jstree({
+        "themes" : {
+          "theme" :  "apple",
+          "dots" : true,
+          "icons" : false
+          },
+        core : { "initially_open" : [ "Europe" ] },
+        plugins : ["themes", "html_data"]
+      });
+      #{yield :jquery}
     });
-  });

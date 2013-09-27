@@ -37,11 +37,11 @@ class ApplicationController < ActionController::Base
   def get_site
     @site = request.host =~ /^aim/ ? 'aim' : 'supermarket2014'
     if @site == 'aim'
-      @tree = Space.approved.delete_if{|x| x.country.blank? }.group_by{|x| Country[x.country].region}
+      @tree = Space.approved.delete_if{|x| x.country.blank? && x.visiting_country.blank? }.group_by{|x|  Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].region}
       @tree.each do |region|
-        @tree[region.first] = region.last.group_by{|x| Country[x.country].subregion}
+        @tree[region.first] = region.last.group_by{|x| Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].subregion}
         @tree[region.first].each do |subregion|
-          @tree[region.first][subregion.first] = subregion.last.group_by{|x| x.country}
+          @tree[region.first][subregion.first] = subregion.last.group_by{|x| x.country.downcase}
         end
       end
     end

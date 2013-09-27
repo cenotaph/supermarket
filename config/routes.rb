@@ -7,6 +7,7 @@ Aim::Application.routes.draw do
     get :select_existing, :on => :member
     get :grant_access, :on => :member
     get :finish, :on => :collection
+    get :browse, :on => :collection
   end
   
   match '/support' => "funders#index", :via => :get
@@ -30,7 +31,8 @@ Aim::Application.routes.draw do
   get '/invited/2014/:space_id', to: 'applications#allow_late', :year => 2014
   get '/admin', to: 'admin/dashboard#index'
   get '/exhibitors/:year', to: 'exhibitors#year'
-  
+  get '/browse', to: "spaces#browse"
+  get '/initiatives/:id', to: "spaces#aim_profile", as: 'initiatives'
   resources :pages
   resources :posts
   resources :applications

@@ -21,7 +21,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
   
   version :slide do
-    process :resize_to_fill => [235, 235]
+    process :resize_to_fill => [240, 240]
   end
   
   version :large do

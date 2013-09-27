@@ -74,8 +74,16 @@ en:
   booth_applied_for: 'Booth type requested'
   replace_file: 'Replace file'
   choose_attachment: "Attachment"
+  present: 'now'
   booth_result: 'Decision on application'
-
+  aim:
+    header_text: 'Worldwide network of artist-based initiatives'
+    initiatives_in: 'Initiatives in '
+    type_of_initiative: 'Type of initiative'
+    organisation_structure: 'Organisational structure'
+    dedicated_to_exhibitions: ' dedicated to exhibitions'
+    exhibition_space_type: 'Exhibition space'
+    toggle_filters: 'Sorting options ....'
   supermarket2014:
     granted_accepted: 'Application accepted!'
     images_form: 'You may upload up to 6 images to support your application. .JPG, .PNG or .GIF format only, maximum size 1MB per image.'

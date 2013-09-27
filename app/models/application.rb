@@ -54,7 +54,7 @@ class Application < ActiveRecord::Base
     elsif !applicationwebimages.empty?
       applicationwebimages.first.imagefile.url(size)
     else
-      'missing.png'
+      'missing-120.png'
     end
   end
   
@@ -114,9 +114,19 @@ class Application < ActiveRecord::Base
       space.visiting_postcode = exhibitor_postcode
       space.visiting_country = exhibitor_country
     end
+    if [1,2,3].include?(booth_granted)
+      space.approved = true
+    end
+    if booth_granted == 4
+      space.approved = false
+    end
+    unless organisation_description.blank?
+      space.short_description = organisation_description
+    end
     if space.changed?
       space.save
     end
+    
   end
   
   def written_country

@@ -32,18 +32,47 @@ class Space < ActiveRecord::Base
   
   
   scope :approved, -> { where(approved: true)}
+  scope :unapproved, -> { where(approved: false) }
+  scope :by_country, ->(x) { where(["lower(country) = ? OR lower(visiting_country) = ?", x.downcase, x.downcase])}
+  
+  def allimages 
+    local = [[image1, image1_caption].compact, [image2, image2_caption].compact, [image3, image3_caption].compact, 
+    [image4, image4_caption].compact ]
+    applications.sort_by{|x| x.year.year }.reverse.map(&:applicationwebimages).flatten.compact.map{|x| [x.imagefile, x.title] }.each{|x| local.push(x)}
+    local
+  end
   
   def approved_users
     space_users.approved.map(&:user)
   end
   
   def full_street_address
-    out = [visiting_address1, visiting_address2, visiting_city, visiting_state, visiting_postcode.to_s + " " +  visiting_country.to_s]
-    out.compact.map(&:strip).join(', ')
+    visiting = [visiting_address1, visiting_address2, visiting_city, visiting_state, visiting_postcode.to_s + " " +  visiting_country.to_s].delete_if{|x| x.blank?}.compact.map(&:strip).join(', ')
+    contact = [address1, address2, city, state, postcode.to_s + " " + (Country[country.to_s.downcase].class == FalseClass ? country.to_s.downcase : Country[country.to_s.downcase].name)].delete_if{|x| x.blank?}.compact.map(&:strip).join(', ')
+    [visiting, contact].delete_if{|x| x.blank?}.first
   end
   
+  def full_contact_address
+    [address1, address2, city, state, postcode.to_s + " " + (Country[country.to_s.downcase].class == FalseClass ? country.to_s.downcase : Country[country.to_s.downcase].name)].delete_if{|x| x.blank?}.compact.map(&:strip).join(', ')
+  end
   def finished?
     status == 'active'
+  end
+  
+  def website1_safe
+    if self.website1[/^http:\/\//] || self.website1[/^https:\/\//]
+      self.website1
+    else
+      self.website1 = 'http://' + self.website1
+    end
+  end
+  
+  def website2_safe
+    if self.website2[/^http:\/\//] || self.website2[/^https:\/\//]
+      self.website2
+    else
+      self.website2 = 'http://' + self.website2
+    end
   end
   
   def hometown

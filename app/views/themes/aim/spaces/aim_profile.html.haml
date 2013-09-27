@@ -1,0 +1,98 @@
+.redbar
+.eight.columns.alpha.space
+  .title_and_web
+    .space_title= @space.business_name
+    .space_websites
+      - unless @space.website1.blank?
+        .space_web= link_to @space.website1, @space.website1_safe
+      - unless @space.website2.blank?
+        .space_web= link_to @space.website2, @space.website2_safe
+    - if current_user
+      - if current_user.is_admin?
+        .admin_stuff
+          - if @space.approved == true
+            %b= link_to 'Unapprove', '/cms/' + @space.id + '/toggle_approved'
+          - else
+            %div
+            %b= link_to 'Approve', '/cms/' + @space.id + '/toggle_approved'
+  .business_type= @space.businesstypes.map(&:name).join(' / ')
+  .space_metadata
+    .section_heading= t "aim.who_we_are"
+    .section_content= raw @space.short_description
+    
+    .section_heading= t "aim.what_we_do"
+    .section_content
+      %ul
+        %li= @space.exhibitionspacetype.nil? ? "" : @space.exhibitionspacetype.name
+        %li= @space.is_active == true ? t(:active) : t(:inactive)
+        %li
+          = @space.founding_year
+          = " - "
+          - if @space.is_active == true
+            = t(:present)
+          - else
+            = @space.year_of_closing
+        - unless @space.exhibitions_per_year.blank?
+          %li
+            = @space.exhibitions_per_year
+            = t "aim.exhibitions_per_year"
+            %ul
+              %li
+                = "#{@space.percent_for_exhibitions.to_s}% " + t("aim.dedicated_to_exhibitions")
+              - unless @space.exhibitors.blank?
+                %li= @space.exhibitors
+              - unless @space.percent_invited.blank?
+                %li= "#{@space.percent_invited}% " + t("aim.invited")
+          - unless @space.activities_other.blank?
+            %li= "#{@space.activities_other} " + t("aim.per_year_other")
+    .section_heading= t "aim.what_we_exhibit"
+    .section_content= @space.activities.map(&:name).join(' - ')
+.eight.columns.space.omega
+  - if @space.latitude.nil?
+    .space_map No map data.
+  - else
+    #space_map= render :partial => "shared/google_map", :locals => { :organizations => [@space] }
+
+    .logo
+      - if @space.logo?
+        %img{:src => @space.logo.url(:profile)}
+      - else
+        &nbsp;
+  .address
+    .section_heading= t "aim.where_we_are"
+    .section_content
+      - if @space.visiting_address1.blank?
+        = @space.address1  + "," unless @space.address1.blank?
+        = @space.address2  + "," unless @space.address2.blank?
+        = @space.city unless @space.city.blank?
+        = @space.state unless @space.state.blank? || (@space.state == @space.city)
+        = @space.postcode unless @space.postcode.blank?
+        = Country[@space.country].name unless @space.country.blank?
+      - else
+        = @space.visiting_address1  + "," unless @space.visiting_address1.blank?
+        = @space.visiting_address2  + "," unless @space.visiting_address2.blank? 
+        = @space.visiting_city  + "," unless @space.visiting_city.blank?
+        = @space.visiting_state  + "," unless @space.visiting_state.blank? || (@space.visiting_state == @space.visiting_city)
+        = @space.visiting_postcode unless @space.visiting_postcode.blank?
+        = Country[@space.visiting_country].name unless @space.visiting_country.blank?
+.sixteen.columns
+  .carousel
+    %ul.slides
+      - @space.allimages.in_groups_of(4).each do |group|
+        .slide
+          - group.each do |i|
+            - next if i.nil?
+            .carousel_image= link_to image_tag(i.first.url(:slide)), i.first.url
+            .caption= raw(i.last)
+            
+
+
+= content_for :jquery do
+  :plain
+    $('.carousel').flexslider({
+        animation: "slide",
+        namespace: "topslider",
+        controlNav: false,
+        directionNav: false,
+        selector: ".slides > .slide"
+    });     
