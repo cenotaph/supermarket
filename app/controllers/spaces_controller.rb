@@ -20,7 +20,7 @@ class SpacesController < ApplicationController
   end
   
   def browse
-    @spaces = apply_scopes(Space).page(params[:page]).per(16)
+    @spaces = apply_scopes(Space).approved.page(params[:page]).per(16)
     @filter = t("aim.all_initiatives")
     if params[:by_country]
       @filter = Country[params[:by_country].downcase].name

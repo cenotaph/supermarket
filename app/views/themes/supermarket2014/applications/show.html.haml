@@ -73,7 +73,7 @@
               =" (closed in #{@application.space.year_of_closing})"
         %li
           %label= t :short_description
-          .appval= @application.space.short_description
+          .appval= raw @application.space.short_description
         %li
           %label= t("supermarket2014.exhibition_space_type")
           .appval= @application.space.exhibitionspacetype.try(:name)

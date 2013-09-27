@@ -34,6 +34,8 @@
           = ", last by #{app.applicationcomments.sort_by(&:created_at).last.user.display_name}"
       .one.columns= time_ago_in_words(app.updated_at) + " ago"
       .one.column= raw(app.red_spot == true ? 'yes' : '&nbsp;')
-      .two.columns= app.granted_result
+      .two.columns
+        = app.granted_result
+        %span.delete= link_to "[delete]", [:admin, app], :method => :delete, :data => {:confirm => "Are you sure?"}
       
   = paginate @applications

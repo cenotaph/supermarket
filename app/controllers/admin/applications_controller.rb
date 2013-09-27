@@ -55,6 +55,10 @@ class Admin::ApplicationsController < Admin::BaseController
     update! { admin_applications_path }
   end
   
+  def destroy
+    destroy! { admin_applications_path }
+  end
+  
   protected
   
   def permitted_params
