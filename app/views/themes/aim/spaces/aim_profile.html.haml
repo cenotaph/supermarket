@@ -15,7 +15,8 @@
           - else
             %div
             %b= link_to 'Approve', '/cms/' + @space.id + '/toggle_approved'
-  .business_type= @space.businesstypes.map(&:name).join(' / ')
+  - unless @space.businesstypes.empty?
+    .business_type= @space.businesstypes.map(&:name).join(' / ')
   .space_metadata
     .section_heading= t "aim.who_we_are"
     .section_content= raw @space.short_description
@@ -26,12 +27,19 @@
         %li= @space.exhibitionspacetype.nil? ? "" : @space.exhibitionspacetype.name
         %li= @space.is_active == true ? t(:active) : t(:inactive)
         %li
-          = @space.founding_year
-          = " - "
-          - if @space.is_active == true
-            = t(:present)
+          - if @space.founding_year
+            = @space.founding_year
+            = " - "
+            - if @space.is_active == true
+              = t(:present)
+            - else
+              = @space.year_of_closing
           - else
-            = @space.year_of_closing
+            - if @space.is_active?
+              = t(:currently_active)
+            - else
+              - if @space.year_of_closing?
+                = @space.year_of_closing
         - unless @space.exhibitions_per_year.blank?
           %li
             = @space.exhibitions_per_year
@@ -80,10 +88,11 @@
     %ul.slides
       - @space.allimages.in_groups_of(4).each do |group|
         .slide
-          - group.each do |i|
-            - next if i.nil?
-            .carousel_image= link_to image_tag(i.first.url(:slide)), i.first.url
-            .caption= raw(i.last)
+          - group.each_with_index do |i, index|
+            .four.columns{:class => (index == 0 ? :alpha : (index == 3 ?  :omega : false))}
+              - next if i.nil?
+              .carousel_image= link_to image_tag(i.first.url(:slide)), i.first.url
+              .caption= raw(i.last)
             
 
 

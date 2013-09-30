@@ -8,6 +8,7 @@
     
     = stylesheet_link_tag :application
     = stylesheet_link_tag 'aim/stylesheets/application', :media => :screen
+    = javascript_include_tag :application
     = javascript_include_tag "aim/javascripts/application"
     
     %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
@@ -68,7 +69,8 @@
             
         %h1
           %a.button_to{:href => '/'}
-            = image_tag(theme_image_path('aim_logo.png'))
+            -#= image_tag(theme_image_path('aim_logo.png'))
+            infinite #$%*@#!
           - Page.by_subsite(@subsite.id).published.each do |page|
             = button_to page.title, page, :method => :get
         .subtitle= t "aim.header_text"
@@ -130,7 +132,7 @@
           /         = "(#{activity.spaces.size})"
           .title= t "aim.type_of_initiative"
           %ul
-            - Businesstype.all.each do |bt|
+            - Businesstype.includes([:translations, :spaces]).all.each do |bt|
               %li
                 = link_to bt.name, '/browse/business_type/' + bt.id.to_s
                 - unless bt.spaces.delete_if{|x| x.approved == false}.empty?
@@ -138,14 +140,14 @@
         .five.alpha.columns.filter_column.last                  
           .title= t "aim.organisation_structure"
           %ul
-            - Organisationtype.all.each do |ot|
+            - Organisationtype.includes([:translations, :spaces]).all.each do |ot|
               %li
                 = link_to ot.name, '/browse/organisation_type/' + ot.id.to_s
                 - unless ot.spaces.delete_if{|x| x.approved == false}.empty?
                   = "(#{ot.spaces.size})"
           .title= t "aim.exhibition_space_type"
           %ul
-            - Exhibitionspacetype.all.each do |est|
+            - Exhibitionspacetype.includes([:translations, :spaces]).all.each do |est|
               %li
                 = link_to est.name, '/browse/exhibitionspace_type/' + est.id.to_s
                 - unless est.spaces.delete_if{|x| x.approved == false}.empty?

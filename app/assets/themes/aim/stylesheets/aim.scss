@@ -65,11 +65,19 @@ label.sub {
   width: 184px;
   height: 166px;
   margin-right: 20px;
+  margin-bottom: 20px;
   padding: 18px;
   float: left;
   overflow: hidden;
   color: #444;
   cursor:pointer;
+  .space_description {
+    overflow: hidden;
+    margin-top: 5px;
+    p {
+      margin: 0px;
+    }
+  }
   &.box0 {
      background-color: $box0; 
   }
@@ -90,8 +98,8 @@ label.sub {
   }
   .space_name {
     font-family: $helv;
-    font-size: 24pt;
-    line-height: 22pt;
+    font-size: 24px;
+    line-height: 26px;
     font-weight: bold;
     color: #ffffff;
   }

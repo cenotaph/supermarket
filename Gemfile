@@ -48,6 +48,7 @@ end
 gem 'auto_html'
 gem 'aws-s3'
 gem 'bootstrap-sass'
+gem "bullet", :group => "development"
 gem 'cancan'
 gem 'carrierwave'
 gem 'ckeditor'
@@ -75,7 +76,6 @@ gem 'kaminari'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'mini_magick'
 gem 'nested_form'
-
 # gem 'protected_attributes'
 gem 'public_activity'
 gem 'rails-i18n'
@@ -85,6 +85,7 @@ gem 'ransack'
 gem 'rails3-jquery-autocomplete',   github: 'cenotaph/rails3-jquery-autocomplete', branch: 'master'
 gem 'recaptcha'
 gem 'rolify', '3.3.0.rc4'
+gem 'ruby-growl', :group => :development
 gem 'safe_attributes'
 gem 'skeleton-rails'
 gem 'superfish-rails'
