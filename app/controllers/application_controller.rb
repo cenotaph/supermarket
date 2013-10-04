@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
     if @background_image.nil?
       @background_image = Background.published.random
     end
-    #@allfunders = Fundertype.all.delete_if{|x| x.funders.empty? }
+    #
     @site
   end
   
