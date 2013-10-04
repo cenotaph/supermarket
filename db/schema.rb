@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926105229) do
+ActiveRecord::Schema.define(version: 20131004121943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20130926105229) do
     t.string   "exhibitor_state"
     t.string   "hometown"
     t.string   "application_image"
-    t.text     "staff"
+    t.text     "staff",                     default: "Please pick suitable titles from these alternatives.\n\nMembers: If you have more than 20 members, just write the number of members.\nBoard:\nCo-directors:\nManagers:\nCo-founders:\n! DELETE ALTERNATIVES NOT USED\n"
     t.date     "submitted_at"
     t.text     "supermarket_proposal"
     t.integer  "booth_applied"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20130926105229) do
     t.boolean  "need_darker_room"
     t.boolean  "wants_open_structure"
     t.string   "vat_number"
-    t.boolean  "allow_late",                default: false, null: false
+    t.boolean  "allow_late",                default: false,                                                                                                                                                                                                                    null: false
     t.integer  "applicationcomments_count", default: 0
     t.boolean  "red_spot"
   end
@@ -251,6 +251,7 @@ ActiveRecord::Schema.define(version: 20130926105229) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "display_name"
+    t.string   "custom_url"
   end
 
   add_index "internallinks", ["subsite_id"], name: "index_internallinks_on_subsite_id", using: :btree

@@ -28,7 +28,7 @@ class Admin::InternallinksController < Admin::BaseController
   protected
   
   def permitted_params
-    params.permit(:internallink => [:subsite_id, :controller, :display_name, :action, :parameter, :name, :published])
+    params.permit(:internallink => [:subsite_id, :controller, :display_name, :custom_url, :action, :parameter, :name, :published])
   end
   
 end

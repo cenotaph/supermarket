@@ -16,7 +16,11 @@ class Menu < ActiveRecord::Base
     if item_type == 'Page'
       "/pages/" + item.slug
     elsif item_type == 'Internallink'
-      "/" + [item.controller, item.action, item.parameter].delete_if{|x| x.blank?}.compact.join("/")
+      if item.custom_url.blank?
+        "/" + [item.controller, item.action, item.parameter].delete_if{|x| x.blank?}.compact.join("/")
+      else
+        item.custom_url
+      end
     end
   end
 end
