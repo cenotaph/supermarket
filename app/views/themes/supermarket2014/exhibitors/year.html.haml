@@ -14,6 +14,7 @@
             .hometown= app.written_country
 - else
   = t("supermarket2014.will_reveal_later")
+  %p= link_to 'View our 2013 catalogue', 'http://issuu.com/supermarketartfair/docs/supermarket_catalogue_2013'
   
 - if user_signed_in?
   = content_for :sidebar do
