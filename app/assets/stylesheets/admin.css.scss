@@ -73,13 +73,18 @@ ul.staff_menu {
     }
   }
 }
-
+span.delete {
+  a { color: red; }
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 10px;
+}
 .cms_grid {
   .heading {
     font-weight: 600;
     
   }
-  .page, .post, .app, .user, .il, .background {
+  .page, .post, .app, .user, .funder, .il, .background {
     padding: 5px 0px;
     &:hover{
       background-color: #f0f0f0;

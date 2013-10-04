@@ -47,12 +47,12 @@ class ApplicationController < ActionController::Base
     end
     @subsite = Subsite.where(:name => @site).first
     @promoted_posts = Post.by_subsite(@subsite.id).published.promoted
-    @promoted_posts += Page.by_subsite(@subsite.id).published.promoted
+    @promoted_posts += Page.includes(:subsites).by_subsite(@subsite.id).published.promoted
     @promoted_posts.compact!
     if @background_image.nil?
       @background_image = Background.published.random
     end
-    @allfunders = Fundertype.all.delete_if{|x| x.funders.empty? }
+    #@allfunders = Fundertype.all.delete_if{|x| x.funders.empty? }
     @site
   end
   
