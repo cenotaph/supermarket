@@ -1,0 +1,20 @@
+%p
+  Search results for:
+
+  %em= params[:searchterm]
+
+%p= pluralize(@hits.size, 'result') + ' found'
+
+- unless @hits.empty?
+  #search_results
+    - @hits.group_by{|x| x.class}.each do |cl|
+      %div{:id => cl.first.to_s}
+        - cl.last.in_groups_of(3).each do |group|
+          .newline.columns.alpha{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
+            - group.each_with_index do |hit, i|
+              - next if hit.nil?
+              = render :partial => hit.class.to_s.downcase, :locals => {:hit => hit, :index => i}
+          
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'  

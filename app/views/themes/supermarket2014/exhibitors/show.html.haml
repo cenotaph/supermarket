@@ -1,0 +1,51 @@
+.detail_view
+  - if @application.space.logo?
+    .four.columns.alpha= image_tag @application.space.logo.url(:profile)
+
+  %h2= @application.organisation_name
+  %h3= @application.written_country
+  
+  .columns.alpha{:class => (user_signed_in? ? 'six' : 'eight')}
+    .public_address
+      = raw @application.exhibitor_full_address
+      - unless @application.websites.empty?
+        - @application.websites.each do |website|
+          %br/
+          = link_to website.url.gsub(/^http\:\/\//i, ''), website.url_safe
+      - unless @application.contact_email.blank?
+        %p= link_to @application.contact_email, 'mailto:' + @application.contact_email
+  .columns.omega{:class => (user_signed_in? ? 'six' : 'eight')}
+    %p= raw @application.organisation_description
+
+  #exhibitor_images.columns.alpha.omega{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
+    %ul.slides
+      - @application.applicationwebimages.each do |fc|
+        .slide
+          .image= image_tag fc.imagefile.url(:normal)
+          - unless fc.title.blank? && fc.caption.blank?
+            .caption
+              .title= fc.title
+
+  .columns.alpha{:class => (user_signed_in? ? 'six' : 'eight')}
+    %strong= t(:staff) + ":"
+    %p= raw @application.staff
+  .columns.omega{:class => (user_signed_in? ? 'six' : 'eight')}
+    - unless @application.applicationlinks.empty?
+      %strong= t :further_links
+      %ul
+        - @application.applicationlinks.each do |site|
+          %li= link_to site.title.blank? ? site.url : site.title, site.url_safe, :target => :_blank
+  
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'  
+            
+= content_for :jquery do
+  :plain
+    $('#exhibitor_images').flexslider({
+        animation: "slide",
+        namespace: "topslider",
+        controlNav: false,
+        directionNav: false,
+        selector: ".slides > .slide"
+    });       

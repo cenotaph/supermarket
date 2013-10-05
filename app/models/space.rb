@@ -36,10 +36,10 @@ class Space < ActiveRecord::Base
   scope :by_country, ->(x) { where(["lower(country) = ? OR lower(visiting_country) = ?", x.downcase, x.downcase])}
   
   def allimages 
-    local = [[image1, image1_caption].compact, [image2, image2_caption].compact, [image3, image3_caption].compact, 
-    [image4, image4_caption].compact ]
+    # local = [[image1, image1_caption].compact, [image2, image2_caption].compact, [image3, image3_caption].compact, [image4, image4_caption].compact ]
+    local = []
     applications.sort_by{|x| x.year.year }.reverse.map(&:applicationwebimages).flatten.compact.map{|x| [x.imagefile, x.title] }.each{|x| local.push(x)}
-    local
+    local.flatten.compact
   end
   
   def approved_users

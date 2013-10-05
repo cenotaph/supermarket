@@ -4,6 +4,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   storage :fog  
 
+  def default_url
+    ActionController::Base.helpers.asset_path("" + [version_name, "missing.png"].compact.join('_'))
+  end
+  
   def store_dir
     "images/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end

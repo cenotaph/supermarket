@@ -104,6 +104,10 @@ class SpacesController < ApplicationController
     finish_spaces_path
   end
   
+  def show_history
+    @space = Space.friendly.find(params[:id])
+  end
+  
   def show
     @space = Space.find(params[:space_id])
     if params[:searchterm]

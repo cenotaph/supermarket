@@ -139,6 +139,39 @@ header {
   height: 42px;
   overflow: hidden;
 }
+
+
+.search_hit {
+  box-sizing: content-box;
+  &.newline {
+    clear: left;
+  }
+  &.even {
+    background-color: #f0f0f0;
+  }
+  
+  margin-bottom : 35px;
+  padding: 0px;
+
+    .application_image {
+      width: 90px !important;
+      padding: 2px;
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+    .title {
+      padding: 3px;
+      font-size: 14px;
+    }
+    .details {
+      font-size: 11px;
+    }
+    
+}
+
+
 .horiz_menu {
 
 

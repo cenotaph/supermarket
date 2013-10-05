@@ -8,6 +8,10 @@ class ApplicationimageUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   storage :fog
+  
+  def default_url
+    ActionController::Base.helpers.asset_path("" + [version_name, "missing.png"].compact.join('_'))
+  end
 
   def store_dir
     "application_images/#{model.id}"

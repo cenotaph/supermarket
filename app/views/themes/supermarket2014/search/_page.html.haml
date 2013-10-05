@@ -1,0 +1,5 @@
+.space.columns.alpha.search_hit{:class => [(user_signed_in? ? 'four' : 'five'), (index % 2 == 0 ? :even : false )]}
+  %strong Page:
+  .title= link_to hit.name, hit
+  .hometown= hit.published_at.strftime("%d %B, %Y")
+  .details= truncate_html(strip_tags(hit.body), :length => 200)

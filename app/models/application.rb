@@ -27,11 +27,21 @@ class Application < ActiveRecord::Base
   before_save :sync_with_space
   
   scope :by_year, ->(x) { where(:year_id => x)}
-  scope :approved, -> { where("booth_granted >= 1 and booth_granted <= 3")}
+  scope :approved, -> { includes(:year).where("booth_granted >= 1 and booth_granted <= 3 and years.reveal_decisions is true")}
   
   # attr_accessible :status, :year_id, :organisation_name, :contact_email, :contact_first_name, :contact_last_name, :space_id, :user_id, :application_image, :space_attributes, :hometown, :staff, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :form_direction, :contact_phone
 
   attr_accessor :form_direction
+  
+  def approved?
+    if booth_granted.nil?
+      false
+    elsif booth_granted >= 1 && booth_granted <= 3
+      year.reveal_decisions
+    else
+      false
+    end
+  end
   
   def booth_type
     case booth_applied

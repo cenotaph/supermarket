@@ -1,0 +1,19 @@
+
+.space.columns.alpha.search_hit{:class => [(user_signed_in? ? 'four' : 'five'), (index % 2 == 0 ? :even : false )]}
+
+  .application_image.columns.alpha.two
+    - if hit.allimages.empty?
+      = image_tag 'missing.png'
+    - else
+      = image_tag hit.allimages.first.url(:sidebar)
+    .history
+      %strong= t "supermarket2014.exhibited"
+      = raw hit.applications.approved.map{|x| link_to x.year.year, exhibitor_year_path(:space => hit, :year => x.year.year) }.join(' / ')      
+  .other.columns.omega{:class => (user_signed_in? ? 'two' : 'three')}
+    .title= link_to hit.business_name, supermarket_history_path(hit)
+    .hometown= hit.hometown
+  .four.columns.alpha
+    .details
+      %em= truncate_html(strip_tags(sanitize(hit.short_description)), :length => 175)
+
+          

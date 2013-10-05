@@ -11,8 +11,8 @@ Aim::Application.routes.draw do
   end
   
   match '/support' => "funders#index", :via => :get
-  match '/search' => 'search#index', :via => :post
-  
+  match '/search' => 'search#create', :via => :post
+
   # devise_for :users, ActiveAdmin::Devise.config.merge({ :controllers => ActiveAdmin::Devise.config[:controllers].merge(:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions') }).merge(:path => '/') do
   devise_for :users, :controllers => {:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions'} do
     resources :spaces do
@@ -33,6 +33,8 @@ Aim::Application.routes.draw do
   get '/exhibitors/:year', to: 'exhibitors#year'
   get '/browse', to: "spaces#browse"
   get '/initiatives/:id', to: "spaces#aim_profile", as: 'initiatives'
+  get '/exhibitor/:id', to: "spaces#show_history", as: 'supermarket_history'
+  get '/exhibitor/:space/:year', to: "exhibitors#show", as: 'exhibitor_year'
   resources :pages
   resources :posts
   resources :applications

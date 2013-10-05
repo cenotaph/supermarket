@@ -1,0 +1,9 @@
+
+
+.space.six.columns.search_hit
+  .inside
+    .application_image.two.columns= image_tag hit.any_image(:sidebar)
+    .title= link_to hit.organisation_name, space_path(hit.space)
+    .hometown= hit.written_country
+    .details
+      %em= truncate_html(strip_tags(hit.space.short_description), :length => 175)
