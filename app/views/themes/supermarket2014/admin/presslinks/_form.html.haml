@@ -3,8 +3,9 @@
   = f.input :year, :include_blank => false
   %hr
   = f.input :date_of_press, :as => :date_picker
-  = f.input :title
+  = f.input :source
   = f.input :country
+  = f.input :title
   = f.input :url
   - if f.object.attachment?
     Attached file:

@@ -1,10 +1,14 @@
 %h3 external press
 .cms_grid
   - @presslinks.by_subsite(@subsite.id).sort_by{|x| x.date_of_press }.reverse.each do |pl|
-    .presslink
+    .presslink.eleven.columns
       .three.columns.alpha
         = pl.date_of_press.strftime('%d %B %Y')
-      = link_to pl.title, edit_admin_presslink_path(pl)
-      %span.delete= link_to '[delete]', [:admin, pl], :method => :delete, :data => {:confirm => 'Are you sure?'}
+      .two.columns
+        = pl.source
+      .three.columns
+        = link_to pl.title, edit_admin_presslink_path(pl)
+      .one.column
+        %span.delete= link_to '[delete]', [:admin, pl], :method => :delete, :data => {:confirm => 'Are you sure?'}
       
 %p= link_to 'Add new press link', new_admin_presslink_path
