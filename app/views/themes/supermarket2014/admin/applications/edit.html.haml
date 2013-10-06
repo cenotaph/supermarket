@@ -9,7 +9,7 @@
     = f.input :contact_address2
     = f.input :contact_city
     = f.input :contact_postcode
-    = f.input :contact_country, :include_blank => true
+    = f.input :contact_country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country")
     = f.input :contact_email
     
   %fieldset
@@ -18,7 +18,7 @@
     = f.input :exhibitor_address2
     = f.input :exhibitor_city
     = f.input :exhibitor_postcode
-    = f.input :exhibitor_country, :include_blank => true
+    = f.input :exhibitor_country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country")
     
   = f.input :hometown
   = f.input :staff

@@ -100,43 +100,52 @@ class Application < ActiveRecord::Base
     end
   end
   
+  def newer_than_this?
+    space.applications.delete_if{|x| x == self }.map{|x| x.year.year }.map{|x| x > year.year }.include?(true)
+  end
+  
   def sync_with_space
-    if contact_address1_changed?
-      space.address1 = contact_address1
-      space.address2 = contact_address2
+    unless newer_than_this?
+      if contact_address1_changed?
+        space.address1 = contact_address1
+        space.address2 = contact_address2
+      end
+      if contact_city_changed?
+        space.city = contact_city
+        space.state = contact_state
+        space.postcode = contact_postcode
+      end
+      if contact_country_changed?
+        space.country = contact_country
+      end
+      if contact_phone_changed?
+        space.phone = contact_phone
+      end
+      if exhibitor_address1_changed?
+        space.visiting_address1 = exhibitor_address1
+        space.visiting_address2 = exhibitor_address2
+      end
+      if exhibitor_city_changed?
+        space.visiting_city = exhibitor_city
+        space.visiting_state = exhibitor_state
+        space.visiting_postcode = exhibitor_postcode
+      end
+      if exhibitor_country_changed?
+        space.visiting_country = exhibitor_country
+      end
+      if [1,2,3].include?(booth_granted)
+        space.approved = true
+      end
+      if booth_granted == 4
+        space.approved = false
+      end
+      unless organisation_description.blank?
+        space.short_description = organisation_description
+      end
+      if space.changed?
+        space.save
+      end
     end
-    if contact_city_changed?
-      space.city = contact_city
-      space.state = contact_state
-      space.postcode = contact_postcode
-      space.country = contact_country
-    end
-    if contact_phone_changed?
-      space.phone = contact_phone
-    end
-    if exhibitor_address1_changed?
-      space.visiting_address1 = exhibitor_address1
-      space.visiting_address2 = exhibitor_address2
-    end
-    if exhibitor_city_changed?
-      space.visiting_city = exhibitor_city
-      space.visiting_state = exhibitor_state
-      space.visiting_postcode = exhibitor_postcode
-      space.visiting_country = exhibitor_country
-    end
-    if [1,2,3].include?(booth_granted)
-      space.approved = true
-    end
-    if booth_granted == 4
-      space.approved = false
-    end
-    unless organisation_description.blank?
-      space.short_description = organisation_description
-    end
-    if space.changed?
-      space.save
-    end
-    
   end
   
   def written_country
