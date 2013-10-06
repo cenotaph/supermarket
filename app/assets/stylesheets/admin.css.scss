@@ -73,6 +73,16 @@ ul.staff_menu {
     }
   }
 }
+
+.small_link {
+  font-size: 10px;
+  a {
+    font-size: 9px;
+    font-weight: bold;
+    color: $orange3;
+    text-transform: uppercase;
+  }
+}
 span.delete {
   a { color: red; }
   text-transform: uppercase;

@@ -1,0 +1,29 @@
+%h2 editing application
+
+%p don't do this unless you have a good reason
+= semantic_nested_form_for([:admin, @application], :html => {:multipart => true}) do |f|
+  = f.input :organisation_name, :label => 'Name of initiative'
+  %fieldset
+    %legend Contact info
+    = f.input :contact_address1
+    = f.input :contact_address2
+    = f.input :contact_city
+    = f.input :contact_postcode
+    = f.input :contact_country, :include_blank => true
+    = f.input :contact_email
+    
+  %fieldset
+    %legend Visiting info (if different)
+    = f.input :exhibitor_address1
+    = f.input :exhibitor_address2
+    = f.input :exhibitor_city
+    = f.input :exhibitor_postcode
+    = f.input :exhibitor_country, :include_blank => true
+    
+  = f.input :hometown
+  = f.input :staff
+  = f.input :organisation_description
+  = f.actions do
+    = f.submit
+
+  
