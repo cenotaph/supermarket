@@ -53,6 +53,7 @@ Aim::Application.routes.draw do
     resources :internallinks
     resources :pages
     resources :posts
+    resources :presslinks
     resources :users
     resources :menus do
       collection do 

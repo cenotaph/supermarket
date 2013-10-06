@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131004121943) do
+ActiveRecord::Schema.define(version: 20131006192915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -369,6 +369,21 @@ ActiveRecord::Schema.define(version: 20131004121943) do
   add_index "posts", ["last_edited_by_id"], name: "index_posts_on_last_edited_by_id", using: :btree
   add_index "posts", ["posted_by_id"], name: "index_posts_on_posted_by_id", using: :btree
   add_index "posts", ["subsite_id"], name: "index_posts_on_subsite_id", using: :btree
+
+  create_table "presslinks", force: true do |t|
+    t.string   "title"
+    t.string   "country"
+    t.string   "url"
+    t.date     "date_of_press"
+    t.string   "attachment"
+    t.integer  "year_id"
+    t.integer  "subsite_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "presslinks", ["subsite_id"], name: "index_presslinks_on_subsite_id", using: :btree
+  add_index "presslinks", ["year_id"], name: "index_presslinks_on_year_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
