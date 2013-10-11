@@ -4,7 +4,7 @@ re-ordering submenu items for
 (drag and drop to reorder, left-to-right)
 
 .cms_grid#reorder
-  - @parent.children.sort_by(&:sort_order).each do |menu|
+  - @parent.children.sort_by{|x| x.sort_order.to_i }.each do |menu|
     .menu_item.column{:id => "menu_#{menu.id.to_s}"}
       .title= menu.item.name
       - unless menu.children.empty?

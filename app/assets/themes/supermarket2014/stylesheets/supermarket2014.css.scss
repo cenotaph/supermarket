@@ -201,6 +201,15 @@ header {
     }
   }
 }
+@media only screen and (min-width: 768px) {
+  .horiz_menu {
+    nav.page_menu, nav.page_submenu {
+      ul {
+        display: inline;
+      }
+    }
+  }
+}
 
 @media only screen and (max-width: 767px) {
   .horiz_menu {
