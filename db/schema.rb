@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131006195433) do
+ActiveRecord::Schema.define(version: 20131011085557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -385,6 +385,23 @@ ActiveRecord::Schema.define(version: 20131006195433) do
 
   add_index "presslinks", ["subsite_id"], name: "index_presslinks_on_subsite_id", using: :btree
   add_index "presslinks", ["year_id"], name: "index_presslinks_on_year_id", using: :btree
+
+  create_table "pressreleases", force: true do |t|
+    t.string   "title"
+    t.date     "date_of_release"
+    t.text     "description"
+    t.string   "attachment_eng"
+    t.string   "attachment_swe"
+    t.string   "image"
+    t.boolean  "published"
+    t.integer  "year_id"
+    t.integer  "subsite_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pressreleases", ["subsite_id"], name: "index_pressreleases_on_subsite_id", using: :btree
+  add_index "pressreleases", ["year_id"], name: "index_pressreleases_on_year_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

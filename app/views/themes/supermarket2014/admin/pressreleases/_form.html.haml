@@ -1,0 +1,31 @@
+= semantic_form_for([:admin, @pressrelease], :html => {:multipart => true}) do |f|
+  = f.input :subsite
+  = f.input :year
+  = f.input :title
+  = f.input :description
+  = f.input :date_of_release, :as => :date_picker
+  - if f.object.attachment_eng?
+    Attached file (English):
+    = link_to f.object[:attachment_eng], f.object.attachment_eng.url
+    = f.input :attachment_eng, :label => 'Change attachment (English)'
+    = f.input :remove_attachment_eng, :as => :boolean
+  - else
+    = f.input :attachment_eng, :label => 'PDF in English'
+    
+  - if f.object.attachment_swe?
+    Attached file (Swedish):
+    = link_to f.object[:attachment_swe], f.object.attachment_swe.url
+    = f.input :attachment_swe, :label => 'Change attachment (Sweden)'
+    = f.input :remove_attachment_swe, :as => :boolean
+  - else    
+    = f.input :attachment_swe, :label => 'PDF in Swedish'
+    
+  - if f.object.image?
+    Image/photo of the press release
+    = image_tag f.object.image.url(:sidebar)
+    = f.input :image, :label => 'Change image/picture'
+    = f.input :remove_image, :as => :boolean   
+  - else 
+    = f.input :image, :label => 'Image/picture of the press release'
+  = f.input :published, :as => :boolean
+  = f.submit

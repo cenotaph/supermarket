@@ -27,11 +27,16 @@
         = link_to admin_funders_path do
           %i.icon-dollar
           Funders
+    - if can? :manage, Pressrelease
+      %li
+        = link_to admin_pressreleases_path do
+          %i.icon-bullhorn
+          Press releases
     - if can? :manage, Presslink
       %li
         = link_to admin_presslinks_path do
           %i.icon-trophy
-          Press links
+          Press clippings
     %li
       = link_to edit_admin_user_path(current_user) do
         %i.icon-male

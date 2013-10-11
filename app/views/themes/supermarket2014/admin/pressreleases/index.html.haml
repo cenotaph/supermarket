@@ -1,0 +1,9 @@
+%h2 press releases
+
+.cms_grid
+  - @pressreleases.each do |pr|
+    .pr
+      = link_to pr.title, edit_admin_pressrelease_path(pr)
+      
+.ten.columns
+  %p= link_to 'create new press release', new_admin_pressrelease_path

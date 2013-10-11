@@ -54,6 +54,7 @@ Aim::Application.routes.draw do
     resources :pages
     resources :posts
     resources :presslinks
+    resources :pressreleases
     resources :users
     resources :menus do
       collection do 
