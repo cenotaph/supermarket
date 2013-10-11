@@ -3,9 +3,9 @@
 .press_releases
   - @pressreleases.by_subsite(@subsite.id).published.sort_by{|x| x.date_of_release}.reverse.each do |pr|
     .press_release.columns
-      .image.three.columns.alpha
+      .image.two.columns.alpha
         = image_tag pr.image.url(:sidebar)
-      .data.two.columns.omega
+      .data.three.columns.omega
         .title= pr.title
         .date= l pr.date_of_release, :format => :long
         - unless pr.description.blank?

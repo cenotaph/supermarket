@@ -173,6 +173,12 @@ header {
 
 .press_releases {
   .press_release {
+    .image {
+      img {
+        max-width: 100%;
+        height: auto; 
+      }
+    }
     .data {
       .title {
         font-weight: bold;
