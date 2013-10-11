@@ -104,6 +104,20 @@
           "text"  : el.text()
         }).appendTo("#menu_base .horiz_menu nav.page_menu select");
       });
+      $(".submenu_base_1 .horiz_menu nav.page_submenu li a").each(function() {
+        var el = $(this);
+        $("<option />", {
+          "value" : el.attr("href"),
+          "text"  : el.text()
+        }).appendTo(".submenu_base_1 .horiz_menu nav.page_submenu select");
+      });
+      $(".submenu_base_2 .horiz_menu nav.page_submenu li a").each(function() {
+        var el = $(this);
+        $("<option />", {
+          "value" : el.attr("href"),
+          "text"  : el.text()
+        }).appendTo(".submenu_base_2 .horiz_menu nav.page_submenu select");
+      });            
       #{yield :jquery}
     });
 
