@@ -1,0 +1,20 @@
+%h3= t "supermarket2014.press_releases"
+
+.press_releases
+  - @pressreleases.by_subsite(@subsite.id).published.sort_by{|x| x.date_of_release}.reverse.each do |pr|
+    .press_release.columns
+      .image.three.columns.alpha
+        = image_tag pr.image.url(:sidebar)
+      .data.two.columns.omega
+        .title= pr.title
+        .date= l pr.date_of_release, :format => :long
+        - unless pr.description.blank?
+          .description= pr.description
+        - if pr.attachment_eng?
+          = link_to 'Download (English)', pr.attachment_eng.url
+        - if pr.attachment_swe?
+          = link_to 'Download (Swedish)', pr.attachment_swe.url
+
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'  

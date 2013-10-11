@@ -38,7 +38,7 @@ Aim::Application.routes.draw do
   resources :pages
   resources :posts
   resources :applications
-
+  resources :pressreleases
   
   namespace :admin do
     resources :applications do

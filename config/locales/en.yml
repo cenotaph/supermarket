@@ -187,6 +187,7 @@ en:
     leave_comment_blurb: 'You may enter a comment on this application here. The comments will be seen by other Supermarket staff, but will NOT be seen by the public or person who filled out the application.'
     documents_blurb: 'Here you can attach material that will guide us when selecting the exhibitors. Please include materials relevant to what you will show.'
     image_or_logo: 'Image or logo'
+    press_releases: 'Press releases'
     images_later: 'This can be a logo or one primary image for your initiative. .JPG, .PNG or .GIF only, please, maximum file size 1.2MB. You will be able to upload more supporting images on the next page.'
     exhibition_stand_type_wanted: 'Which type of exhibition stand would you like?'
     vat_number: "VAT number (for invoicing)"

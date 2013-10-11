@@ -171,6 +171,21 @@ header {
     
 }
 
+.press_releases {
+  .press_release {
+    .data {
+      .title {
+        font-weight: bold;
+        font-size: 12px;
+      }
+      .date {
+        font-style: italic;
+        color: #666;
+        font-size: 11px;
+      }
+    }
+  }
+}
 
 .horiz_menu {
 
