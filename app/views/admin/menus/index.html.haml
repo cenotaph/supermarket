@@ -10,15 +10,18 @@
           
 
           
-      %p
-        %i.icon-plus-sign-alt
-        = link_to (menu.children.empty? ? ' start a ' : ' add to ') + 'submenu', new_admin_menu_path(:parent_id => menu.id)
-      %p
-        %i.icon-reorder
-        = link_to ' re-order submenu', reorder_admin_menu_path(menu.id)
+      %div
+        %p
+          %i.icon-plus-sign-alt
+          = link_to (menu.children.empty? ? ' start a ' : ' add to ') + 'submenu', new_admin_menu_path(:parent_id => menu.id)
+        %p
+          %i.icon-reorder
+          = link_to ' re-order submenu', reorder_admin_menu_path(menu.id)
+        %p
+          %i.icon-frown
+          = link_to ' delete ' + menu.item.name + ' menu (and all submenus)', [:admin, menu], :method => :delete, :data => {:confirm => "Are you sure?????"}
 
-
-= link_to "add new menu item", new_admin_menu_path
+%div= link_to "add new menu item", new_admin_menu_path
 
 :javascript
   $('#top_menu').sortable({axis: 'y',
