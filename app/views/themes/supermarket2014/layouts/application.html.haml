@@ -90,6 +90,19 @@
   :javascript
     $(document).ready(function() {
       $('input#searchterm').clearField();
+      $("<select />").appendTo(".horiz_menu nav");
+      $("<option />", {
+        "selected" : "selected",
+        "value" : "",
+        "text" : "Go to..."
+      }).appendTo(".horiz_menu nav select");
+      $("#menu_base .horiz_menu nav.page_menu li a").each(function() {
+        var el = $(this);
+        $("<option />", {
+          "value" : el.attr("href"),
+          "text"  : el.text()
+        }).appendTo("#menu_base .horiz_menu nav.page_menu select");
+      });
       #{yield :jquery}
     });
 

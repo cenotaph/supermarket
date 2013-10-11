@@ -202,6 +202,19 @@ header {
   }
 }
 
+@media only screen and (max-width: 767px) {
+  .horiz_menu {
+    nav.page_menu, nav.page_submenu {
+      select {
+        display: block;
+      }
+      ul {
+        display: none;
+      }
+    }
+  }
+}
+
 .horiz_menu {
 
 
@@ -209,10 +222,12 @@ header {
 
   
   nav.page_menu, nav.page_submenu  {
-
+    select {
+      display: none;
+    }
     ul {
 
-      display: inline;
+ 
       li {
         margin-left: 0px;
         font-size: 16px;
