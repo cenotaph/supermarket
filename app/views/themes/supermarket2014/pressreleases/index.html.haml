@@ -15,6 +15,10 @@
         - if pr.attachment_swe?
           = link_to 'Download (Swedish)', pr.attachment_swe.url
 
+.twelve.columns
+  %h3= link_to t("supermarket2014.subscribe_press_releases"), 'http://admin.getanewsletter.com/subscription/YtgJ9jx0DQACHdRVTrB2Ek56Sis/add/'
+  
+  
 - if user_signed_in?
   = content_for :sidebar do
     = render :partial => 'layouts/sidebar'  
