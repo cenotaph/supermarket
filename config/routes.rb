@@ -31,6 +31,7 @@ Aim::Application.routes.draw do
   get '/invited/2014/:space_id', to: 'applications#allow_late', :year => 2014
   get '/admin', to: 'admin/dashboard#index'
   get '/exhibitors/:year', to: 'exhibitors#year'
+  get '/press', to: 'pressreleases#index'
   get '/browse', to: "spaces#browse"
   get '/initiatives/:id', to: "spaces#aim_profile", as: 'initiatives'
   get '/exhibitor/:id', to: "spaces#show_history", as: 'supermarket_history'
