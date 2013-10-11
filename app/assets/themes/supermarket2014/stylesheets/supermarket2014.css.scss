@@ -250,7 +250,11 @@ header {
     }    
   }
 }
-
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  a.tl2 {
+    margin-left: -6px;
+  }
+}
 @media only screen and (min-width: 768px) {
   .horiz_menu {
     nav.page_menu, nav.page_submenu {
