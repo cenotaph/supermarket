@@ -28,6 +28,8 @@ class Application < ActiveRecord::Base
   
   scope :by_year, ->(x) { where(:year_id => x)}
   scope :approved, -> { includes(:year).where("booth_granted >= 1 and booth_granted <= 3 and years.reveal_decisions is true")}
+  scope :stands, -> { where(booth_applied: 4)}
+  scope :booths, -> { where("booth_applied <> 4")}
   
   # attr_accessible :status, :year_id, :organisation_name, :contact_email, :contact_first_name, :contact_last_name, :space_id, :user_id, :application_image, :space_attributes, :hometown, :staff, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :form_direction, :contact_phone
 
@@ -149,22 +151,19 @@ class Application < ActiveRecord::Base
   end
   
   def written_country
-    if hometown.blank?  
-      if exhibitor_country.blank?
-        if Country[space.country].class == FalseClass
-          "#{space.city}, #{space.country}"
-        else
-          "#{space.city}, #{Country[space.country].name}"
-        end
+    out = hometown.to_s + "<br />"
+    if exhibitor_country.blank?
+      if Country[space.country].class == FalseClass
+        out += space.country
       else
-        if Country[exhibitor_country].class == FalseClass
-          "#{exhibitor_city}, #{exhibitor_country}"
-        else
-          "#{exhibitor_city}, #{Country[exhibitor_country].name}"
-        end
+        out += Country[space.country].name
       end
     else
-      hometown
+      if Country[exhibitor_country].class == FalseClass
+        out += exhibitor_country
+      else
+        out += Country[exhibitor_country].name
+      end
     end
   end
 

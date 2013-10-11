@@ -45,15 +45,20 @@ button {
 #main {
 //    background: url('/assets/supermarket2014/images/BG_mindmap1.gif') repeat top left;
     padding-bottom: 35px;
+    padding-top: 20px;
   }
 header {
   background-color: $orange1;
   padding-top: 15px;
-
+  .dates {
+    
+    color: white;
+    font-size: 12px;
+  }
   nav.top_bar {
     float: right;
     margin-bottom: 20px;
-    
+
     input#searchterm {
       width: 150px;
       padding-left: 8px;
@@ -201,28 +206,6 @@ header {
     }
   }
 }
-@media only screen and (min-width: 768px) {
-  .horiz_menu {
-    nav.page_menu, nav.page_submenu {
-      ul {
-        display: inline;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .horiz_menu {
-    nav.page_menu, nav.page_submenu {
-      select {
-        display: block;
-      }
-      ul {
-        display: none;
-      }
-    }
-  }
-}
 
 .horiz_menu {
 
@@ -267,6 +250,30 @@ header {
     }    
   }
 }
+
+@media only screen and (min-width: 768px) {
+  .horiz_menu {
+    nav.page_menu, nav.page_submenu {
+      ul {
+        display: inline;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .horiz_menu {
+    nav.page_menu, nav.page_submenu {
+      select {
+        display: block;
+      }
+      ul {
+        display: none;
+      }
+    }
+  }
+}
+
 .funder_type {
   clear: both;
   margin-bottom: 0px;

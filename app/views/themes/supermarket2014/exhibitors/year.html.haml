@@ -3,18 +3,33 @@
   = " : #{@year.year.to_s}"
 
 - if @year.reveal_decisions == true
+  %div
+    %p
+      %strong Exhibition booths
   .exhibitors_year
-    - @year.applications.approved.sort_by{|x| x.space.business_name.downcase}.in_groups_of(3).each do |group| 
+
+    - @year.applications.approved.booths.sort_by{|x| x.space.business_name.downcase}.in_groups_of(3).each do |group| 
       - group.each_with_index do |app, index|
         - next if app.nil?
         .space.four.columns{:class => [(index == 0 ? :alpha : false), (index == 2 ? :omega : false)]}
           .title= link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => @year.year)
           .inside.alpha.column
             .application_image.two.columns.alpha= image_tag app.any_image(:sidebar)
-            .hometown.column.omega
-              - unless app.hometown.blank?
-                = raw app.hometown.gsub(/,/, "<br />")
-              
+            .hometown.column.omega= raw app.written_country
+            / = raw app.hometown.gsub(/,/, "<br />")
+  .twelve.columns
+    %p
+      %strong Presentation stands:              
+  .exhibitors_year
+    - @year.applications.approved.stands.sort_by{|x| x.space.business_name.downcase}.in_groups_of(3).each do |group| 
+      - group.each_with_index do |app, index|
+        - next if app.nil?
+        .space.four.columns{:class => [(index == 0 ? :alpha : false), (index == 2 ? :omega : false)]}
+          .title= link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => @year.year)
+          .inside.alpha.column
+            .application_image.two.columns.alpha= image_tag app.any_image(:sidebar)
+            .hometown.column.omega= raw app.written_country
+            
 - else
   = t("supermarket2014.will_reveal_later")
   .issuuembed{"data-configid" => "0/5185517", :style => "width: 525px; height: 525px;"}
