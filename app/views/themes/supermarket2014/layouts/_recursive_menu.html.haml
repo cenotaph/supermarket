@@ -20,8 +20,8 @@
 
 
 - if !entry.menus.map(&:children).flatten.compact.empty? 
-  - unless entry.menus.first.children.published.sort_by(&:sort_order).delete_if{|x| x.depth != level +1 }.empty?
-    = render :partial => 'layouts/recursive_menu', :locals => {:level => (level + 1), :entry => entry, :items => entry.menus.first.children.published.sort_by(&:sort_order) }
+  - unless entry.menus.first.children.published.sort_by{|x| x.sort_order.to_i }.delete_if{|x| x.depth != level +1 }.empty?
+    = render :partial => 'layouts/recursive_menu', :locals => {:level => (level + 1), :entry => entry, :items => entry.menus.first.children.published.sort_by{|x| x.sort_order.to_i } }
     
 - elsif items.include?(entry.menus.first.parent)
-  = render :partial => 'layouts/recursive_menu', :locals => {:level => (level + 1), :entry => entry, :items => entry.menus.first.parent.children.published.sort_by(&:sort_order) }
+  = render :partial => 'layouts/recursive_menu', :locals => {:level => (level + 1), :entry => entry, :items => entry.menus.first.parent.children.published.sort_by{|x| x.sort_order.to_i } }
