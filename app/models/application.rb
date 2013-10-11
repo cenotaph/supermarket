@@ -149,18 +149,22 @@ class Application < ActiveRecord::Base
   end
   
   def written_country
-    if exhibitor_country.blank?
-      if Country[space.country].class == FalseClass
-        space.country
+    if hometown.blank?  
+      if exhibitor_country.blank?
+        if Country[space.country].class == FalseClass
+          "#{space.city}, #{space.country}"
+        else
+          "#{space.city}, #{Country[space.country].name}"
+        end
       else
-        Country[space.country].name
+        if Country[exhibitor_country].class == FalseClass
+          "#{exhibitor_city}, #{exhibitor_country}"
+        else
+          "#{exhibitor_city}, #{Country[exhibitor_country].name}"
+        end
       end
     else
-      if Country[exhibitor_country].class == FalseClass
-        exhibitor_country
-      else
-        Country[exhibitor_country].name
-      end
+      hometown
     end
   end
 

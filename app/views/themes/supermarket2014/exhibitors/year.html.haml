@@ -11,7 +11,10 @@
           .inside
             .application_image.two.columns= image_tag app.any_image(:sidebar)
             .title= link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => @year.year)
-            .hometown= app.written_country
+            .hometown
+              - unless app.hometown.blank?
+                = app.hometown.gsub(/,/, "<br />")
+              
 - else
   = t("supermarket2014.will_reveal_later")
   .issuuembed{"data-configid" => "0/5185517", :style => "width: 525px; height: 525px;"}
