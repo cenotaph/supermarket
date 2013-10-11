@@ -1,6 +1,6 @@
 .detail_view
   - if @application.space.logo?
-    .four.columns.alpha= image_tag @application.space.logo.url(:profile)
+    .four.columns.logo.alpha= image_tag @application.space.logo.url(:profile)
 
   %h2= @application.organisation_name
   %h3= @application.written_country

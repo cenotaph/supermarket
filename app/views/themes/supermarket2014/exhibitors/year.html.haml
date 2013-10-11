@@ -8,10 +8,10 @@
       - group.each_with_index do |app, index|
         - next if app.nil?
         .space.four.columns{:class => [(index == 0 ? :alpha : false), (index == 2 ? :omega : false)]}
+          .title= link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => @year.year)
           .inside
-            .application_image.two.columns= image_tag app.any_image(:sidebar)
-            .title= link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => @year.year)
-            .hometown
+            .application_image.two.columns.alpha= image_tag app.any_image(:sidebar)
+            .hometown.column.omega
               - unless app.hometown.blank?
                 = raw app.hometown.gsub(/,/, "<br />")
               

@@ -140,6 +140,14 @@ header {
   overflow: hidden;
 }
 
+.detail_view {
+  .logo {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
 
 .search_hit {
   box-sizing: content-box;

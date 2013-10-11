@@ -136,9 +136,9 @@ class Application < ActiveRecord::Base
       if [1,2,3].include?(booth_granted)
         space.approved = true
       end
-      if booth_granted == 4
-        space.approved = false
-      end
+      # if booth_granted == 4
+      #   space.approved = false
+      # end
       unless organisation_description.blank?
         space.short_description = organisation_description
       end
