@@ -15,7 +15,7 @@ class Admin::PresslinksController < Admin::BaseController
   protected
   
   def permitted_params
-    params.permit(:presslink => [:title, :country, :subsite_id, :year_id, :date_of_press, :attachment, :remove_attachment,  :source, :country])
+    params.permit(:presslink => [:title, :country, :subsite_id, :url, :year_id, :date_of_press, :attachment, :remove_attachment,  :source, :country])
   end
   
 end
