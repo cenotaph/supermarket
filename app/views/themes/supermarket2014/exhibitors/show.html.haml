@@ -27,9 +27,7 @@
               .title= fc.title
 
   .columns.alpha{:class => (user_signed_in? ? 'six' : 'eight')}
-    %strong= t(:staff) + ":"
-    %p= raw @application.staff
-  .columns.omega{:class => (user_signed_in? ? 'six' : 'eight')}
+
     - unless @application.applicationlinks.empty?
       %strong= t :further_links
       %ul
