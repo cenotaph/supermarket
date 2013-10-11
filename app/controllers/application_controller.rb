@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
     @promoted_posts = Post.by_subsite(@subsite.id).published.promoted
     @promoted_posts += Page.includes(:subsites).by_subsite(@subsite.id).published.promoted
     @promoted_posts.compact!
-    if @background_image.nil?
+    if @background_image.nil? 
       @background_image = Background.published.random
     end
     #

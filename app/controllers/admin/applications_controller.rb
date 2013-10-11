@@ -38,7 +38,7 @@ class Admin::ApplicationsController < Admin::BaseController
       end
     end
     
-    @applications = apply_scopes(Application).includes(:year).order(order).page(params[:page]).per(70)
+    @applications = apply_scopes(Application).includes(:year).order(order).page(params[:page]).per(150)
     if params[:nomalongen] == "1"
       @nomalongen = true
     end
