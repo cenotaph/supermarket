@@ -95,7 +95,7 @@ class ApplicationsController < ApplicationController
     if params[:application][:form_direction] == 'completed'
       params[:application][:status] = 'active'
       @application.submitted_at = Time.now.localtime.to_date
-      ApplicationMailer.application_confirmation(@application, current_user).deliver
+      # ApplicationMailer.application_confirmation(@application, current_user).deliver
       flash[:notice] = 'Thank you for completing your application. You will hear from us soon.'
     end
   
