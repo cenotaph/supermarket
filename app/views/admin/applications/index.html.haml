@@ -17,11 +17,11 @@
     .one.column= sortable_column "Year"
     .two.columns= sortable_column "Name"
     .two.columns= sortable_column "Country"
-    .two.columns= sortable_column "Comments"
+    .one.columns= sortable_column "Comments"
     .one.columns= sortable_column "Last updated"
     .one.column= sortable_column "Red Spot"
     .two.columns= sortable_column "Decision"
-    
+    .one.column= sortable_column "Accepted terms"
   - @applications.each do |app|
     .app.thirteen.columns
       .one.column.alpha= app.id.to_s
@@ -33,14 +33,15 @@
             %i.icon-pencil
               = link_to 'edit', edit_admin_application_path(app)
       .two.columns= raw(app.exhibitor_country.blank? ? "&nbsp;" : Country[app.exhibitor_country].name)
-      .two.columns
-        = app.applicationcomments_count
-        - unless app.applicationcomments.empty?
-          = ", last by #{app.applicationcomments.sort_by(&:created_at).last.user.display_name}"
+      .one.columns
+        - if app.applicationcomments.empty?
+          0
+        - else
+          = "#{app.applicationcomments_count}, last by #{app.applicationcomments.sort_by(&:created_at).last.user.display_name}"
       .one.columns= time_ago_in_words(app.updated_at) + " ago"
       .one.column= raw(app.red_spot == true ? 'yes' : '&nbsp;')
       .two.columns
         = app.granted_result
         %span.delete= link_to "[delete]", [:admin, app], :method => :delete, :data => {:confirm => "Are you sure?"}
-      
+      .one.column= raw(app.accepted_terms == true ? 'yes' : '&nbsp;')
   = paginate @applications

@@ -3,6 +3,23 @@ class ApplicationsController < ApplicationController
   before_filter :authenticate_user!
   steps :address_and_location, :basic_info, :proposals, :secondary_info, :media, :supermarket_particulars, :confirm
   
+  def accept_terms
+    @application = Application.find(params[:id])
+    if @application.space.users.include?(current_user)
+      @application.accepted_terms = true
+      @application.accepting_name = params[:application][:accepting_name]
+      if @application.save
+        flash[:notice] = 'You have accepted the terms. Thank you.'
+        render :template => 'applications/terms'
+      else
+        flash[:error] = 'There was an error saving your term acceptance. Please try again'
+      end
+    else
+      flash[:error] = 'This is not your application.'
+      redirect_to '/'
+    end
+  end
+  
   def allow_late
     year = Year.where(:year => params[:year]).first
     @space = Space.friendly.find(params[:space_id])
@@ -81,6 +98,18 @@ class ApplicationsController < ApplicationController
     end
   end
 
+
+  def terms
+    @application = Application.find(params[:id])
+    if @application.space.users.include?(current_user) && (@application.year.open? || @application.allow_late == true) 
+      render :template => 'applications/terms'
+    else
+      flash[:error] = 'This is not your application.'
+      redirect_to '/'
+    end    
+  end
+  
+  
   def update
 
     if params[:id] =~ /^\d*$/
@@ -116,11 +145,12 @@ class ApplicationsController < ApplicationController
       end
     end
   end
+
   
   private
   
   def application_params
-    params.require(:application).permit(:space_id, :year_id, :user_id, :organisation_name, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :contact_address1, :contact_address2, :contact_city, :contact_state, :contact_country, :contact_postcode, :form_direction, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :organisation_description,  :exhibitor_state, :exhibitor_country, :allow_late,  :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use, :upload1, :upload2, :remove_upload1, :remove_upload2, :supermarket_proposal, :need_darker_room, :wants_open_structure, :booth_applied, :vat_number, :special_needs,  space_attributes: [:exhibitors, :id, :exhibitionspacetype_id], website_attributes: [:id, :url, :application_id], applicationlinks_attributes: [:id, :_destroy, :url, :title, :application_id], videolinks_attributes: [:id, :application_id, :_destroy, :video_provider, :title, :url], applicationwebimages_attributes: [:id, :application_id, :_destroy, :imagefile, :title, :sortorder]
+    params.require(:application).permit(:space_id, :year_id, :user_id, :organisation_name, :accepting_name, :accepted_terms, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :contact_address1, :contact_address2, :contact_city, :contact_state, :contact_country, :contact_postcode, :form_direction, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :organisation_description,  :exhibitor_state, :exhibitor_country, :allow_late,  :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use, :upload1, :upload2, :remove_upload1, :remove_upload2, :supermarket_proposal, :need_darker_room, :wants_open_structure, :booth_applied, :vat_number, :special_needs,  space_attributes: [:exhibitors, :id, :exhibitionspacetype_id], website_attributes: [:id, :url, :application_id], applicationlinks_attributes: [:id, :_destroy, :url, :title, :application_id], videolinks_attributes: [:id, :application_id, :_destroy, :video_provider, :title, :url], applicationwebimages_attributes: [:id, :application_id, :_destroy, :imagefile, :title, :sortorder]
 
     )
   end

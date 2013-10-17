@@ -38,7 +38,12 @@ Aim::Application.routes.draw do
   get '/exhibitor/:space/:year', to: "exhibitors#show", as: 'exhibitor_year'
   resources :pages
   resources :posts
-  resources :applications
+  resources :applications do
+    member do
+      get :terms
+      post :accept_terms
+    end
+  end
   resources :pressreleases
   
   namespace :admin do

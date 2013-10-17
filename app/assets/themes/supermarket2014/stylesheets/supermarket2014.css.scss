@@ -38,10 +38,29 @@ button {
       font-size: 16px;
       font-weight: bold;
     }
-    
   }
 }
 
+.terms {
+  ul {
+    margin-left: 125px;
+    li {
+      list-style-type: disc;
+    }
+  }
+  li.boolean {
+    margin-left: 125px;
+    font-size: 14px;
+    label {
+      width: 100%;
+    }
+  }
+  input[type=submit] {
+    float: left;
+    margin-left: 125px;
+    clear: left;
+  }
+}
 #main {
 //    background: url('/assets/supermarket2014/images/BG_mindmap1.gif') repeat top left;
     padding-bottom: 35px;

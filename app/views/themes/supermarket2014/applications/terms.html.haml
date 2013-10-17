@@ -1,0 +1,63 @@
+%h2 Supermarket 2014 terms and regulations:
+%h3= @application.organisation_name
+
+.terms
+  %p
+    To agree on the terms and regulations:
+    %ol
+      %li Read through.
+      %li Fill in your name at the top of this page.
+      %li Click accept at the bottom of this page. 
+
+  %p You will be notified by email when you have made your agreement.
+
+  = semantic_form_for(@application, :url => accept_terms_application_path(@application), :method => :post) do |f|
+    - if @application.accepting_name.blank?
+      = f.input :accepting_name, :label => 'Your full name', :input_html => {:required => true}
+    - else
+      %h3
+        Terms accepted by:
+        %strong= @application.accepting_name
+
+    %p 1. The Supermarket 2014 management reserves the right to decide whether or not exhibited objects can be considered inappropriate and to take measures to have such objects removed. In the agreement with Kulturhuset it is stated that there is an absolute artistic freedom exept for violation to Swedish law and promotion of the use of illegal drugs.
+
+    %p 2. The booth rental must be paid in full to the organiser by the date stated on the invoice. Otherwise the organiser is entitled to offer the place to another exhibitor. This does not imply exeption from the obligation to pay the rent, unless a different agreement has been made with the Supermarket 2014 management.
+
+    %p 3. The transfer of space rented to another party, either complete or in part, is not allowed without permission from the organiser. If a participant host another exhibitor, a so called sub-exhibitor (for instance another gallery presented by the exhibiting gallery), only the original participant is presented in the list of exhibitors, the catalogue and on the website. The sub-exhibitor can be presented in papers and on the original participant's website with links etc.
+
+    %p 4. Exhibitors must accept compromises in space that may become necessary due to circumstances.
+
+    %p 5. Each exhibitor is responsible of their own insurance required for their exhibit and staff. The exhibitor is responsible and liable to pay compensation for any damage to the exhibition premises or injuries to other people caused either by himself or by any of his assistants. The organiser cannot be held responsible for theft of exhibited objects or for any form of insurance. The organiser will provide lockable spaces for storage at times when the exhibition is closed.
+
+    %p 6. The organiser is responsible for the cleaning of communal areas; the exhibitor is responsible for the cleaning of their rented space and to leave garbage at appointed place.
+
+    %p 7. Dismantling of the booth/exhibits may not begin before the exhibition is closed.
+
+    %p
+      8. Unless special permission is granted by the Supermarket 2014 management, exhibitors are not allowed to:
+    %ul
+      %li Place objects outside their designated booth or block fire protection equipment, emergency exits or power points.
+      %li Use materials not approved by the fire authorities.
+      %li Utilise open fire or store gas or flammable liquids on the fair premises without permission from the fire authorities.
+
+    %p 9. All verbal and written marketing must be reliable and in compliance with the marketing law. All use of copyright protected material must be in compliance with the copyright legislation. Participants who want to play copyright music fill out a form and pay to STIM, the organisation that acts on behalf of the copyright owners.
+
+    %p 10. On the fair premises, the exhibitor is obliged to comply with the regulations issued by the management, as well as any health and safety rules and regulations that the authorities may issue. If breaking public regulations the exhibitor and staff may be excluded from the fair, and will not be entitled to any compensation or reimbursement of booth rental.
+    %p All the venue of Kulturhuset is a non-smoking area. Alcohol is only served in the restaurants except on the Professional Preview. The exhibitors are obliged to follow the regulations for serving of alcohol announced by Kulturhuset before the opening. It is not allowed to bring alcohol to the venue.
+
+    %p 11. In the event that SUPERMARKET 2014, due to fire, special measures taken by local or central government, strike, lockout, war or other reasons beyond the organiser’s control, would be cancelled or forced to alter in extent or time, the organiser is not obliged to reimburse booth rental in full or in part. However, the exhibitor is entitled to priority for a place at the fair as soon as it can be held and will be compensated for previously paid fees at the payment of the new booth rental. In addition to that, the exhibitor is not entitled to any form of compensation.
+
+    %p 12. If due to circumstances not under the organiser’s control there are restrictions to heating, electricity or water supply, the exhibitor is not entitled to reimbursement of the booth rental in full or in part, or to any other form of compensation.
+    - if @application.accepted_terms != true
+      %strong
+        %h3= f.input :accepted_terms, :label => 'Yes, I accept these terms and regulations.', :input_html => {:required => true}
+  
+      = f.submit "Accept"
+  
+= content_for :sidebar do
+  = render :partial => 'layouts/sidebar'      
+  
+= content_for :jquery do
+  :plain
+    $('#application_accepting_name').focus();
+    $('form.application').validate();

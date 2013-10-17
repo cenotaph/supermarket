@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131011085557) do
+ActiveRecord::Schema.define(version: 20131017182125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20131011085557) do
     t.string   "exhibitor_state"
     t.string   "hometown"
     t.string   "application_image"
-    t.text     "staff",                     default: "Please pick suitable titles from these alternatives.\n\nMembers: If you have more than 20 members, just write the number of members.\nBoard:\nCo-directors:\nManagers:\nCo-founders:\n! DELETE ALTERNATIVES NOT USED\n"
+    t.text     "staff"
     t.date     "submitted_at"
     t.text     "supermarket_proposal"
     t.integer  "booth_applied"
@@ -114,9 +114,11 @@ ActiveRecord::Schema.define(version: 20131011085557) do
     t.boolean  "need_darker_room"
     t.boolean  "wants_open_structure"
     t.string   "vat_number"
-    t.boolean  "allow_late",                default: false,                                                                                                                                                                                                                    null: false
+    t.boolean  "allow_late",                default: false, null: false
     t.integer  "applicationcomments_count", default: 0
     t.boolean  "red_spot"
+    t.boolean  "accepted_terms"
+    t.string   "accepting_name"
   end
 
   add_index "applications", ["year_id"], name: "index_applications_on_year_id", using: :btree
