@@ -45,6 +45,7 @@ Aim::Application.routes.draw do
     end
   end
   resources :pressreleases
+  resources :presslinks
   
   namespace :admin do
     resources :applications do

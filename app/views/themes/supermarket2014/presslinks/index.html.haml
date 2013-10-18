@@ -1,0 +1,12 @@
+%h2 Press clippings
+
+.presslinks
+  - @presslinks.group_by(&:date_of_press).each do |date|
+    .date_group
+      %strong= date.first.strftime("%d %B %Y")
+      - date.last.each do |pl|
+        .press_clipping
+          .title= link_to pl.title, pl.url.blank? ? pl.attachment.url : pl.url
+          .source
+            = pl.source
+            %span.country= "[#{pl.country}]"

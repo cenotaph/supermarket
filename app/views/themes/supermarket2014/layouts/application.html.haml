@@ -74,7 +74,10 @@
         - unless @page.menus.map(&:depth).flatten.compact.uniq == [0] && @page.menus.map(&:children).flatten.compact.empty?
           - unless @page.menus.published.empty?
             = render :partial => 'layouts/recursive_menu', :locals => {:level => 1, :entry => @page, :items => @page.menus.published.first.self_and_ancestors.map(&:self_and_descendants).flatten.delete_if{|x| x.depth != 1  }.sort_by{|x| x.sort_order.to_i}.uniq }
-         
+      - else
+        - if controller.controller_name =~ /^press/
+          - top = Internallink.find_by(:name => 'Press')
+          = render :partial => 'layouts/recursive_menu', :locals => {:level => 1, :entry => top, :items => top.menus.published.first.self_and_ancestors.map(&:self_and_descendants).flatten.delete_if{|x| x.depth != 1  }.sort_by{|x| x.sort_order.to_i}.uniq }
     #main{:style => (!@background_image.nil? ? "background: url('#{@background_image.background_image.url}') no-repeat top left" : false)}
       .container
         - if user_signed_in?
