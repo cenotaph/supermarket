@@ -10,3 +10,8 @@
           .source
             = pl.source
             %span.country= "[#{pl.country}]"
+
+  
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'            
