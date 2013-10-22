@@ -1,0 +1,32 @@
+@media only screen and (max-width: 699px) {
+  header {
+    padding-top: 0px;
+  }
+  
+  nav.top_bar {
+    margin-bottom: 10px;
+    float: left !important;
+    li {
+      width: 40px;
+      margin-right: 5px;
+      font-size: 10px !important;
+    }
+    input#searchterm {
+      width: 60px !important;
+    }
+  }
+  nav.social_icons {
+    ul {
+      li {
+        a {
+          img {
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+    }
+  }
+  
+  
+}

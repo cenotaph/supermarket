@@ -1,0 +1,8 @@
+- submenu.published.sort_by{|x| x.sort_order.to_i}.each do |menu|
+  - prefix = ''
+  - (depth+1).times do
+    - prefix += '-'
+    
+  %option{:value => menu.link, :selected => (request.path == menu.link ? 'selected' : false)}= prefix + " " + menu.item.name
+  - unless menu.children.empty?
+    = render :partial => 'layouts/recursive_select', :locals => {:submenu => menu.children, :depth => menu.depth }
