@@ -80,6 +80,17 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def notify_of_decision
+    @application = Application.find(params[:id])
+    @application.space.space_users.approved.map(&:user).each do |u|
+      if ApplicationMailer.application_confirmation(@application, u).deliver
+        @application.notified_of_decision = Time.now
+      end
+    end
+    @application.save
+    redirect_to @application
+  end
+
   def show
     if params[:application_id].nil?
       @application = Application.find(params[:id])

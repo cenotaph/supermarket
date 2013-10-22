@@ -77,7 +77,11 @@ Aim::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  config.action_mailer.default_url_options = {
+    :host => 'www.supermarketartfair.com',
+  }
 end
+
 Rails.application.routes.default_url_options[:host] = 'supermarketartfair.com'
 ActionMailer::Base.smtp_settings = {
   :address        => 'smtp.sendgrid.net',

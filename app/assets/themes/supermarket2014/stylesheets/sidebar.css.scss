@@ -71,6 +71,13 @@
       color: $orange1;
       font: $small-text;
       text-transform: none;
+      
+    }
+    .big {
+        a {
+        font-size: 16px !important;
+        font-weight: strong;
+      }
     }
     .submitted_at {
       font: 10px/12px Helvetiva, Arial, sans-serif;
@@ -98,6 +105,5 @@
       }
     }
   }
-  
-
 }
+

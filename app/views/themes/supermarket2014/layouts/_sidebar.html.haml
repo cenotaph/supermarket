@@ -49,7 +49,8 @@
                       = link_to t(:view_application), sa
                     - if sa.year.year == 2014
                       .view
-                        - if sa.year.open? || sa.allow_late
-                          = link_to t("supermarket2014.return_to_your_application"), edit_application_path(sa)
-                        - else
-                          = t "supermarket2014.2014_is_closed"
+                        = t "supermarket2014.2014_is_closed"
+                      - if sa.approved?
+                        = t :accepted
+                        - unless  sa.accepted_terms == true
+                          .big= link_to 'You must accept the terms and regulations.', terms_application_path(sa)

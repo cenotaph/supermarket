@@ -25,12 +25,13 @@ class Application < ActiveRecord::Base
   mount_uploader :upload2, AttachmentUploader
   
   before_save :sync_with_space
+
   
   scope :by_year, ->(x) { where(:year_id => x)}
   scope :approved, -> { includes(:year).where("booth_granted >= 1 and booth_granted <= 3 and years.reveal_decisions is true")}
   scope :stands, -> { where(booth_applied: 4)}
-  scope :booths, -> { where("booth_applied <> 4")}
-  
+  scope :booths, -> { where("booth_granted = 1 OR booth_granted = 2")}
+  scope :accepted_terms, -> { where(accepted_terms: true)}
   # attr_accessible :status, :year_id, :organisation_name, :contact_email, :contact_first_name, :contact_last_name, :space_id, :user_id, :application_image, :space_attributes, :hometown, :staff, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :form_direction, :contact_phone
 
   attr_accessor :form_direction
@@ -44,7 +45,7 @@ class Application < ActiveRecord::Base
       false
     end
   end
-  
+
   def booth_type
     case booth_applied
     when 2

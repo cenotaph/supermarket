@@ -41,6 +41,7 @@ Aim::Application.routes.draw do
   resources :applications do
     member do
       get :terms
+      get :notify_of_decision
       post :accept_terms
     end
   end

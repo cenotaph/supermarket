@@ -8,7 +8,7 @@
       %strong Exhibition booths
   .exhibitors_year
 
-    - @year.applications.approved.booths.sort_by{|x| x.space.business_name.downcase}.in_groups_of(3).each do |group| 
+    - @year.applications.approved.accepted_terms.booths.sort_by{|x| x.space.business_name.downcase}.in_groups_of(3).each do |group| 
       - group.each_with_index do |app, index|
         - next if app.nil?
         .space.four.columns{:class => [(index == 0 ? :alpha : false), (index == 2 ? :omega : false)]}

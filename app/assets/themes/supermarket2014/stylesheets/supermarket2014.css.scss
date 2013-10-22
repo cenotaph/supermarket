@@ -285,6 +285,10 @@ header {
 }
 
 @media only screen and (max-width: 767px) {
+  .submenu_base_1, .submenu_base_2, .submenu_base_3 {
+    display: none;
+  }
+  
   .horiz_menu {
     nav.page_menu, nav.page_submenu {
       select {

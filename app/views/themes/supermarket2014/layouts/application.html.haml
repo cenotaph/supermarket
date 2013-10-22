@@ -66,6 +66,12 @@
         .container
           .sixteen_columns.horiz_menu
             %nav.page_menu
+              %select
+                - Menu.roots.by_subsite(@subsite.id).published.sort_by(&:sort_order).each do |menu|
+                  %option{:value => ''} Go to ...
+                  %option{:value => menu.link, :selected => (request.path == menu.link ? 'selected' : false)}= menu.item.name
+                  - unless menu.children.empty?
+                    = render :partial => 'layouts/recursive_select', :locals => {:submenu => menu.children, :depth => menu.depth }
               %ul
                 - Menu.roots.by_subsite(@subsite.id).published.sort_by(&:sort_order).each_with_index do |menu, index|
                   %li{:class => [(index == 0 ? :first : false) , (!@page.nil? ? (@page.child_of?(menu) ? :active : false) : false), (request.fullpath == menu.link ? :active : false)], :id => "menu_#{menu.id.to_s}"}= link_to menu.item.name, menu.link
@@ -94,33 +100,7 @@
   :javascript
     $(document).ready(function() {
       $('input#searchterm').clearField();
-      $("<select />").appendTo(".horiz_menu nav");
-      $("<option />", {
-        "selected" : "selected",
-        "value" : "",
-        "text" : "Go to..."
-      }).appendTo(".horiz_menu nav select");
-      $("#menu_base .horiz_menu nav.page_menu li a").each(function() {
-        var el = $(this);
-        $("<option />", {
-          "value" : el.attr("href"),
-          "text"  : el.text()
-        }).appendTo("#menu_base .horiz_menu nav.page_menu select");
-      });
-      $(".submenu_base_1 .horiz_menu nav.page_submenu li a").each(function() {
-        var el = $(this);
-        $("<option />", {
-          "value" : el.attr("href"),
-          "text"  : el.text()
-        }).appendTo(".submenu_base_1 .horiz_menu nav.page_submenu select");
-      });
-      $(".submenu_base_2 .horiz_menu nav.page_submenu li a").each(function() {
-        var el = $(this);
-        $("<option />", {
-          "value" : el.attr("href"),
-          "text"  : el.text()
-        }).appendTo(".submenu_base_2 .horiz_menu nav.page_submenu select");
-      });            
+         
       $('nav select').change(function() {
         window.location = $(this).find("option:selected").val();
       });
