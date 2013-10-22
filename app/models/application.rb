@@ -45,6 +45,16 @@ class Application < ActiveRecord::Base
       false
     end
   end
+  
+  def approved_pending_reveal?
+    if booth_granted.nil?
+      false
+    elsif booth_granted >= 1 && booth_granted <= 3
+      true
+    else
+      false
+    end
+  end
 
   def booth_type
     case booth_applied

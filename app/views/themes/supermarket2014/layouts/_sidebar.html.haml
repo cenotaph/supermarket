@@ -50,7 +50,11 @@
                     - if sa.year.year == 2014
                       .view
                         = t "supermarket2014.2014_is_closed"
-                      - if sa.approved?
+                      - if sa.approved_pending_reveal?
                         = t :accepted
-                        - unless  sa.accepted_terms == true
+                        
+                        - if sa.accepted_terms != true
                           .big= link_to 'You must accept the terms and regulations.', terms_application_path(sa)
+                        - else
+                          .big= link_to 'Edit your application', edit_application_path(sa)
+                        
