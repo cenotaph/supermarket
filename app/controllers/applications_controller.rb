@@ -112,7 +112,7 @@ class ApplicationsController < ApplicationController
 
   def terms
     @application = Application.find(params[:id])
-    if @application.space.users.include?(current_user) && (@application.year.open? || @application.allow_late == true) 
+    if @application.space.space_users.approved.include?(current_user) && @application.approved_pending_reveal?
       render :template => 'applications/terms'
     else
       flash[:error] = 'This is not your application.'
