@@ -14,14 +14,16 @@
   .section.column
     .subsubtitle= t("supermarket2014.images_form")
     = f.fields_for :applicationwebimages do |ff|
-      .fields_image
+      .fields_image.column
         - if ff.object.imagefile?
           .image.nine.columns
             = image_tag ff.object.imagefile.url(:sidebar)
             = ff.input :imagefile, :label => t(:replace_image)
+            = ff.input :title, :label => t(:caption), :as => :string
             = ff.link_to_remove raw("<i class=\"icon-trash\"></i> ") + t(:remove_image)
         - else
           = ff.input :imagefile, :label => t(:image)
+          = ff.input :title, :label => t(:caption), :as => :string
     .add_link.image= f.link_to_add raw("<i class=\"icon-plus-sign\"></i> ") + t(:add_an_image), :applicationwebimages, :class => :image
   
   

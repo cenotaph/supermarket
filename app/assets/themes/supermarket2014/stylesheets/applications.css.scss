@@ -45,6 +45,12 @@ form {
   }
   
   .fields {
+    
+    .fields_image {
+      margin-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px dotted $orange1;
+    }
     .fields_video {
       margin-top: 25px;
     }

@@ -18,7 +18,7 @@ class Application < ActiveRecord::Base
   accepts_nested_attributes_for :space
   accepts_nested_attributes_for :applicationlinks, :reject_if => proc { |attr| attr['url'].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :videolinks, :reject_if => proc { |attr| attr['url'].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :applicationwebimages, :reject_if => proc { |attr| attr['imagefile'].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :applicationwebimages, :reject_if => proc { |attr|  attr['imagefile'].blank? && attr['id'].blank?  }, :allow_destroy => true
 
   mount_uploader :application_image, ApplicationimageUploader
   mount_uploader :upload1, AttachmentUploader
