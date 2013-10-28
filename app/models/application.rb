@@ -39,7 +39,7 @@ class Application < ActiveRecord::Base
   def approved?
     if booth_granted.nil?
       false
-    elsif booth_granted >= 1 && booth_granted <= 3
+    elsif booth_granted >= 1 && booth_granted <= 4
       year.reveal_decisions
     else
       false
@@ -56,6 +56,22 @@ class Application < ActiveRecord::Base
     end
   end
 
+  
+  def granted_result
+    case booth_granted
+    when 1
+      'accepted - large booth'
+    when 2
+      'accepted - small booth'
+    when 3
+      'accepted - presentation stand'
+    when 4
+      'not accepted'
+    else
+      'not decided yet'
+    end
+  end
+  
   def booth_type
     case booth_applied
     when 2
@@ -97,21 +113,7 @@ class Application < ActiveRecord::Base
   def finished?
     status == 'active'
   end
-  
-  def granted_result
-    case booth_granted
-    when 1
-      'accepted - large booth'
-    when 2
-      'accepted - small booth'
-    when 3
-      'accepted - presentation stand'
-    when 4
-      'not accepted'
-    else
-      'not decided yet'
-    end
-  end
+
   
   def newer_than_this?
     space.applications.delete_if{|x| x == self }.map{|x| x.year.year }.map{|x| x > year.year }.include?(true)
@@ -162,8 +164,21 @@ class Application < ActiveRecord::Base
   end
   
   def written_country
-    out = hometown.to_s + "<br />"
+    if hometown.blank?
+      out = ''
+      if exhibitor_city.blank?
+        out += space.city.humanize + ', '
+      else
+        out += exhibitor_city.humanize + ', '
+      end
+    else
+      out = hometown + ', '
+    end
+    
     if exhibitor_country.blank?
+      if space.country.blank?
+        out += space.visiting_country
+      end
       if Country[space.country].class == FalseClass
         out += space.country
       else
@@ -176,6 +191,7 @@ class Application < ActiveRecord::Base
         out += Country[exhibitor_country].name
       end
     end
+
   end
 
 end
