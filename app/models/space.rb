@@ -3,8 +3,9 @@ class Space < ActiveRecord::Base
   has_many :space_users, :dependent => :destroy
   has_many :applications, :dependent => :destroy
   has_many :users, :through => :space_users
-  has_many :businesstypes, :through => :businesstype_spaces, :dependent => :destroy
-  has_many :businesstype_spaces
+  has_many :space_users, :dependent => :destroy
+  has_many :businesstypes, :through => :businesstype_spaces
+  has_many :businesstype_spaces, :dependent => :destroy
   has_many :organisationtypes, :through => :organisationtype_spaces, :dependent => :destroy
   has_many :organisationtype_spaces
   has_many :activities, :through => :activity_spaces, :dependent => :destroy

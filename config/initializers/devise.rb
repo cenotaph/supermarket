@@ -7,6 +7,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "info@supermarketartfair.com"
+  config.secret_key = 'ac43581aaa587271774c1ea899bf6c7c2578a35744a447c43d940bee7e50b2c6d4446a073fd20f4f2832c087c14be27e8f90a39ce6d1a06c37ce58309f861b0fb'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
