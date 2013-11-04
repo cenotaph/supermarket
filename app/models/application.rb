@@ -178,11 +178,12 @@ class Application < ActiveRecord::Base
     if exhibitor_country.blank?
       if space.country.blank?
         out += space.visiting_country
-      end
-      if Country[space.country].class == FalseClass
-        out += space.country
       else
-        out += Country[space.country].name
+        if Country[space.country].class == FalseClass
+          out += space.country
+        else
+          out += Country[space.country].name
+        end
       end
     else
       if Country[exhibitor_country].class == FalseClass

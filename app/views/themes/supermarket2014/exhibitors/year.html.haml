@@ -15,7 +15,7 @@
           .title= link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => @year.year)
           .inside.alpha.column
             .application_image.two.columns.alpha= image_tag app.any_image(:sidebar)
-            .hometown.column.omega= raw app.written_country.gsub(/,/, "<br />")
+            .hometown.column.one.omega= raw app.written_country.gsub(/,/, "<br />")
 
   .twelve.columns
     %p
@@ -28,7 +28,7 @@
           .title= link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => @year.year)
           .inside.alpha.column
             .application_image.two.columns.alpha= image_tag app.any_image(:sidebar)
-            .hometown.column.omega= raw app.written_country.gsub(/,/, "<br />")
+            .hometown.column.one.omega= raw app.written_country.gsub(/,/, "<br />")
             
 - else
   = t("supermarket2014.will_reveal_later")
