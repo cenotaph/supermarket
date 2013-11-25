@@ -31,37 +31,41 @@
   %body
     %header
       .container
-        .sixteen.columns
-          .flash
-            - flash.each do |key, value|
-              .alert{ :class => "alert-#{key}" }
-                %strong
-                  = value
-          %nav.top_bar
-            %ul
-              %li= link_to t(:faqs), page_path('faq')
-              - if current_user
-                %li= current_user.display_name
-                - if current_user.has_role?(:staff) || current_user.has_role?(:god)
-                  %li= link_to 'Admin side', '/admin'
-                %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
-              - else
-                %li= link_to t(:login), new_user_session_path
-                %li= link_to t(:sign_up), new_user_registration_path
-              %li
-                = form_tag('/search') do |f|
-                  = text_field_tag :searchterm,  t(:search)
         .sixteen.columns.header_main.alpha
-          .twelve.columns.alpha.header_logo
-            = link_to image_tag(theme_image_path('supermarket_title.png')), '/'
-            = link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/', :class => :tl2
-            .dates 14-16 February 2014
-          .four.columns.omega
-            %nav.social_icons
+          .seven.columns.alpha.header_logo
+            = link_to image_tag(theme_image_path('2014siaf_white.png')), '/'
+            / = link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/', :class => :tl2
+            .dates 
+              %p Kulturhuset Stockholm
+              %p 14-16 February 2014
+              %p Friday 11-22
+              %p Saturday-Sunday 11-20
+          .nine.columns.omega.top_bar_container
+            %nav.top_bar
               %ul
-                %li= link_to image_tag(theme_image_path('facebook_icon.png')), 'https://www.facebook.com/supermarketartfair'
-                %li= link_to image_tag(theme_image_path('twitter_icon.png')), 'https://twitter.com/supermarketart'
-                %li= link_to image_tag(theme_image_path('tv_icon.png')), page_path('super-tv')
+                %li= link_to t(:faqs), page_path('faq')
+                - if current_user
+                  %li= current_user.display_name
+                  - if current_user.has_role?(:staff) || current_user.has_role?(:god)
+                    %li= link_to 'Admin side', '/admin'
+                  %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+                - else
+                  %li= link_to t(:login), new_user_session_path
+                  %li= link_to t(:sign_up), new_user_registration_path
+                %li
+                  = form_tag('/search') do |f|
+                    = text_field_tag :searchterm,  t(:search)
+            .flash
+              - flash.each do |key, value|
+                .alert{ :class => "alert-#{key}" }
+                  %strong
+                    = value                    
+            .nine.columns.omega
+              %nav.social_icons
+                %ul
+                  %li= link_to image_tag(theme_image_path('facebook_icon.png')), 'https://www.facebook.com/supermarketartfair'
+                  %li= link_to image_tag(theme_image_path('twitter_icon.png')), 'https://twitter.com/supermarketart'
+                  %li= link_to image_tag(theme_image_path('tv_icon.png')), page_path('super-tv')
       #menu_base
         .container
           .sixteen_columns.horiz_menu

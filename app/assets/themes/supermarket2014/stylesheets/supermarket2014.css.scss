@@ -69,10 +69,22 @@ button {
 header {
   background-color: $orange1;
   padding-top: 15px;
+  a {
+    img {
+      float: left;
+      margin-right: 70px;
+    }
+  }
   .dates {
-    
+    padding-top: 10px;
+    float: left;
     color: white;
-    font-size: 12px;
+
+    p {
+      margin: 0px 0px 3px 0px;
+      font-size: 14px;
+      font-weight: 300;
+    }
   }
   nav.top_bar {
     float: right;
@@ -139,6 +151,7 @@ header {
           float: left;
           list-style-type: none;
           margin-right: 10px;
+          width: 35px;
         }
       }
     }
@@ -269,10 +282,22 @@ header {
     }    
   }
 }
+
+
 @media only screen and (min-width: 768px) and (max-width: 959px) {
   a.tl2 {
     margin-left: -6px;
   }
+  header {
+    .header_logo {
+      a {
+        img {
+          margin-right: 2em;
+        }
+      }
+    }
+  }
+
 }
 @media only screen and (min-width: 768px) {
   .horiz_menu {
@@ -285,10 +310,34 @@ header {
 }
 
 @media only screen and (max-width: 767px) {
+  header {
+    padding-top: 10px !important;
+    .header_logo { 
+      width: 150px !important;
+    }
+    
+    .dates {
+      display: none;
+    }
+  }
+  
+  #menu_base {
+    margin-top: 10px;
+  }
   .submenu_base_1, .submenu_base_2, .submenu_base_3 {
     display: none;
   }
-  
+  .top_bar_container {
+    width: 22em !important;
+  }
+  nav.social_icons {
+    width: 22em !important;
+    ul {
+      li {
+        width: 15px !important;
+      }
+    }
+  }
   .horiz_menu {
     nav.page_menu, nav.page_submenu {
       select {
