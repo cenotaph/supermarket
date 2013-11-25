@@ -48,6 +48,7 @@ class Space < ActiveRecord::Base
   end
   
   def full_street_address
+    return false if country.blank?
     visiting = [visiting_address1, visiting_address2, visiting_city, visiting_state, visiting_postcode.to_s + " " +  visiting_country.to_s].delete_if{|x| x.blank?}.compact.map(&:strip).join(', ')
     contact = [address1, address2, city, state, postcode.to_s + " " + (Country[country.to_s.downcase].class == FalseClass ? country.to_s.downcase : Country[country.to_s.downcase].name)].delete_if{|x| x.blank?}.compact.map(&:strip).join(', ')
     [visiting, contact].delete_if{|x| x.blank?}.first
