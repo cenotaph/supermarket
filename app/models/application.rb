@@ -98,7 +98,8 @@ class Application < ActiveRecord::Base
   end
   
   def contact_full_address
-    [contact_address1, contact_address2, contact_postcode.to_s + " " + contact_city.to_s, contact_state, contact_country.blank? ? nil : (Country[contact_country].class == FalseClass ? contact_country : Country[contact_country].name)].delete_if(&:blank?).join('<br />')
+
+    [contact_address1, contact_address2, contact_postcode.to_s + " " + contact_city.to_s, contact_state, contact_country.blank? ? nil : (Country[contact_country].class == FalseClass ? contact_country : (Country[contact_country].nil? ? contact_country : Country[contact_country].name))].delete_if(&:blank?).join('<br />')
   end
 
   def exhibitor_full_address
