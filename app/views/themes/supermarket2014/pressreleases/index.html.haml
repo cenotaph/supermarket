@@ -11,9 +11,9 @@
         - unless pr.description.blank?
           .description= pr.description
         - if pr.attachment_eng?
-          %p= link_to 'Download (English)', pr.attachment_eng.url
+          %p= link_to 'Download (English)', pr.attachment_eng.url, :target => :_blank
         - if pr.attachment_swe?
-          %p= link_to 'Download (Swedish)', pr.attachment_swe.url
+          %p= link_to 'Download (Swedish)', pr.attachment_swe.url, :target => :_blank
 
 .twelve.columns
   %h3= link_to t("supermarket2014.subscribe_press_releases"), 'http://admin.getanewsletter.com/subscription/YtgJ9jx0DQACHdRVTrB2Ek56Sis/add/'
