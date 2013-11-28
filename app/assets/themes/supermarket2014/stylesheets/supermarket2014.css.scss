@@ -75,7 +75,7 @@ header {
       margin-right: 70px;
     }
   }
-  .dates {
+  .dates, .dates_mobile {
     padding-top: 10px;
     float: left;
     color: white;
@@ -86,6 +86,13 @@ header {
       font-weight: 300;
     }
   }
+  .dates_mobile {
+    display: none;
+    p {
+     font-size: 10px;
+     line-height: 11px;
+   }
+ }
   nav.top_bar {
     float: right;
     margin-bottom: 20px;
@@ -308,16 +315,22 @@ header {
     }
   }
 }
-
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 480px) {
   header {
     padding-top: 10px !important;
     .header_logo { 
-      width: 150px !important;
+      width: 108px !important;
     }
     
     .dates {
       display: none;
+    }
+    .dates_mobile {
+      display: block;
+      p {
+        font-size: 12px;
+        line-height: 14px;
+      }
     }
   }
   
@@ -327,14 +340,96 @@ header {
   .submenu_base_1, .submenu_base_2, .submenu_base_3 {
     display: none;
   }
+  nav.top_bar {
+    margin-bottom: 6px;
+  }
   .top_bar_container {
-    width: 22em !important;
+    width: 16em !important;
+    ul {
+      padding: 0px 0px 0px 5px !important;
+      margin: 0px !important;
+      li {
+         margin-right: 3px !important;
+         
+      }
+    }
   }
   nav.social_icons {
-    width: 22em !important;
+    float: left !important;
+    margin-left: 20px;
+
     ul {
+
       li {
         width: 15px !important;
+       
+      }
+    }
+  }
+  .horiz_menu {
+    nav.page_menu, nav.page_submenu {
+      select {
+        display: block;
+      }
+      ul {
+        display: none;
+      }
+    }
+  }  
+  
+  
+
+  
+}
+
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  header {
+    padding-top: 10px !important;
+    .header_logo { 
+      width: 108px !important;
+    }
+    
+    .dates {
+      display: none;
+    }
+    .dates_mobile {
+      display: block;
+      p {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+  
+  #menu_base {
+    margin-top: 10px;
+  }
+  .submenu_base_1, .submenu_base_2, .submenu_base_3 {
+    display: none;
+  }
+  nav.top_bar {
+    margin-bottom: 6px;
+  }
+  .top_bar_container {
+    width: 16em !important;
+    ul {
+      padding: 0px 0px 0px 5px !important;
+      margin: 0px !important;
+      li {
+         margin-right: 10px !important;
+      }
+    }
+  }
+  nav.social_icons {
+    float: left !important;
+    margin-left: 20px;
+    width: 16em !important;
+    ul {
+
+      li {
+        width: 15px !important;
+       
       }
     }
   }
