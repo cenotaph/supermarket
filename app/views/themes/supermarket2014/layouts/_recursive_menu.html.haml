@@ -5,7 +5,8 @@
       %nav.page_submenu
         %ul
           - items.each_with_index do |menu, index|
-            %li{:class => [(index == 0 ? :first : false) , (!@page.nil? ? (@page.child_of?(menu) ? :active : false) : false), (!@year.nil? ? (@year.year.to_s == menu.item.display_name ? :active : false ) : false), controller.controller_name ], :id => "menu_#{menu.id.to_s}"}= link_to menu.item.display_name, menu.link
+            %li{:class => [(index == 0 ? :first : false) , (!@page.nil? ? (@page.child_of?(menu) ? :active : false) : false), (!@year.nil? ? (@year.year.to_s == menu.item.display_name ? :active : false ) : false), (!@allfunders.nil? ? ( menu.item.display_name =~ /^Funding/ ? :active : false ) : false ), controller.controller_name ], :id => "menu_#{menu.id.to_s}"}= link_to menu.item.display_name, menu.link
+
 
 /           - if entry.menus.map(&:ancestors).flatten.empty?  # first submenu
 /             - entry.menus.reject{|x| x.depth != (level - 1)}.first.children.sort_by(&:sort_order).each_with_index do |menu, index|
