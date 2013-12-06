@@ -65,6 +65,9 @@ button {
 //    background: url('/assets/supermarket2014/images/BG_mindmap1.gif') repeat top left;
     padding-bottom: 35px;
     padding-top: 20px;
+    &.funders {
+      background-color: white;
+    }
   }
 header {
   background-color: $orange1;
@@ -456,7 +459,7 @@ header {
     min-height: 110px;
 
     img {
-      max-width: 100%;
+      max-width: 120px;
       height: auto;
     }
   }

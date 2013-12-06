@@ -1,7 +1,12 @@
 %h2 funders and support
 
+%p= link_to 'Add new funder', new_admin_funder_path
+
 .cms_grid
   - @funders.each do |f|
     .funder
       = link_to f.name, edit_admin_funder_path(f)
       %span.delete= link_to '[delete]', [:admin, f], :method => :delete, :data => {:confirm => 'Are you sure?'}
+      
+%p= link_to 'Add new funder', new_admin_funder_path
+      
