@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104132611) do
+ActiveRecord::Schema.define(version: 20131220111751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20131104132611) do
     t.string   "exhibitor_state"
     t.string   "hometown"
     t.string   "application_image"
-    t.text     "staff"
+    t.text     "staff",                     default: "Please pick suitable titles from these alternatives.\n\nMembers: If you have more than 20 members, just write the number of members.\nBoard:\nCo-directors:\nManagers:\nCo-founders:\n! DELETE ALTERNATIVES NOT USED\n"
     t.date     "submitted_at"
     t.text     "supermarket_proposal"
     t.integer  "booth_applied"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20131104132611) do
     t.boolean  "need_darker_room"
     t.boolean  "wants_open_structure"
     t.string   "vat_number"
-    t.boolean  "allow_late",                default: false, null: false
+    t.boolean  "allow_late",                default: false,                                                                                                                                                                                                                    null: false
     t.integer  "applicationcomments_count", default: 0
     t.boolean  "red_spot"
     t.boolean  "accepted_terms"
@@ -566,6 +566,7 @@ ActiveRecord::Schema.define(version: 20131104132611) do
     t.datetime "updated_at"
     t.boolean  "applications_open", default: false, null: false
     t.boolean  "reveal_decisions",  default: false, null: false
+    t.boolean  "allow_editing",     default: false, null: false
   end
 
 end

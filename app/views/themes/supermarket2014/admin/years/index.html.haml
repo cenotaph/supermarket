@@ -10,4 +10,5 @@
         = year.applications_open == true ? 'open' : 'closed'
         , decisions
         = year.reveal_decisions == true ? '' : ' not '
-        revealed.
+        revealed, editing of applications
+        = year.allow_editing == true ? 'ALLOWED' : 'not allowed'

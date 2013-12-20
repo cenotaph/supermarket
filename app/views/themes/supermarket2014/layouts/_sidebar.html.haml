@@ -56,5 +56,7 @@
                         - if sa.accepted_terms != true
                           .big= link_to 'You must accept the terms and regulations.', terms_application_path(sa)
                         - else
-                          .big= link_to 'Edit your application', edit_application_path(sa)
+                          - if sa.year.allow_editing? && sa.approved_pending_reveal?
+                            .big= link_to 'Edit your application', edit_application_path(sa)
+                          
                         

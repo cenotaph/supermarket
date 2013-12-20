@@ -1,5 +1,6 @@
 = semantic_form_for([:admin, @year]) do |f|
   = f.input :year
   = f.input :applications_open
+  = f.input :allow_editing, :label => "Allow editing of applicatons", :hint => "Untick this when the publication deadline arrives"
   = f.input :reveal_decisions
   = f.submit
