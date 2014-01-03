@@ -2,7 +2,7 @@
 - @allfunders.each do |ft|
   .funder_type.column.alpha.omega
     .title= ft.name
-    - ft.funders.each do |f|
+    - ft.funders.sort_by{|x| x.sortorder }.each do |f|
       .funder.columns.three.alpha.omega
         - if f.url.blank?
           = image_tag f.logo.url
