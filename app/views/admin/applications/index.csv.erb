@@ -1,7 +1,7 @@
 <% if params[:nomalongen] == "1" %>
 Id,Organisation Name,Contact First Name,Contact Last Name,Contact Email,Contact Address1,Contact Address2,Contact City,Contact Postcode,Contact State,Contact Country,Contact Phone,Exhibitor Address1,Exhibitor Address2,Exhibitor City,Exhibitor Postcode,Exhibitor State,Exhibitor Country,Exhibitor Phone,Websites,Hometown,Booth Applied,Booth Granted,Accepted Terms,Special Needs,Need Darker Room,Wants Open Structure,Vat Number
 <% else %>
-Id,Organisation Name,Contact First Name,Contact Last Name,Contact Email,Exhibitor Country,Hometown,Booth Applied,Booth Granted,Accepted Terms,Apply To Malongen,Malongen Use,Special Needs,Need Darker Room,Wants Open Structure,Vat Number
+Id,Organisation Name,Contact First Name,Contact Last Name,Contact Email,Contact Address1,Contact Address2,Contact City,Contact Postcode,Contact State,Contact Country,Contact Phone,Exhibitor Address1,Exhibitor Address2,Exhibitor City,Exhibitor Postcode,Exhibitor State,Exhibitor Country,Exhibitor Phone,Websites,Hometown,Booth Applied,Booth Granted,Accepted Terms,Apply to Malongen,Malongen Use,Special Needs,Need Darker Room,Wants Open Structure,Vat Number
 <% end %>
 <%= CSV.generate do |csv|
    @applications.each do |cs|
