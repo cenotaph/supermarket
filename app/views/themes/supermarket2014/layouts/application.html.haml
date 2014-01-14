@@ -44,7 +44,7 @@
             %nav.top_bar
               %ul
                 %li.big= link_to t(:tickets), page_path('future-dates')
-                %li= link_to t(:faqs), page_path('faq')
+                / %li= link_to t(:faqs), page_path('faq')
                 - if current_user
                   %li= current_user.display_name
                   - if current_user.has_role?(:staff) || current_user.has_role?(:god)
