@@ -3,6 +3,7 @@ Aim::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   resources :spaces do
     # resources :build, controller: 'spaces/build'
+    get :request_access
     get :autocomplete_space_business_name, :on => :collection
     get :select_existing, :on => :member
     get :grant_access, :on => :member
@@ -75,6 +76,7 @@ Aim::Application.routes.draw do
     resources :spaces
     resources :search
     resources :subsites
+    resources :videos
     resources :years
   end
   # Example resource route within a namespace:

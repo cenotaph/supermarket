@@ -25,6 +25,7 @@ en:
   video_title: 'Title of video (optional)'
   url_to_video: 'URL of video'
   search: 'Search'
+  tickets: 'Tickets'
   caption: 'Caption:'
   further_links: 'Further links:'
   login: 'Sign in'

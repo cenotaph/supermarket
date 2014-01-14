@@ -7,8 +7,8 @@
   = f.input :vat_number, :input_html => {:value => "Not registered for VAT"}, :label => t("supermarket2014.vat_number")
   = f.input :form_direction, :input_html => { :value => "forward"}, :as => :hidden
   = f.actions do
-    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
-    = f.action :submit, :label => raw("<i class='icon-check icon-large'></i>") + t(:complete_your_application), :as => :button,  :button_html => {:class => :completed}
+    = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
+    = f.action :submit, :label => raw("<i class='fa fa-check icon-large'></i>") + t(:complete_your_application), :as => :button,  :button_html => {:class => :completed}
 - if user_signed_in?
   = content_for :sidebar do
     = render :partial => 'layouts/sidebar'      

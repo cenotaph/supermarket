@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131220111751) do
+ActiveRecord::Schema.define(version: 20140113205235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -536,6 +536,13 @@ ActiveRecord::Schema.define(version: 20131220111751) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
+  create_table "videohosts", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "videolinks", force: true do |t|
     t.text     "url"
     t.integer  "application_id"
@@ -547,6 +554,29 @@ ActiveRecord::Schema.define(version: 20131220111751) do
   end
 
   add_index "videolinks", ["application_id"], name: "index_videolinks_on_application_id", using: :btree
+
+  create_table "videos", force: true do |t|
+    t.integer  "subsite_id"
+    t.string   "provider_id"
+    t.boolean  "published"
+    t.integer  "year_id"
+    t.string   "thumbnail"
+    t.integer  "thumbnail_size"
+    t.integer  "thumbnail_width"
+    t.integer  "thumbnail_height"
+    t.string   "thumbnail_content_type"
+    t.integer  "video_width"
+    t.integer  "video_height"
+    t.integer  "duration"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "videohost_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "videos", ["subsite_id"], name: "index_videos_on_subsite_id", using: :btree
+  add_index "videos", ["year_id"], name: "index_videos_on_year_id", using: :btree
 
   create_table "websites", force: true do |t|
     t.string   "url"

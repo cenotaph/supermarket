@@ -14,8 +14,8 @@
   = f.input :staff
   = f.input :form_direction, :input_html => { :value => "forward"}, :as => :hidden
   = f.actions do
-    = f.action :submit, :label => raw("<i class='icon-circle-arrow-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
-    = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button
+    = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
+    = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-right icon-large'></i>") + t(:next), :as => :button
 
 - if user_signed_in?
   = content_for :sidebar do

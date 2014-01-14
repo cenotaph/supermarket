@@ -14,12 +14,12 @@
   .five.columns.alpha
     %p= t "supermarket2014.login_to_reclaim", :space => @space.name
     = button_to(destroy_user_session_path, :method => :delete) do
-      %i.icon-signout.icon-large
+      = fa_icon 'sign-out', class: :large
       = t :sign_out
   .five.columns.omega
     %p= t "supermarket2014.email_to_reclaim", :space => @space.name
     = button_to(space_request_access_path(:space_id => @space.slug), :method => :get) do
-      %i.icon-envelope-alt.icon-large
+      = fa_icon 'envelope-o', class: :large
       = t "supermarket2014.request_authorisation"
 - if user_signed_in?
   = content_for :sidebar do

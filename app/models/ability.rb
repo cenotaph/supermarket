@@ -10,6 +10,8 @@ class Ability
         elsif user.has_role? :staff
           can :manage, [Space, Page, Applicationcomment, Application, Post, Pressrelease, Presslink]
           cannot :manage, [Year, User, Subsite]
+        elsif user.has_role? :videoproducer
+          can :manage, Video
         elsif user.has_role? :exhibitor
           cannot :manage, Page
           can :manage, Space, :id => Space.with_role(:exhibitor, user).map(&:id)

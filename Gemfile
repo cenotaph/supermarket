@@ -92,8 +92,9 @@ gem 'superfish-rails'
 gem 'textacular', '~> 3.0'
 gem 'themes_for_rails', github: 'boxcar21/themes_for_rails', branch: 'master'
 gem 'truncate_html'
+gem 'vimeo'
 gem 'wicked', '1.0.0'
-
+gem 'youtube_it'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

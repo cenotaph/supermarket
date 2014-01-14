@@ -25,7 +25,7 @@
   = f.input :state, :label => t("supermarket2014.state")
   = f.input :country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country"), :input_html => {:required => true }
   = f.input :businesstypes, :as => :check_boxes, :label => t("supermarket2014.business_type_fieldset"), :hint => t("supermarket2014.business_type_hint")
-  %button.next.icon-circle-arrow-right.icon-large= t :next
+  %button.next.fa.fa-arrow-circle-right.icon-large= t :next
   
 - if user_signed_in?
   = content_for :sidebar do

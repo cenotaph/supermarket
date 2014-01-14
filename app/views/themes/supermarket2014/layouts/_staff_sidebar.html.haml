@@ -9,60 +9,65 @@
     = submit_tag "search"
   
   %ul.staff_menu
+    - if can? :manage, Video
+      %li
+        = link_to admin_videos_path do 
+          = fa_icon 'youtube-play'
+          Supermarket TV
     %li
       = link_to  admin_applications_path do
-        %i.icon-globe
+        =fa_icon 'globe'
         Applications
     %li
       = link_to admin_posts_path do
-        %i.icon-bullhorn
+        = fa_icon 'bullhorn'
         News/blog posts
     - if can? :manage, Page
       %li
         = link_to admin_pages_path do
-          %i.icon-file-text
+          = fa_icon 'file-text'
           Pages
     - if can? :manage, Funder        
       %li
         = link_to admin_funders_path do
-          %i.icon-dollar
+          = fa_icon 'dollar'
           Funders
     - if can? :manage, Pressrelease
       %li
         = link_to admin_pressreleases_path do
-          %i.icon-bullhorn
+          = fa_icon 'bullhorn'
           Press releases
     - if can? :manage, Presslink
       %li
         = link_to admin_presslinks_path do
-          %i.icon-trophy
+          = fa_icon 'trophy'
           Press clippings
     %li
       = link_to edit_admin_user_path(current_user) do
-        %i.icon-male
+        = fa_icon 'male'
         Edit your profile
     - if can? :manage, Menu
       %li
         = link_to admin_menus_path do
-          %i.icon-list-ul
+          =fa_icon 'list-ul'
           Menu config
     - if can? :manage, User
       %li
         = link_to admin_users_path do
-          %i.icon-male
+          = fa_icon 'male'
           All users
     - if can? :manage, Background
       %li
         = link_to admin_backgrounds_path do
-          %i.icon-picture
+          = fa_icon 'picture-o'
           Backgrounds
     - if can? :manage, Year
       %li
         = link_to admin_years_path do
-          %i.icon-calendar
+          =fa_icon 'calendar'
           Year setup
     - if can? :manage, Subsite
       %li
         = link_to  admin_subsites_path do
-          %i.icon-gears
+          =fa_icon 'gears'
           Master site setup

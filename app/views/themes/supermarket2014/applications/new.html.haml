@@ -13,7 +13,7 @@
   = f.input :allow_late, :as => :hidden
   = f.input :form_direction,  :input_html => {:value => "forward"}, :as => :hidden
   .clearer
-    = f.action :submit, :label => raw("<i class='icon-circle-arrow-right icon-large'></i>") + t(:next), :as => :button,  :button_html => {:class => :beginning}
+    = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-right icon-large'></i>") + t(:next), :as => :button,  :button_html => {:class => :beginning}
 
 - if user_signed_in?
   = content_for :sidebar do
