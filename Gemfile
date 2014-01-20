@@ -57,7 +57,7 @@ gem 'countries'
 gem 'country_select'
 gem 'devise'
 gem 'devise-encryptable'
-gem 'fog', '~> 1.3.1'
+gem 'fog'
 gem 'font-awesome-rails'
 gem 'formtastic', github: 'justinfrench/formtastic', branch: 'master'
 gem "friendly_id", '~> 5.0.0.alpha1', :github => "FriendlyId/friendly_id"
@@ -94,7 +94,7 @@ gem 'themes_for_rails', github: 'boxcar21/themes_for_rails', branch: 'master'
 gem 'truncate_html'
 gem 'vimeo'
 gem 'wicked', '1.0.0'
-gem 'youtube_it'
+gem 'youtube_it', '2.4.0'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

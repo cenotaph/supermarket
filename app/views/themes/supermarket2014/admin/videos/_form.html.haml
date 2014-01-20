@@ -1,0 +1,9 @@
+= semantic_form_for [:admin, @video] do |f|
+  = f.semantic_errors *f.object.errors.keys
+  %label 
+    %h4 Add a new video to the TV stream
+  = f.input :subsite_id, :as => :hidden, :value => 1
+  = f.input :year, :include_blank => false, :collection => Year.order('year desc')
+  = f.input :in_url, :label => "Please paste the YouTube or Vimeo URL"
+  = f.input :published
+  = f.submit

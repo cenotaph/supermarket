@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113205235) do
+ActiveRecord::Schema.define(version: 20140120102902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -597,6 +597,7 @@ ActiveRecord::Schema.define(version: 20140113205235) do
     t.boolean  "applications_open", default: false, null: false
     t.boolean  "reveal_decisions",  default: false, null: false
     t.boolean  "allow_editing",     default: false, null: false
+    t.text     "tv_description"
   end
 
 end

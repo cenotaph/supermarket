@@ -83,7 +83,7 @@ ul.staff_menu {
     text-transform: uppercase;
   }
 }
-span.delete {
+span.delete, .delete {
   a { color: red; }
   text-transform: uppercase;
   font-weight: bold;
@@ -139,3 +139,9 @@ span.delete {
   
 }
 
+.video_list {
+  .video {
+    border-bottom: 1px solid black;
+    padding: 15px 0px 15px 0px;
+  }
+}

@@ -1,0 +1,24 @@
+%h2 Super-TV
+
+%h3= @year.year.to_s
+%p= raw @year.tv_description
+
+- @videos.each do |vy|
+  - next unless vy.first == @year.year
+  - vy.last.in_groups_of(2).each do |group|
+    .eight.columns.alpha
+      .video-container= figure_video_type(group.first, 580, 390)
+    .eight.columns.omega
+      - next if group[1].nil?  
+      .video-container= figure_video_type(group[1], 580, 390)
+      
+= content_for :extra_header do
+  .submenu_base_1
+    .container
+      .sixteen_columns.horiz_menu
+        %nav.page_submenu
+          %ul
+            %li.first Super-TV:
+            - @years.each do |year|
+              %li{:class => year.year == @year.year ? :active : false}= link_to year.year.to_s, "/tv/#{year.year}"
+        

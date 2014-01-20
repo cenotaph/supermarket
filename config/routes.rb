@@ -13,6 +13,8 @@ Aim::Application.routes.draw do
   
   match '/support' => "funders#index", :via => :get
   match '/search' => 'search#create', :via => :post
+  match '/tv' => 'videos#index', via: :get
+  match '/tv/:year' => 'videos#index', via: :get
 
   # devise_for :users, ActiveAdmin::Devise.config.merge({ :controllers => ActiveAdmin::Devise.config[:controllers].merge(:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions') }).merge(:path => '/') do
   devise_for :users, :controllers => {:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions'} do

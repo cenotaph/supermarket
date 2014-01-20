@@ -1,0 +1,16 @@
+%h2 Edit video/Supermarket-TV 
+= semantic_form_for [:admin, @video] do |f|
+  = f.semantic_errors *f.object.errors.keys
+  %p 
+    To change the YouTube/Vimeo source video, 
+    = link_to 'delete this video', :method => :delete, :confirm => "are you sure?"
+    and create a new one
+  = f.input :subsite
+  = f.input :year, :include_blank => false, :collection => Year.order('year desc')
+  = f.input :title
+  = f.input :description
+  - if f.object.thumbnail?
+    = image_tag f.object.thumbnail.url(:profile)
+  = f.input :thumbnail, :label => 'Change thumbnail'
+  = f.input :published
+  = f.submit

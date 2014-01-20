@@ -1,0 +1,15 @@
+%h2 Supermarket TV/Videos
+
+= render :partial => 'form'
+
+.video_list
+  - @videos.each do |vid|
+    .thirteen.columns.video
+      .three.columns.alpha
+        = image_tag vid.thumbnail.url(:sidebar)
+        %p
+          %strong= vid.title
+        %p= raw vid.description
+        .delete= link_to '[delete]', [:admin, @video], :method => :delete, :confirm => "Are you sure?"
+        = link_to 'edit details', edit_admin_video_path(vid)
+      .eight.columns.omega= figure_video_type(vid,  600, 400)
