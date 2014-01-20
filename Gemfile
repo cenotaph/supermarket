@@ -38,7 +38,6 @@ group :development do
   gem 'nifty-generators'
   gem 'rails-footnotes',  '>= 3.7.9'
   gem 'quiet_assets'
-  gem 'rails-footnotes',  '>= 3.7.9'
   gem 'thin'
 end
 
