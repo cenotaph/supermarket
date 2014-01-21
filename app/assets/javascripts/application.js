@@ -16,6 +16,7 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require jquery.ui.tabs
+//= require ckeditor/override
 //= require ckeditor/init
 //= require jquery.ui.autocomplete
 //= require jquery_nested_form
@@ -24,3 +25,4 @@
 //= require jquery.clearfield
 //= require jquery.lightbox_me
 
+var CKEDITOR_BASEPATH = '/assets/ckeditor/';

@@ -75,6 +75,7 @@ gem 'kaminari'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'mini_magick'
 gem 'nested_form'
+gem "non-stupid-digest-assets"
 # gem 'protected_attributes'
 gem 'public_activity'
 gem 'rails-i18n'
