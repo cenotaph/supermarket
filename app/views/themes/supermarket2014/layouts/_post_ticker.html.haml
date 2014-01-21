@@ -1,0 +1,10 @@
+%ul.bottom_posts
+  - promoted_posts.each_with_index do |post, index|
+    %li
+      = link_to(post) do
+        .post{:class => (index == 0 ? :first : false)}
+          .image= image_tag post.postimage.url(:frontsmall)
+          - if post.class == Post
+            .title= post.subject
+          - elsif post.class == Page
+            .title= post.title
