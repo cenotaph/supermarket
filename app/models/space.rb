@@ -22,7 +22,7 @@ class Space < ActiveRecord::Base
   mount_uploader :image3, ImageUploader
   mount_uploader :image4, ImageUploader
   extend FriendlyId
-  friendly_id :business_name, use: :slugged
+  friendly_id :business_name, use: [:slugged, :finders ]
   geocoded_by :full_street_address  
   after_validation :geocode     
   attr_accessor :form_direction
@@ -33,6 +33,7 @@ class Space < ActiveRecord::Base
   
   
   scope :approved, -> { where(approved: true)}
+  scope :by_approval, -> (condition) { where(approved: (condition == 'true' ? true : false))}
   scope :unapproved, -> { where(approved: false) }
   scope :by_country, ->(x) { where(["lower(country) = ? OR lower(visiting_country) = ?", x.downcase, x.downcase])}
   
@@ -40,7 +41,7 @@ class Space < ActiveRecord::Base
     # local = [[image1, image1_caption].compact, [image2, image2_caption].compact, [image3, image3_caption].compact, [image4, image4_caption].compact ]
     local = []
     applications.sort_by{|x| x.year.year }.reverse.map(&:applicationwebimages).flatten.compact.map{|x| [x.imagefile, x.title] }.each{|x| local.push(x)}
-    local.flatten.compact
+    local.compact
   end
   
   def approved_users
@@ -59,6 +60,10 @@ class Space < ActiveRecord::Base
   end
   def finished?
     status == 'active'
+  end
+  
+  def percent_complete
+    "100"
   end
   
   def website1_safe

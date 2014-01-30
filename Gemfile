@@ -76,7 +76,10 @@ gem 'meta-tags', :require => 'meta_tags'
 gem 'mini_magick'
 gem 'nested_form'
 gem "non-stupid-digest-assets"
-# gem 'protected_attributes'
+gem 'oauth-client'
+gem 'omniauth-facebook' #, '1.4.0'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
 gem 'public_activity'
 gem 'rails-i18n'
 gem 'rails_12factor', group: :production

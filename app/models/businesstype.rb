@@ -3,4 +3,5 @@ class Businesstype < ActiveRecord::Base
   has_many :businesstype_spaces
   translates :name
   
+  
 end

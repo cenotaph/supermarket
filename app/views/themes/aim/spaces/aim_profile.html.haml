@@ -2,30 +2,32 @@
 .eight.columns.alpha.space
   .title_and_web
     .space_title= @space.business_name
-    .space_websites
+    .space_websites.column.alpha
       - unless @space.website1.blank?
         .space_web= link_to @space.website1, @space.website1_safe
       - unless @space.website2.blank?
         .space_web= link_to @space.website2, @space.website2_safe
-    - if current_user
-      - if current_user.is_admin?
-        .admin_stuff
-          - if @space.approved == true
-            %b= link_to 'Unapprove', '/cms/' + @space.id + '/toggle_approved'
-          - else
-            %div
-            %b= link_to 'Approve', '/cms/' + @space.id + '/toggle_approved'
+      - if current_user
+        - if current_user.is_aim_staff?
+          .admin_stuff
+            - if @space.approved == true
+              %b= button_to 'Unapprove', unapprove_admin_space_path(@space)
+            - else
+              %div
+              %b= button_to 'Approve', approve_admin_space_path(@space)
   - unless @space.businesstypes.empty?
     .business_type= @space.businesstypes.map(&:name).join(' / ')
   .space_metadata
     .section_heading= t "aim.who_we_are"
-    .section_content= raw @space.short_description
+    .section_content= raw simple_format(@space.short_description)
     
     .section_heading= t "aim.what_we_do"
     .section_content
       %ul
-        %li= @space.exhibitionspacetype.nil? ? "" : @space.exhibitionspacetype.name
-        %li= @space.is_active == true ? t(:active) : t(:inactive)
+        - unless @space.exhibitionspacetype.nil?
+          %li= @space.exhibitionspacetype.name
+        -  unless @space.is_active == true
+          %li= t(:inactive)
         %li
           - if @space.founding_year
             = @space.founding_year
@@ -54,7 +56,8 @@
           - unless @space.activities_other.blank?
             %li= "#{@space.activities_other} " + t("aim.per_year_other")
     .section_heading= t "aim.what_we_exhibit"
-    .section_content= @space.activities.map(&:name).join(' - ')
+    .section_content
+      = @space.activities.map(&:name).join(' - ')
 .eight.columns.space.omega
   - if @space.latitude.nil?
     .space_map No map data.
@@ -91,8 +94,9 @@
           - group.each_with_index do |i, index|
             .four.columns{:class => (index == 0 ? :alpha : (index == 3 ?  :omega : false))}
               - next if i.nil?
-              .carousel_image= link_to image_tag(i.first.url(:slide)), i.first.url
-              .caption= raw(i.last)
+              .carousel_image
+                = link_to image_tag(i.first.url(:slide).gsub(/development/, 'production')), i.first.url
+                .caption= raw(i.last)
             
 
 

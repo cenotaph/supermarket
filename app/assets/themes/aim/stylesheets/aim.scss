@@ -15,16 +15,7 @@ a {
   color: #444;
 }
 
-.admin_stuff {
-  clear: left;
-  padding-top: 13px;
-  a {
-    color: red;
-    font-size: 8pt;
-    font-weight: bold;
-  
-  }
-}
+
 
 
 
@@ -109,11 +100,6 @@ label.sub {
   }
 }
 
-#space_map {
-  width: 460px;
-  height: 300px;
-  margin: 20px 0 20px 0;
-}
 
 .logo {
   width: 300px;
@@ -124,10 +110,6 @@ label.sub {
 .address {
   width: 140px;
   float: left;
-}
-#google-map {
-  width: 100%;
-  height: 100%;
 }
 
 input.shadow {
@@ -190,8 +172,21 @@ input.shadow {
       font-size: 36pt;
       color: #000000;
     }
+    .space_websites {
+      margin-bottom: 5px;
+      .admin_stuff {
+        a {
+          color: red;
+          font-size: 8pt;
+          font-weight: bold;
+  
+        }
+      }
+    }
     .space_web {
-      float: right;
+      float: left;
+      padding: 3px;
+      margin-right: 10px;
       font-family: $helv;
       font-size: 12pt;
       color: #000;
@@ -207,6 +202,8 @@ input.shadow {
   }
   
   .business_type {
+    
+    clear: left;
     border-top: 1px solid #999;
     border-bottom: 1px solid #999;
     font-size: 14px;
@@ -268,11 +265,9 @@ input.shadow {
   }
   .filter_toggle {
     margin: 5px 0px 10px 0px;
-    color: white;
-    a { color: white; }
-    background-color: black;
+    
     padding: 3px;
-    font-size: 12px;
+    font-size: 13px;
     float: left;
   }
 }

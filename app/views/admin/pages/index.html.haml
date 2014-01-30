@@ -9,10 +9,10 @@
       .two.columns= page.subsites.map(&:name).join(' / ')
       .four.columns.omega
         = link_to 'show', page
-        - if can? :edit, Page
+        - if can? :edit, page
           |
           = link_to 'edit', edit_admin_page_path(page)
-        - if can? :destroy, Page
+        - if can? :destroy, page
           |
           = link_to 'delete', [:admin, page], :method => :delete, :data => {:confirm => 'are you sure? there is no going back'}
           

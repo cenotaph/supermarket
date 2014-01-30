@@ -20,7 +20,7 @@
   = f.input :postimage, :label => 'Image for post ticker on bottom', :hint => "Recommended resolution 880px wide"
   = f.input :show_postimage_on_page, :label => "If post ticker image, also show hi-res version at top of page view"
   = f.input :postticker_title, :label => 'Alternate title to use on post ticker (leave blank to use regular title)'
-  = f.input :subsite_ids, :as => :check_boxes, :collection => Subsite.all, :label => "Show page on which sites/themes (must choose at least one):", :input_html => {:required => true }
+  = f.input :subsite_ids, :as => :check_boxes, :collection => Subsite.accessible_by(current_ability), :label => "Show page on which sites/themes (must choose at least one):", :input_html => {:required => true }
   /= f.input :not_in_menu, :as => :boolean, :label => "Don't include in menu structure"
   = f.input :background, :label => 'Force background image for this page', :hint => "Leave blank for a random one"
   = f.input :is_private, :label => 'Protected page? Only signed-in members can see this'

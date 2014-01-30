@@ -81,6 +81,10 @@ en:
   present: 'now'
   booth_result: 'Decision on application'
   aim:
+    instant_sign_in: "You can instantly log into Aiming"
+    connect_with_facebook: 'Connect instantly with Facebook'
+    connect_with_twitter: 'Connect instantly with Twitter'
+    connect_with_supermarket: 'Log in with the username and password you used for Supermarket Art Fair'
     header_text: 'Worldwide network of artist-based initiatives'
     initiatives_in: 'Initiatives in '
     type_of_initiative: 'Type of initiative'

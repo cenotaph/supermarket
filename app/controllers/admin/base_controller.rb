@@ -6,9 +6,15 @@ class Admin::BaseController < InheritedResources::Base
   # check_authorization
   # load_and_authorize_resource
   # skip_before_filter :require_no_authentication
- 
+  check_authorization
+  load_and_authorize_resource #:find_by => :slug
+  
   def authenticate_admin
-    redirect_to root_path unless current_user.is_staff?
+    if @site == 'aim'
+      redirect_to root_path unless current_user.is_aim_staff?
+    else
+      redirect_to root_path unless current_user.is_staff?
+    end
   end
   
   def check_permissions

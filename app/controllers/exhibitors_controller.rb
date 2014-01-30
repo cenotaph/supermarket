@@ -8,7 +8,7 @@ class ExhibitorsController < ApplicationController
       redirect_to '/'
     elsif !@application.approved?
       if user_signed_in?
-        if !user.is_admin?
+        if !current_user.is_staff?
           flash[:error] = "Error"
           redirect_to '/'
         end
@@ -23,6 +23,11 @@ class ExhibitorsController < ApplicationController
   def year
     @year = Year.includes(:applications => :space).find_by(:year => params[:year])
     @page = Page.friendly.find('history') rescue nil
+    if current_user
+      if current_user.is_staff?
+        @year.reveal_decisions = true
+      end
+    end
   end
   
 end

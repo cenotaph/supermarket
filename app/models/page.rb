@@ -10,7 +10,7 @@ class Page < ActiveRecord::Base
   has_many :page_subsites
   belongs_to :background
   has_many :menus, as: :item
-  
+
   extend FriendlyId
   friendly_id :name_en, use: :slugged
 

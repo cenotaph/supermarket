@@ -1,6 +1,7 @@
 Aim::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
+  
   resources :spaces do
     # resources :build, controller: 'spaces/build'
     get :request_access
@@ -15,7 +16,11 @@ Aim::Application.routes.draw do
   match '/search' => 'search#create', :via => :post
   match '/tv' => 'videos#index', via: :get
   match '/tv/:year' => 'videos#index', via: :get
+  get '/auth/failure' => 'sessions#failure'
 
+  match 'auth/:provider/callback' => 'authentications#create', :via => :get
+  match '/oauth/authenticate' => 'authentications#create', :via => :get
+  resources :authentications
   # devise_for :users, ActiveAdmin::Devise.config.merge({ :controllers => ActiveAdmin::Devise.config[:controllers].merge(:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions') }).merge(:path => '/') do
   devise_for :users, :controllers => {:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions'} do
     resources :spaces do
@@ -75,7 +80,12 @@ Aim::Application.routes.draw do
         get :reorder
       end
     end
-    resources :spaces
+    resources :spaces do
+      member do
+        post :approve
+        post :unapprove
+      end
+    end
     resources :search
     resources :subsites
     resources :videos

@@ -15,7 +15,11 @@
       - unless @application.contact_email.blank?
         %p= link_to @application.contact_email, 'mailto:' + @application.contact_email
   .columns.omega{:class => (user_signed_in? ? 'six' : 'eight')}
-    %p= raw @application.organisation_description
+    %p 
+      - if @application.organisation_description.blank?
+        = raw @application.space.short_description
+      - else
+        = raw @application.organisation_description
 
   #exhibitor_images.columns.alpha.omega{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
     %ul.slides

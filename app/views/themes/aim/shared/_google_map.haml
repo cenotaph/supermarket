@@ -13,6 +13,7 @@
   maxzoom: 13,
   - if organizations.empty?
     zoom: 14,
+    center: new google.maps.LatLng(47.288828765662416, 7.945261001586914),
   - elsif !organizations.first.latitude.nil?
     center: new google.maps.LatLng(#{sprintf("%5f", organizations.first.latitude)}, #{sprintf("%5f", organizations.first.longitude)}),
     zoom: 13,

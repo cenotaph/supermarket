@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120102902) do
+ActiveRecord::Schema.define(version: 20140126183522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,6 +139,17 @@ ActiveRecord::Schema.define(version: 20140120102902) do
     t.string "image"
   end
 
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authentications", ["user_id"], name: "index_authentications_on_user_id", using: :btree
+
   create_table "backgrounds", force: true do |t|
     t.string   "background_image"
     t.string   "name"
@@ -165,6 +176,7 @@ ActiveRecord::Schema.define(version: 20140120102902) do
   add_index "businesstype_translations", ["businesstype_id", "locale"], name: "unique_businesstype_translations_locales", unique: true, using: :btree
 
   create_table "businesstypes", force: true do |t|
+    t.integer "spaces_count", default: 0
   end
 
   create_table "ckeditor_assets", force: true do |t|
@@ -300,6 +312,7 @@ ActiveRecord::Schema.define(version: 20140120102902) do
   add_index "organisationtype_translations", ["organisationtype_id", "locale"], name: "unique_organisationtype_translations_locales", unique: true, using: :btree
 
   create_table "organisationtypes", force: true do |t|
+    t.integer "spaces_count", default: 0
   end
 
   create_table "page_hierarchies", force: true do |t|

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   rolify
   paginates_per 50
+  has_many :authentications
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -14,8 +15,36 @@ class User < ActiveRecord::Base
   has_many :space_users
   has_many :applications
   scope :all_staff, -> { where("id IN (?) OR id IN (?)", User.with_role(:staff), User.with_role(:god)) }
+  accepts_nested_attributes_for :authentications, :reject_if => proc { |attr| attr['username'].blank? }
   
   mount_uploader :photo, AvatarUploader
+
+  def apply_omniauth(omniauth)
+    if omniauth['provider'] == 'twitter'
+      logger.warn(omniauth['info'].inspect)
+ 
+      self.display_name = omniauth['info']['name']
+      self.display_name.strip!
+      identifier = omniauth['info']['nickname']
+
+    elsif omniauth['provider'] == 'facebook'
+      self.email = omniauth['info']['email'] if email.blank?
+      
+      self.display_name = omniauth['info']['first_name'] + ' ' + omniauth['info']['last_name']
+      self.display_name.strip!
+      identifier = omniauth['info']['nickname']
+      # self.location = omniauth['extra']['user_hash']['location']['name'] if location.blank?
+    elsif omniauth['provider'] == 'google_oauth2'
+      self.email = omniauth['info']['email'] 
+      self.display_name = omniauth['info']['name']
+
+      identifier = omniauth['info']['email']
+    end
+    self.email = omniauth['info']['email'] if email.blank?
+    self.password = SecureRandom.hex(32) if password.blank?  # generate random password to satisfy validations
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :username => identifier)
+  end
+  
   
   def avatar
     if photo?
@@ -41,6 +70,10 @@ class User < ActiveRecord::Base
     spaces.map(&:country).join('/')
   end
   
+  def is_aim_staff?
+    return true if has_role?(:aim_staff) || has_role?(:god)
+  end
+
   def is_staff?
     return true if has_role?(:staff) || has_role?(:god)
   end
