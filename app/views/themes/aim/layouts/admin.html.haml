@@ -1,0 +1,58 @@
+!!!
+%html
+  %head
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+      %title= content_for?(:title) ? yield(:title) : "Aiming Staff"
+      %link{:href => theme_image_path('favicon.ico'), :rel => "shortcut icon"}/
+      %meta{:content => content_for?(:description) ? yield(:description) : "AIM", :name => "description"}
+        = stylesheet_link_tag :application
+        = stylesheet_link_tag 'aim/stylesheets/admin', :media => :screen
+        = stylesheet_link_tag 'aim/stylesheets/application', :media => :screen
+        = javascript_include_tag "application"
+        = javascript_include_tag 'admin'
+        / %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
+        = csrf_meta_tags
+        = yield(:head)
+  %body
+    %header
+      .container
+        .sixteen.columns
+          .flash
+            - flash.each do |key, value|
+              .alert{ :class => "alert-#{key}" }
+                %strong
+                  = value
+          %nav.top_bar
+            %ul
+              %li= link_to t(:faqs), page_path('faq')
+              - if current_user
+                %li= current_user.display_name
+                - if current_user.has_role?(:staff) || current_user.has_role?(:god)
+                  %li= link_to 'Public side', '/'
+                %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+              - else
+                %li= link_to t(:login), new_user_session_path
+                %li= link_to t(:sign_up), new_user_registration_path
+              %li
+                = form_tag('/search') do |f|
+                  = text_field_tag :searchterm,  t(:search)
+        .sixteen.columns.header_main.alpha
+          .twelve.columns.alpha.header_logo
+          .four.columns.omega
+            %nav.social_icons
+              %h2 AIMING Staff side
+    #main
+      .container
+        .two.columns.alpha= render :partial => 'layouts/staff_sidebar'
+        .fourteen.omega.columns= yield
+          
+    %footer
+      .container
+        .footer_text.sixteen.columns                             
+  :javascript
+    $(document).ready(function() {
+      $('input#searchterm').clearField();
+      #{yield :jquery}
+    });
+
+      

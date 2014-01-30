@@ -1,0 +1,16 @@
+%h2= t "aim.instant_sign_in"
+
+%ul.sign_in_options
+  %li= link_to t("aim.connect_with_facebook"), '/auth/facebook'
+  %li= link_to t("aim.connect_with_twitter"), '/auth/twitter'
+  %li= link_to t("aim.connect_with_supermarket"), "#prompt_supermarket"
+  
+#prompt_supermarket
+  = semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    = f.input :email, :autofocus => true 
+    = f.input :password
+
+    = if devise_mapping.rememberable?
+      = f.input :remember_me, :as => :boolean
+    %div
+      = f.action :submit, :label => raw("<i class='icon-signin icon-large'></i>") + t(:sign_in), :as => :button,  :button_html => {:class => :next}

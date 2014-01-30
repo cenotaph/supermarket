@@ -1,0 +1,21 @@
+.three.columns.alpha
+  - if space.logo?
+    = image_tag space.logo.url(:sidebar).gsub(/development/, 'production')
+  - else
+    &nbsp;
+.three.columns
+  &nbsp;
+  .title= space.business_name
+  .location
+    = space.hometown
+.two.column
+  - if space.approved?
+    approved
+  - else
+    = button_to 'approve', approve_admin_space_path(space)
+.three.columns.actions
+  = link_to 'view details', admin_space_path(space)
+  - if can? :edit, space
+    = link_to 'edit', edit_admin_space_path(space)
+  - if can? :destroy, space
+    = link_to 'delete', [:admin, space], :method => :delete, :data => {:confirm => 'Are you sure?'}
