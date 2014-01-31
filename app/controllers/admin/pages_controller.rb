@@ -1,9 +1,9 @@
 class Admin::PagesController < Admin::BaseController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_filter :set_page, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
   has_scope :by_subsite
   handles_sortable_columns
-  
+
   def set_page
     @page = Page.friendly.find(params[:id])
   end

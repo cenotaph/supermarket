@@ -12,7 +12,7 @@ class Page < ActiveRecord::Base
   has_many :menus, as: :item
 
   extend FriendlyId
-  friendly_id :name_en, use: :slugged
+  friendly_id :name_en, use: [:finders,  :slugged]
 
   scope :published, -> { where(published: true) }
   scope :by_subsite, ->(x) { includes(:subsites).where(['subsites.id = ?', x]).references(:subsites)}
