@@ -1,7 +1,7 @@
 
 .eleven.columns
   %h2{:style => 'line-height: 1.4em'}
-    SUPERMARKET 2014 – Stockholm Independent Art Fair will be held 14–16 February 2014 on the 3rd and 5th floor of Kulturhuset in central Stockholm.
+    SUPERMARKET 2014 – Stockholm Independent Art Fair will be held 14–16 February 2014 on the 3rd and 5th floor of Kulturhuset Stadsteatern in central Stockholm.
 .five.columns.alpha.front_blurb
   %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
 
@@ -11,17 +11,27 @@
 
 
   
-- if user_signed_in?
+
+
+- if user_signed_in?    
   = content_for :sidebar do
     = render :partial => 'layouts/sidebar'
 - else
-  .four.columns.omega
-    .sidebar_box.sign_up_blurb
-      %h3 Register your initative!
-      %p
-        = link_to t("supermarket2014.sign_up"), new_user_registration_path
-        = t("supermarket2014.sign_up_application_period")
-      %p= t("supermarket2014.supermarket_is_closed")
+  .four.columns
+    %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :"data-widget-id" => "430669969043369985"} Currently on Twitter
+    :javascript
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    
+/ - else
+/   .four.columns.omega
+/ 
+/     .sidebar_box.sign_up_blurb
+/       %h3 Register your initative!
+/       %p
+/         = link_to t("supermarket2014.sign_up"), new_user_registration_path
+/         = t("supermarket2014.sign_up_application_period")
+/       %p= t("supermarket2014.supermarket_is_closed")
+      
 - unless @front_carousel.empty?
   #front_carousel.columns.alpha.omega{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
     %ul.slides

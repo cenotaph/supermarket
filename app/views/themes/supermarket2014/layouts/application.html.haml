@@ -36,7 +36,7 @@
             = link_to image_tag(theme_image_path('2014siaf_white.png')), '/'
             / = link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/', :class => :tl2
             .dates 
-              %p Kulturhuset Stockholm
+              %p Kulturhuset Stadsteatern
               %p 14-16 February 2014
               %p Friday 11-22
               %p Saturday-Sunday 11-20
@@ -63,7 +63,7 @@
                     = value                    
             .nine.columns.omega
               .dates_mobile
-                %p Kulturhuset Stockholm
+                %p Kulturhuset Stadsteatern
                 %p 14-16 February 2014
 
               %nav.social_icons
@@ -76,13 +76,13 @@
           .sixteen_columns.horiz_menu
             %nav.page_menu
               %select
-                - Menu.roots.by_subsite(@subsite.id).published.sort_by(&:sort_order).each do |menu|
+                - Menu.roots.includes(:item).by_subsite(@subsite.id).published.sort_by(&:sort_order).each do |menu|
                   %option{:value => ''} Go to ...
                   %option{:value => menu.link, :selected => (request.path == menu.link ? 'selected' : false)}= menu.item.name
                   - unless menu.children.empty?
                     = render :partial => 'layouts/recursive_select', :locals => {:submenu => menu.children, :depth => menu.depth }
               %ul
-                - Menu.roots.by_subsite(@subsite.id).published.sort_by(&:sort_order).each_with_index do |menu, index|
+                - Menu.roots.includes(:item).by_subsite(@subsite.id).published.sort_by(&:sort_order).each_with_index do |menu, index|
                   %li{:class => [(index == 0 ? :first : false) , (!@page.nil? ? (@page.child_of?(menu) ? :active : false) : false), (request.fullpath == menu.link ? :active : false)], :id => "menu_#{menu.id.to_s}"}= link_to menu.item.name, menu.link
                 
       - if @page
@@ -101,13 +101,16 @@
     #main{:style => (!@background_image.nil? ? "background: url('#{@background_image.background_image.url}') no-repeat top left" : false), :class => controller.controller_name}
 
       .container
-        - if !user_signed_in?  || controller.controller_name == 'videos'
-          .sixteen.columns= yield
+        - if !content_for?(:sidebar)   || controller.controller_name == 'videos'
+          .sixteen.columns
+            = yield
+            
         - else
           .twelve.columns.alpha= yield
-          .four.columns.omega= yield :sidebar
+          .four.columns.omega
 
-          
+            = yield :sidebar
+
     %footer
       .container
         .posts_ticker.sixteen.columns= render :partial => 'layouts/post_ticker', :locals => {:promoted_posts => @promoted_posts}

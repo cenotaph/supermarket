@@ -37,6 +37,11 @@
   %script{:async => "true", :src => "//e.issuu.com/embed.js", :type => "text/javascript"}
   -# %p= link_to 'View our 2013 catalogue', 'http://issuu.com/supermarketartfair/docs/supermarket_catalogue_2013'
   
-- if user_signed_in?
-  = content_for :sidebar do
-    = render :partial => 'layouts/sidebar'  
+
+= content_for :sidebar do
+  - if user_signed_in?
+    = render :partial => 'layouts/sidebar'
+  - else
+    %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :"data-widget-id" => "430669969043369985"} Currently on Twitter
+    :javascript
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
