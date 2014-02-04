@@ -1,0 +1,19 @@
+
+%h2 Frontpage carousel
+
+%p= link_to 'Add new carousel image', new_admin_frontcarousel_path
+
+.cms_grid
+  - @frontcarousels.each do |f|
+    .carousel.eleven.columns
+      .three.columns.alpha= image_tag f.image.url(:sidebar)
+      .four.columns
+        = f.title
+        .small= f.caption
+      .two.columns
+        = f.published == true ? "published" : "not published"
+      .two.columns.actions
+        - if can? :edit, f
+          = link_to 'edit', edit_admin_frontcarousel_path(f)
+        - if can? :destroy, f
+          = link_to 'delete', [:admin, f], :method => :delete, :data => {:confirm => "Are you sure?"}

@@ -65,6 +65,7 @@ Aim::Application.routes.draw do
     end
     resources :backgrounds
     resources :dashboard
+    resources :frontcarousels
     resources :funders
     resources :internallinks
     resources :pages

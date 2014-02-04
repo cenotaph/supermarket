@@ -83,6 +83,8 @@ ul.staff_menu {
     text-transform: uppercase;
   }
 }
+
+
 span.delete, .delete {
   a { color: red; }
   text-transform: uppercase;
@@ -94,14 +96,33 @@ span.delete, .delete {
     font-weight: 600;
     
   }
-  .page, .post, .app, .user, .funder, .il, .background {
+  .page, .post, .app, .user, .funder, .il, .carousel, .background {
     padding: 5px 0px;
     &:hover{
       background-color: #f0f0f0;
       cursor: pointer;
     }
+    img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+    }
+    .small {
+      font-size: 9px;
+    }
   }
-  
+  .actions {
+    a {
+      font-size: 11px;
+      color: red;
+      text-transform: uppercase;
+      padding: 0px 3px;
+      font-weight: bold;
+      &:hover { 
+        color: #FAA;
+      }
+    }
+  }
   .menu_item {
     border: 2px dotted $light-orange;
     padding: 5px;

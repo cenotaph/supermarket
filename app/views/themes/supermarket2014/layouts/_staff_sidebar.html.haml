@@ -61,6 +61,11 @@
         = link_to admin_backgrounds_path do
           = fa_icon 'picture-o'
           Backgrounds
+    - if can? :manage, Frontcarousel
+      %li
+        = link_to admin_frontcarousels_path do
+          = fa_icon 'film'
+          Frontpage carousel
     - if can? :manage, Year
       %li
         = link_to admin_years_path do

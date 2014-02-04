@@ -9,9 +9,9 @@ class Ability
           can :manage, :all
         elsif user.has_role? :staff
           can :manage, [Space, Applicationcomment, Application, Pressrelease, Presslink]
-          can :manage, Page, :subsite => {:name => 'supermarket2014'}
+          can :manage, Page, :subsites => {:name => 'supermarket2014'}
           can :manage, Post, :subsite => {:name => 'supermarket2014'}          
-          cannot :manage, [Year, User, Subsite]
+          cannot :manage, [Year, User, Subsite, Frontcarousel]
           can :read, Subsite, :name => 'supermarket2014'
         elsif user.has_role? :aim_staff
           can :manage, Space
