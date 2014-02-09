@@ -1,0 +1,12 @@
+
+.metadata
+  = "posted on #{l post.published_at.to_date, :format => :long} by #{post.posted_by.display_name}"
+.body
+  = raw post.body
+  
+.share_this= share_this(post)
+
+- if user_signed_in?
+  - if can? :edit, Post
+    = link_to 'edit this post', edit_admin_post_path(post)
+    

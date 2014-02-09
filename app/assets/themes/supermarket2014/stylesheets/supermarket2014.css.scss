@@ -491,7 +491,39 @@ ul.existing_accounts {
     color: $grey;
   }
 }
+.index_heading {
+  margin-bottom: 35px;
+}
 
+.post {
+  &.index {
+    margin-bottom: 25px;
+    border-bottom: 1px dotted $orange2;
+    padding-bottom: 20px;
+  }
+  h3 {
+    a {
+      color: #666;
+    }
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  .metadata {
+    font-size: 11px;
+    font-weight: italic;
+    color: #999;
+  }
+  .body {
+    h1 { font-size: 16px;
+    }
+    h2 {
+      font-size: 15px;
+    }
+    h3 {
+      font-size: 14px;
+    }
+  }
+}
 .page {
   .post_image {
     img {
