@@ -28,12 +28,13 @@
               - if locale == :en
                 %b= locale.to_s
               - else
-                %a( href="/#{locale.to_s}/" )= locale.to_s
+                = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
             - else
-              - if session[:locale] == locale.code
-                %b= locale.code
+              - if session[:locale] == locale
+                %b= locale.to_s
               - else
-                %a( href="/#{locale.code}/" )= locale.title
+                = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
+
 
         .login_stuff
           - if current_user
@@ -91,7 +92,7 @@
                 %option{:value => :location}= t :location
             .six.columns.alpha
               %input.shadow{:type => :text, :name => :search_term}
-              %input{:type => :submit, :value => ''}
+              -# %input{:type => :submit, :value => ''}
         .filter_info.eight.columns.omega
           .search_title= t :showing
           .quotes{:class => (!@quotes ? :all : false)}

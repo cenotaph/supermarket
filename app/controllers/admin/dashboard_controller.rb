@@ -10,12 +10,14 @@ class Admin::DashboardController < ApplicationController
  
   
   def authenticate_admin
+
     if @site == 'aim'
       redirect_to root_path unless current_user.is_aim_staff?
     else
       redirect_to root_path unless current_user.is_staff?
     end
   end
+  
   def index
     unless current_user.photo?
       flash[:error] = 'You really should upload a profile photo. It will be nicer that way.'

@@ -12,6 +12,7 @@ class Ability
           can :manage, Page, :subsites => {:name => 'supermarket2014'}
           can :manage, Post, :subsite => {:name => 'supermarket2014'}          
           cannot :manage, [Year, User, Subsite, Frontcarousel]
+          can :manage, User, :id => user.id
           can :read, Subsite, :name => 'supermarket2014'
         elsif user.has_role? :aim_staff
           can :manage, Space

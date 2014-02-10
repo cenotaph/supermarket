@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include ThemesForRails::ActionController 
   protect_from_forgery with: :exception
   before_filter :get_site
+  before_filter :get_locale
   before_filter :configure_permitted_parameters, if: :devise_controller?
   theme :get_site
 
@@ -32,6 +33,21 @@ class ApplicationController < ActionController::Base
     
   def frontpage
     @front_carousel = Frontcarousel.by_subsite(@subsite).published.random(8)
+  end
+  
+
+
+  def get_locale 
+    if params[:locale]
+      session[:locale] = params[:locale]
+    end
+    
+    if session[:locale].blank?
+      available  = %w{en et ru}
+      I18n.locale = http_accept_language.compatible_language_from(available)
+    else
+      I18n.locale = session[:locale]
+    end
   end
   
   def get_site
