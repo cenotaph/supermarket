@@ -24,7 +24,7 @@
         &sdot;
         = raw app.written_country
       .blurb
-        %p= raw truncate_html(app.organisation_description.blank? ? app.space.short_description : app.organisation_description, :length => 250)
+        %p= raw truncate_html( simple_format ((app.organisation_description.blank? ? app.space.short_description : app.organisation_description)), :length => 350)
   .sixteen.columns.alpha
     %h3= link_to 'See all 2014 exhibitors...', '/exhibitors/2014'
 
@@ -40,7 +40,7 @@
       .title= link_to post.subject, post
       .date= time_ago_in_words(post.published_at) + " ago"
       .excerpt
-        = truncate_html(post.body, :length => 75)
+        = truncate_html(simple_format(post.body), :length => 75)
         = link_to "Read more...", post
   
 .one-third.column.omega
