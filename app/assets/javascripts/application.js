@@ -23,5 +23,6 @@
 //= require jquery.flexslider-min
 //= require jquery.clearfield
 //= require jquery.lightbox_me
+//= require jquery_nested_form
 
 var CKEDITOR_BASEPATH = '/assets/ckeditor/';
