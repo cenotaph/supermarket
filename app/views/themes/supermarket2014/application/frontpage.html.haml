@@ -16,37 +16,40 @@
               
 .frontpage_exhibitors
   %h2 Some of this year's exhibitors...
-  - @random_exhibitors.each_with_index do |app, i|
-    .four.columns{:class => i == 0 ? :alpha : (i == 3 ? :omega : false)}
-      = image_tag app.applicationwebimages.delete_if{|x| x.imagefile =~ /tif[f*]$/i || x.imagefile =~ /pdf$/i }.sample.imagefile.url(:slide).gsub(/development/, 'production')
-      .title
-        = link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => app.year)
-        &sdot;
-        = raw app.written_country
-      .blurb
-        %p= raw truncate_html( (app.organisation_description.blank? ? app.space.short_description : app.organisation_description), :length => 350)
-  .sixteen.columns.alpha
+  .sixteen.columns
+    - @random_exhibitors.each_with_index do |app, i|
+      .four.columns{:class => i == 0 ? :alpha : (i == 3 ? :omega : false)}
+        = link_to exhibitor_year_path(:space => app.space, :year => app.year.year) do
+          = image_tag app.applicationwebimages.delete_if{|x| x.imagefile =~ /tif[f*]$/i || x.imagefile =~ /pdf$/i }.sample.imagefile.url(:slide).gsub(/development/, 'production')
+          .title
+            = link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => app.year.year)
+            &sdot;
+            = raw app.written_country
+          .blurb
+            %p= raw truncate_html( (app.organisation_description.blank? ? app.space.short_description : app.organisation_description), :length => 350)
+  .sixteen.columns
     %h3= link_to 'See all 2014 exhibitors...', '/exhibitors/2014'
 
-.one-third.column.alpha
-  %h3 What is Supermarket?
-  %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
-  %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
+.sixteen.columns
+  .one-third.column.alpha
+    %h3 What is Supermarket?
+    %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
+    %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
 
-.one-third.column
-  %h3 Latest posts
-  - @posts.each do |post|
-    .post_front
-      .title= link_to post.subject, post
-      .date= time_ago_in_words(post.published_at) + " ago"
-      .excerpt
-        = truncate_html(simple_format(post.body), :length => 75)
-        = link_to "Read more...", post
-  %h3= link_to "See all news...", posts_path
-.one-third.column.omega
-  %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :height => 400, :"data-widget-id" => "430669969043369985"} Currently on Twitter
-  :javascript
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+  .one-third.column
+    %h3 Latest posts
+    - @posts.each do |post|
+      .post_front
+        .title= link_to post.subject, post
+        .date= time_ago_in_words(post.published_at) + " ago"
+        .excerpt
+          = truncate_html(simple_format(post.body), :length => 75)
+          = link_to "Read more...", post
+    %h3= link_to "See all news...", posts_path
+  .one-third.column.omega
+    %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :height => 400, :"data-widget-id" => "430669969043369985"} Currently on Twitter
+    :javascript
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
   
 
