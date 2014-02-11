@@ -92,7 +92,7 @@ class Application < ActiveRecord::Base
     elsif space.logo?
       space.logo.url(size)
     elsif !applicationwebimages.empty?
-      applicationwebimages.first.imagefile.url(size)
+      applicationwebimages.delete_if{|x| x.imagefile =~ /pdf$/i }.first.imagefile.url(size)
     else
       'missing-120.png'
     end

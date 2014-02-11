@@ -1,50 +1,56 @@
 
-.eleven.columns
-  %h2{:style => 'line-height: 1.4em'}
-    SUPERMARKET 2014 – Stockholm Independent Art Fair will be held 14–16 February 2014 on the 3rd and 5th floor of Kulturhuset Stadsteatern in central Stockholm.
-.five.columns.alpha.front_blurb
-  %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
-
-.one.column &nbsp;
-.five.columns.front_blurb
-  %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
-
-
+%h2{:style => 'line-height: 1.4em; margin-bottom: 0px'}
+  %center SUPERMARKET 2014 starts on Friday 14 February at Kulturhuset Stadsteatern.
   
-
-
-- if user_signed_in?    
-  = content_for :sidebar do
-    = render :partial => 'layouts/sidebar'
-- else
-  .four.columns
-    %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :"data-widget-id" => "430669969043369985"} Currently on Twitter
-    :javascript
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-    
-/ - else
-/   .four.columns.omega
-/ 
-/     .sidebar_box.sign_up_blurb
-/       %h3 Register your initative!
-/       %p
-/         = link_to t("supermarket2014.sign_up"), new_user_registration_path
-/         = t("supermarket2014.sign_up_application_period")
-/       %p= t("supermarket2014.supermarket_is_closed")
-      
+  
 - unless @front_carousel.empty?
-  #front_carousel.columns.alpha.omega{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
+  #front_carousel.columns.alpha.omega.sixteen
     %ul.slides
       - @front_carousel.shuffle.each do |fc|
         .slide
-          - if user_signed_in?
-            .image= image_tag fc.image.url(:eighteighty)
-          - else
-            .image= image_tag fc.image.url(:twelvehundred), :width => 1180
+          .image= image_tag fc.image.url(:twelvehundred).gsub(/development/, 'production')
           - unless fc.title.blank? && fc.caption.blank?
             .caption
               .title= fc.title
               .subtitle= fc.caption
+              
+.frontpage_exhibitors
+  %h2 Some of this year's exhibitors...
+  - @random_exhibitors.each_with_index do |app, i|
+    .one-third.column{:class => i == 0 ? :alpha : false}
+      = image_tag app.applicationwebimages.delete_if{|x| x.imagefile =~ /tif[f*]$/i || x.imagefile =~ /pdf$/i }.sample.imagefile.url(:slide).gsub(/development/, 'production')
+      .title
+        = link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => app.year)
+        &sdot;
+        = raw app.written_country
+      .blurb
+        %p= raw truncate_html(app.organisation_description.blank? ? app.space.short_description : app.organisation_description, :length => 250)
+  .sixteen.columns.alpha
+    %h3= link_to 'See all 2014 exhibitors...', '/exhibitors/2014'
+
+.one-third.column.alpha
+  %h3 What is Supermarket?
+  %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
+  %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
+
+.one-third.column
+  %h3 Latest news
+  - @posts.each do |post|
+    .post_front
+      .title= link_to post.subject, post
+      .date= time_ago_in_words(post.published_at) + " ago"
+      .excerpt
+        = truncate_html(post.body, :length => 75)
+        = link_to "Read more...", post
+  
+.one-third.column.omega
+  %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :"data-widget-id" => "430669969043369985"} Currently on Twitter
+  :javascript
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+  
+
+
             
             
 = content_for :jquery do

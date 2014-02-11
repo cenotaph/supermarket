@@ -33,6 +33,8 @@ class ApplicationController < ActionController::Base
     
   def frontpage
     @front_carousel = Frontcarousel.by_subsite(@subsite).published.random(8)
+    @random_exhibitors =  Application.includes(:applicationwebimages).approved.where(:year_id => Year.find_by(:year => Time.now.year).id).where("applicationwebimages.id is not null" ).random(3)
+    @posts = Post.by_subsite(@subsite).published.order('published_at DESC').limit(3)
   end
   
 

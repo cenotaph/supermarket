@@ -102,8 +102,7 @@
 
       .container
         - if !content_for?(:sidebar)   || controller.controller_name == 'videos'
-          .sixteen.columns
-            = yield
+          = yield
             
         - else
           .twelve.columns.alpha= yield
@@ -113,8 +112,26 @@
 
     %footer
       .container
-        .posts_ticker.sixteen.columns= render :partial => 'layouts/post_ticker', :locals => {:promoted_posts => @promoted_posts}
-        .footer_text.sixteen.columns= render :partial => 'layouts/footer'                                
+        
+        .five.columns.omega.footer_credits
+          %strong Supermarket 2014
+          %em Stockholm Independent Art Fair
+          .small_text 14-16 February 2014, Kulturhuset Stadsteatern, Stockholm
+        
+
+        .four.columns
+          %ul
+            %li= link_to 'FAQ', page_path('faq')
+            %li= link_to 'Tickets', page_path('future-dates')
+            %li= link_to 'Exhibitors 2014', '/exhibitors/2014'
+            %li= link_to 'Talks and Performances 2014', page_path('talks-performance-2014')
+        .four.columns
+          %ul
+            %li= link_to t(:disclaimer), page_path('disclaimer')
+            %li= link_to t(:contact_us), page_path('contact')
+            %li.last= link_to t(:subscribe_to_newsletter), 'http://admin.getanewsletter.com/subscription/RAaDe8sxcYaWuhKev/add/', :target => :_blank
+        .three.columns.alpha= link_to image_tag(theme_image_path('2014siaf_white.png')), '/'
+          
   :javascript
     $(document).ready(function() {
       $('input#searchterm').clearField();

@@ -175,6 +175,48 @@ header {
   }  
 }
 
+.post_front {
+  .title {
+    a {
+      font-weight:  bold;
+    }
+    margin-bottom: 0px;
+  }
+  .date {
+    font-size: 10px;
+    color: #444;
+    font-style: italic;
+  }
+  .excerpt {
+    margin: 0px 0px;
+    p {
+      margin: 0px;
+    }
+  }
+  margin-bottom: 25px;
+}
+
+.frontpage_exhibitors {
+  float: left;
+  padding: 10px 0px;
+  border-top: 1px solid $orange3;
+  border-bottom : 1px solid $orange3;
+  margin-bottom: 40px;
+  .blurb {
+    font-size: 11px;
+  }
+  .title {
+    font-size: 14px;
+  }
+  img {
+//    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .hometown {
+    margin-left: 0px;
+  }
+}
 .front_blurb {
   padding-top: 15px;
 }
