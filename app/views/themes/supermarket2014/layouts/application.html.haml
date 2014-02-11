@@ -5,7 +5,7 @@
       %title= content_for?(:title) ? yield(:title) : "Supermarket"
       %link{:href => theme_image_path('favicon.ico'), :rel => "shortcut icon"}/
       %meta{:content => content_for?(:description) ? yield(:description) : "Supermarket", :name => "description"}
-      %link{:href => posts_path(:format => :rss), :rel => "alternate", :title => "RSS", :type => "application/rss+xml"}/
+      %link{:href => posts_path(:format => :rss), :rel => "alternate", :title => "Supermarket Art Fair", :type => "application/rss+xml"}/
       = stylesheet_link_tag :application
       = stylesheet_link_tag 'supermarket2014/stylesheets/application', :media => :screen
       = javascript_include_tag "application"
