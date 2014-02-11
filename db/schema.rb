@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126183522) do
+ActiveRecord::Schema.define(version: 20140211162556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -386,6 +386,21 @@ ActiveRecord::Schema.define(version: 20140126183522) do
   add_index "posts", ["last_edited_by_id"], name: "index_posts_on_last_edited_by_id", using: :btree
   add_index "posts", ["posted_by_id"], name: "index_posts_on_posted_by_id", using: :btree
   add_index "posts", ["subsite_id"], name: "index_posts_on_subsite_id", using: :btree
+
+  create_table "postslides", force: true do |t|
+    t.string   "image"
+    t.integer  "image_size"
+    t.integer  "image_width"
+    t.integer  "image_height"
+    t.string   "image_content_type"
+    t.string   "caption"
+    t.string   "credit"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "postslides", ["post_id"], name: "index_postslides_on_post_id", using: :btree
 
   create_table "presslinks", force: true do |t|
     t.string   "title"

@@ -19,7 +19,6 @@
 //= require ckeditor/override
 //= require ckeditor/init
 //= require jquery.ui.autocomplete
-//= require jquery_nested_form
 //= require autocomplete-rails
 //= require jquery.flexslider-min
 //= require jquery.clearfield

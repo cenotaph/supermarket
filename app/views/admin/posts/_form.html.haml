@@ -11,16 +11,33 @@
             = locale
           = en.text_field :subject
           = en.text_area :body, :class => :ckeditor
-  - if f.object.postimage?
-    = image_tag f.object.postimage.url(:frontsmall)
-  = f.input :postimage, :label => "Image for post browser (post icon)", :hint => "Minimum resolution 580x405."
-  = f.input :dont_show_image, :label => "Don't show post browser image in stand-alone post view", :hint => "Check this if you are using in-post images and don't want the post icon to appear atop the body "
-  = f.input :promoted, :as => :boolean, :label => "Promoted?", :hint => "Keep sticky on frontpage and in bottom carousel"
+  / - if f.object.postimage?
+  /   = image_tag f.object.postimage.url(:frontsmall)
+  / = f.input :postimage, :label => "Image for post browser (post icon)", :hint => "Minimum resolution 580x405."
+  / = f.input :dont_show_image, :label => "Don't show post browser image in stand-alone post view", :hint => "Check this if you are using in-post images and don't want the post icon to appear atop the body "
+  / = f.input :promoted, :as => :boolean, :label => "Promoted?", :hint => "Keep sticky on frontpage and in bottom carousel"
   = f.input :posted_by, :as => :select, :collection => User.all_staff.sort_by(&:display_name)
-  = f.input :subsite, :as => :select, :collection => Subsite.all, :label => "Show post on which sites/themes:"
   = f.input :post_as_supermarket, :as => :boolean, :label => "Don't put staff member's name on post, put 'Posted by Supermarket' instead"
+  = f.input :subsite, :as => :select, :collection => Subsite.all, :label => "Show post on which sites/themes:"
+
   = f.input :published, :as => :boolean, :label => "Published?", :hint => "If blank, only logged-in staff will be able to see it"
   = f.input :published_at, :as => :date_picker, :label => "Date of post"
+  
+  %h2 images (if more than one is attached they will show in a gallery)
+
+  
+  = f.fields_for :postslides do |ff|
+    .add_image.clearfix
+      %p Add an image to this post:
+      - unless ff.object.new_record?
+        = image_tag ff.object.image.url(:sidebar)
+      = ff.input :image, :as => :file
+      = ff.input :caption
+      = ff.input :credit
+      = ff.link_to_remove 'remove this image'
+  .nested_fields= f.link_to_add 'add an image', :postslides
+  %br{:clear => :all}
   = f.submit
-:javascript
-  $('#language-tabs').tabs();
+= content_for :jquery do
+  :plain
+    $('#language-tabs').tabs();

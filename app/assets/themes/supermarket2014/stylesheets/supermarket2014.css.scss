@@ -538,6 +538,12 @@ ul.existing_accounts {
 }
 
 .post {
+  .post_slides {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
   &.index {
     margin-bottom: 25px;
     border-bottom: 1px dotted $orange2;

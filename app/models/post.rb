@@ -8,9 +8,12 @@ class Post < ActiveRecord::Base
   validates_presence_of :posted_by_id, :slug, :subsite_id
   
   extend FriendlyId
-  friendly_id :subject_en, use: :slugged
+  friendly_id :subject_en, use: [:finders, :slugged]
   
   mount_uploader :postimage, SlidingmenuUploader
+  has_many :postslides
+  
+  accepts_nested_attributes_for :postslides, :reject_if => proc {|x| x['image'].blank? }, :allow_destroy => true
   
   scope :promoted, -> { where(promoted: true) }
   scope :published, -> { where(published: true) }

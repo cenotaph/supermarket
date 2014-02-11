@@ -17,10 +17,15 @@ class Admin::PostsController < Admin::BaseController
     update! { admin_posts_path }
   end
   
+  def new
+    @post = Post.new(:posted_by_id => current_user.id)
+  end
+  
   protected
   
   def permitted_params 
     params.permit(:post => [:published, :subsite_id, :promoted, :post_as_supermarket, :last_edited_by_id,  :postimage, :slug, :published_at, :posted_by_id, :dont_show_image,
-      translations_attributes: [:locale, :id, :subject, :body] ]) 
+      translations_attributes: [:locale, :id, :subject, :body],
+      postslides_attributes: [:id, :caption, :credit, :image, :_destroy] ]) 
   end   
 end

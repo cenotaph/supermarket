@@ -24,7 +24,7 @@
         &sdot;
         = raw app.written_country
       .blurb
-        %p= raw truncate_html( simple_format ((app.organisation_description.blank? ? app.space.short_description : app.organisation_description)), :length => 350)
+        %p= raw truncate_html( (app.organisation_description.blank? ? app.space.short_description : app.organisation_description), :length => 350)
   .sixteen.columns.alpha
     %h3= link_to 'See all 2014 exhibitors...', '/exhibitors/2014'
 
@@ -34,7 +34,7 @@
   %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
 
 .one-third.column
-  %h3 Latest news
+  %h3 Latest posts
   - @posts.each do |post|
     .post_front
       .title= link_to post.subject, post
