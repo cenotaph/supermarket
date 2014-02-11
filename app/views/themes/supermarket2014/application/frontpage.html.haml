@@ -4,7 +4,7 @@
   
   
 - unless @front_carousel.empty?
-  #front_carousel.columns.alpha.omega.sixteen
+  #front_carousel
     %ul.slides
       - @front_carousel.shuffle.each do |fc|
         .slide
@@ -17,7 +17,7 @@
 .frontpage_exhibitors
   %h2 Some of this year's exhibitors...
   - @random_exhibitors.each_with_index do |app, i|
-    .one-third.column{:class => i == 0 ? :alpha : false}
+    .four.columns{:class => i == 0 ? :alpha : (i == 3 ? :omega : false)}
       = image_tag app.applicationwebimages.delete_if{|x| x.imagefile =~ /tif[f*]$/i || x.imagefile =~ /pdf$/i }.sample.imagefile.url(:slide).gsub(/development/, 'production')
       .title
         = link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => app.year)
