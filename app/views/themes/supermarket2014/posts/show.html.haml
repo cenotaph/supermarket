@@ -11,3 +11,13 @@
     %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :height => 900, :"data-widget-id" => "430669969043369985"} Currently on Twitter
     :javascript
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+      
+= content_for :jquery do
+  :plain
+    $('.post_slides').flexslider({
+        animation: "slide",
+        namespace: "topslider",
+        controlNav: false,
+        directionNav: false,
+        selector: ".slides > .slide"
+    });          
