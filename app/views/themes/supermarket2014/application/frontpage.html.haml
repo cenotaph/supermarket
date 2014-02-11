@@ -42,9 +42,9 @@
       .excerpt
         = truncate_html(simple_format(post.body), :length => 75)
         = link_to "Read more...", post
-  
+  %h3= link_to "See all news...", posts_path
 .one-third.column.omega
-  %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :"data-widget-id" => "430669969043369985"} Currently on Twitter
+  %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :height => 400, :"data-widget-id" => "430669969043369985"} Currently on Twitter
   :javascript
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
