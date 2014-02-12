@@ -25,7 +25,7 @@
     %ul.slides
       - @application.applicationwebimages.each do |fc|
         .slide
-          .image= image_tag fc.imagefile.url(:normal)
+          .image= image_tag fc.imagefile.url(:normal).gsub(/aim-development/, 'aim-production')
           - unless fc.title.blank? && fc.caption.blank?
             .caption
               .title= fc.title
