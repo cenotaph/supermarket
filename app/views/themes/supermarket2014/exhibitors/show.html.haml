@@ -14,7 +14,7 @@
           = link_to website.url.gsub(/^http\:\/\//i, ''), website.url_safe
       - unless @application.contact_email.blank?
         %p= link_to @application.contact_email, 'mailto:' + @application.contact_email
-  .columns.omega{:class => (user_signed_in? ? 'six' : 'eight')}
+  .columns.omega.elevent
     %p 
       - if @application.organisation_description.blank?
         = raw @application.space.short_description
