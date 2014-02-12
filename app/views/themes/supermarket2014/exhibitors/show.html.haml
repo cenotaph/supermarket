@@ -28,7 +28,7 @@
           .image= image_tag fc.imagefile.url(:normal).gsub(/aim-development/, 'aim-production')
           - unless fc.title.blank? && fc.caption.blank?
             .caption
-              .title= fc.title
+              .title= raw fc.title
 
   .columns.alpha{:class => (user_signed_in? ? 'six' : 'eight')}
 
