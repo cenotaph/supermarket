@@ -99,13 +99,13 @@ class ApplicationsController < ApplicationController
   def show
     if params[:application_id].nil?
       @application = Application.find(params[:id])
-      unless @application.space.approved_users.include?(current_user) || current_user.has_role?(:staff) || current_user.has_role?(:god)
+      unless @application.space.approved_users.include?(current_user)  || current_user.has_role?(:god)
         flash[:error] = 'This is not your application to view'
         redirect_to '/'
       end
     else        
       @application = Application.find(params[:application_id])
-      if !@application.space.approved_users.include?(current_user)
+      unless @application.space.approved_users.include?(current_user)  || current_user.has_role?(:god)
         flash[:error] = 'This is not your application to view'
         redirect_to '/'
       else
