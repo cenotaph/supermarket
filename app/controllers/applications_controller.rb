@@ -54,13 +54,17 @@ class ApplicationsController < ApplicationController
   def edit
     @application = Application.find(params[:id])
     @space = @application.space
-    # if @application.space.users.include?(current_user) && (@application.year.open? || @application.allow_late == true || (@application.approved_pending_reveal? && @application.year.allow_editing)) # && @application.status != 'active'
-    #   render :template => 'applications/new'
-    # else
-    #   flash[:error] = 'You cannot edit this application.'
-    #   redirect_to '/'
-    # end
-    render :template => 'applications/new'
+    if current_user
+      if current_user.has_role?(:god)
+        render :template => 'applications/new'
+      else
+        flash[:error] = 'You cannot edit this application.'
+        redirect_to '/'
+      end
+    else
+      flash[:error] = 'You cannot edit this application.'
+      redirect_to '/'
+    end
   end
   
   def invited
