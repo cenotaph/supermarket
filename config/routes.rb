@@ -16,6 +16,7 @@ Aim::Application.routes.draw do
   
   match '/support' => "funders#index", :via => :get
   match '/search' => 'search#create', :via => :post
+  match '/aiming/search' => 'search#aimsearch', via: :post
   match '/tv' => 'videos#index', via: :get
   match '/tv/:year' => 'videos#index', via: :get
   get '/auth/failure' => 'sessions#failure'
@@ -90,7 +91,9 @@ Aim::Application.routes.draw do
         post :unapprove
       end
     end
-    resources :search
+    resources :search do
+      post :aimsearch
+    end
     resources :subsites
     resources :videos
     resources :years

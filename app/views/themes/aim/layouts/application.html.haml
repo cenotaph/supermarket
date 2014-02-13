@@ -81,7 +81,7 @@
       .sixteen.columns.search{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
 
         .search_dropdown.eight.columns.alpha
-          %form{:action => "/browse/search", :method => "post"}
+          %form{:action => "/aiming/search", :method => "post"}
             #menu.two.columns.alpha
               .search_title= t :search_by
               %select{:name => :search_filter}
@@ -89,28 +89,46 @@
                 %option{:value => :activities}= t :activities
                 %option{:value => :location}= t :location
             .six.columns.alpha
-              %input.shadow{:type => :text, :name => :search_term}
+              %input.shadow{:type => :text, :name => :search_term, :value => params[:search_term]}
               -# %input{:type => :submit, :value => ''}
+          - if @spaces.empty?
+            .eight.columns.alpha{:style => "clear: left"}
+              %h2= t "aim.no_spaces_match"
+              %h4= t "aim.no_spaces_blurb"
+              %p= link_to t("aim.clear_all_filters"), clear_filters_spaces_path
+          - else
+            .six.columns.alpha
+              %h4
+                = pluralize(@spaces.count, 'initiative')
+                = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
         .filter_info.eight.columns.omega
           .search_title= t :showing
           .quotes{:class => (!@quotes ? :all : false)}
-            - if !session[:filter_scope].blank?
-              - s = []
-              - session[:filter_scope].each do |child|
-                - if child.first == 'country'
-                  - s << child.last.map{|x| Country[x].name }.join(';')
-                - else
-                  - s << Object.const_get(child.first.humanize).find(child.last).map(&:name).join("; ")
-              = "\"#{s.flatten.join('; ').strip}\""
+            - if !params[:search_term] && session[:filter_scope].blank?
+              = t "aim.all_initiatives"
             - else
-              All spaces
+              - if params[:search_term]
+                = "\"#{params[:search_term]}\""
+              - if !session[:filter_scope].blank?
+                - s = []
+                - session[:filter_scope].each do |child|
+                  - next if child.first == 'search_term'
+                  - if child.first == 'country'
+                    - s << child.last.map{|x| Country[x].name }.join(';')
+                  - else
+                    - s << Object.const_get(child.first.humanize).find(child.last).map(&:name).join("; ")
+                - unless s.blank?
+                  - if params[:search_term]
+                    = "; "
+                  = "#{s.flatten.join('; ').strip}"
+
           .eight.alpha.columns{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
             .filter_toggle          
               %a{:href => '#', :onClick => '$(".filter_container").slideToggle();'}
                 = fa_icon 'bars'
                 = t "aim.toggle_filters"
               - unless session[:filter_scope].nil?
-                = link_to 'Clear filters', clear_filters_spaces_path
+                = link_to t("aim.clear_all_filters"), clear_filters_spaces_path
 
     .container
       .sixteen.columns.filter_container{:style => "display: " + 'none'}= render :partial => 'shared/aim_filters'

@@ -93,7 +93,7 @@ label.sub {
   .space_name {
     font-family: $helv;
     font-size: 20px;
-    line-height: 26px;
+    line-height: 22px;
     font-weight: bold;
     color: #ffffff;
   }
@@ -352,7 +352,7 @@ input.shadow {
 #map {
   width: 100%;
   height: 500px;
-
+  margin-bottom: 20px;
 }
 
 #browse_map {

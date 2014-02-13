@@ -11,6 +11,7 @@ class Ability
           can :manage, [Space, Applicationcomment, Application, Pressrelease, Presslink]
           can :manage, Page, :subsites => {:name => 'supermarket2014'}
           can :manage, Post
+          can :manage, Video
           cannot :manage, [Year, User, Subsite, Frontcarousel]
           can :manage, User, :id => user.id
           can :read, Subsite, :name => 'supermarket2014'
