@@ -10,6 +10,8 @@ Aim::Application.routes.draw do
     get :grant_access, :on => :member
     get :finish, :on => :collection
     get :browse, :on => :collection
+    get :clear_filters, :on => :collection
+    get :map, :on => :collection
   end
   
   match '/support' => "funders#index", :via => :get
@@ -41,6 +43,7 @@ Aim::Application.routes.draw do
   get '/exhibitors/:year', to: 'exhibitors#year'
   get '/press', to: 'pressreleases#index'
   get '/browse', to: "spaces#browse"
+  get '/filter_by/:filter_type/:value', to: "spaces#add_to_scope"
   get '/initiatives/:id', to: "spaces#aim_profile", as: 'initiatives'
   get '/exhibitor/:id', to: "spaces#show_history", as: 'supermarket_history'
   get '/exhibitor/:space/:year', to: "exhibitors#show", as: 'exhibitor_year'

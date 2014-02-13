@@ -1,17 +1,14 @@
 class SpacesController < ApplicationController
   include Wicked::Wizard
   autocomplete :space, :business_name
-  before_filter :authenticate_user!, :except => [:grant_access, :browse, :aim_profile]
+  before_filter :authenticate_user!, :except => [:grant_access, :map, :clear_filters, :browse, :add_to_scope, :aim_profile]
   steps :find_name, :basic_details, :secondary_details
-  has_scope :by_country
-  
-  # def get_autocomplete_items parameters
-  #   resp = super(parameters)
-  #   if resp.blank?
-  #     resp = [OpenStruct.new(id: '', label: 'nothing')]
-  #   end
-  #   resp
-  # end
+  has_scope :by_country #, :default => proc { |c| c.session[:filter_scope]['country'] }
+  has_scope :by_organisationtype 
+  # , :default => proc { |c| c.session[:filter_scope]['organisationtype'] }
+  has_scope :by_activity #, :default => proc { |c| c.session[:filter_scope]['activity'] }
+  has_scope :by_businesstype #, :default => proc { |c| c.session[:filter_scope]['businesstype'] }
+
   
   def aim_profile
     @space = Space.friendly.find(params[:id])
@@ -29,7 +26,23 @@ class SpacesController < ApplicationController
     @closedfilters = true
   end
   
-
+  def add_to_scope
+    params[:value] = params[:value].to_i if params[:value] =~ /^\d+/
+    session[:filter_scope] ||= Hash.new
+    session[:filter_scope][params[:filter_type]] ||= Array.new
+    if session[:filter_scope][params[:filter_type]].include?(params[:value])  # delete
+      session[:filter_scope][params[:filter_type]].delete(params[:value])
+    else
+      session[:filter_scope][params[:filter_type]] << params[:value]
+    end
+    redirect_to '/'
+  end
+  
+  def clear_filters
+    session[:filter_scope] = nil
+    redirect_to '/'
+  end
+  
   
   def create
     @space = Space.create
@@ -64,6 +77,24 @@ class SpacesController < ApplicationController
     end
   end
 
+
+  def map
+    # build scopes
+    my_scope = Hash.new
+    if session[:filter_scope].blank?
+      @spaces = Space.approved
+    else
+      session[:filter_scope].each do |sc|
+        my_scope["by_" + sc.first] = sc.last
+      end
+      chain = Array.new
+      my_scope.each do |ms|
+        chain << "send('#{ms.first}', #{ms.last})"
+      end
+      @spaces =  eval("Space." + chain.join('.'))
+    end
+  end
+  
   def new
     @space = Space.new
       

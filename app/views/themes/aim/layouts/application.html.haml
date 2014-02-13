@@ -2,10 +2,8 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-    %title= content_for?(:title) ? yield(:title) : "AIM project"
+    %title= content_for?(:title) ? yield(:title) : "Aiming"
     %meta{:content => content_for?(:description) ? yield(:description) : "Supermarket", :name => "description"}
-
-    
     = stylesheet_link_tag :application
     = stylesheet_link_tag 'aim/stylesheets/application', :media => :screen
     = javascript_include_tag :application
@@ -96,8 +94,14 @@
         .filter_info.eight.columns.omega
           .search_title= t :showing
           .quotes{:class => (!@quotes ? :all : false)}
-            - if @quotes
-              = "\"" + @quotes + "\""
+            - if !session[:filter_scope].blank?
+              - s = []
+              - session[:filter_scope].each do |child|
+                - if child.first == 'country'
+                  - s << child.last.map{|x| Country[x].name }.join(';')
+                - else
+                  - s << Object.const_get(child.first.humanize).find(child.last).map(&:name).join("; ")
+              = "\"#{s.flatten.join('; ').strip}\""
             - else
               All spaces
           .eight.alpha.columns{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
@@ -105,8 +109,11 @@
               %a{:href => '#', :onClick => '$(".filter_container").slideToggle();'}
                 = fa_icon 'bars'
                 = t "aim.toggle_filters"
+              - unless session[:filter_scope].nil?
+                = link_to 'Clear filters', clear_filters_spaces_path
 
-    .container.filter_container{:style => "display: " + 'none'}= render :partial => 'shared/aim_filters'
+    .container
+      .sixteen.columns.filter_container{:style => "display: " + 'none'}= render :partial => 'shared/aim_filters'
     .container
       .sixteen.columns= yield               
 

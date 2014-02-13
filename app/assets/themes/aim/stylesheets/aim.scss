@@ -87,9 +87,12 @@ label.sub {
   &.box5 { 
     background-color: $box5; 
   }
+  .box_weblink {
+    font-size: 10px;
+  }
   .space_name {
     font-family: $helv;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 26px;
     font-weight: bold;
     color: #ffffff;
@@ -97,6 +100,9 @@ label.sub {
   .space_town {
     margin: 5px 0px;
     font-style: italic;
+  }
+  .space_description {
+    font-size: 14px;
   }
 }
 
@@ -305,22 +311,30 @@ input.shadow {
 .filter_column {
   overflow: hidden;
   float: left;
-  width: 320px;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 5px 0px 5px;
   .title {
     font-family: $helv;
-    font-size: 12pt;
+    font-size: 14px;
     font-weight: bold;
   }
   ul {
     list-style: none outside;
     padding-left: 0px;
     li {
+      font-size: 12px;
+      &.activated {
+        background-color: #333;
+        color: #FFE;
+        a {
+          color: #FFE;
+        }
+      }
       a {
         text-decoration: none;
         color: #333;
       }
-      line-height: 18px;
+      line-height: 16px;
+      font-size: 13px;
       margin-bottom: 0;
       font-family: $helv;
       font-size: 12pt;

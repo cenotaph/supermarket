@@ -35,7 +35,12 @@ class Space < ActiveRecord::Base
   scope :approved, -> { where(approved: true)}
   scope :by_approval, -> (condition) { where(approved: (condition == 'true' ? true : false))}
   scope :unapproved, -> { where(approved: false) }
-  scope :by_country, ->(x) { where(["lower(country) = ? OR lower(visiting_country) = ?", x.downcase, x.downcase])}
+  scope :by_country, ->(x) { where(["lower(country) in (?) OR lower(visiting_country) in (?)", x.map(&:downcase), x.map(&:downcase)])}
+  scope :by_activity, -> (x) { includes(:activity_spaces).where("activity_spaces.activity_id" => x) }
+  scope :by_exhibitionspacetype, -> (x) { where(:exhibitionspacetype_id => x) }
+  scope :by_businesstype, -> (x) { includes(:businesstype_spaces).where("businesstype_spaces.businesstype_id" => x) }
+  scope :by_organisationtype, -> (x) { includes(:organisationtype_spaces).where("organisationtype_spaces.organisationtype_id" => x) }
+
   
   def allimages 
     # local = [[image1, image1_caption].compact, [image2, image2_caption].compact, [image3, image3_caption].compact, [image4, image4_caption].compact ]

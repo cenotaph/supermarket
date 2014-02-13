@@ -3,7 +3,6 @@
  *= require layout
  *= require skeleton1200
  *= require jquery.ui.core
-
  *= require jquery.ui.autocomplete
  *= require font-awesome
  *= require flexslider

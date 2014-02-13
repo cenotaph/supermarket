@@ -1,4 +1,5 @@
 .four.alpha.columns.filter_column
+  = session[:filter_scope].inspect
   .title= t :location
   #tree
     %ul
@@ -19,7 +20,8 @@
                   - subregion.last.sort_by{|x| x.last['name'] }.each do |country|
                     - next if country.first.blank?
                     - next if @tree[region.first][subregion.first][country.first.downcase].nil?
-                    %li= link_to country.last['name'] + " (#{@tree[region.first][subregion.first][country.first.downcase].size})", '/browse?by_country=' + country.first
+                    %li{:class => (session[:filter_scope]['country'].blank? ? false : (session[:filter_scope]['country'].include?(country.first) ? :activated : false ) rescue false)}
+                      = link_to country.last['name'] + " (#{@tree[region.first][subregion.first][country.first.downcase].size})", "/filter_by/country/#{country.first}"
   %br/
   .title= t "aim.exhibition_space_type"
   %ul
@@ -32,23 +34,24 @@
   .title= t :activities
   %ul
     - Activity.all.each do |activity|
-      %li
-        = link_to activity.name, '/browse/activity/' + activity.name
+      %li{:class => (session[:filter_scope]['activity'].blank? ? false : (session[:filter_scope]['activity'].include?(activity.id) ? :activated : false ) rescue false )}
+      
+        = link_to activity.name, "/filter_by/activity/#{activity.id}"
         - unless activity.spaces.delete_if{|x| x.approved == false}.empty?
           = "(#{activity.spaces.size})"
 .four.columns.filter_column{:style => "border-left: 1px dotted #000;"}          
   .title= t "aim.type_of_initiative"
   %ul
     - Businesstype.includes([:translations, :spaces]).all.each do |bt|
-      %li
-        = link_to bt.name, '/browse/business_type/' + bt.id.to_s
+      %li{:class => (session[:filter_scope]['businesstype'].blank? ? false : (session[:filter_scope]['businesstype'].include?(bt.id) ? :activated : false ) rescue false)}
+        = link_to bt.name, "/filter_by/businesstype/#{bt.id}"
         - unless bt.spaces.delete_if{|x| x.approved == false}.empty?
           = "(#{bt.spaces.size})"
 .four.omega.columns.filter_column.last                  
   .title= t "aim.organisation_structure"
   %ul
     - Organisationtype.includes([:translations, :spaces]).all.each do |ot|
-      %li
-        = link_to ot.name, '/browse/organisation_type/' + ot.id.to_s
+      %li{:class => (session[:filter_scope]['organisationtype'].blank? ? false : (session[:filter_scope]['organisationtype'].include?(ot.id) ? :activated : false ) rescue false)}
+        = link_to ot.name, "/filter_by/organisationtype/#{ot.id}"
         - unless ot.spaces.delete_if{|x| x.approved == false}.empty?
           = "(#{ot.spaces.size})"
