@@ -91,12 +91,12 @@
             .six.columns.alpha
               %input.shadow{:type => :text, :name => :search_term, :value => params[:search_term]}
               -# %input{:type => :submit, :value => ''}
-          - if @spaces.empty?
+          - if @spaces.blank? && !@space
             .eight.columns.alpha{:style => "clear: left"}
               %h2= t "aim.no_spaces_match"
               %h4= t "aim.no_spaces_blurb"
               %p= link_to t("aim.clear_all_filters"), clear_filters_spaces_path
-          - else
+          - elsif !@spaces.blank?
             .six.columns.alpha
               %h4
                 = pluralize(@spaces.count, 'initiative')
@@ -104,23 +104,26 @@
         .filter_info.eight.columns.omega
           .search_title= t :showing
           .quotes{:class => (!@quotes ? :all : false)}
-            - if !params[:search_term] && session[:filter_scope].blank?
-              = t "aim.all_initiatives"
+            - if @space
+              = @space.name + " (#{@space.hometown})"
             - else
-              - if params[:search_term]
-                = "\"#{params[:search_term]}\""
-              - if !session[:filter_scope].blank?
-                - s = []
-                - session[:filter_scope].each do |child|
-                  - next if child.first == 'search_term'
-                  - if child.first == 'country'
-                    - s << child.last.map{|x| Country[x].name }.join(';')
-                  - else
-                    - s << Object.const_get(child.first.humanize).find(child.last).map(&:name).join("; ")
-                - unless s.blank?
-                  - if params[:search_term]
-                    = "; "
-                  = "#{s.flatten.join('; ').strip}"
+              - if !params[:search_term] && session[:filter_scope].blank?
+                = t "aim.all_initiatives"
+              - else
+                - if params[:search_term]
+                  = "\"#{params[:search_term]}\""
+                - if !session[:filter_scope].blank?
+                  - s = []
+                  - session[:filter_scope].each do |child|
+                    - next if child.first == 'search_term'
+                    - if child.first == 'country'
+                      - s << child.last.map{|x| Country[x].name }.join(';')
+                    - else
+                      - s << Object.const_get(child.first.humanize).find(child.last).map(&:name).join("; ")
+                  - unless s.blank?
+                    - if params[:search_term]
+                      = "; "
+                    = "#{s.flatten.join('; ').strip}"
 
           .eight.alpha.columns{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
             .filter_toggle          
