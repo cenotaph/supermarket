@@ -36,6 +36,7 @@ class ApplicationController < ActionController::Base
       @front_carousel = Frontcarousel.by_subsite(@subsite).published.random(8)
       @random_exhibitors =  Application.includes(:applicationwebimages).approved.where(:year_id => Year.find_by(:year => Time.now.year).id).where("applicationwebimages.id is not null and applicationwebimages.imagefile not LIKE '%pdf' and applicationwebimages.imagefile not LIKE '%tiff'" ).random(4)
       @posts = Post.by_subsite(@subsite).published.order('published_at DESC').limit(3)
+      @video = Video.published.order('created_at DESC').first
     elsif @site == 'aim'
       redirect_to map_spaces_path
     end

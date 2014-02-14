@@ -203,6 +203,20 @@ header {
   }
 }
 
+.video_front {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .video_title {
+    color: black;
+  }
+  .video_blurb {
+    color: #666;
+  }
+  
+}
+
 .frontpage_exhibitors {
   float: left;
   padding: 10px 0px;
