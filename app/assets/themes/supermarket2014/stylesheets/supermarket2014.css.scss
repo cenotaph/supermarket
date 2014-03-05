@@ -616,10 +616,87 @@ ul.existing_accounts {
   }
 }
 
+
+.pagination {
+  height: 28px;
+  margin: 14px 0;
+}
+.pagination ul {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  margin-left: 0;
+  margin-bottom: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.pagination li {
+  display: inline;
+}
+.pagination a {
+  float: left;
+  padding: 0 10px;
+  line-height: 26px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-right-width: 0;
+}
+
+.pagination .last a {
+  border-right-width: 1px;
+}
+.pagination a:hover,
+.pagination .active a {
+  background-color: #f5f5f5;
+}
+
+.pagination .current, .pagination .gap{
+  float: left;
+  padding: 0 10px;
+  line-height: 26px;
+  color: #999999;
+  cursor: default;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+.pagination .disabled span,
+.pagination .disabled a,
+.pagination .disabled a:hover {
+  color: #999999;
+  background-color: transparent;
+  cursor: default;
+}
+.pagination li:first-child a {
+  border-left-width: 1px;
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+.pagination li:last-child a {
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+.pagination-centered {
+  text-align: center;
+}
+.pagination-right {
+  text-align: right;
+}
+
+
+
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
     padding-top: 30px; height: 0; overflow: hidden;
+    margin-bottom: 20px;
 }
  
 iframe.twitter-timeline {

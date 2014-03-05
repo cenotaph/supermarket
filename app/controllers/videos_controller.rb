@@ -9,8 +9,8 @@ class VideosController < InheritedResources::Base
     end
     @years = Year.all.order("year desc").delete_if{|x| x.videos.published.empty? }
     @videos = []
-    @years.each do |year|
-      @videos << [year.year, Video.published.order('created_at DESC').where("year_id  = ?", year.id) ]
-    end
+    #@years.each do |year|
+    @videos = Video.published.order('created_at DESC').where("year_id  = ?", @year.id).page(params[:page]).per(6) 
+    #end
   end
 end
