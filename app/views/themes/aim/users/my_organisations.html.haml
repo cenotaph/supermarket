@@ -1,0 +1,4 @@
+
+- if current_user.spaces.empty? 
+  %p= t "aim.create_space_blurb"
+  = button_to t("aim.create_a_space"), new_space_path, :method => :get

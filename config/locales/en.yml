@@ -98,6 +98,17 @@ en:
     currently_in_database: ' currently in our database'
     found_by_search: ' match your terms'
     all_initiatives: 'All initiatives'
+    create_space_blurb: 'Do you represent an artist-run initiative? Register it here to join our fast-growing database of worldwide artist-run initiatives!' 
+    create_a_space: 'Register your initiative'
+    search_database_blurb: 'Already found in our database....' 
+    organisation_type_fieldset: 'How would you describe the structure of your initiative?'
+    organisation_type_hint: 'You can check as many as needed.'
+    activities_fieldset: 'What sorts of activities are your initiative involved with?'
+    activities_hint: 'Check as many as apply.'    
+    exhibitionspace_type_fieldset: 'Which best describes the public/exhibition side of your initiative?'
+    space_additional_details: 'Additional details'
+    short_description: 'Please provide a short description of your initiative (500 words or less)'
+    
   supermarket2014:
     granted_accepted: 'Application accepted!'
     images_form: 'You may upload up to 6 images to support your application. .JPG, .PNG or .GIF format only, maximum size 1MB per image.'

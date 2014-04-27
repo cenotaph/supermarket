@@ -166,77 +166,79 @@ input.shadow {
   }
 }
 
-.space {
-  width: 460px;
-  .title_and_web {
-    height: 36px;
-    margin-bottom: 35px;
-    .space_title {
-      float: left;
-      font-family: $helv;
-      font-weight: bold;
-      font-size: 36pt;
-      color: #000000;
-    }
-    .space_websites {
-      margin-bottom: 5px;
-      .admin_stuff {
-        a {
-          color: red;
-          font-size: 8pt;
-          font-weight: bold;
+.aim_profile {
+  .space {
+    width: 460px;
+    .title_and_web {
+      height: 36px;
+      margin-bottom: 35px;
+      .space_title {
+        float: left;
+        font-family: $helv;
+        font-weight: bold;
+        font-size: 36pt;
+        color: #000000;
+      }
+      .space_websites {
+        margin-bottom: 5px;
+        .admin_stuff {
+          a {
+            color: red;
+            font-size: 8pt;
+            font-weight: bold;
   
+          }
+        }
+      }
+      .space_web {
+        float: left;
+        padding: 3px;
+        margin-right: 10px;
+        font-family: $helv;
+        font-size: 12pt;
+        color: #000;
+        font-weight: bold;
+      }
+    }
+    .section_heading {
+      font-family: $helv;
+      font-size: 12pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #000;
+    }
+  
+    .business_type {
+    
+      clear: left;
+      border-top: 1px solid #999;
+      border-bottom: 1px solid #999;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 5px 0px;
+      color: #999;
+      font-family: $helv;
+      margin: 18px 0 18px 0;
+    }
+    .section_content {
+      font-family: $helv;
+      font-size: 12pt;
+      color: #333;
+      ul {
+        padding-left: 20px;
+        list-style-type: disc;
+        li {
+          font-family: $helv;
+          color: #333;
+          font-size: 12pt;
         }
       }
     }
-    .space_web {
+    .address {
       float: left;
-      padding: 3px;
-      margin-right: 10px;
-      font-family: $helv;
-      font-size: 12pt;
-      color: #000;
-      font-weight: bold;
     }
-  }
-  .section_heading {
-    font-family: $helv;
-    font-size: 12pt;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #000;
-  }
   
-  .business_type {
-    
-    clear: left;
-    border-top: 1px solid #999;
-    border-bottom: 1px solid #999;
-    font-size: 14px;
-    font-weight: 300;
-    padding: 5px 0px;
-    color: #999;
-    font-family: $helv;
-    margin: 18px 0 18px 0;
   }
-  .section_content {
-    font-family: $helv;
-    font-size: 12pt;
-    color: #333;
-    ul {
-      padding-left: 20px;
-      list-style-type: disc;
-      li {
-        font-family: $helv;
-        color: #333;
-        font-size: 12pt;
-      }
-    }
-  }
-  .address {
-    float: left;
-  }
-  
 }
 
 .page_title {

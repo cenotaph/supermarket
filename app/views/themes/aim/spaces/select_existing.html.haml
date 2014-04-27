@@ -1,0 +1,26 @@
+%h2= t "supermarket2014.hang_on_a_minute"
+
+%h4= @space.name
+
+%p= t "supermarket2014.space_handoff_needed"
+
+%p= t "supermarket2014.authorised_users", :space => @space.name
+
+%ul.existing_accounts
+  - @space.space_users.approved.each do |su|
+    %li= su.user.protected_email
+
+.ten.columns
+  .five.columns.alpha
+    %p= t "supermarket2014.login_to_reclaim", :space => @space.name
+    = button_to(destroy_user_session_path, :method => :delete) do
+      = fa_icon 'sign-out', class: :large
+      = t :sign_out
+  .five.columns.omega
+    %p= t "supermarket2014.email_to_reclaim", :space => @space.name
+    = button_to(space_request_access_path(:space_id => @space.slug), :method => :get) do
+      = fa_icon 'envelope-o', class: :large
+      = t "supermarket2014.request_authorisation"
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'         

@@ -140,6 +140,7 @@ class SpacesController < ApplicationController
   end
   
   def show
+    @nofilter = 1
     @space = Space.find(params[:space_id])
     if params[:searchterm]
       if params[:searchterm].strip.size > 3

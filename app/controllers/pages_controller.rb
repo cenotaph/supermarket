@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     unless @page.background.nil?
       @background_image = @page.background
     end
+    @nofilters = 1
   end
   
 

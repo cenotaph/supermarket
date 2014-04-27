@@ -1,0 +1,9 @@
+%h3= t "supermarket2014.request_authorisation"
+
+%p= t "supermarket2014.we_sent_emails_blurb", :space => @space.name
+
+%p= t "supermarket2014.contact_if_problems"
+
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'   

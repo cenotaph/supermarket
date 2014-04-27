@@ -42,7 +42,7 @@
             .meta
               - if current_user.spaces.empty?
                 You have not yet submitted your organisation's information.
-                = link_to 'Submit it now!', '/my_organisation'
+                = link_to 'Submit it now!', my_organisations_users_path
               - else
                 Your organisations:
                 - current_user.spaces.each do |space|
@@ -55,7 +55,7 @@
                       .sidebar_tiny= link_to 'View your profile', initiatives_path(space)
                     - else
                       .sidebar_tiny= space.percent_complete + "% complete"
-                    .sidebar_tiny= link_to 'Edit your details', '/my_organisation'
+                    .sidebar_tiny= link_to 'Edit your details', my_organisations_users_path
             - if current_user.is_aim_staff?
               = link_to '[Admin setup]', '/admin'
           - else 
@@ -104,7 +104,7 @@
         .filter_info.eight.columns.omega
           .search_title= t :showing
           .quotes{:class => (!@quotes ? :all : false)}
-            - if @space
+            - if @space && !@space.new_record?
               = @space.name + " (#{@space.hometown})"
             - else
               - if !params[:search_term] && session[:filter_scope].blank?

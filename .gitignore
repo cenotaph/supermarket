@@ -7,10 +7,15 @@
 
 # Ignore bundler config.
 /.bundle
+quick_db
+sync_db
+*.dat
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
+*.dump
+.DS_Store
 
 # Ignore all logfiles and tempfiles.
 /log/*.log

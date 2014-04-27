@@ -1,0 +1,239 @@
+@import 'variables';
+form#space_form {
+  width: 100%;
+  
+  .longhint p.inline-hints {
+    font-size: 11px;
+    line-height: 13px;
+    width: 250px;
+    text-align: left;
+    margin-left: 0px;
+    padding-left: 50px;
+    clear: left;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  textarea#application_special_needs {
+    height: 75px;
+    width: 400px;
+  }
+  .section {
+    clear: both;
+    margin-top: 30px;
+
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+  ul.ui-autocomplete {
+    li {
+      display: none;
+    }
+    li.ui-menu-item {
+      display: block;
+    }
+  }
+  input#application_remove_upload1, input#application_remove_upload2 {
+    margin-left: 180px;
+    margin-bottom: 25px;
+  }
+  .uploaded {
+    margin-top: 30px;
+    font: $body-text;
+    margin-left: 125px;
+  }
+  
+  .fields {
+    
+    .fields_image {
+      margin-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px dotted $orange1;
+    }
+    .fields_video {
+      margin-top: 25px;
+    }
+    li {
+      margin-top: 20px;
+      margin-left: 50px;
+    }
+    label {
+      width: 100px;
+    }
+    margin-bottom: 10px;
+    .image, .video {
+        float: left;
+        margin-left: 150px;
+      img {
+        margin-right: 30px;
+        float: left;
+      }
+      .title {
+        font: $small-heading;
+      }
+      span.url {
+        font-size: 10px;
+        font-weight: italic;
+        color: #666;
+      }
+      li {
+        clear: right;
+        label {
+          clear: none;
+          width: inherit;
+        }
+      }
+      .remove_nested_fields {
+        margin-left: 0px;
+      }
+    }
+  }
+  .add_link {
+    clear: both;
+    margin-bottom: 25px;
+    padding-top: 10px;
+
+    font: $small-text;
+    text-transform: uppercase;
+    font-weight: bold;
+    &.image, &.video {
+      .fields { 
+        margin-left: 125px;
+      }
+    }
+  }
+  
+  p, .subsubtitle {
+    font-size: 1.2em;
+
+  }
+  .subsubtitle {
+    margin-bottom: 20px;
+  }
+  .add_nested_fields {
+    margin-left: 125px;
+
+    font-weight: bold;
+    clear: both;
+    float: left;
+  }
+  .remove_nested_fields {
+    margin-left: 125px; 
+    font: $small-text;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+    
+  p.inline-hints {
+    font-size: 11px;
+    line-height: 13px;
+    width: 250px;
+    text-align: right;
+    margin-left: 0px;
+    padding-left: 50px;
+    font-style: italic;
+  }
+  #recaptcha_area {
+    float: left;
+  }
+  li {
+    list-style-type: none;
+    clear: both;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    &.text {
+      float: left;
+    }
+    &.boolean {
+      margin-top: 10px;
+      float: left;
+      margin-bottom: 15px;
+    }
+    &.check_boxes {
+      p.inline-hints {
+        margin-top: 10px;
+        color: #666;
+      }
+    }
+    label {
+      clear: left;
+      width: 250px;
+      float: left;
+      text-align: right;
+      margin-right: 25px;
+      font-size: 13px;
+      line-height: 15px;
+      color: #666;
+      &.error{
+        clear: both;
+        color: red;
+        font-size: 0.8em;
+      }
+    }
+    &.boolean {
+      margin-left: 275px;
+      label {
+        text-align: left !important;
+      }
+    }
+  }
+  textarea {
+    float: left;
+    width: 400px;
+    height: 80px;
+    &#application_supermarket_proposal {
+      height: 160px;
+    }
+  }
+  input[type=text], input[type=email], input[type=tel], input[type=url], input[type=password], select  {
+    font-size: 15px;
+    width: 250px;
+  }
+  fieldset.actions {
+    border: none;
+  }
+  fieldset {
+    
+    margin-top: 15px;
+    legend.label {
+      label {
+        float: none;
+        font-size: 15px;
+        color: #333;
+      }
+    }
+    ol  {
+      li {
+        label {
+          font-size: 14px;
+          color: #333;
+        }
+        float: left;
+        clear: none;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .subtitle {
+    margin-top: 30px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+    font: $small-link;
+  }
+}
+
+li.autocomplete {
+  margin-bottom: 25px;
+}
+button.next {
+  margin-left: 275px;
+  margin-top: 25px;
+}
+button.previous, button.start {
+  margin-left: 110px;
+  margin-right: 10px;
+}
+
+button.beginning  {
+  margin-left: 275px;
+}

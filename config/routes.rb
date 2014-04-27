@@ -12,8 +12,13 @@ Aim::Application.routes.draw do
     get :browse, :on => :collection
     get :clear_filters, :on => :collection
     get :map, :on => :collection
+
   end
   
+  resources :users do
+    get :my_organisations, :on => :collection
+  end
+    
   match '/support' => "funders#index", :via => :get
   match '/search' => 'search#create', :via => :post
   match '/aiming/search' => 'search#aimsearch', via: :post
