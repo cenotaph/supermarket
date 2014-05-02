@@ -14,10 +14,10 @@ Aim::Application.routes.draw do
     get :map, :on => :collection
 
   end
-  
-  resources :users do
-    get :my_organisations, :on => :collection
-  end
+    # 
+  # resources :users do
+  #   get :my_organisations, :on => :collection
+  # end
     
   match '/support' => "funders#index", :via => :get
   match '/search' => 'search#create', :via => :post
