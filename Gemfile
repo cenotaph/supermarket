@@ -59,6 +59,7 @@ gem 'devise-encryptable'
 gem 'fog'
 gem 'font-awesome-rails'
 gem 'formtastic', github: 'justinfrench/formtastic', branch: 'master'
+gem 'foundation-rails'
 gem "friendly_id", '5.0.1' #'~> 5.0.0.alpha1', :github => "FriendlyId/friendly_id"
 gem 'geocoder'
 gem 'paper_trail', github: 'airblade/paper_trail' , branch: 'master'

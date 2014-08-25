@@ -151,6 +151,9 @@ GEM
     font-awesome-rails (4.0.3.2)
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
+    foundation-rails (5.0.3.1)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     friendly_id (5.0.1)
       activerecord (~> 4.0.0)
     geocoder (1.2.0)
@@ -409,6 +412,7 @@ DEPENDENCIES
   fog
   font-awesome-rails
   formtastic!
+  foundation-rails
   friendly_id (= 5.0.1)
   geocoder
   globalize (~> 4.0.0.alpha.2)

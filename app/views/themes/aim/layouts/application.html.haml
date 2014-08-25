@@ -2,8 +2,10 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-    %title= content_for?(:title) ? yield(:title) : "Aiming"
-    %meta{:content => content_for?(:description) ? yield(:description) : "Supermarket", :name => "description"}
+    %title= content_for?(:title) ? yield(:title) : "Artist Run Map"
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    
+    %meta{:content => content_for?(:description) ? yield(:description) : "Worldwide database of artist-run ", :name => "description"}
     = stylesheet_link_tag :application
     = stylesheet_link_tag 'aim/stylesheets/application', :media => :screen
     = javascript_include_tag :application
@@ -16,11 +18,26 @@
     %link{:href => "/images/apple-touch-icon.png", :rel => "apple-touch-icon"}/
     %link{:href => "/images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
     %link{:href => "/images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
+    = javascript_include_tag "vendor/modernizr"
   %body{:onload => 'initialize()'}
-    .container
-      .sixteen.columns.header
+    - unless flash.blank?
+      .row
+        .small-12.columns.header
+          .flash
+            - flash.each do |key, value|
+              .alert{ :class => "alert-#{key}" }
+                %strong
+                  = value             
+    .row
+      .small-6.columns
+        %h1
+          %a.button_to{:href => '/'}
+            -#= image_tag(theme_image_path('aim_logo.png'))
+            Artist Run Map
+          - Page.by_subsite(@subsite.id).published.each do |page|
+            = button_to page.title, page, :method => :get
+      .small-6.columns
         .languages
- 
           - I18n.available_locales.each do |locale|
             - if session[:locale].nil?
               - if locale == :en
@@ -33,141 +50,67 @@
               - else
                 = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
 
+        = render :partial => 'layouts/user_info'
 
-        .login_stuff
-          - if current_user
-            You are logged in as 
-            = current_user.display_name
-            = link_to t(:sign_out), '/logout'
-            .meta
-              - if current_user.spaces.empty?
-                You have not yet submitted your organisation's information.
-                = link_to 'Submit it now!', my_organisations_users_path
-              - else
-                Your organisations:
-                - current_user.spaces.each do |space|
-                  - unless space.business_name.blank?
-                    = space.business_name
-                  .meta
-                    - unless space.logo.blank?
-                      = image_tag space.logo.url(:tiny), :style => "float: left; margin-right: 5px"
-                    - if space.approved
-                      .sidebar_tiny= link_to 'View your profile', initiatives_path(space)
-                    - else
-                      .sidebar_tiny= space.percent_complete + "% complete"
-                    .sidebar_tiny= link_to 'Edit your details', my_organisations_users_path
-            - if current_user.is_aim_staff?
-              = link_to '[Admin setup]', '/admin'
-          - else 
-            .login_text
-              You are not logged in.
-            .login_text
-              = t :connect_instantly
-              = link_to 'Facebook', '/auth/facebook'
-              |
-              = link_to 'Twitter', '/auth/twitter'
-        .flash
-          - flash.each do |key, value|
-            .alert{ :class => "alert-#{key}" }
-              %strong
-                = value             
-        %h1
-          %a.button_to{:href => '/'}
-            -#= image_tag(theme_image_path('aim_logo.png'))
-            Aiming
-          - Page.by_subsite(@subsite.id).published.each do |page|
-            = button_to page.title, page, :method => :get
+    .row
+      .small-6.columns
         .subtitle= t "aim.header_text"
-      .sixteen.columns.search{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
+        .row
+          .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
 
-        .search_dropdown.eight.columns.alpha
-          %form{:action => "/aiming/search", :method => "post"}
-            #menu.two.columns.alpha
-              .search_title= t :search_by
-              %select{:name => :search_filter}
-                %option{:value => :name}= t :name
-                %option{:value => :activities}= t :activities
-                %option{:value => :location}= t :location
-            .six.columns.alpha
-              %input.shadow{:type => :text, :name => :search_term, :value => params[:search_term]}
-              -# %input{:type => :submit, :value => ''}
-          - if @spaces.blank? && !@space
-            .eight.columns.alpha{:style => "clear: left"}
+        
+        .row
+          .small-12.columns
+            - if @spaces.blank? && !@space
               %h2= t "aim.no_spaces_match"
               %h4= t "aim.no_spaces_blurb"
               %p= link_to t("aim.clear_all_filters"), clear_filters_spaces_path
-          - elsif !@spaces.blank?
-            .six.columns.alpha
+            - elsif !@spaces.blank?
               %h4
                 = pluralize(@spaces.count, 'initiative')
                 = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
-        .filter_info.eight.columns.omega
-          .search_title= t :showing
-          .quotes{:class => (!@quotes ? :all : false)}
-            - if @space && !@space.new_record?
-              = @space.name + " (#{@space.hometown})"
-            - else
-              - if !params[:search_term] && session[:filter_scope].blank?
-                = t "aim.all_initiatives"
-              - else
-                - if params[:search_term]
-                  = "\"#{params[:search_term]}\""
-                - if !session[:filter_scope].blank?
-                  - s = []
-                  - session[:filter_scope].each do |child|
-                    - next if child.first == 'search_term'
-                    - if child.first == 'country'
-                      - s << child.last.map{|x| Country[x].name }.join(';')
-                    - else
-                      - s << Object.const_get(child.first.humanize).find(child.last).map(&:name).join("; ")
-                  - unless s.blank?
-                    - if params[:search_term]
-                      = "; "
-                    = "#{s.flatten.join('; ').strip}"
+      .small-6.columns.search= render :partial => 'layouts/search_filter'
 
-          .eight.alpha.columns{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
-            .filter_toggle          
-              %a{:href => '#', :onClick => '$(".filter_container").slideToggle();'}
-                = fa_icon 'bars'
-                = t "aim.toggle_filters"
-              - unless session[:filter_scope].nil?
-                = link_to t("aim.clear_all_filters"), clear_filters_spaces_path
 
-    .container
-      .sixteen.columns.filter_container{:style => "display: " + 'none'}= render :partial => 'shared/aim_filters'
-    .container
-      .sixteen.columns= yield               
+    .row{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
+      .small-12.columns
+        = t "aim.filter_by_initiative"
+    .row#initiative_filter{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
+      - Businesstype.includes([:translations, :spaces]).all.each do |bt|
+        .small-3.columns
+          %li{:class => (session[:filter_scope]['businesstype'].blank? ? false : (session[:filter_scope]['businesstype'].include?(bt.id) ? :activated : false ) rescue false)}
+            = link_to bt.name, "/filter_by/businesstype/#{bt.id}"
+            - unless bt.spaces.delete_if{|x| x.approved == false}.empty?
+              = "(#{bt.spaces.size})"        
+
+    = yield               
 
 
                               
+    %footer
+      .container
+        .row
+          .small-4.columns
+            %label.sub= t :copyright_notice
+          .small-4.columns
+            %label= t :contact
+            %p
+              info at artistrunmap &sdot; org
 
-      .footer.sixteen.columns
-        .five.alpha.columns
-          %label.sub= t :copyright_notice
-        .five.columns.alpha
-          / %label= t.subscribe
-          / %input.shadow{:type => :text}
-          &nbsp;
-        .four.columns.alpha
-          %label= t :contact
-          %p
-            Contact information here.
-          %label= t :press
-          %p
-            Press info here
-        .two.columns.omega
+      .row
+        .small-1.columns
           %label= t :follow_us
-          .facebook
-            %a{:href => "need facebook link"}
-              = image_tag theme_image_path('facebook_icon.png')
-          .twitter
-            %a{:href => "need twitter link"}
-              = image_tag theme_image_path('twitter_icon.png')
-      .support.sixteen.columns
-        = t :supporters
-        = image_tag theme_image_path('kknord.png')
-        = image_tag theme_image_path('supermarket_no_year_black.png')
-        
+        .small-1.columns.facebook
+          %a{:href => "need facebook link"}
+            = image_tag theme_image_path('facebook_icon.png')
+        .small-1.columns.twitter
+          %a{:href => "need twitter link"}
+            = image_tag theme_image_path('twitter_icon.png')
+        .small-8.columns.small-offset-1
+          = t :supporters
+          = image_tag theme_image_path('kknord.png')
+          = image_tag theme_image_path('supermarket_no_year_black.png')
+    
   :javascript
     $(document).ready(function() {
 

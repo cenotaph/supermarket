@@ -1,0 +1,22 @@
+%span.search_title= t "aim.showing"
+%span.quotes{:class => (!@quotes ? :all : false)}
+  - if @space && !@space.new_record?
+    = @space.name + " (#{@space.hometown})"
+  - else
+    - if !params[:search_term] && session[:filter_scope].blank?
+      = t "aim.all_initiatives"
+    - else
+      - if params[:search_term]
+        = "\"#{params[:search_term]}\""
+      - if !session[:filter_scope].blank?
+        - s = []
+        - session[:filter_scope].each do |child|
+          - next if child.first == 'search_term'
+          - if child.first == 'country'
+            - s << child.last.map{|x| Country[x].name }.join(';')
+          - else
+            - s << Object.const_get(child.first.humanize).find(child.last).map(&:name).join("; ")
+        - unless s.blank?
+          - if params[:search_term]
+            = "; "
+          = "#{s.flatten.join('; ').strip}"

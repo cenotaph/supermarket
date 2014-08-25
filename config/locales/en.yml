@@ -81,6 +81,7 @@ en:
   present: 'now'
   booth_result: 'Decision on application'
   aim:
+    showing: "Showing: "
     instant_sign_in: "You can instantly log into Aiming"
     connect_with_facebook: 'Connect instantly with Facebook'
     connect_with_twitter: 'Connect instantly with Twitter'
@@ -91,7 +92,7 @@ en:
     organisation_structure: 'Organisational structure'
     dedicated_to_exhibitions: ' dedicated to exhibitions'
     exhibition_space_type: 'Exhibition space'
-    toggle_filters: 'Sorting options ....'
+    toggle_filters: 'Additional filters ....'
     no_spaces_match: "We're sorry, but nothing matches these filters."
     no_spaces_blurb: 'Please try a more inclusive search.'
     clear_all_filters: 'Clear all filters'
@@ -108,7 +109,7 @@ en:
     exhibitionspace_type_fieldset: 'Which best describes the public/exhibition side of your initiative?'
     space_additional_details: 'Additional details'
     short_description: 'Please provide a short description of your initiative (500 words or less)'
-    
+    filter_by_initiative: 'Filter by initiative type:'
   supermarket2014:
     granted_accepted: 'Application accepted!'
     images_form: 'You may upload up to 6 images to support your application. .JPG, .PNG or .GIF format only, maximum size 1MB per image.'

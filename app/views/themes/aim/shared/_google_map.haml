@@ -2,6 +2,8 @@
   - organizations = organizations.delete_if{|o| o.latitude.nil? || o.longitude.nil?}
 
 #google-map
+.filter_container.small-6.columns{:style => "display: " + 'none'}
+  .row= render :partial => 'shared/aim_filters'
 %script{:type => "text/javascript"}
   function buildmap() {
   var myOptions = {

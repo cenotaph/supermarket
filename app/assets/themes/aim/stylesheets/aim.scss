@@ -51,24 +51,16 @@ label.sub {
   margin-top: 3px;
   color: #999;
 }
+
+
+
+.browse_box:before {
+    content:     "";
+    display:     block;
+    padding-top: 100%; /* initial ratio of 1:1*/
+}
+
 .browse_box {
-  font-family: HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  width: 184px;
-  height: 166px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  padding: 18px;
-  float: left;
-  overflow: hidden;
-  color: #444;
-  cursor:pointer;
-  .space_description {
-    overflow: hidden;
-    margin-top: 5px;
-    p {
-      margin: 0px;
-    }
-  }
   &.box0 {
      background-color: $box0; 
   }
@@ -87,25 +79,65 @@ label.sub {
   &.box5 { 
     background-color: $box5; 
   }
-  .box_weblink {
-    font-size: 10px;
-  }
-  .space_name {
-    font-family: $helv;
-    font-size: 20px;
-    line-height: 22px;
-    font-weight: bold;
-    color: #ffffff;
-  }
-  .space_town {
-    margin: 5px 0px;
-    font-style: italic;
-  }
-  .space_description {
-    font-size: 14px;
+
+  margin-bottom: 0.9375rem;
+  
+  .content {
+    width: 90%;
+    height: 90%;
+    font-family: HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding-bottom: 16.666667%;
+    position: absolute;
+    top:      0;
+    left:     0;
+    bottom:   0;
+    right:    0;
+
+    padding: 7px 7px 0px 22px;
+    float: left;
+    overflow: hidden;
+    color: #444;
+    cursor:pointer;
+    
+    .space_description {
+      overflow: hidden;
+      margin-top: 5px;
+      p {
+        margin: 0px;
+      }
+    }
+
+    .box_weblink {
+      font-size: 10px;
+    }
+    .space_name {
+      font-family: $helv;
+      font-size: 1.2em;
+      line-height: 1.3em;
+      font-weight: bold;
+      color: #ffffff;
+      &.long {
+        font-size: 1.0em;
+      }
+    }
+    .space_town {
+      margin: 5px 0px;
+      color: black;
+      font-size: 0.85em;
+      font-style: italic;
+    }
+    .space_metadata {
+      margin: 5px 0px;
+      a { color: #666; }
+      color: #666;
+      font-size: 0.85em;
+    }
+    .space_description {
+      font-size: 0.9em;
+    }
+    
   }
 }
-
 
 .logo {
   width: 300px;
@@ -124,13 +156,22 @@ input.shadow {
   box-shadow:         2px 2px 2px 0px #000;
   margin-right: 5px;
 }
+
 .search {
   #menu {
     select {
       background-color: black;
       color: white;
       overflow:hidden;
-     
+      height: 24px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      font-size: 0.8em;
+      padding: 2px 2px 2px 5px;
+      height: 25px;
+      -webkit-appearance: menulist !important;
+      -moz-appearance: menulist !important;
+      -moz-border-radius: 3px;
       option {
           background-color: black;
           color: white;
@@ -138,7 +179,15 @@ input.shadow {
           width: 120%;
       }
     }
- }
+  }
+  
+  .filter_toggle {
+    a {
+      color: #000;
+      font-weight: bold;
+    }
+  }
+  
   .search_title {
     font-size: 12pt;
     font-family: $helv;
@@ -166,9 +215,25 @@ input.shadow {
   }
 }
 
+#initiative_filter {
+  margin-bottom: 10px;
+  li {
+    padding: 4px 0px;
+    font-size: 0.85em;
+    list-style-type: none;
+    &.activated {
+      font-weight: bold;
+      color: #333;
+    }
+    a {
+      color: #666;
+    }
+  }
+}
+
 .aim_profile {
   .space {
-    width: 460px;
+
     .title_and_web {
       height: 36px;
       margin-bottom: 35px;
@@ -176,11 +241,16 @@ input.shadow {
         float: left;
         font-family: $helv;
         font-weight: bold;
-        font-size: 36pt;
+        font-size: 3.0em;
+        &.long {
+          font-size: 2.0em;
+        }
         color: #000000;
       }
       .space_websites {
-        margin-bottom: 5px;
+        margin: 5px;
+        float: left;
+        clear: left;
         .admin_stuff {
           a {
             color: red;
@@ -222,7 +292,10 @@ input.shadow {
     }
     .section_content {
       font-family: $helv;
-      font-size: 12pt;
+      p {
+        font-size: 0.96em;
+      }
+      font-size: 0.96em;
       color: #333;
       ul {
         padding-left: 20px;
@@ -259,7 +332,8 @@ input.shadow {
   margin-right: 30px;
 }
 .subtitle {
-  clear: left;
+  margin-bottom: 25px;
+  font-size: 1.4em;
 }
 
 .redbar {
@@ -268,8 +342,10 @@ input.shadow {
   margin-bottom: 20px;
 }
 .filter_info {
+  margin-bottom: 25px;
   .quotes {
-    font-size: 24px;
+    font-size: 1.3em;
+    color: #666;
   }
   .filter_toggle {
     margin: 5px 0px 10px 0px;
@@ -308,7 +384,12 @@ input.shadow {
   float: left;
   border-left: 1px dotted #000000;
   border-right: 1px dotted #000000;
-  margin-bottom: 20px;
+  margin-top : -540px;
+  margin-left: 10px;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 1000;
+  opacity: 0.9;
 }
 .filter_column {
   overflow: hidden;
@@ -316,14 +397,14 @@ input.shadow {
   padding: 0px 5px 0px 5px;
   .title {
     font-family: $helv;
-    font-size: 14px;
+    font-size: 0.95em;
     font-weight: bold;
   }
   ul {
     list-style: none outside;
     padding-left: 0px;
     li {
-      font-size: 12px;
+      font-size: 0.85em;
       &.activated {
         background-color: #333;
         color: #FFE;
@@ -335,13 +416,12 @@ input.shadow {
         text-decoration: none;
         color: #333;
       }
-      line-height: 16px;
-      font-size: 13px;
+      line-height: 1.1em;
+      font-size: 0.8em;
       margin-bottom: 0;
       font-family: $helv;
-      font-size: 12pt;
       font-weight: normal;
-      color: #333333;
+      color: #333;
       
     }
   }
@@ -355,6 +435,9 @@ input.shadow {
   width: 100%;
   height: 500px;
   margin-bottom: 20px;
+  &.small {
+    width: 75%;
+  }
 }
 
 #browse_map {
@@ -420,8 +503,10 @@ label.error {
   float: left;
   margin-right: 5px;
 }
-.footer {
+footer {
   margin-top: 20px;
+  padding-top: 40px;
+  background-color: #fbfbfb;
   border-top: 1px dotted black;
   a {
     text-decoration: none;

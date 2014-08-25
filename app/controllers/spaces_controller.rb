@@ -8,12 +8,13 @@ class SpacesController < ApplicationController
   # , :default => proc { |c| c.session[:filter_scope]['organisationtype'] }
   has_scope :by_activity #, :default => proc { |c| c.session[:filter_scope]['activity'] }
   has_scope :by_businesstype #, :default => proc { |c| c.session[:filter_scope]['businesstype'] }
-
+  has_scope :by_exhibitionspacetype
   
   def aim_profile
     @space = Space.friendly.find(params[:id])
     @filter = @space.business_name + " <span class='hometown'>#{@space.hometown}</span>"
     @closedfilters = true
+    @nofilters = 1
   end
   
   def browse
