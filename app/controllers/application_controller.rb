@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
   end
   
   def get_site
-    @site = request.host =~ /^aim/ ? 'aim' : 'supermarket2014'
+    @site = request.host =~ /^artistrunmap/ ? 'aim' : 'supermarket2014'
     if @site == 'aim'
       @tree = Space.approved.delete_if{|x| x.country.blank? && x.visiting_country.blank? }.group_by{|x|  Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].region}
       @tree.each do |region|
