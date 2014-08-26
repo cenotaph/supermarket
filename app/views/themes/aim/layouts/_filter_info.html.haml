@@ -1,5 +1,5 @@
 %span.search_title= t "aim.showing"
-%span.quotes{:class => (!@quotes ? :all : false)}
+.search_toggle{:class => (!@quotes ? :all : false)}
   - if @space && !@space.new_record?
     = @space.name + " (#{@space.hometown})"
   - else
@@ -7,16 +7,21 @@
       = t "aim.all_initiatives"
     - else
       - if params[:search_term]
-        = "\"#{params[:search_term]}\""
+        = link_to "\"#{params[:search_term]}\"", '#', :class => :selected
       - if !session[:filter_scope].blank?
         - s = []
         - session[:filter_scope].each do |child|
           - next if child.first == 'search_term'
-          - if child.first == 'country'
-            - s << child.last.map{|x| Country[x].name }.join(';')
+          - if child.first == 'country'        
+            - child.last.each do |c|
+              = link_to Country[c].name, "/filter_by/country/#{c}", :class => :selected
           - else
-            - s << Object.const_get(child.first.humanize).find(child.last).map(&:name).join("; ")
+
+            - child.last.each do |c|
+              = link_to Object.const_get(child.first.humanize).find(c).name, "/filter_by/#{child.first}/#{c}", :class => :selected
         - unless s.blank?
           - if params[:search_term]
             = "; "
-          = "#{s.flatten.join('; ').strip}"
+          / - s.each do |ss|
+          /   = link_to ss, '#', :class => :selected
+          /   -#= "#{s.flatten.join('; ').strip}"

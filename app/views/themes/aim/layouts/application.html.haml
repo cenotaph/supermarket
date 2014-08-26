@@ -61,16 +61,18 @@
         
         .row
           .small-12.columns
-            - if @spaces.blank? && !@space
-              %h2= t "aim.no_spaces_match"
-              %h4= t "aim.no_spaces_blurb"
-              %p= link_to t("aim.clear_all_filters"), clear_filters_spaces_path
-            - elsif !@spaces.blank?
+            - if !@spaces.blank?
               %h4
                 = pluralize(@spaces.count, 'initiative')
                 = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
       .small-6.columns.search= render :partial => 'layouts/search_filter'
 
+    - if @spaces.blank? && !@space
+      .row
+        .small-12.columns
+          %h2= t "aim.no_spaces_match"
+          %h4= t "aim.no_spaces_blurb"
+          %p= link_to t("aim.clear_all_filters"), clear_filters_spaces_path
 
     .row{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
       .small-12.columns

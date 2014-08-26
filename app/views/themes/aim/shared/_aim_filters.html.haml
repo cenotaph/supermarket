@@ -14,13 +14,13 @@
             - region.last.group_by{|x| x.last['subregion'] }.each do |subregion|
               - next if subregion.first.blank?
               - next if @tree[region.first][subregion.first].nil?
-              %li{:class => check_filter(subregion.last.map(&:first), 'country', "jstree-open") }
+              %li{:class => check_filter(subregion.last.map(&:first), 'country', "jstree-open ") }
                 = link_to subregion.first + " (#{@tree[region.first][subregion.first].to_enum(:flat_each).collect {|k, v| [k,v] }.flatten.delete_if{|x| x.class == String }.size})", '#'
                 %ul
                   - subregion.last.sort_by{|x| x.last['name'] }.each do |country|
                     - next if country.first.blank?
                     - next if @tree[region.first][subregion.first][country.first.downcase].nil?
-                    %li{:class => check_filter([country.first], 'country', "jstree-open") }
+                    %li{:class => check_filter([country.first], 'country', "jstree-open activated ") }
 
                       = link_to country.last['name'] + " (#{@tree[region.first][subregion.first][country.first.downcase].size})", "/filter_by/country/#{country.first}"
   %br/

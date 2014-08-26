@@ -204,7 +204,7 @@ input.shadow {
     height: 30px;
     padding: 2px;
     float: left;
-    font-size: 26px;
+    font-size: 1.2em;
   }
   input[type=submit] {
     float: left;
@@ -343,6 +343,27 @@ input.shadow {
 }
 .filter_info {
   margin-bottom: 25px;
+  .search_title {
+    float: left;
+    margin-right: 5px;
+    padding-top: 2px;
+  }
+  
+  .search_toggle {
+
+    a.selected {
+      margin: 3px 3px 0px 0px;
+      float: left;
+      font-size: 0.8em;
+      padding: 2px 20px 2px 4px;
+      background-color: #fbfbfb;
+      border: 1px solid #666;
+      background: url('../images/icon_smallX.png') no-repeat top right #f3f3f3;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+    }
+  }
+  
   .quotes {
     font-size: 1.3em;
     color: #666;
