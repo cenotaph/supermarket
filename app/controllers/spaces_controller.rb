@@ -56,7 +56,7 @@ class SpacesController < ApplicationController
       flash[:error] = 'This is not your space to edit.'
       redirect_to '/'
     else
-
+      @nofilters = 1
       @space.update_attribute(:status, 'find_name')
       @hits = []
       render :template => 'spaces/find_name'
@@ -129,7 +129,10 @@ class SpacesController < ApplicationController
   end
   
   def finish
-    
+    session[:filter_scope] = nil
+    flash[:notice] = t(:all_done) + " "
+    flash[:notice] +=  t "supermarket2014.finished_space_blurb"
+    redirect_to '/'
   end
   
   def finish_wizard_path
@@ -141,7 +144,7 @@ class SpacesController < ApplicationController
   end
   
   def show
-    @nofilter = 1
+    @nofilters = 1
     @space = Space.find(params[:space_id])
     if params[:searchterm]
       if params[:searchterm].strip.size > 3
@@ -157,7 +160,6 @@ class SpacesController < ApplicationController
   end
 
   def update
-    
     @space = Space.find(params[:space_id])
     params[:space][:status] = step.to_s
     if step == steps.last
@@ -180,7 +182,7 @@ class SpacesController < ApplicationController
    
   
   def space_params
-    params.require(:space).permit(:business_name, :address1, :address2, :city, :state, :country, :contact_person, :contact_email, :contact_phone, :website1, :website2, :visiting_address1, :visiting_address2, :visiting_city, :visiting_state, :visiting_postcode, :visiting_country, :form_direction, :short_description, :decisionmakers_organisation, :decisionmakers_programming, :founding_year, :is_active, :year_of_closing, :logo, :exhibitors, businesstype_ids: []
+    params.require(:space).permit(:business_name, :address1, :address2, :city, :state, :country, :contact_person, :contact_email, :contact_phone, :website1, :website2, :visiting_address1, :visiting_address2, :visiting_city, :visiting_state, :visiting_postcode, :visiting_country, :form_direction, :short_description, :decisionmakers_organisation, :decisionmakers_programming, :founding_year, :is_active, :year_of_closing, :logo, :exhibitors,  :exhibitionspacetype_id, businesstype_ids: [], organisationtype_ids: [], activity_ids: []
 
 
     )

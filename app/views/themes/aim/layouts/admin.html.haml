@@ -2,56 +2,70 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : "Aiming Staff"
-      %link{:href => theme_image_path('favicon.ico'), :rel => "shortcut icon"}/
-      %meta{:content => content_for?(:description) ? yield(:description) : "AIM", :name => "description"}
-        = stylesheet_link_tag :application
-        = stylesheet_link_tag 'aim/stylesheets/admin', :media => :screen
-        = stylesheet_link_tag 'aim/stylesheets/application', :media => :screen
-        = javascript_include_tag "application"
-        = javascript_include_tag 'admin'
-        / %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
-        = csrf_meta_tags
-        = yield(:head)
-  %body
-    %header
-      .container
-        .sixteen.columns
-          .flash
-            - flash.each do |key, value|
-              .alert{ :class => "alert-#{key}" }
-                %strong
-                  = value
-          %nav.top_bar
-            %ul
-              %li= link_to t(:faqs), page_path('faq')
-              - if current_user
-                %li= current_user.display_name
-                - if current_user.has_role?(:staff) || current_user.has_role?(:god)
-                  %li= link_to 'Public side', '/'
-                %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
-              - else
-                %li= link_to t(:login), new_user_session_path
-                %li= link_to t(:sign_up), new_user_registration_path
-              %li
-                = form_tag('/search') do |f|
-                  = text_field_tag :searchterm,  t(:search)
-        .sixteen.columns.header_main.alpha
-          .twelve.columns.alpha.header_logo
-          .four.columns.omega
-            %nav.social_icons
-              %h2 AIMING Staff side
-    #main
-      .container
-        .two.columns.alpha= render :partial => 'layouts/staff_sidebar'
-        .fourteen.omega.columns= yield
+    %title= content_for?(:title) ? yield(:title) : "Artist Run Map"
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    
+    %meta{:content => content_for?(:description) ? yield(:description) : "Worldwide database of artist-run ", :name => "description"}
+    = stylesheet_link_tag :application
+    = stylesheet_link_tag 'aim/stylesheets/application', :media => :screen
+    = stylesheet_link_tag 'aim/stylesheets/admin', :media => :screen    
+    = javascript_include_tag :application
+    = javascript_include_tag "aim/javascripts/application"
+    = javascript_include_tag "admin"
+    %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
+    = csrf_meta_tags
+    = yield(:head)    
+    
+    %link{:href => "/images/favicon.ico", :rel => "shortcut icon"}/
+    %link{:href => "/images/apple-touch-icon.png", :rel => "apple-touch-icon"}/
+    %link{:href => "/images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
+    %link{:href => "/images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
+    
+    = javascript_include_tag "vendor/modernizr"
+  %body.cms
+
+    %nav.top-bar{:"data-topbar role" => :navigation}
+      %ul.title-area
+        %li.name
+          %h1= link_to 'Artist Run Map', '/'
+        %li.toggle-topbar.menu-icon
+          =link_to '#' do
+            %span Menu
+      %section.top-bar-section
+        %ul.left
+          - if can? :manage, Page
+            %li
+              = link_to admin_pages_path do
+                = fa_icon 'file-text'
+                Pages
+          - if can? :manage, Post
+            %li
+              = link_to admin_posts_path do
+                = fa_icon 'bullhorn'
+                News/blog post
+          - if can? :manage, Space
+            %li
+              = link_to admin_spaces_path do
+                = fa_icon 'cloud'
+                All spaces & initiatives
+      %section.top-bar-section
+        %ul.right
+          
+          %li= link_to 'Public side', '/'
+          %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+          %li
+            = form_tag('/search') do |f|
+              = text_field_tag :searchterm,  t(:search)
+
+    #main= yield
           
     %footer
       .container
         .footer_text.sixteen.columns                             
   :javascript
     $(document).ready(function() {
-      $('input#searchterm').clearField();
+      $(document).foundation();
+
       #{yield :jquery}
     });
 

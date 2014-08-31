@@ -40,12 +40,12 @@ en:
   replace_video: 'Change video to different URL'
   address_and_location: 'Address and location'
   address: 'Address'
-  details: 'Details'
   add_an_image: 'Add an image'
   phone: 'Phone number'
   websites: 'Websites'
   images_and_video: 'Images and video'
-  all_done: 'All done!'
+  all_done: 'All done! '
+  edit_your_details: 'Edit your details'
   replace_image: 'Replace image'
   remove_image: 'Remove image'
   application_for_supermarket: 'Application for Supermarket'
@@ -81,7 +81,12 @@ en:
   present: 'now'
   booth_result: 'Decision on application'
   aim:
-    showing: "Showing: "
+    showing: "Currently: "
+    you_are_logged_in_as: 'You are logged in as '
+    initiative_not_yet: "You have not yet submitted your initiatives's information."
+    details: 'Details'
+    your_initiative: 'Your initiative: '
+    space_basic_details: 'Contact details'
     instant_sign_in: "You can instantly log into Aiming"
     connect_with_facebook: 'Connect instantly with Facebook'
     connect_with_twitter: 'Connect instantly with Twitter'
@@ -92,6 +97,9 @@ en:
     organisation_structure: 'Organisational structure'
     dedicated_to_exhibitions: ' dedicated to exhibitions'
     exhibition_space_type: 'Exhibition space'
+    is_active: 'Is this initiative currently active?'
+    decision_makers_programming: 'Are the decision makers of the programming more than 50% artists?'
+    decision_makers_organisation: 'Are the decision makers of the organisation more than 50% artists?'
     toggle_filters: 'Additional filters ....'
     no_spaces_match: "We're sorry, but nothing matches these filters."
     no_spaces_blurb: 'Please try a more inclusive search.'

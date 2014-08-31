@@ -1,0 +1,20 @@
+= semantic_form_for([:admin, @user], :html => {:multipart => true}) do |f|
+  .row
+    .small-12.columns
+      - unless f.object.nil?
+        - if f.object.is_staff?
+          %p You can upload a profile photo here for your account, which will be used in the commenting and other staff features.
+        - if f.object.photo?
+          = image_tag f.object.photo.url(:standard)
+          = f.input :remove_photo, :as => :boolean
+        = f.input :photo
+  .row
+    .small-12.columns
+      %p Editing user details. You should only do this if you have a good reason.
+  .row
+    .small-6.columns
+      = f.input :display_name
+  .row
+    .small-6.columns= f.input :email    
+  .row 
+    .small-6.columns= f.submit

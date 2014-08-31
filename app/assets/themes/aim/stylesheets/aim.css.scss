@@ -16,9 +16,37 @@ a {
 }
 
 
+.flash {
+  background-color: red;
+  color: white;
+  opacity: 0.8;
+}
 
+.login_stuff {
+  font-size: 0.8rem;
+  .meta {
+    margin-top: 10px;
+  }
+  form {
+    margin: 0px;
 
-
+  }
+  .right {
+    margin-left: 15px;
+  }
+  .sidebar_image {
+    clear: both;
+    float: right;
+    margin-bottom: 5px;
+  }
+  button {
+    border-radius: 1rem;
+    font-size: 0.7rem;
+    height: 2rem;
+    padding: 0.6rem;
+    margin-bottom: 5px;
+  }
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: $helv;
 }
@@ -160,8 +188,7 @@ input.shadow {
 .search {
   #menu {
     select {
-      background-color: black;
-      color: white;
+
       overflow:hidden;
       height: 24px;
       -webkit-border-radius: 3px;
@@ -169,8 +196,7 @@ input.shadow {
       font-size: 0.8em;
       padding: 2px 2px 2px 5px;
       height: 25px;
-      -webkit-appearance: menulist !important;
-      -moz-appearance: menulist !important;
+
       -moz-border-radius: 3px;
       option {
           background-color: black;
@@ -232,6 +258,7 @@ input.shadow {
 }
 
 .aim_profile {
+  min-height: 640px;
   .space {
 
     .title_and_web {
@@ -248,7 +275,7 @@ input.shadow {
         color: #000000;
       }
       .space_websites {
-        margin: 5px;
+        margin: 5px 0px;
         float: left;
         clear: left;
         .admin_stuff {
@@ -337,7 +364,7 @@ input.shadow {
 }
 
 .redbar {
-  height: 25px;
+  height: 10px;
   background-color: $box0;
   margin-bottom: 20px;
 }
@@ -350,7 +377,7 @@ input.shadow {
   }
   
   .search_toggle {
-
+    padding-top: 2px;
     a.selected {
       margin: 3px 3px 0px 0px;
       float: left;

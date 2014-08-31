@@ -1,16 +1,1 @@
 %ul.staff_menu
-  - if can? :manage, Page
-    %li
-      = link_to admin_pages_path do
-        = fa_icon 'file-text'
-        Pages
-  - if can? :manage, Post
-    %li
-      = link_to admin_posts_path do
-        = fa_icon 'bullhorn'
-        News/blog post
-  - if can? :manage, Space
-    %li
-      = link_to admin_spaces_path do
-        = fa_icon 'cloud'
-        All spaces & initiatives

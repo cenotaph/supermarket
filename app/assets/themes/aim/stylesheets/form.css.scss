@@ -1,7 +1,11 @@
 @import 'variables';
-form#space_form {
+form#space_form, .cms form {
   width: 100%;
   
+  label.label {
+    background-color: #FFF !important;
+    text-align: left !important;
+  }
   .longhint p.inline-hints {
     font-size: 11px;
     line-height: 13px;
@@ -13,7 +17,18 @@ form#space_form {
     margin-top: 10px;
     font-style: italic;
   }
-
+  select#space_decisionmakers_organisation, select#space_decisionmakers_programming {
+    width: 65px;
+    float: right;
+  }
+  input#space_year_of_closing {
+    width: 120px;
+    float: left;
+  }
+  .yesno {
+    float: left;
+    font-size: 0.9rem;
+  }
   textarea#application_special_needs {
     height: 75px;
     width: 400px;
@@ -145,9 +160,14 @@ form#space_form {
       float: left;
     }
     &.boolean {
+      margin-left: 0px !important;
+      label { margin-left: 0px !important; }
       margin-top: 10px;
       float: left;
       margin-bottom: 15px;
+      input {
+        margin-right: 5px;
+      }
     }
     &.check_boxes {
       p.inline-hints {
@@ -171,7 +191,7 @@ form#space_form {
       }
     }
     &.boolean {
-      margin-left: 275px;
+
       label {
         text-align: left !important;
       }
@@ -196,21 +216,29 @@ form#space_form {
     
     margin-top: 15px;
     legend.label {
+      background-color: #FFF !important;
       label {
         float: none;
+
         font-size: 15px;
         color: #333;
       }
     }
     ol  {
-      li {
+      li {  
+
         label {
-          font-size: 14px;
+          font-size: 0.9rem;
           color: #333;
+          text-align: left;
+          margin: 0px 0px 5px 0px !important;
+          input {
+            margin: 0px 5px 0px 0px !important;
+          }
         }
         float: left;
         clear: none;
-        margin-bottom: 10px;
+        margin: 0px !important;
       }
     }
   }

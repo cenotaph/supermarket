@@ -1,27 +1,38 @@
 .login_stuff
   - if current_user
-    You are logged in as 
-    = current_user.display_name
-    = link_to t(:sign_out), '/logout'
+    .row
+      .small-12.columns
+        = t "aim.you_are_logged_in_as"
+        = current_user.display_name
+        .right
+          = button_to '/logout' do
+            = t :sign_out
+            %i.fa.fa-sign-out.fa-1
     .meta
       - if current_user.spaces.empty?
-        You have not yet submitted your organisation's information.
-        // = link_to 'Submit it now!', my_organisations_users_path
+        .row
+          .small-12.columns= t "aim.initiative_not_yet"
+    
       - else
-        Your organisations:
-        - current_user.spaces.each do |space|
-          - unless space.business_name.blank?
-            = space.business_name
-          .meta
-            - unless space.logo.blank?
-              = image_tag space.logo.url(:tiny), :style => "float: left; margin-right: 5px"
-            - if space.approved
-              .sidebar_tiny= link_to 'View your profile', initiatives_path(space)
-            - else
-              .sidebar_tiny= space.percent_complete + "% complete"
-            / .sidebar_tiny= link_to 'Edit your details', my_organisations_users_path
-    - if current_user.is_aim_staff?
-      = link_to '[Admin setup]', '/admin'
+        .row
+          - current_user.spaces.each do |space|
+            .small-4.columns{:class => "small-offset-" + (8 / current_user.spaces.size.to_i).to_s}
+              = space.try(:business_name)
+              - unless space.logo.blank?
+                .sidebar_image= raw image_tag(space.logo.url(:sidebar), :style => "float: left; margin-right: 5px").gsub('production', 'development')
+              - if space.approved?
+                .sidebar_tiny
+                  = button_to initiatives_path(space) do
+                    = t "aim.view_your_profile"
+                    %i.fa.fa-binoculars.fa-1
+
+              = button_to  edit_space_path(space) do
+                = t "aim.edit_your_details"
+                %i.fa.fa-edit.fa-1
+
+    
+      - if current_user.is_aim_staff?
+        = link_to '[Admin setup]', '/admin'
   - else 
     .login_text
       You are not logged in.

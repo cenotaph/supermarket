@@ -15,17 +15,34 @@
 
   %h2= t "aim.or"
   
-%h2= t "aim.basic_details"
-  
+.row
+  .small-12.columns
+    %h2
+      = t "aim.basic_details"
+      - unless @space.new_record?
+        = ": #{@space.name}"
+
 = semantic_form_for(@space, :url => wizard_path(:find_name, :space_id => @space.id), :method => :put, :html => {:id => :space_form}) do |f|
-  = f.input :business_name, :value => params[:searchterm], :label => t("supermarket2014.name_of_space"), :input_html => {:required => true }
-  = f.input :address1, :label => t("supermarket2014.address1"), :input_html => {:required => true }
-  = f.input :address2, :label => t("supermarket2014.address2")
-  = f.input :city, :label => t("supermarket2014.city"), :input_html => {:required => true }
-  = f.input :state, :label => t("supermarket2014.state")
-  = f.input :country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country"), :input_html => {:required => true }
-  = f.input :businesstypes, :as => :check_boxes, :label => t("supermarket2014.business_type_fieldset"), :hint => t("supermarket2014.business_type_hint")
-  %button.next.fa.fa-arrow-circle-right.icon-large= t :next
+  .row
+    .small-6.columns
+      .row
+        .small-12.columns= f.input :business_name, :value => params[:searchterm], :label => t("supermarket2014.name_of_space"), :input_html => {:required => true }
+      .row
+        .small-12.columns= f.input :address1, :label => t("supermarket2014.address1"), :input_html => {:required => true }
+      .row
+        .small-12.columns= f.input :address2, :label => t("supermarket2014.address2")
+      .row
+        .small-12.columns= f.input :city, :label => t("supermarket2014.city"), :input_html => {:required => true }
+      .row
+        .small-12.columns= f.input :state, :label => t("supermarket2014.state")
+      .row
+        .small-12.columns= f.input :country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country"), :input_html => {:required => true }
+    .small-6.columns
+      .row
+        .small-12.columns= f.input :businesstypes, :as => :check_boxes, :label => t("supermarket2014.business_type_fieldset"), :hint => t("supermarket2014.business_type_hint")
+      .row
+        .small-12.columns
+          %button.next.fa.fa-arrow-circle-right.icon-large= t :next
   
  
 :javascript

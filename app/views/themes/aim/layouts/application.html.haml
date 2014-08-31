@@ -14,29 +14,22 @@
     %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
     = csrf_meta_tags
     = yield(:head)    
+    
     %link{:href => "/images/favicon.ico", :rel => "shortcut icon"}/
     %link{:href => "/images/apple-touch-icon.png", :rel => "apple-touch-icon"}/
     %link{:href => "/images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
     %link{:href => "/images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
+    
     = javascript_include_tag "vendor/modernizr"
-  %body{:onload => 'initialize()'}
-    - unless flash.blank?
-      .row
-        .small-12.columns.header
-          .flash
-            - flash.each do |key, value|
-              .alert{ :class => "alert-#{key}" }
-                %strong
-                  = value             
+    
+  %body{:onload => (@nofilters == true || @spaces.blank?) ? false : 'initialize()'}
+    
     .row
       .small-6.columns
         %h1
           %a.button_to{:href => '/'}
             -#= image_tag(theme_image_path('aim_logo.png'))
             Artist Run Map
-          - Page.by_subsite(@subsite.id).published.each do |page|
-            = button_to page.title, page, :method => :get
-      .small-6.columns
         .languages
           - I18n.available_locales.each do |locale|
             - if session[:locale].nil?
@@ -49,23 +42,37 @@
                 %b= locale.to_s
               - else
                 = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
-
-        = render :partial => 'layouts/user_info'
-
-    .row
-      .small-6.columns
-        .subtitle= t "aim.header_text"
-        .row
-          .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
-
-        
         .row
           .small-12.columns
-            - if !@spaces.blank?
-              %h4
-                = pluralize(@spaces.count, 'initiative')
-                = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
-      .small-6.columns.search= render :partial => 'layouts/search_filter'
+            .subtitle= t "aim.header_text"
+        .row
+          .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
+        .row
+          .small-12.columns.search= render :partial => 'layouts/search_filter'
+      .small-6.columns
+        .row
+          .small-10.small-offset-2.text-right= render :partial => 'layouts/user_info'
+
+    
+    - unless flash.blank?
+      .flash
+        .row
+          .small-12.columns.header
+            - flash.each do |key, value|
+              .alert{ :class => "alert-#{key}" }
+                %strong
+                  = value       
+
+
+        
+    .row
+      .small-6.columns
+        - if !@spaces.blank?
+          %h4
+            = pluralize(@spaces.count, 'initiative')
+            = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
+      
+      
 
     - if @spaces.blank? && !@space
       .row
@@ -73,7 +80,7 @@
           %h2= t "aim.no_spaces_match"
           %h4= t "aim.no_spaces_blurb"
           %p= link_to t("aim.clear_all_filters"), clear_filters_spaces_path
-
+      
     .row{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
       .small-12.columns
         = t "aim.filter_by_initiative"
@@ -115,7 +122,7 @@
     
   :javascript
     $(document).ready(function() {
-
+      $(document).foundation();
       $('#tree').jstree({
         "themes" : {
           "theme" :  "apple",
