@@ -23,6 +23,11 @@
         .section_heading= t "aim.who_we_are"
         .section_content.readmore= raw simple_format(@space.short_description)
     
+
+        .section_heading= t "aim.what_we_exhibit"
+        .section_content
+          = @space.activities.map(&:name).join(' - ')
+
         .section_heading= t "aim.what_we_do"
         .section_content
           %ul
@@ -49,54 +54,57 @@
                 = @space.exhibitions_per_year
                 = t "aim.exhibitions_per_year"
                 %ul
-                  %li
-                    = "#{@space.percent_for_exhibitions.to_s}% " + t("aim.dedicated_to_exhibitions")
+                  - unless @space.percent_for_exhibitions.blank?
+                    %li
+                      = "#{@space.percent_for_exhibitions.to_s}% " + t("aim.dedicated_to_exhibitions")
                   - unless @space.exhibitors.blank?
                     %li= @space.exhibitors
                   - unless @space.percent_invited.blank?
                     %li= "#{@space.percent_invited}% " + t("aim.invited")
               - unless @space.activities_other.blank?
                 %li= "#{@space.activities_other} " + t("aim.per_year_other")
-        .section_heading= t "aim.what_we_exhibit"
-        .section_content
-          = @space.activities.map(&:name).join(' - ')
+                          
     .small-6.columns.space
       - if @space.latitude.nil?
         .space_map No map data.
       - else
-        #space_map= render :partial => "shared/google_map", :locals => { :organizations => [@space] }
+        #space_map= render :partial => "shared/small_map", :locals => { :organizations => [@space] }
 
         .logo
           - if @space.logo?
             %img{:src => @space.logo.url(:profile)}
           - else
             &nbsp;
-      .address
-        .section_heading= t "aim.where_we_are"
-        .section_content
-          - if @space.visiting_address1.blank?
-            = @space.address1  + "," unless @space.address1.blank?
-            = @space.address2  + "," unless @space.address2.blank?
-            = @space.city unless @space.city.blank?
-            = @space.state unless @space.state.blank? || (@space.state == @space.city)
-            = @space.postcode unless @space.postcode.blank?
-            = Country[@space.country].name unless @space.country.blank?
-          - else
-            = @space.visiting_address1  + "," unless @space.visiting_address1.blank?
-            = @space.visiting_address2  + "," unless @space.visiting_address2.blank? 
-            = @space.visiting_city  + "," unless @space.visiting_city.blank?
-            = @space.visiting_state  + "," unless @space.visiting_state.blank? || (@space.visiting_state == @space.visiting_city)
-            = @space.visiting_postcode unless @space.visiting_postcode.blank?
-            = Country[@space.visiting_country].name unless @space.visiting_country.blank?
-  .row
-    .small-12.columns
-      
-      %ul{:"data-orbit" => true}
-        - @space.allimages.each do |i|
-          %li
-            = image_tag i.first.url
-            - unless i.last.blank?
-              .orbit-caption= i.last
+      .address.row
+        .small-12.columns
+          .section_heading= t "aim.where_we_are"
+          .section_content
+            - if @space.visiting_address1.blank?
+              = @space.address1  + "," unless @space.address1.blank?
+              = @space.address2  + "," unless @space.address2.blank?
+              = @space.city unless @space.city.blank?
+              = @space.state unless @space.state.blank? || (@space.state == @space.city)
+              = @space.postcode unless @space.postcode.blank?
+              = Country[@space.country].name unless @space.country.blank?
+            - else
+              = @space.visiting_address1  + "," unless @space.visiting_address1.blank?
+              = @space.visiting_address2  + "," unless @space.visiting_address2.blank? 
+              = @space.visiting_city  + "," unless @space.visiting_city.blank?
+              = @space.visiting_state  + "," unless @space.visiting_state.blank? || (@space.visiting_state == @space.visiting_city)
+              = @space.visiting_postcode unless @space.visiting_postcode.blank?
+              = Country[@space.visiting_country].name unless @space.visiting_country.blank?
+      .row
+        .small-12.columns
+          .section_heading= t "aim.what_it_looks_like"
+          %ul.aim_profile{:"data-orbit" => true}
+            - @space.allimages.each do |i|
+              %li{:style => "height:280px; overflow:hidden" }
+                = image_tag i.first.url(:normal)
+                - unless i.last.blank?
+                  .orbit-caption= i.last
+              
+
+
             
 
 

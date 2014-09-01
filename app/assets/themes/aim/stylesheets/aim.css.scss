@@ -20,6 +20,9 @@ a {
   background-color: red;
   color: white;
   opacity: 0.8;
+  .row {
+    margin: 5px 0px;
+  }
 }
 
 .login_stuff {
@@ -224,7 +227,7 @@ input.shadow {
   }
   
   .search_title {
-    font-size: 12pt;
+    font-size: 1.1rem;
     font-family: $helv;
     color: #999999;
     text-transform: uppercase;
@@ -301,16 +304,18 @@ input.shadow {
         padding: 3px;
         margin-right: 10px;
         font-family: $helv;
-        font-size: 12pt;
+        font-size: 1.05rem;
         color: #000;
         font-weight: bold;
       }
     }
     .section_heading {
       font-family: $helv;
-      font-size: 12pt;
+      font-size: 1.1rem;
       font-weight: bold;
+      margin-top: 20px;
       text-transform: uppercase;
+      clear: left;
       color: #000;
     }
   
@@ -339,7 +344,7 @@ input.shadow {
         li {
           font-family: $helv;
           color: #333;
-          font-size: 12pt;
+          font-size: 1.05rem;
         }
       }
     }
@@ -572,3 +577,36 @@ footer {
 }
 
 
+form {
+  label, .label {
+    background-color: #FFF !important;
+    color: #333;
+  }
+  li {
+    list-style-type: none;
+  }
+}
+
+ul.existing_accounts {
+  i {
+    color: #999;
+  }
+}
+
+ul.aim_profile {
+  height: 280px;
+  overflow: hidden;
+  li {
+    img {
+      max-height: 280px;
+      overflow: hidden;
+    }
+  }
+}
+
+.orbit-timer.paused {
+  display: none;
+}
+.orbit-bullets-container {
+  margin-top: -365px;
+}

@@ -1,24 +1,33 @@
 
 - unless @hits.empty?
-  %h2= t "aim.choose_existing_space"
+  .row
+    .small-12.columns
+      %h3= t "aim.choose_existing_space"
   
-  %p= t "aim.search_database_blurb"
+  .row
+    .small-12.columns
+      %p= t "aim.search_database_blurb"
   
   .hits
     - @hits.each do |hit|
-      .hit
-        = link_to hit.business_name, select_existing_space_path(hit)
-        %span.location
-          %em= hit.city
-          - unless hit.country.blank?
-            = " / " + Country[hit.country].name
+      .hit.row
+        .small-6.columns
+          .row
+            .small-3.columns= link_to hit.business_name, select_existing_space_path(hit)
+            .small-9.columns.text-left
+              %span.location
+                %em= hit.city
+                - unless hit.country.blank?
+                  = " / " + Country[hit.country].name
 
-  %h2= t "aim.or"
+.row
+  .small-.12.columns
+    %h1= t "aim.or"
   
 .row
   .small-12.columns
-    %h2
-      = t "aim.basic_details"
+    %h3
+      = t "aim.enter_new_details"
       - unless @space.new_record?
         = ": #{@space.name}"
 

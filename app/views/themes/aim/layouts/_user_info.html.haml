@@ -11,7 +11,10 @@
     .meta
       - if current_user.spaces.empty?
         .row
-          .small-12.columns= t "aim.initiative_not_yet"
+          .small-12.columns
+            %p= t "aim.initiative_not_yet"
+            %p= link_to t("aim.submit_your_initiative"), new_space_path
+          
     
       - else
         .row
@@ -21,12 +24,11 @@
               - unless space.logo.blank?
                 .sidebar_image= raw image_tag(space.logo.url(:sidebar), :style => "float: left; margin-right: 5px").gsub('production', 'development')
               - if space.approved?
-                .sidebar_tiny
-                  = button_to initiatives_path(space) do
-                    = t "aim.view_your_profile"
-                    %i.fa.fa-binoculars.fa-1
+                = button_to initiatives_path(space), :method => :get do
+                  = t "aim.view_your_profile"
+                  %i.fa.fa-binoculars.fa-1
 
-              = button_to  edit_space_path(space) do
+              = button_to  edit_space_path(space) , :method => :get  do
                 = t "aim.edit_your_details"
                 %i.fa.fa-edit.fa-1
 

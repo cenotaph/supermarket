@@ -22,7 +22,7 @@
     
     = javascript_include_tag "vendor/modernizr"
     
-  %body{:onload => (@nofilters == true || @spaces.blank?) ? false : 'initialize()'}
+  %body{:onload => (@nofilters == true || (@space.blank? && @spaces.blank?)) ? false : 'initialize()'}
     
     .row
       .small-6.columns

@@ -111,18 +111,26 @@ class SpacesController < ApplicationController
   
   def new
     @space = Space.new
-      
+    @nofilters = true
   end
 
   def request_access
     @space = Space.friendly.find(params[:space_id])
+    @nofilters = true
+    
     if @space.approved_users.include?(current_user)
       flash[:notice] = 'You already have access to this account.'
       redirect_to wizard_path(:basic_details, :space_id => @space.id)
     else
+      flash[:notice] = nil
+      flash = nil
       su = SpaceUser.find_or_create_by(space_id: @space.id, user_id: current_user.id) 
       if su.save
-        SpaceMailer.add_user_access(@space, current_user, su.approval_token).deliver
+        if @site == 'aim'
+          SpaceMailer.aim_add_user_access(@space, current_user, su.approval_token).deliver
+        elsif @site == 'supermarket2014'
+          SpaceMailer.supermarket2014_aim_add_user_access(@space, current_user, su.approval_token).deliver
+        end
       else
         flash[:error] = 'Could not save for some reason'
         exit
@@ -132,10 +140,11 @@ class SpacesController < ApplicationController
   
   def select_existing
     @space = Space.friendly.find(params[:id])
+    @nofilters = true
     if @space.approved_users.include?(current_user)
       flash[:notice] = 'You have access to edit this space'
     else
-      flash[:error] = 'You are not registered as an owner or manager of this space/gallery'
+      flash[:notice] = 'You are not registered as an owner or manager of this space/gallery'
     end
     
     

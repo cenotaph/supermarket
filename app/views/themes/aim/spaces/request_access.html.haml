@@ -1,9 +1,10 @@
-%h3= t "supermarket2014.request_authorisation"
+.row
+  .small-12.columns
+    %h3= t "aim.request_authorisation"
+.row
+  .small-12.columns
+    %p= t "aim.we_sent_emails_blurb", :space => @space.name
 
-%p= t "supermarket2014.we_sent_emails_blurb", :space => @space.name
-
-%p= t "supermarket2014.contact_if_problems"
-
-- if user_signed_in?
-  = content_for :sidebar do
-    = render :partial => 'layouts/sidebar'   
+.row
+  .small-12.columns
+    %p= t "aim.contact_if_problems"

@@ -82,9 +82,13 @@ en:
   booth_result: 'Decision on application'
   aim:
     showing: "Currently: "
+    enter_new_details: "Enter new details for"
+    or: ' ... or ... '
     you_are_logged_in_as: 'You are logged in as '
+    hang_on_a_minute: 'Hang on just a minute ....!'
     initiative_not_yet: "You have not yet submitted your initiatives's information."
     details: 'Details'
+    space_handoff_needed: 'This initiative already exists in our database, but your user account is not authorised to update or change the information for it.'
     your_initiative: 'Your initiative: '
     space_basic_details: 'Contact details'
     instant_sign_in: "You can instantly log into Aiming"
@@ -118,6 +122,17 @@ en:
     space_additional_details: 'Additional details'
     short_description: 'Please provide a short description of your initiative (500 words or less)'
     filter_by_initiative: 'Filter by initiative type:'
+    authorised_users: 'The following email addresses are currently linked to the %{space} account (x''d out for privacy here):'
+    login_to_reclaim: 'If you already have access to one of these accounts on the Supermarket website, please sign out and log in as one of them to update the %{space} information.'
+    email_to_reclaim: "Or, you may request access to this exhibition space/gallery from these users. Requesting access sends an email to the above user account(s), allowing them to authorise your account for the %{space} space."
+    request_authorisation: 'Request access!'
+    we_sent_emails_blurb: 'We have sent emails to the owners of the %{space} account, asking them to approve your access. You will receive an email notification when this has been done.'
+    contact_if_problems: 'If there is a problem, such as these email addresses no longer being accessible, please contact support@artistrunmap.org and we will attempt to resolve the situation.'
+    view_your_profile: "View profile"
+    edit_your_details: 'Edit details'
+    what_it_looks_like: 'What it looks like'
+    
+    
   supermarket2014:
     granted_accepted: 'Application accepted!'
     images_form: 'You may upload up to 6 images to support your application. .JPG, .PNG or .GIF format only, maximum size 1MB per image.'
@@ -193,7 +208,7 @@ en:
     supermarket_is_closed: "Applications for the 2014 Supermarket Art Fair are now closed. Thanks to everyone who applied; check back here for news about the fair, exhibitors, and the programme."
     past_applications: 'Past applications'
     pending_space: 'Awaiting access to...'
-    pending_spaces_explanation: 'You have requested access to manage a space or gallery. The current account holders have received an email containing instructions on how to approve your access. If you believe there is an error, please contact info@supermarketartfair.com.'
+    pending_spaces_explanation: 'You have ewed access to manage a space or gallery. The current account holders have received an email containing instructions on how to approve your access. If you believe there is an error, please contact info@supermarketartfair.com.'
     please_choose_a_country: 'Please select a country....'
     type_of_initiative: 'Type of initiative'
     mark_as_red_spot: 'Mark as Red Spot proposal'

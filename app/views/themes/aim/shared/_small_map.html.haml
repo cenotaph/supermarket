@@ -1,0 +1,120 @@
+- unless organizations.nil?
+  - organizations = organizations.delete_if{|o| o.latitude.nil? || o.longitude.nil?}
+
+.filter_container.small-6.columns{:style => "display: " + 'none'}
+  .row= render :partial => 'shared/aim_filters'
+%script{:type => "text/javascript"}
+  function buildmap() {
+  var myOptions = {
+  mapTypeControl: false,
+  scrollwheel: false,
+  mapTypeControlOptions: {
+  mapTypeIds: [ 'darkwater']
+  },
+  minZoom: 2,
+  maxzoom: 13,
+  - if organizations.empty?
+    zoom: 14,
+    center: new google.maps.LatLng(47.288828765662416, 7.945261001586914),
+  - elsif !organizations.first.latitude.nil?
+    center: new google.maps.LatLng(#{sprintf("%5f", organizations.first.latitude)}, #{sprintf("%5f", organizations.first.longitude)}),
+    zoom: 13,
+  mapTypeId: 'darkwater'
+  }        
+  return new google.maps.Map(document.getElementById("space_map"), myOptions);
+  }
+  
+  function initialize() {
+  var darkStyle = [ 
+  {featureType: "landscape",
+  elementType: "all",
+  stylers: [
+  { hue: "#CACBA6" },
+  { lightness: -20 }]}
+  ,
+  {featureType: "water",
+  elementType: "all",
+  stylers: [
+  { saturation: 40 },         
+  { lightness: 40 }]}
+  ,
+  {featureType: "administrative",
+  elementType: "labels",
+  stylers: [      
+  { hue: "#1100ff" },
+  { saturation: -100 },
+  { lightness: -18 }]}
+  ,
+  {featureType: "poi",
+  elementType: "all",
+  stylers: [
+  { lightness: -18 },
+  { visibility: "off" }]}
+  ,
+  {featureType: "landscape",
+  elementType: "all",
+  stylers: [
+  { visibility: "on" }]}
+  ,
+  {featureType: "water",
+  elementType: "labels",
+  stylers: [      
+  { lightness: -18 },
+  { visibility: "off" }]}
+  ,
+  {featureType: "road",
+  elementType: "labels",
+  stylers: [
+  { hue: "#ffa200" },
+  { visibility: "on" }]}
+  ,
+  {featureType: "administrative",
+  elementType: "geometry",
+  stylers: [
+  { visibility: "simplified" }]}
+  ,
+  {featureType: "road.highway",
+  elementType: "geometry",
+  stylers: [
+  { saturation: -100 }]}
+  ,
+  {featureType: "road.arterial",
+  elementType: "geometry",
+  stylers: [
+  { saturation: -100 }]}
+  ,
+  {featureType: "road.local",
+  elementType: "geometry",
+  stylers: [
+  { lightness: -27 }]}
+  ,
+  {featureType: "transit",
+  elementType: "all",
+  stylers: [
+  { visibility: "off" }]}
+  ];
+  var bounds = new google.maps.LatLngBounds();
+  map = buildmap();
+  map.mapTypes.set('darkwater', new google.maps.StyledMapType(darkStyle, { name: 'Dark' }));
+
+  var infoWindow = new google.maps.InfoWindow();
+  - unless organizations.nil?
+    - for organization in organizations
+      var myLatLng = new google.maps.LatLng(#{organization.latitude}, #{organization.longitude});
+      var marker_#{organization.id} = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title:"#{organization.business_name}"
+      });
+      bounds.extend(myLatLng);
+      google.maps.event.addListener(marker_#{organization.id}, 'click', function() {
+      var html='<div style="clear: float; width: 400px;"><a href="/initiatives/#{organization.slug}"><img style="float: left;height:75px; width:75px; margin-right: 10px;" src="#{organization.logo? ? organization.logo.url(:sidebar).gsub(/aim-development/, 'aim-production') : 'missing.png'}" /></a><p style="float: left; width: 250px;"><strong><a href="/initiatives/#{organization.slug}">#{escape_javascript(organization.business_name)}</a></strong><br />#{escape_javascript(organization.full_street_address)}<br /><a href="#{organization.slug}" target="_blank">#{organization.slug}</a><br /></p></div>';
+      infoWindow.setContent(html);
+      infoWindow.open(map, marker_#{organization.id});
+      });
+  - unless organizations.size == 1
+    map.fitBounds(bounds);
+    return map;
+  }
+
+ 

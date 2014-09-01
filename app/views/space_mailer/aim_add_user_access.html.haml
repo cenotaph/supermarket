@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %meta{:content => 'text/html; charset=UTF-8', :"http-equiv" => 'Content-Type'}
+  %body
+    %h1 Artist Run Map
+    %p
+      You are receiving this email because you are registered on artistrunmap.org to manage the space/gallery
+      = " " + @space.name + "."
+      
+    %p
+      Another user, 
+      = @new_user.display_name + " <#{@new_user.email}>"
+      has requested to be added to allowed to manage this space. This user will have full access to edit information about
+      = @space.name
+      in the ARM database.
+      
+    %p
+      To approve this access, click the link below:
+      
+    %p= link_to 'Grant access to ' + @new_user.display_name, "http://www.artistrunmap.org" + grant_access_space_path(@token)
+    
+    %p
+      Approving access for 
+      = @new_user.display_name + " "
+      does not disable your own access to 
+      = @space.name + "."
+    %p
+      If you don't wish to grant permission to 
+      = @new_user.display_name
+      , then simply ignore this email. 
+    
+    %p
+      If you have any questions, please contact support@artistrunmap.org
+      

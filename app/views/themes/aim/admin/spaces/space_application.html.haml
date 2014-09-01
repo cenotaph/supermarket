@@ -1,0 +1,129 @@
+.row
+  .small-12.columns
+    %h1= @space.name
+    
+.row
+  .small-12.columns
+    = link_to 'Approve', approve_admin_space_path(@space), :class => [:button, :round]
+    = link_to 'Deny', unapprove_admin_space_path(@space), :class => [:button, :alert, :round]
+    
+
+.row
+  .small-12.columns.space
+    .title_and_web
+      .space_websites
+        - unless @space.website1.blank?
+          %p.space_web= link_to @space.website1, @space.website1_safe, :target => :_blank
+        - unless @space.website2.blank?
+          %p.space_web= link_to @space.website2, @space.website2_safe, :target => :_blank
+    %b= t :contact
+    %br/
+    = @space.contact_person
+    %br/
+    = link_to @space.contact_email, "mailto:#{@space.contact_email}"
+    %br/
+    = @space.contact_phone
+    %br/
+    %br/
+    %b Business types:
+    - if @space.businesstypes.empty?
+      %p.business_type Not filled out
+    - else
+      %p.business_type= @space.businesstypes.map(&:name).join(' / ')
+
+    %b Organisation types:
+    - if @space.organisationtypes.empty?
+      %p.business_type Not filled out
+    - else
+      %p.business_type= @space.organisationtypes.map(&:name).join(' / ')      
+.row
+  .small-12.columns
+    .space_metadata
+
+      .section_content.readmore= raw simple_format(@space.short_description)
+  
+      .section_heading
+        %b= t "aim.what_they_do"
+      .section_content
+        %ul
+          - unless @space.exhibitionspacetype.nil?
+            %li= @space.exhibitionspacetype.name
+          -  unless @space.is_active == true
+            %li= t(:inactive)
+          %li
+            - if @space.founding_year
+              = @space.founding_year
+              = " - "
+              - if @space.is_active == true
+                = t(:present)
+              - else
+                = @space.year_of_closing
+            - else
+              - if @space.is_active?
+                = t(:currently_active)
+              - else
+                - if @space.year_of_closing?
+                  = @space.year_of_closing
+          - unless @space.exhibitions_per_year.blank?
+            %li
+              = @space.exhibitions_per_year
+              = t "aim.exhibitions_per_year"
+              %ul
+                %li
+                  = "#{@space.percent_for_exhibitions.to_s}% " + t("aim.dedicated_to_exhibitions")
+                - unless @space.exhibitors.blank?
+                  %li= @space.exhibitors
+                - unless @space.percent_invited.blank?
+                  %li= "#{@space.percent_invited}% " + t("aim.invited")
+            - unless @space.activities_other.blank?
+              %li= "#{@space.activities_other} " + t("aim.per_year_other")
+      .section_heading 
+        %b= t "aim.what_they_exhibit"
+      .section_content
+        - if @space.activities.empty?
+          %p Not filled out
+        - else
+          %p= @space.activities.map(&:name).join(' - ')
+.row
+  .small-12.columns.space
+    .logo
+      - if @space.logo?
+        %img{:src => @space.logo.url(:profile)}
+      - else
+        &nbsp;
+  .small-12.columns
+    .section_heading
+      %b= t "aim.where_they_are"
+    .section_content
+    
+      - if @space.visiting_address1.blank?
+        = @space.address1  + "," unless @space.address1.blank?
+        = @space.address2  + "," unless @space.address2.blank?
+        = @space.city unless @space.city.blank?
+        = @space.state unless @space.state.blank? || (@space.state == @space.city)
+        = @space.postcode unless @space.postcode.blank?
+        = Country[@space.country].name unless @space.country.blank?
+      - else
+        = @space.visiting_address1  + "," unless @space.visiting_address1.blank?
+        = @space.visiting_address2  + "," unless @space.visiting_address2.blank? 
+        = @space.visiting_city  + "," unless @space.visiting_city.blank?
+        = @space.visiting_state  + "," unless @space.visiting_state.blank? || (@space.visiting_state == @space.visiting_city)
+        = @space.visiting_postcode unless @space.visiting_postcode.blank?
+        = Country[@space.visiting_country].name unless @space.visiting_country.blank?
+.row
+  .small-12.columns
+    
+    %ul{:"data-orbit" => true}
+      - @space.allimages.each do |i|
+        %li
+          = image_tag i.first.url
+          - unless i.last.blank?
+            .orbit-caption= i.last
+.row
+  .small-12.columns
+    - if current_user
+      - if current_user.is_aim_staff?
+
+        = link_to 'Approve', approve_admin_space_path(@space), :class => [:button, :tiny, :round]
+        = link_to 'Deny', unapprove_admin_space_path(@space), :class => [:button,  :tiny, :alert, :round]
+        = link_to 'Delete', [:admin, @space], :method => :delete, :data => {:confirm => 'Are you sure you want to delete this from the database forever?'}, :class => [:button,  :alert, :tiny, :round]
