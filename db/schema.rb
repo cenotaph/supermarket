@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211162556) do
+ActiveRecord::Schema.define(version: 20140831160612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,9 +159,9 @@ ActiveRecord::Schema.define(version: 20140211162556) do
   end
 
   create_table "businesstype_spaces", id: false, force: true do |t|
-    t.integer "businesstype_id", null: false
-    t.integer "space_id",        null: false
-    t.integer "id"
+    t.integer "businesstype_id",                                                          null: false
+    t.integer "space_id",                                                                 null: false
+    t.integer "id",              default: "nextval('businesstype_spaces_seq'::regclass)"
   end
 
   add_index "businesstype_spaces", ["businesstype_id"], name: "index_businesstype_spaces_businesstype", using: :btree
@@ -473,56 +473,58 @@ ActiveRecord::Schema.define(version: 20140211162556) do
   add_index "space_users", ["user_id"], name: "index_space_users_on_user_id", using: :btree
 
   create_table "spaces", force: true do |t|
-    t.integer "lastpage",                                 default: 1
-    t.string  "business_name",               limit: 250
-    t.string  "businesstype_other",          limit: 50
-    t.boolean "decisionmakers_organisation",              default: false
-    t.boolean "decisionmakers_programming",               default: false
-    t.string  "email"
-    t.string  "address1"
-    t.string  "address2"
-    t.string  "city"
-    t.string  "state",                       limit: 50
-    t.string  "postcode",                    limit: 50
-    t.string  "country"
-    t.string  "phone",                       limit: 50
-    t.string  "contact_email"
-    t.string  "website1",                    limit: 50
-    t.string  "website2",                    limit: 50
-    t.string  "contact_person"
-    t.string  "contact_phone",               limit: 50
-    t.text    "short_description"
-    t.string  "visiting_address1"
-    t.string  "visiting_address2"
-    t.string  "visiting_city"
-    t.string  "visiting_state",              limit: 50
-    t.string  "visiting_postcode",           limit: 50
-    t.string  "visiting_country"
-    t.float   "latitude"
-    t.float   "longitude"
-    t.integer "founding_year"
-    t.boolean "is_active",                                default: true
-    t.integer "year_of_closing"
-    t.string  "exhibitions_per_year",        limit: 50
-    t.integer "otheractivities_per_year"
-    t.integer "percent_for_exhibitions"
-    t.string  "exhibitors",                  limit: 50
-    t.integer "percent_invited"
-    t.string  "activities_other",            limit: 50
-    t.string  "other_focus"
-    t.string  "logo"
-    t.boolean "approved",                                 default: false
-    t.string  "image1"
-    t.string  "image2"
-    t.string  "image3"
-    t.string  "image4"
-    t.string  "image1_caption",              limit: 1024
-    t.string  "image2_caption",              limit: 1024
-    t.string  "image3_caption",              limit: 1024
-    t.string  "image4_caption",              limit: 1024
-    t.integer "exhibitionspacetype_id"
-    t.string  "slug"
-    t.string  "status"
+    t.integer  "lastpage",                                 default: 1
+    t.string   "business_name",               limit: 250
+    t.string   "businesstype_other",          limit: 50
+    t.boolean  "decisionmakers_organisation",              default: false
+    t.boolean  "decisionmakers_programming",               default: false
+    t.string   "email"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state",                       limit: 50
+    t.string   "postcode",                    limit: 50
+    t.string   "country"
+    t.string   "phone",                       limit: 50
+    t.string   "contact_email"
+    t.string   "website1",                    limit: 50
+    t.string   "website2",                    limit: 50
+    t.string   "contact_person"
+    t.string   "contact_phone",               limit: 50
+    t.text     "short_description"
+    t.string   "visiting_address1"
+    t.string   "visiting_address2"
+    t.string   "visiting_city"
+    t.string   "visiting_state",              limit: 50
+    t.string   "visiting_postcode",           limit: 50
+    t.string   "visiting_country"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "founding_year"
+    t.boolean  "is_active",                                default: true
+    t.integer  "year_of_closing"
+    t.string   "exhibitions_per_year",        limit: 50
+    t.integer  "otheractivities_per_year"
+    t.integer  "percent_for_exhibitions"
+    t.string   "exhibitors",                  limit: 50
+    t.integer  "percent_invited"
+    t.string   "activities_other",            limit: 50
+    t.string   "other_focus"
+    t.string   "logo"
+    t.boolean  "approved",                                 default: false
+    t.string   "image1"
+    t.string   "image2"
+    t.string   "image3"
+    t.string   "image4"
+    t.string   "image1_caption",              limit: 1024
+    t.string   "image2_caption",              limit: 1024
+    t.string   "image3_caption",              limit: 1024
+    t.string   "image4_caption",              limit: 1024
+    t.integer  "exhibitionspacetype_id"
+    t.string   "slug"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "spaces", ["exhibitionspacetype_id"], name: "index_spaces_exhibitionspacetype", using: :btree

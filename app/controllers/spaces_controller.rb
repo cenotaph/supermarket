@@ -15,7 +15,12 @@ class SpacesController < ApplicationController
     @filter = @space.business_name + " <span class='hometown'>#{@space.hometown}</span>"
     @closedfilters = true
     @nofilters = 1
+    if request.xhr?
+      render :layout => false
+    end
   end
+  
+
   
   def browse
     @spaces = apply_scopes(Space).approved.page(params[:page]).per(16)
@@ -86,7 +91,7 @@ class SpacesController < ApplicationController
       @spaces = Space.approved
     else
       session[:filter_scope].each do |sc|
-        my_scope["by_" + sc.first] = sc.last
+        my_scope["by_" + sc.first] = sc.last unless sc.last.blank?
       end
       chain = Array.new
       my_scope.each do |ms|

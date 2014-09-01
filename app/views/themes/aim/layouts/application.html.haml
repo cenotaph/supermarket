@@ -68,10 +68,10 @@
     .row
       .small-6.columns
         - if !@spaces.blank?
-          %h4
+          %h4.matchcount
             = pluralize(@spaces.count, 'initiative')
             = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
-      
+            %span.small= link_to '(who?)', '#', :onclick => "javascript:scrollToId('#hit_parade');"
       
 
     - if @spaces.blank? && !@space

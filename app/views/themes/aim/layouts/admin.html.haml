@@ -22,7 +22,7 @@
     %link{:href => "/images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
     
     = javascript_include_tag "vendor/modernizr"
-  %body.cms
+  %body.cms 
 
     %nav.top-bar{:"data-topbar role" => :navigation}
       %ul.title-area
@@ -56,7 +56,14 @@
           %li
             = form_tag('/search') do |f|
               = text_field_tag :searchterm,  t(:search)
-
+    - unless flash.blank?
+      .flash
+        .row
+          .small-12.columns.header
+            - flash.each do |key, value|
+              .alert{ :class => "alert-#{key}" }
+                %strong
+                  = value     
     #main= yield
           
     %footer

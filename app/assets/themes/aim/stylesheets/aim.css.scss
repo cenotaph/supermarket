@@ -49,7 +49,16 @@ a {
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $helv;
+
 }
+
+h4.matchcount {
+  width: 80%;
+  .small {
+    font-size: 0.5em;  
+  }
+}
+
 span.small_paginator {
   text-transform: uppercase;
   color: #999;
@@ -373,7 +382,7 @@ input.shadow {
   .search_title {
     float: left;
     margin-right: 5px;
-    padding-top: 2px;
+    padding-top: 4px;
   }
   
   .search_toggle {

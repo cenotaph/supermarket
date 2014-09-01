@@ -26,3 +26,8 @@
 //= require jquery_nested_form
 
 var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+
+function scrollToId(id){
+    var aTag = $(id);
+    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}

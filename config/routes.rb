@@ -94,6 +94,7 @@ Aim::Application.routes.draw do
       member do
         post :approve
         post :unapprove
+        get :space_application
       end
     end
     resources :search do
