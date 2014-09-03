@@ -99,11 +99,19 @@
   map.mapTypes.set('darkwater', new google.maps.StyledMapType(darkStyle, { name: 'Dark' }));
 
   var infoWindow = new google.maps.InfoWindow();
+  flyImage = {
+  url: "/assets/aim/images/fly_icon.png",
+  size: new google.maps.Size(48, 48),
+  scaledSize: new google.maps.Size(48, 48),
+  origin: null,
+  anchor: new google.maps.Point(8, 8)
+  };
   - unless organizations.nil?
     - for organization in organizations
       var myLatLng = new google.maps.LatLng(#{organization.latitude}, #{organization.longitude});
       var marker_#{organization.id} = new google.maps.Marker({
       position: myLatLng,
+      icon: flyImage,
       map: map,
       title:"#{organization.business_name}"
       });

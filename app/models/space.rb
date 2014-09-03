@@ -37,7 +37,7 @@ class Space < ActiveRecord::Base
   validates :business_name, :country, :contact_email, :presence => true, :if => :finished?
   
   
-  scope :approved, -> { where(approved: true)}
+  scope :approved, -> { where("approved is not false")}
   scope :by_approval, -> (condition) { where(approved: (condition == 'true' ? true : false))}
   scope :unapproved, -> { where(approved: false) }
   scope :by_country, ->(x) { where(["lower(country) in (?) OR lower(visiting_country) in (?)", x.map(&:downcase), x.map(&:downcase)])}
