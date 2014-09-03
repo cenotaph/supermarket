@@ -4,8 +4,8 @@
     
 .row
   .small-12.columns
-    = link_to 'Approve', approve_admin_space_path(@space), :class => [:button, :round]
-    = link_to 'Deny', unapprove_admin_space_path(@space), :class => [:button, :alert, :round]
+    = link_to 'Approve', approve_admin_space_path(@space), :method => :post,  :class => [:button, :round]
+    = link_to 'Deny', unapprove_admin_space_path(@space), :method => :post, :class => [:button, :alert, :round]
     = link_to 'Edit', edit_admin_space_path(@space), :class => [:button, :round], :target => :_blank
     
 .row

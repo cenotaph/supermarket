@@ -67,29 +67,29 @@
 
     
 
-    
-    .row
-      .small-4.columns
-        - if !@spaces.blank?
-          %h4.matchcount
-            = pluralize(@spaces.count, 'initiative')
-            = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
-            - unless session[:filter_scope].blank?
+    - unless @nofilters
+      .row
+        .small-4.columns
+          - if !@spaces.blank?
+            %h4.matchcount
+              = pluralize(@spaces.approved.count, 'initiative')
+              = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
+              - unless session[:filter_scope].blank?
 
-              %span.small= link_to '(who?)', '#', :onclick => "javascript:scrollToId('#hit_parade');" 
-        .row
-          .small-12.columns.search= render :partial => 'layouts/search_filter'              
+                %span.small= link_to '(who?)', '#', :onclick => "javascript:scrollToId('#hit_parade');" 
+          .row
+            .small-12.columns.search= render :partial => 'layouts/search_filter'              
 
-
-      .small-8.columns
-        .filter_title= t "aim.filter_by_initiative"
-        .row#initiative_filter{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
-          - @filters_businesstype.each do |bt|
-            .small-4.columns
-              %li{:class => (session[:filter_scope]['businesstype'].blank? ? false : (session[:filter_scope]['businesstype'].include?(bt.id) ? :activated : false ) rescue false)}
-                = link_to bt.name, "/filter_by/businesstype/#{bt.id}"
-                - unless bt.spaces.to_a.delete_if{|x| x.approved == false}.empty?
-                  = "(#{bt.spaces.size})" 
+      
+        .small-8.columns
+          .filter_title= t "aim.filter_by_initiative"
+          .row#initiative_filter{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
+            - @filters_businesstype.each do |bt|
+              .small-4.columns
+                %li{:class => (session[:filter_scope]['businesstype'].blank? ? false : (session[:filter_scope]['businesstype'].include?(bt.id) ? :activated : false ) rescue false)}
+                  = link_to bt.name, "/filter_by/businesstype/#{bt.id}"
+                  - unless bt.spaces.to_a.delete_if{|x| x.approved == false}.empty?
+                    = "(#{bt.spaces.size})" 
 
     = yield 
 

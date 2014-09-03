@@ -8,8 +8,8 @@ class Admin::SpacesController < Admin::BaseController
     redirect_to  '/admin'
   end
   
-  def delete
-    delete! { '/admin' }
+  def destroy
+    destroy! { '/admin/dashboard' }
   end
   
   def index
