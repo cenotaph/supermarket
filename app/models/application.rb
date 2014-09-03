@@ -28,7 +28,7 @@ class Application < ActiveRecord::Base
 
   
   scope :by_year, ->(x) { where(:year_id => x)}
-  scope :approved, -> { includes(:year).where("booth_granted >= 1 and booth_granted <= 3 and years.reveal_decisions is true")}
+  scope :approved, -> { where("booth_granted >= 1 and booth_granted <= 3 and years.reveal_decisions is true").references(:year)}
   scope :approved_preview, -> { where("booth_granted >= 1 and booth_granted <= 3 ")}
   scope :stands, -> { where(booth_granted: 3)}
   scope :booths, -> { where("booth_granted = 1 OR booth_granted = 2")}
