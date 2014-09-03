@@ -5,7 +5,7 @@
         = t "aim.you_are_logged_in_as"
         = current_user.display_name
         .right
-          = button_to destroy_user_session_path, :method => :delete do
+          = link_to destroy_user_session_path, :method => :delete do
             = t :sign_out
             %i.fa.fa-sign-out.fa-1
     .meta
@@ -17,18 +17,19 @@
           
     
       - else
-        .row
-          - current_user.spaces.each do |space|
-            .small-4.columns{:class => "small-offset-" + (8 / current_user.spaces.size.to_i).to_s}
-              = space.try(:business_name)
-              - unless space.logo.blank?
+        - current_user.spaces.each do |space|
+          .row
+            .small-12.columns
+              - if space.logo.blank?
+                = space.try(:business_name)
+              - else
                 .sidebar_image= raw image_tag(space.logo.url(:sidebar), :style => "float: left; margin-right: 5px").gsub('production', 'development')
               - if space.approved?
-                = button_to initiatives_path(space), :method => :get do
+                = link_to initiatives_path(space), :method => :get do
                   = t "aim.view_your_profile"
                   %i.fa.fa-binoculars.fa-1
 
-              = button_to  edit_space_path(space) , :method => :get  do
+              = link_to  edit_space_path(space) , :method => :get  do
                 = t "aim.edit_your_details"
                 %i.fa.fa-edit.fa-1
 

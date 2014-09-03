@@ -117,7 +117,7 @@
       });
       bounds.extend(myLatLng);
       google.maps.event.addListener(marker_#{organization.id}, 'click', function() {
-      var html='<div style="clear: float; width: 400px;"><a href="/initiatives/#{organization.slug}"><img style="float: left;height:75px; width:75px; margin-right: 10px;" src="#{organization.logo? ? organization.logo.url(:sidebar).gsub(/aim-development/, 'aim-production') : 'missing.png'}" /></a><p style="float: left; width: 250px;"><strong><a href="/initiatives/#{organization.slug}">#{escape_javascript(organization.business_name)}</a></strong><br />#{escape_javascript(organization.full_street_address)}<br /><a href="/initiatives/#{organization.slug}" target="_blank">View profile</a><br /></p></div>';
+      var html='<div style="clear: float; width: 400px;"><a href="/initiatives/#{organization.slug}"><img style="float: left;height:75px; width:75px; margin-right: 10px;" src="#{organization.logo? ? organization.logo.url(:sidebar).gsub(/aim-development/, 'aim-production') : '/assets/missing.png'}" /></a><p style="float: left; width: 250px;"><strong><a href="/initiatives/#{organization.slug}">#{escape_javascript(organization.business_name)}</a></strong><br />#{escape_javascript(organization.full_street_address)}<br /><a href="/initiatives/#{organization.slug}" target="_blank">View profile</a><br /></p></div>';
       infoWindow.setContent(html);
       infoWindow.open(map, marker_#{organization.id});
       });
