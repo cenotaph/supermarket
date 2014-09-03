@@ -20,6 +20,7 @@ a {
   background-color: red;
   color: white;
   opacity: 0.8;
+  padding: 5px 0px;
   .row {
     margin: 5px 0px;
   }
@@ -57,8 +58,30 @@ h1, h2, h3, h4, h5, h6 {
 
 h4.matchcount {
   width: 80%;
+  font-size: 0.9rem;
   .small {
     font-size: 0.5em;  
+  }
+}
+h4.showing_count {
+  float: left;
+  font-size: 0.9rem;
+  .small {
+    font-size: 0.5em;  
+  }
+}
+
+.no_matches_line {
+  padding: 5px 0px;
+  background-color: #AAA;
+  color: #222;
+  margin-bottom: 10px;
+  h3.showing_count {
+    font-size: 1.15em;
+    margin-bottom: 5px;
+    .small {
+      font-size: 0.8rem;  
+    }
   }
 }
 
@@ -222,8 +245,8 @@ input.shadow {
   .filter_toggle {
     a {
       color: #000;
-      font-weight: bold;
     }
+    margin-bottom: 5px;
   }
   
   .search_title {
@@ -256,12 +279,13 @@ input.shadow {
 #initiative_filter {
   margin-bottom: 10px;
   li {
-    padding: 4px 0px;
-    font-size: 0.85em;
+    padding: 2px 0px;
+    font-size: 0.7em;
     list-style-type: none;
     &.activated {
       font-weight: bold;
-      color: #333;
+      color: #FFF;
+      background-color: #333;
     }
     a {
       color: #666;
@@ -383,15 +407,14 @@ input.shadow {
   margin-bottom: 20px;
 }
 .filter_info {
-  margin-bottom: 25px;
   .search_title {
     float: left;
     margin-right: 5px;
-    padding-top: 4px;
+
   }
   
   .search_toggle {
-    padding-top: 2px;
+    float: left;
     a.selected {
       margin: 3px 3px 0px 0px;
       float: left;
@@ -434,11 +457,27 @@ input.shadow {
     color: #000000;
     text-transform: uppercase;
   }
-  .login_stuff {
-    clear: both;
-    float: right;
-    font-family: $helv;
-    font-size: 8pt;
+}
+
+.login_stuff {
+  clear: both;
+  float: right;
+  font-family: $helv;
+  font-size: 0.8rem;
+  ul.oauth_choices {
+    margin: 0px;
+    padding: 0px;
+    li {
+      list-style-type: none;
+      float: left; 
+      font-size: 0.9rem;
+      margin-right: 5px;
+      padding-right: 5px;
+      border-right: 1px solid $box0;
+      &.last {
+        border-right: none;
+      }
+    }
   }
 }
 

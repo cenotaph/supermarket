@@ -90,21 +90,28 @@ class SpacesController < ApplicationController
     if session[:filter_scope].blank?
       @spaces = Space.approved
     else
+      chain ||= Array.new
+
       session[:filter_scope].each do |sc|
         if sc.last.blank?
           session[:filter_scope].delete(sc.first)
-        else
+        end
+        if sc.first != 'search'
           my_scope["by_" + sc.first] = sc.last
+        else
+          chain += get_from_filter_or
         end
       end
-      chain = Array.new
-      my_scope.each do |ms|
-        chain << "send('#{ms.first}', #{ms.last})"
+      
+
+      my_scope.each do |ms| 
+        chain << Space.send(ms.first, ms.last)
       end
+      
       if chain.empty?
         @spaces = Space.approved
       else
-        @spaces =  eval("Space." + chain.join('.'))
+        @spaces = chain.flatten.uniq
       end
     end
   end

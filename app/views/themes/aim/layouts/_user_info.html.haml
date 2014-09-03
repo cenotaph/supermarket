@@ -5,7 +5,7 @@
         = t "aim.you_are_logged_in_as"
         = current_user.display_name
         .right
-          = button_to '/logout' do
+          = button_to destroy_user_session_path, :method => :delete do
             = t :sign_out
             %i.fa.fa-sign-out.fa-1
     .meta
@@ -39,7 +39,11 @@
     .login_text
       You are not logged in.
     .login_text
-      = t :connect_instantly
-      = link_to 'Facebook', '/auth/facebook'
-      |
-      = link_to 'Twitter', '/auth/twitter'
+      = t "aim.connect_instantly"
+      %ul.oauth_choices
+        %li.last= t "aim.login_using"
+        %li= link_to 'Facebook', '/auth/facebook'
+        
+        %li= link_to 'Twitter', '/auth/twitter'
+        
+        %li.last= link_to 'Google', '/auth/google_oauth2'

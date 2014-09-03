@@ -17,15 +17,48 @@ class SearchController < ApplicationController
 
     @hits.uniq!
   end
+
+  
+  def unsearch
+    session[:filter_scope]['search'].uniq.each do |search|
+      if search['search_type'] == params[:search_type] && search['search_term'] == params[:search_term]
+        session[:filter_scope]['search'].delete({'search_type' => params[:search_type], 'search_term' => params[:search_term]})
+      end
+    end
+    @spaces = get_from_filter_or
+    params[:search_term] = nil
+    redirect_to '/spaces/map'
+  end
   
   def aimsearch
-    @spaces =  Space.fuzzy_search(params[:search_term]).delete_if {|x| !x.approved }
-    country = Country.find_by_name(params[:search_term])
-    unless country.nil?
-      @spaces += Space.where("country = ? OR visiting_country = ?", country.first, country.first )
+    if session[:filter_scope].blank?
+      @spaces = []
+    else
+      session[:filter_scope]["search"] ||= Array.new
+      session[:filter_scope]["search"]  << {'search_type' => params['search_type'], 'search_term' => params['search_term'] }
+      session[:filter_scope]['search'].uniq!
+      @spaces = get_from_filter_or
+      
+      # process existing filter scope first
     end
-    session[:filter_scope] ||= Hash.new
-    session[:filter_scope]["search_term"] = params[:search_term]
+
+    # case params[:search_type]
+    # when 'activities'
+    #   @spaces +=  Space.fuzzy_search(params[:search_term]).delete_if {|x| !x.approved }
+    # when 'name'
+    #   @spaces +=  Space.fuzzy_search(params[:search_term]).delete_if {|x| !x.approved }
+    # when 'location'
+    #   country = Country.find_by_name(params[:search_term])
+    #   unless country.nil?
+    #     @spaces += Space.where("country = ? OR visiting_country = ?", country.first, country.first )
+    #   end
+    #
+    # else
+    #   @spaces +=  Space.fuzzy_search(params[:search_term]).delete_if {|x| !x.approved }
+    #
+    # end
+
+
     render :template => 'spaces/map'
   end
   

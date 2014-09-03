@@ -81,7 +81,7 @@ en:
   present: 'now'
   booth_result: 'Decision on application'
   aim:
-    showing: "Currently: "
+    showing: "Currently showing: "
     enter_new_details: "Enter new details for"
     or: ' ... or ... '
     you_are_logged_in_as: 'You are logged in as '
@@ -131,6 +131,14 @@ en:
     view_your_profile: "View profile"
     edit_your_details: 'Edit details'
     what_it_looks_like: 'What it looks like'
+    connect_instantly: 'Join instantly!'
+    login_using: 'Connect using: '
+    connect_to_aim: 'Connect to Artist Run Map'
+    connect_blurb: "Connect to Artist Run Map! If you are here for the first time, it's easy to sign in and register your artist-run initiative into our database. It is free to join. If you are returning, you can update your information and access other services available to users."
+    submit_your_initiative: 'Submit your initiative!'
+    
+    
+    
     
     
   supermarket2014:
@@ -204,11 +212,11 @@ en:
     new_space_info: 'Apply to Supermarket 2014 and also register your space in our online database!'
     one_last_step: 'One last step!'
     or: 'or ...'
-    sign_up_application_period: " and register your initiative in our forthcoming database of artist-run initiatives (working name: 'AIM'). It's free of charge to register and you will be connected to an international network of artist-run spaces."
+    sign_up_application_period: " and register your initiative in our forthcoming database of artist-run initiatives (Artist Run Map). It's free of charge to register and you will be connected to an international network of artist-run spaces."
     supermarket_is_closed: "Applications for the 2014 Supermarket Art Fair are now closed. Thanks to everyone who applied; check back here for news about the fair, exhibitors, and the programme."
     past_applications: 'Past applications'
     pending_space: 'Awaiting access to...'
-    pending_spaces_explanation: 'You have ewed access to manage a space or gallery. The current account holders have received an email containing instructions on how to approve your access. If you believe there is an error, please contact info@supermarketartfair.com.'
+    pending_spaces_explanation: 'You have requested access to manage a space or gallery. The current account holders have received an email containing instructions on how to approve your access. If you believe there is an error, please contact info@supermarketartfair.com.'
     please_choose_a_country: 'Please select a country....'
     type_of_initiative: 'Type of initiative'
     mark_as_red_spot: 'Mark as Red Spot proposal'

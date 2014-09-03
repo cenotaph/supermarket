@@ -22,6 +22,7 @@ Aim::Application.routes.draw do
   match '/support' => "funders#index", :via => :get
   match '/search' => 'search#create', :via => :post
   match '/aiming/search' => 'search#aimsearch', via: :post
+  match '/aiming/unsearch/:search_type/:search_term' => 'search#unsearch', via: :get
   match '/tv' => 'videos#index', via: :get
   match '/tv/:year' => 'videos#index', via: :get
   get '/auth/failure' => 'sessions#failure'
@@ -47,6 +48,7 @@ Aim::Application.routes.draw do
   get '/invited/2014/:space_id', to: 'applications#allow_late', :year => 2014
   get '/admin', to: 'admin/dashboard#index'
   get '/exhibitors/:year', to: 'exhibitors#year'
+
   get '/press', to: 'pressreleases#index'
   get '/browse', to: "spaces#browse"
   get '/filter_by/:filter_type/:value', to: "spaces#add_to_scope"

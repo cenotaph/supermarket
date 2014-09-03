@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_site
   before_filter :get_locale
   before_filter :configure_permitted_parameters, if: :devise_controller?
+
   theme :get_site
 
   before_filter do
@@ -42,7 +43,47 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  
+  def get_from_filter_or
+    out = []
+    my_scope ||= Hash.new
+    session[:filter_scope].each do |f|
+      if f.first == 'search'
+        session[:filter_scope]['search'].uniq!
+        f.last.uniq.each do |a|
+          case a['search_type']
+          when 'activities'
+            out +=  Space.fuzzy_search(a['search_term']).delete_if {|x| !x.approved }
+          when 'name'
+            out +=  Space.fuzzy_search(a['search_term']).delete_if {|x| !x.approved }
+          when 'location'
+            out = Country.find_by_name(a['search_term'])
+            unless country.nil?
+              out += Space.where("country = ? OR visiting_country = ?", country.first, country.first )
+            end
+          else
+            out +=  Space.fuzzy_search(a['search_term']).delete_if {|x| !x.approved }
+          end
+        end
+      else
+        if f.last.blank?
+          session[:filter_scope].delete(f.first)
+        end
 
+        my_scope["by_" + f.first] = f.last
+        my_scope.each do |ms| 
+          out << Space.send(ms.first, ms.last)
+        end
+      end
+    end
+    
+    return out.flatten.uniq
+  end
+  
+  def render *args
+    @filters_businesstype = Businesstype.includes([:spaces]).all unless @nofilters == true
+    super
+  end
 
   def get_locale 
     if params[:locale]

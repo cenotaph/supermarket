@@ -45,56 +45,54 @@
         .row
           .small-12.columns
             .subtitle= t "aim.header_text"
-        .row
-          .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
-        .row
-          .small-12.columns.search= render :partial => 'layouts/search_filter'
       .small-6.columns
         .row
           .small-10.small-offset-2.text-right= render :partial => 'layouts/user_info'
-
-    
     - unless flash.blank?
       .flash
         .row
-          .small-12.columns.header
+          .small-12.columns
             - flash.each do |key, value|
               .alert{ :class => "alert-#{key}" }
                 %strong
-                  = value       
+                  = value 
+            
+    - unless @nofilters
+      .row
+        .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
 
 
-        
+
+    
+
+    
+
+    
     .row
-      .small-12.columns
+      .small-4.columns
         - if !@spaces.blank?
           %h4.matchcount
             = pluralize(@spaces.count, 'initiative')
             = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
-            - unless session[:filter_scope].empty?
+            - unless session[:filter_scope].blank?
 
-              %span.small= link_to '(who?)', '#', :onclick => "javascript:scrollToId('#hit_parade');"
-      
+              %span.small= link_to '(who?)', '#', :onclick => "javascript:scrollToId('#hit_parade');" 
+        .row
+          .small-12.columns.search= render :partial => 'layouts/search_filter'              
 
-    - if @spaces.blank? && !@space
-      .row
-        .small-12.columns
-          %h2= t "aim.no_spaces_match"
-          %h4= t "aim.no_spaces_blurb"
-          %p= link_to t("aim.clear_all_filters"), clear_filters_spaces_path
-      
-    .row{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
-      .small-12.columns
-        = t "aim.filter_by_initiative"
-    .row#initiative_filter{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
-      - Businesstype.includes([:translations, :spaces]).all.each do |bt|
-        .small-3.columns
-          %li{:class => (session[:filter_scope]['businesstype'].blank? ? false : (session[:filter_scope]['businesstype'].include?(bt.id) ? :activated : false ) rescue false)}
-            = link_to bt.name, "/filter_by/businesstype/#{bt.id}"
-            - unless bt.spaces.delete_if{|x| x.approved == false}.empty?
-              = "(#{bt.spaces.size})"        
 
-    = yield               
+      .small-8.columns
+        .filter_title= t "aim.filter_by_initiative"
+        .row#initiative_filter{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
+          - @filters_businesstype.each do |bt|
+            -# Businesstype.includes([:translations, :spaces]).all.each do |bt|
+            .small-4.columns
+              %li{:class => (session[:filter_scope]['businesstype'].blank? ? false : (session[:filter_scope]['businesstype'].include?(bt.id) ? :activated : false ) rescue false)}
+                = link_to bt.name, "/filter_by/businesstype/#{bt.id}"
+                - unless bt.spaces.delete_if{|x| x.approved == false}.empty?
+                  = "(#{bt.spaces.size})" 
+
+    = yield 
 
 
                               

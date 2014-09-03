@@ -1,27 +1,33 @@
-%span.search_title= t "aim.showing"
+// Filter info partial
+%h4.showing_count= t "aim.showing"
 .search_toggle{:class => (!@quotes ? :all : false)}
   - if @space && !@space.new_record?
     = @space.name + " (#{@space.hometown})"
   - else
     - if !params[:search_term] && session[:filter_scope].blank?
-      = t "aim.all_initiatives"
+      %h4.showing_count{:style => "float: left"}= t "aim.all_initiatives"
     - else
-      - if params[:search_term]
-        = link_to "\"#{params[:search_term]}\"", '#', :class => :selected
       - if !session[:filter_scope].blank?
         - s = []
         - session[:filter_scope].each do |child|
-          - next if child.first == 'search_term'
-          - if child.first == 'country'        
+          - if child.first == 'search'
+          
+            - child.last.each do |st|
+              = link_to "#{st['search_type'].humanize}: \"#{st['search_term']}\"", "/aiming/unsearch/#{st['search_type']}/#{st['search_term']}", :class => :selected
+              
+          - elsif child.first == 'country'        
             - child.last.each do |c|
               = link_to Country[c].name, "/filter_by/country/#{c}", :class => :selected
           - else
 
             - child.last.each do |c|
               = link_to Object.const_get(child.first.humanize).find(c).name, "/filter_by/#{child.first}/#{c}", :class => :selected
-        - unless s.blank?
-          - if params[:search_term]
-            = "; "
-          / - s.each do |ss|
-          /   = link_to ss, '#', :class => :selected
-          /   -#= "#{s.flatten.join('; ').strip}"
+
+
+- if @spaces.blank? && !@space && !session[:filter_scope].blank?
+  .no_matches_line.small-12.columns.text-center
+    %h3.showing_count= t "aim.no_spaces_match"
+    %h3.showing_count= t "aim.no_spaces_blurb"
+    
+  - unless session[:filter_scope].blank?
+    %p= link_to t("aim.clear_all_filters"), clear_filters_spaces_path

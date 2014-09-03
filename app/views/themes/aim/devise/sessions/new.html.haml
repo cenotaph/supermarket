@@ -1,16 +1,22 @@
-%h2= t "aim.instant_sign_in"
-
-%ul.sign_in_options
-  %li= link_to t("aim.connect_with_facebook"), '/auth/facebook'
-  %li= link_to t("aim.connect_with_twitter"), '/auth/twitter'
-  %li= link_to t("aim.connect_with_supermarket"), "#prompt_supermarket"
+.row
+  .small-12.columns
+    %h3= t "aim.connect_to_aim"
   
-#prompt_supermarket
-  = semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    = f.input :email, :autofocus => true 
-    = f.input :password
-
-    = if devise_mapping.rememberable?
-      = f.input :remember_me, :as => :boolean
-    %div
-      = f.action :submit, :label => raw("<i class='icon-signin icon-large'></i>") + t(:sign_in), :as => :button,  :button_html => {:class => :next}
+.row
+  .small-12.columns
+    %p= t "aim.connect_blurb"
+.row
+  .small-4.columns.login_choice.text-center
+    = link_to '/auth/facebook/' do
+      = image_tag theme_image_path('facebook_icon.png')
+      %p Connect instantly via Facebook
+      
+  .small-4.columns.login_choice.text-center
+    = link_to '/auth/twitter' do
+      = image_tag theme_image_path('twitter_icon.png')
+      %p Connect instantly via Twitter
+      
+  .small-4.columns.login_choice.text-center
+    = link_to '/auth/google_oauth2' do
+      = image_tag theme_image_path('google_icon.png')
+      %p Connect instantly via Google
