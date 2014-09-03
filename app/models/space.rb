@@ -75,10 +75,7 @@ class Space < ActiveRecord::Base
   def percent_complete
     "100"
   end
-  
-  # def organisationtype_ids=(ids)
- #
- #  end
+
   
   def website1_safe
     if self.website1[/^http:\/\//] || self.website1[/^https:\/\//]

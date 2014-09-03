@@ -41,6 +41,8 @@ group :development do
   gem 'thin'
 end
 
+gem 'execjs', '2.2.1'
+
 # gem 'activerecord', :github => 'rails/rails', branch: '4-0-stable'
 # gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
 # gem 'acts_as_tree', '1.4.0'
@@ -51,7 +53,7 @@ gem "bullet", :group => "development"
 gem 'cancan'
 gem 'carrierwave'
 gem 'chosen-rails'
-gem 'ckeditor'
+#gem 'ckeditor', github: 'betesh/ckeditor'
 gem 'closure_tree'
 gem 'countries'
 gem 'country_select'
@@ -101,7 +103,7 @@ gem 'vimeo'
 gem 'wicked', '1.0.0'
 gem 'youtube_it', '2.4.0'
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
+  # bundle ex rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 

@@ -16,8 +16,7 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require jquery.ui.tabs
-//= require ckeditor/override
-//= require ckeditor/init
+
 //= require jquery.ui.autocomplete
 //= require autocomplete-rails
 //= require jquery.flexslider-min
