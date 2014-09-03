@@ -1,5 +1,5 @@
 - unless organizations.nil?
-  - organizations = organizations.delete_if{|o| o.latitude.nil? || o.longitude.nil?}
+  - organizations = organizations.to_a.delete_if{|o| o.latitude.nil? || o.longitude.nil?}
 
 .filter_container.small-6.columns{:style => "display: " + 'none'}
   .row= render :partial => 'shared/aim_filters'
