@@ -3,18 +3,26 @@
     %h1 ARM staff side
 .row
   .small-6.columns 
-    %fieldset
-      %legend Latest unapproved spaces
-      %table
-        %thead
-          %th Name
-          %th Where?
-          %th &nbsp;
-        %tbody
-          - Space.unapproved.order('created_at DESC').each do |space|
-            %tr
-              %td= space.name
-              %td= space.hometown
-              %td= link_to '>> Details', 'javascript:$("#quick_approve").load("/admin/spaces/' + space.id.to_s + '/space_application");'
+    %h4 Latest unapproved spaces
+    %table
+      %thead
+        %th Name
+        %th Where?
+        %th &nbsp;
+      %tbody
+        - Space.unapproved.order('created_at DESC').each do |space|
+          %tr
+            %td= space.name
+            %td= space.hometown
+            %td= link_to 'Details>>',  "/admin/spaces/#{space.id.to_s}/space_application", :class => 'ajax_approve_link', :remote => true
   .small-6.columns#quick_approve
     
+= content_for :jquery do
+  :plain
+    $("a.ajax_approve_link").on('click', function() {
+      $.ajax({beforeSend: function(){
+        $('#quick_approve').html("<img src='/assets/aim/images/ajax-circle.gif'>");
+      }
+      });
+    });
+      

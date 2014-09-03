@@ -136,6 +136,7 @@ en:
     connect_to_aim: 'Connect to Artist Run Map'
     connect_blurb: "Connect to Artist Run Map! If you are here for the first time, it's easy to sign in and register your artist-run initiative into our database. It is free to join. If you are returning, you can update your information and access other services available to users."
     submit_your_initiative: 'Submit your initiative!'
+    businesstype_fieldset: 'Which type of initiative are you?'
     
     
     

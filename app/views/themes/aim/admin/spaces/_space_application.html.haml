@@ -6,8 +6,8 @@
   .small-12.columns
     = link_to 'Approve', approve_admin_space_path(@space), :class => [:button, :round]
     = link_to 'Deny', unapprove_admin_space_path(@space), :class => [:button, :alert, :round]
+    = link_to 'Edit', edit_admin_space_path(@space), :class => [:button, :round], :target => :_blank
     
-
 .row
   .small-12.columns.space
     .title_and_web
@@ -20,9 +20,16 @@
     %br/
     = @space.contact_person
     %br/
-    = link_to @space.contact_email, "mailto:#{@space.contact_email}"
+    - if @space.contact_email.blank?
+      %em Missing contact email
+    - else
+      = link_to @space.contact_email, "mailto:#{@space.contact_email}"
     %br/
-    = @space.contact_phone
+    - if  @space.contact_phone.blank?
+      %em Missing contact details
+    - else
+      = @space.contact_phone
+      
     %br/
     %br/
     %b Business types:

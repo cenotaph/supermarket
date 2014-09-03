@@ -649,3 +649,11 @@ ul.aim_profile {
 .orbit-bullets-container {
   margin-top: -365px;
 }
+
+.chosen-choices {
+  li.search-field {
+    input[type=text] {
+      height: 1.5rem !important;
+    }
+  }
+}

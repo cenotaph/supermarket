@@ -85,11 +85,10 @@
         .filter_title= t "aim.filter_by_initiative"
         .row#initiative_filter{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
           - @filters_businesstype.each do |bt|
-            -# Businesstype.includes([:translations, :spaces]).all.each do |bt|
             .small-4.columns
               %li{:class => (session[:filter_scope]['businesstype'].blank? ? false : (session[:filter_scope]['businesstype'].include?(bt.id) ? :activated : false ) rescue false)}
                 = link_to bt.name, "/filter_by/businesstype/#{bt.id}"
-                - unless bt.spaces.delete_if{|x| x.approved == false}.empty?
+                - unless bt.spaces.to_a.delete_if{|x| x.approved == false}.empty?
                   = "(#{bt.spaces.size})" 
 
     = yield 

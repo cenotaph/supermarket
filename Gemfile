@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.9'
+gem 'rails', '4.1.5'
 
 ruby '2.1.1'
 
@@ -45,11 +45,12 @@ end
 # gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
 # gem 'acts_as_tree', '1.4.0'
 gem 'auto_html'
-gem 'aws-s3'
+gem 'aws-s3',  github: 'bartoszkopinski/aws-s3'
 gem 'bootstrap-sass'
 gem "bullet", :group => "development"
 gem 'cancan'
 gem 'carrierwave'
+gem 'chosen-rails'
 gem 'ckeditor'
 gem 'closure_tree'
 gem 'countries'
@@ -60,10 +61,10 @@ gem 'fog'
 gem 'font-awesome-rails'
 gem 'formtastic', github: 'justinfrench/formtastic', branch: 'master'
 gem 'foundation-rails'
-gem "friendly_id", '5.0.1' #'~> 5.0.0.alpha1', :github => "FriendlyId/friendly_id"
+gem "friendly_id",  :github => "FriendlyId/friendly_id"
 gem 'geocoder'
 gem 'paper_trail', github: 'airblade/paper_trail' , branch: 'master'
-gem 'globalize', '~> 4.0.0.alpha.2'
+gem 'globalize',  '~> 4.0.2'
 gem 'haml'
 gem 'handles_sortable_columns'
 gem 'has_scope'

@@ -46,7 +46,7 @@ Aim::Application.routes.draw do
   get '/invited', to: 'applications#invited'
   post '/invited', to: 'applications#check_invited'
   get '/invited/2014/:space_id', to: 'applications#allow_late', :year => 2014
-  get '/admin', to: 'admin/dashboard#index'
+  get '/admin', to: 'admin/dashboard#index', as: :admin_dashboard
   get '/exhibitors/:year', to: 'exhibitors#year'
 
   get '/press', to: 'pressreleases#index'

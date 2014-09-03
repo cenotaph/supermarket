@@ -29,7 +29,7 @@
     - Exhibitionspacetype.includes([:translations, :spaces]).all.each do |est|
       %li{:class => (session[:filter_scope]['exhibitionspacetype'].blank? ? false : (session[:filter_scope]['exhibitionspacetype'].include?(est.id) ? :activated : false ) rescue false)}
         = link_to est.name, '/filter_by/exhibitionspacetype/' + est.id.to_s
-        - unless est.spaces.delete_if{|x| x.approved == false}.empty?
+        - unless est.spaces.to_a.delete_if{|x| x.approved == false}.empty?
           = "(#{est.spaces.size})"
 .small-4.columns.filter_column{:style => "border-left: 1px dotted #000;"}
   .title= t :activities
@@ -38,14 +38,14 @@
       %li{:class => (session[:filter_scope]['activity'].blank? ? false : (session[:filter_scope]['activity'].include?(activity.id) ? :activated : false ) rescue false )}
       
         = link_to activity.name, "/filter_by/activity/#{activity.id}"
-        - unless activity.spaces.delete_if{|x| x.approved == false}.empty?
+        - unless activity.spaces.to_a.delete_if{|x| x.approved == false}.empty?
           = "(#{activity.spaces.size})"
 
 .small-4.columns.filter_column.last                  
   .title= t "aim.organisation_structure"
   %ul
-    - Organisationtype.includes([:translations, :spaces]).all.each do |ot|
+    - @filters_organisationtype.all.each do |ot|
       %li{:class => (session[:filter_scope]['organisationtype'].blank? ? false : (session[:filter_scope]['organisationtype'].include?(ot.id) ? :activated : false ) rescue false)}
         = link_to ot.name, "/filter_by/organisationtype/#{ot.id}"
-        - unless ot.spaces.delete_if{|x| x.approved == false}.empty?
+        - unless ot.spaces.to_a.delete_if{|x| x.approved == false}.empty?
           = "(#{ot.spaces.size})"

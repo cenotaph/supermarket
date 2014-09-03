@@ -17,6 +17,7 @@
                 - else
                   %div
                   %b= button_to 'Approve', approve_admin_space_path(@space)
+                %b= button_to 'Edit', edit_admin_space_path(@space), :method => :get
       - unless @space.businesstypes.empty?
         .business_type= @space.businesstypes.map(&:name).join(' / ')
       .space_metadata

@@ -1,5 +1,6 @@
 class Space < ActiveRecord::Base
   resourcify
+  belongs_to :exhibitionspacetype
   has_many :space_users, :dependent => :destroy
   has_many :applications, :dependent => :destroy
   has_many :users, :through => :space_users
@@ -7,24 +8,28 @@ class Space < ActiveRecord::Base
   has_many :businesstypes, :through => :businesstype_spaces
   has_many :businesstype_spaces, :dependent => :destroy
   has_many :organisationtypes, :through => :organisationtype_spaces, :dependent => :destroy
-  has_many :organisationtype_spaces
+  has_many :organisationtype_spaces, :dependent => :destroy
   has_many :activities, :through => :activity_spaces, :dependent => :destroy
-  has_many :activity_spaces
+  has_many :activity_spaces, :dependent => :destroy
   has_many :websites, :dependent => :destroy
+  
   accepts_nested_attributes_for :websites
   accepts_nested_attributes_for :businesstypes
-  belongs_to :exhibitionspacetype
   accepts_nested_attributes_for :organisationtypes
   accepts_nested_attributes_for :activities
+  
   mount_uploader :logo, ImageUploader
   mount_uploader :image1, ImageUploader
   mount_uploader :image2, ImageUploader
   mount_uploader :image3, ImageUploader
   mount_uploader :image4, ImageUploader
+  
   extend FriendlyId
   friendly_id :business_name, use: [:slugged, :finders ]
+  
   geocoded_by :full_street_address  
-  after_validation :geocode     
+  after_validation :geocode
+  
   attr_accessor :form_direction
   # attr_accessible :business_name, :city, :country, :businesstype_ids, :status, :id, :address1, :address2, :state, :exhibitionspacetype_id, :exhibitors
 
@@ -70,6 +75,10 @@ class Space < ActiveRecord::Base
   def percent_complete
     "100"
   end
+  
+  # def organisationtype_ids=(ids)
+ #
+ #  end
   
   def website1_safe
     if self.website1[/^http:\/\//] || self.website1[/^https:\/\//]

@@ -11,7 +11,7 @@
     = stylesheet_link_tag 'aim/stylesheets/admin', :media => :screen    
     = javascript_include_tag :application
     = javascript_include_tag "aim/javascripts/application"
-    = javascript_include_tag "admin"
+
     %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
     = csrf_meta_tags
     = yield(:head)    
@@ -59,7 +59,7 @@
     - unless flash.blank?
       .flash
         .row
-          .small-12.columns.header
+          .small-12.columns
             - flash.each do |key, value|
               .alert{ :class => "alert-#{key}" }
                 %strong

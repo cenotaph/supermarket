@@ -10,6 +10,7 @@ class Admin::BaseController < InheritedResources::Base
   load_and_authorize_resource #:find_by => :slug
   
   def authenticate_admin
+    @nofilters = true
     if @site == 'aim'
       redirect_to root_path unless current_user.is_aim_staff?
     else

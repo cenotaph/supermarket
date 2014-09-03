@@ -53,16 +53,16 @@ class ApplicationController < ActionController::Base
         f.last.uniq.each do |a|
           case a['search_type']
           when 'activities'
-            out +=  Space.fuzzy_search(a['search_term']).delete_if {|x| !x.approved }
+            out +=  Space.fuzzy_search(a['search_term']).to_a.delete_if {|x| !x.approved }
           when 'name'
-            out +=  Space.fuzzy_search(a['search_term']).delete_if {|x| !x.approved }
+            out +=  Space.fuzzy_search(a['search_term']).to_a.delete_if {|x| !x.approved }
           when 'location'
             out = Country.find_by_name(a['search_term'])
             unless country.nil?
-              out += Space.where("country = ? OR visiting_country = ?", country.first, country.first )
+              out += Space.where("country = ? OR visiting_country = ?", country.first, country.first ).to_a
             end
           else
-            out +=  Space.fuzzy_search(a['search_term']).delete_if {|x| !x.approved }
+            out +=  Space.fuzzy_search(a['search_term']).to_a.delete_if {|x| !x.approved }
           end
         end
       else
@@ -81,7 +81,20 @@ class ApplicationController < ActionController::Base
   end
   
   def render *args
-    @filters_businesstype = Businesstype.includes([:spaces]).all unless @nofilters == true
+    
+    if @site == 'aim'
+      unless @nofilters == true
+        @filters_businesstype = Businesstype.all
+        @filters_organisationtype = Organisationtype.all
+        @tree = Space.approved.to_a.delete_if{|x| x.country.blank? && x.visiting_country.blank? }.group_by{|x|  Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].region}
+        @tree.each do |region|
+          @tree[region.first] = region.last.group_by{|x| Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].subregion}
+          @tree[region.first].each do |subregion|
+            @tree[region.first][subregion.first] = subregion.last.group_by{|x| x.country.downcase}
+          end
+        end
+      end
+    end
     super
   end
 
@@ -100,15 +113,7 @@ class ApplicationController < ActionController::Base
   
   def get_site
     @site = request.host =~ /\.artistrunmap/ ? 'aim' : 'supermarket2014'
-    if @site == 'aim'
-      @tree = Space.approved.delete_if{|x| x.country.blank? && x.visiting_country.blank? }.group_by{|x|  Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].region}
-      @tree.each do |region|
-        @tree[region.first] = region.last.group_by{|x| Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].subregion}
-        @tree[region.first].each do |subregion|
-          @tree[region.first][subregion.first] = subregion.last.group_by{|x| x.country.downcase}
-        end
-      end
-    end
+
     @subsite = Subsite.where(:name => @site).first
     @promoted_posts = Post.by_subsite(@subsite.id).published.promoted
     @promoted_posts += Page.includes(:subsites).by_subsite(@subsite.id).published.promoted
