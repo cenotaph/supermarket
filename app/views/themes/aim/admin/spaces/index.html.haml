@@ -1,34 +1,50 @@
-%h2 Initiatives
 
+.row
+  .small-8.columns 
+    %h4 All initiatives
+    
+    
+.row
+  .small-12.columns
 
-.filter_box.row
-  Showing 
-  = @spaces.total_count
-  .large-3.columns
-    .filter_title Show:
-    %select#by_approval
-      %option{:value => ""} all 
-      %option{:value => "true", :selected => (params[:by_approval] == 'true' ? :selected : false)}
-        Approved
-        = " (#{Space.approved.count})"
-      %option{:value => "false", :selected => (params[:by_approval] == 'false' ? :selected : false)}
-        Not approved
-        = " (#{Space.unapproved.count})"
+    .filter_box
+      Showing 
+      = @spaces.total_count
+      .small-6.columns
+        .filter_title Show:
+        %select#by_approval
+          %option{:value => ""} all 
+          %option{:value => "true", :selected => (params[:by_approval] == 'true' ? :selected : false)}
+            Approved
+            = " (#{Space.approved.count})"
+          %option{:value => "false", :selected => (params[:by_approval] == 'false' ? :selected : false)}
+            Not approved
+            = " (#{Space.unapproved.count})"
         
-  :javascript
-    $('.filter_box select').change(function() {
-      var parts = "#{request.url}".split(/\?/, 2);
-      if (parts[1]) {
-        window.location.href=parts[0] + "?" + parts[1].replace(new RegExp("\\&*" + $(this).attr('id') + "\=\\w+", "g"), '') + "&" + $(this).attr('id') + "=" + $(this).val();
-      } else {
-        window.location.href=parts[0] + "?" + $(this).attr('id') + "=" + $(this).val();
-      }
-    }); 
+    :javascript
+      $('.filter_box select').change(function() {
+        var parts = "#{request.url}".split(/\?/, 2);
+        if (parts[1]) {
+          window.location.href=parts[0] + "?" + parts[1].replace(new RegExp("\\&*" + $(this).attr('id') + "\=\\w+", "g"), '') + "&" + $(this).attr('id') + "=" + $(this).val();
+        } else {
+          window.location.href=parts[0] + "?" + $(this).attr('id') + "=" + $(this).val();
+        }
+      }); 
+.row
+  .small-12.columns= paginate @spaces
+.row
 
-.cms_grid
-
-  .thirteen.columns.alpha= paginate @spaces     
-  - @spaces.each do |space|
-    .thirteen.columns.space= render :partial => 'space', :locals => {:space => space}
-
-  = paginate @spaces 
+  .small-8.columns
+    %table
+      %thead
+        %th Name
+        %th Where?
+        %th &nbsp;
+      %tbody
+        - @spaces.order('created_at DESC').each do |space|
+          %tr
+            %td= space.name
+            %td= space.hometown
+            %td= link_to 'Details',  admin_space_path(space), :target => :_blank, :class => [:button, :round, :tiny]
+.row
+  .small-12.columns= paginate @spaces

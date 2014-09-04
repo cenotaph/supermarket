@@ -28,6 +28,7 @@ class Ability
           cannot :manage, [Page, Post]
           can :read, :all
           cannot :read, Applicationcomment
+          cannot :read, Spacecomment
         end
       end
     #

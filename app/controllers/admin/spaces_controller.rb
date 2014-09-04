@@ -23,7 +23,10 @@ class Admin::SpacesController < Admin::BaseController
     redirect_to admin_space_path(@space)
   end
   
-    
+  def denied
+    @spaces = Space.denied.all.page(params[:page]).per(50)
+  end
+  
   def destroy
     destroy! { '/admin/dashboard' }
   end

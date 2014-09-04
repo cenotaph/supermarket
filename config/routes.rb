@@ -99,6 +99,9 @@ Aim::Application.routes.draw do
         post :unapprove
         get :space_application
       end
+      collection do
+        get :denied
+      end
     end
     resources :search do
       post :aimsearch
