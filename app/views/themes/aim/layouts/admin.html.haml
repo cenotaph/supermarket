@@ -33,6 +33,11 @@
             %span Menu
       %section.top-bar-section
         %ul.left
+          - if can? :manage, Space
+            %li
+              = link_to '/admin/dashboard' do
+                = fa_icon 'cloud'
+                Latest unapproved           
           - if can? :manage, Page
             %li
               = link_to admin_pages_path do
@@ -48,6 +53,12 @@
               = link_to admin_spaces_path do
                 = fa_icon 'cloud'
                 All spaces & initiatives
+        
+          - if can? :manage, User 
+            %li
+              = link_to admin_users_path do
+                = fa_icon 'child'
+                Users
       %section.top-bar-section
         %ul.right
           

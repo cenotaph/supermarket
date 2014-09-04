@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831160612) do
+ActiveRecord::Schema.define(version: 20140904071629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -472,6 +472,17 @@ ActiveRecord::Schema.define(version: 20140831160612) do
   add_index "space_users", ["space_id"], name: "index_space_users_on_space_id", using: :btree
   add_index "space_users", ["user_id"], name: "index_space_users_on_user_id", using: :btree
 
+  create_table "spacecomments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "space_id"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spacecomments", ["space_id"], name: "index_spacecomments_on_space_id", using: :btree
+  add_index "spacecomments", ["user_id"], name: "index_spacecomments_on_user_id", using: :btree
+
   create_table "spaces", force: true do |t|
     t.integer  "lastpage",                                 default: 1
     t.string   "business_name",               limit: 250
@@ -525,6 +536,8 @@ ActiveRecord::Schema.define(version: 20140831160612) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "denied"
+    t.integer  "denied_by"
   end
 
   add_index "spaces", ["exhibitionspacetype_id"], name: "index_spaces_exhibitionspacetype", using: :btree

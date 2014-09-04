@@ -1,0 +1,33 @@
+.row
+  .small-12.columns
+    %h2 User management
+    
+.row
+  .small-12.columns= paginate @users
+  
+.row
+  .small-12.columns
+    %table
+      %thead
+        %th ID
+        %th= sortable_column "Name", :column => 'display_name'
+        %th= sortable_column "Email", :column => 'email'
+        %th= sortable_column "Initiative", :column => 'initiative'
+        %th= sortable_column "Last login", :column => "last_sign_in_at"
+        %th= sortable_column "Access level", :column => 'roles'
+        %th &nbsp;
+      %tbody
+        - @users.each do |u|
+          %tr
+            %td= u.id.to_s
+            %td= u.display_name
+            %td= u.email
+            %td= u.spaces.map(&:name).join(', ')
+            %td= u.last_sign_in_at.blank? ? '' : time_ago_in_words(u.last_sign_in_at) + " ago"
+            %td= u.roles.map(&:name).join(', ')
+            %td
+              -if can? :modify, u
+                = link_to 'Edit', edit_admin_user_path(u), :class => [:button, :round, :tiny]
+                
+    =paginate @users
+        

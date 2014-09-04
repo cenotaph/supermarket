@@ -94,6 +94,7 @@ Aim::Application.routes.draw do
     end
     resources :spaces do
       member do
+        post :comment
         post :approve
         post :unapprove
         get :space_application

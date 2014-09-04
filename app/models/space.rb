@@ -12,6 +12,7 @@ class Space < ActiveRecord::Base
   has_many :activities, :through => :activity_spaces, :dependent => :destroy
   has_many :activity_spaces, :dependent => :destroy
   has_many :websites, :dependent => :destroy
+  has_many :spacecomments, :dependent => :delete_all
   
   accepts_nested_attributes_for :websites
   accepts_nested_attributes_for :businesstypes
@@ -35,17 +36,23 @@ class Space < ActiveRecord::Base
 
   
   validates :business_name, :country, :contact_email, :presence => true, :if => :finished?
-  
-  
+  validate :validate_not_both_approved_and_denied
+    
   scope :approved, -> { where("approved is not false")}
+  scope :denied, -> {where(denied: true)}
   scope :by_approval, -> (condition) { where(approved: (condition == 'true' ? true : false))}
-  scope :unapproved, -> { where(approved: false) }
+  scope :unapproved, -> { where(approved: false).where("denied is not true") }
   scope :by_country, ->(x) { where(["lower(country) in (?) OR lower(visiting_country) in (?)", x.map(&:downcase), x.map(&:downcase)])}
   scope :by_activity, -> (x) { includes(:activity_spaces).where("activity_spaces.activity_id" => x) }
   scope :by_exhibitionspacetype, -> (x) { where(:exhibitionspacetype_id => x) }
   scope :by_businesstype, -> (x) { includes(:businesstype_spaces).where("businesstype_spaces.businesstype_id" => x) }
   scope :by_organisationtype, -> (x) { includes(:organisationtype_spaces).where("organisationtype_spaces.organisationtype_id" => x) }
 
+  def validate_not_both_approved_and_denied
+   if approved == true && denied == true
+      errors[:approved] << (options[:message] || "can't have both approved and denied")
+    end
+  end
   
   def allimages 
     # local = [[image1, image1_caption].compact, [image2, image2_caption].compact, [image3, image3_caption].compact, [image4, image4_caption].compact ]
@@ -74,6 +81,14 @@ class Space < ActiveRecord::Base
   
   def percent_complete
     "100"
+  end
+  
+  def approved?
+    approved
+  end
+  
+  def denied?
+    denied
   end
 
   

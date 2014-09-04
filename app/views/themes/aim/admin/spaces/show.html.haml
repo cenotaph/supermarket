@@ -35,7 +35,7 @@
           = f.input :deny_field, :as => :hidden, :value => 1
       .row
         .small-12.columns
-          = f.submit 'Deny!', :class => [:button, :tiny, :alert, :round]
+          = f.submit 'Deny!', :class => [:button, :alert, :round]
 .row
   .small-12.columns.space
     .title_and_web
@@ -168,21 +168,7 @@
                 %p
                   %em= time_ago_in_words(s.created_at) + " ago"
               .small-8.columns= raw s.comment
-.row
-  .small-8.columns
-    %h3 Comment on this space
-    = semantic_form_for(Spacecomment.new, :url => comment_admin_space_path(@space)) do |f|
-      .row
-        .small-3.columns
-          = image_tag current_user.avatar
-          %strong
-            %p= current_user.display_name
-        .small-9.columns
-          = f.input :user_id, :as => :hidden, :value => current_user.id
-          = f.input :comment, :as => :text
-      .row
-        .small-12.columns
-          = f.submit 'Comment!', :class => [:button, :tiny,  :round]
+          
     
   
 .row
