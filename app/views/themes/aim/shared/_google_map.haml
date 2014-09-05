@@ -98,15 +98,45 @@
   map = buildmap();
   map.mapTypes.set('darkwater', new google.maps.StyledMapType(darkStyle, { name: 'Dark' }));
 
+  //set style options for marker clusters (these are the default styles)
+  mcOptions = {styles: [{
+  height: 53,
+  url: "/assets/aim/images/star_dot_53.png",
+  width: 53
+  },
+  {
+  height: 53,
+  url: "/assets/aim/images/star_dot_53.png",
+  width: 53
+  },
+  {
+  height: 44,
+  url: "/assets/aim/images/star_dot_44.png",
+  width: 44
+  },
+  {
+  height: 78,
+  url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m4.png",
+  width: 78
+  },
+  {
+  height: 90,
+  url: "/assets/aim/images/star_dot_biggest.png",
+  width: 90
+  }]}
+
+  //init clusterer with your options
+
   var infoWindow = new google.maps.InfoWindow();
   flyImage = {
-  url: "/assets/aim/images/fly_icon.png",
-  size: new google.maps.Size(48, 48),
-  scaledSize: new google.maps.Size(48, 48),
+  url: "/assets/aim/images/star_dot.png",
+  size: new google.maps.Size(12, 12),
+  scaledSize: new google.maps.Size(12, 12),
   origin: null,
   anchor: new google.maps.Point(8, 8)
   };
   - unless organizations.nil?
+    var markers = [];
     - for organization in organizations
       var myLatLng = new google.maps.LatLng(#{organization.latitude}, #{organization.longitude});
       var marker_#{organization.id} = new google.maps.Marker({
@@ -115,12 +145,15 @@
       map: map,
       title:"#{organization.business_name}"
       });
+      markers.push(marker_#{organization.id});
       bounds.extend(myLatLng);
       google.maps.event.addListener(marker_#{organization.id}, 'click', function() {
       var html='<div style="clear: float; width: 400px;"><a href="/initiatives/#{organization.slug}"><img style="float: left;height:75px; width:75px; margin-right: 10px;" src="#{organization.logo? ? organization.logo.url(:sidebar).gsub(/aim-development/, 'aim-production') : '/assets/missing.png'}" /></a><p style="float: left; width: 250px;"><strong><a href="/initiatives/#{organization.slug}">#{escape_javascript(organization.business_name)}</a></strong><br />#{escape_javascript(organization.full_street_address)}<br /><a href="/initiatives/#{organization.slug}" target="_blank">View profile</a><br /></p></div>';
       infoWindow.setContent(html);
       infoWindow.open(map, marker_#{organization.id});
       });
+    var mc = new MarkerClusterer(map, markers, mcOptions);
+      
   - unless organizations.size == 1
     map.fitBounds(bounds);
     return map;

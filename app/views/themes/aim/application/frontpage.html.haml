@@ -2,5 +2,40 @@
 - unless @page.nil?
   .page_title= @page.title
   .page_body= @page.body
+.row
+  .small-10.columns.small-offset-1
+    %p
+      AIM is a network who has decided to create “Artist Run Map” – a database/network/directory of artists' initiatives around the world. 
 
-#map= render :partial =>  "shared/google_map", :locals => { :organizations => @spaces }
+
+    %p
+      %b
+        %u Who are we?
+    %p AIM: Artists' Initiatives Meetings is a network of 11 partners from across Europe, who all run initiatives of different kinds. The network was founded to support the exchange of knowledge, mobility and cooperation.
+
+    %p
+      %b
+        %u Why do we do this?
+    %p There is a huge need for something that makes it easier for audiences, artists, curators, media and others to find artist-run spaces. Furthermore, it becomes possible to communicate within the network and develop partnerships of various kinds. It is a non-profit project and it will be free to participate.
+
+    %p
+      Multi-disciplinary art centres, residencies, collective workshops, and web platforms will also be welcome to register.
+
+    %p
+      The partners of the network are:
+      %ul
+        %li Supermarket - Stockholm
+        %li Microwesten - Berlin
+        %li Totaldobze - Riga
+        %li Sant Marc, Mallorca
+        %li Alpineum - Luzern
+        %li MUU - Helsinki
+        %li Ptarmigan - Tallinn/Helsinki
+        %li 1646 - den Haag
+        %li Udstillingsstedet TYS, Copenhagen
+        %li TPTP - Paris
+        %li Small projects - Tromsø
+        %li Alma Enterprices - London
+
+    %p Website is coming soon!
+-##map= render :partial =>  "shared/google_map", :locals => { :organizations => @spaces }
