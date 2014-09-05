@@ -6,21 +6,23 @@
     
 .row
   .small-12.columns
-
-    .filter_box
-      Showing 
-      = @spaces.total_count
-      .small-6.columns
-        .filter_title Show:
-        %select#by_approval
-          %option{:value => ""} all 
-          %option{:value => "true", :selected => (params[:by_approval] == 'true' ? :selected : false)}
-            Approved
-            = " (#{Space.approved.count})"
-          %option{:value => "false", :selected => (params[:by_approval] == 'false' ? :selected : false)}
-            Not approved
-            = " (#{Space.unapproved.count})"
-        
+    Showing 
+    = @spaces.total_count
+.row.filter_box
+  .small-4.columns
+    %b Filter by:
+    = form_tag filter_name_admin_spaces_path do
+      = autocomplete_field_tag :business_name, '', autocomplete_space_business_name_spaces_path, :value => params[:business_name] 
+  .small-3.columns.left
+    .filter_title Show:
+    %select#by_approval
+      %option{:value => ""} all 
+      %option{:value => "true", :selected => (params[:by_approval] == 'true' ? :selected : false)}
+        Approved
+        = " (#{Space.approved.count})"
+      %option{:value => "false", :selected => (params[:by_approval] == 'false' ? :selected : false)}
+        Not approved
+        = " (#{Space.unapproved.count})"        
     :javascript
       $('.filter_box select').change(function() {
         var parts = "#{request.url}".split(/\?/, 2);
@@ -34,17 +36,26 @@
   .small-12.columns= paginate @spaces
 .row
 
-  .small-8.columns
+  .small-10.columns
     %table
       %thead
-        %th Name
-        %th Where?
+        %th= sortable_column "Name", :column => "name"
+        %th= sortable_column "Where?", :column => "location"
+        %th= sortable_column "Info", :column => "info"
         %th &nbsp;
       %tbody
         - @spaces.order('created_at DESC').each do |space|
           %tr
             %td= space.name
             %td= space.hometown
+            %td
+              %em
+                = space.approved? ? 'approved' : (space.denied? ? 'denied' : 'not decided yet')
+              - unless space.updated_at.blank?
+                %br/
+                %small
+                  Last modified
+                  = l space.updated_at, :format => :long
             %td= link_to 'Details',  admin_space_path(space), :target => :_blank, :class => [:button, :round, :tiny]
 .row
   .small-12.columns= paginate @spaces

@@ -115,13 +115,14 @@ class ApplicationController < ActionController::Base
     @site = request.host =~ /\.artistrunmap/ ? 'aim' : 'supermarket2014'
 
     @subsite = Subsite.where(:name => @site).first
-    @promoted_posts = Post.by_subsite(@subsite.id).published.promoted
-    @promoted_posts += Page.includes(:subsites).by_subsite(@subsite.id).published.promoted
-    @promoted_posts.compact!
-    if @background_image.nil? 
-      @background_image = Background.published.random
+    unless @site == 'aim'
+      @promoted_posts = Post.by_subsite(@subsite.id).published.promoted
+      @promoted_posts += Page.includes(:subsites).by_subsite(@subsite.id).published.promoted
+      @promoted_posts.compact!
+      if @background_image.nil? 
+        @background_image = Background.published.order_by_rand
+      end
     end
-    #
     @site
   end
   

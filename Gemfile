@@ -88,9 +88,10 @@ gem 'omniauth-twitter'
 gem 'public_activity'
 gem 'rails-i18n'
 gem 'rails_12factor', group: :production
+gem 'rails4-autocomplete'
 gem 'randumb'
 gem 'ransack'
-gem 'rails3-jquery-autocomplete',   github: 'cenotaph/rails3-jquery-autocomplete', branch: 'master'
+# gem 'rails3-jquery-autocomplete',   github: 'cenotaph/rails3-jquery-autocomplete', branch: 'master'
 gem 'recaptcha'
 gem 'rolify', '3.3.0.rc4'
 gem 'ruby-growl', :group => :development

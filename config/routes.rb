@@ -95,12 +95,14 @@ Aim::Application.routes.draw do
     resources :spaces do
       member do
         post :comment
+
         post :approve
         post :unapprove
         get :space_application
       end
       collection do
         get :denied
+        post :filter_name
       end
     end
     resources :search do
