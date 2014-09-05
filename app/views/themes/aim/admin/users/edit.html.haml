@@ -15,6 +15,14 @@
     .small-6.columns
       = f.input :display_name
   .row
-    .small-6.columns= f.input :email    
+    .small-6.columns= f.input :email
+  - if current_user.has_role?(:god)
+    .row
+      .small-6.columns
+        = f.input :roles
   .row 
     .small-6.columns= f.submit
+    
+= content_for :jquery do
+  :plain
+    $('#user_role_ids').chosen();

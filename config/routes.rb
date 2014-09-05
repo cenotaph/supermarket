@@ -88,7 +88,13 @@ Aim::Application.routes.draw do
     resources :posts
     resources :presslinks
     resources :pressreleases
-    resources :users
+    resources :users do
+      
+      collection do
+        get :autocomplete_user_display_name
+        post :filter_name
+      end
+    end
     resources :menus do
       collection do 
         post :sort

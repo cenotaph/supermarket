@@ -1,7 +1,15 @@
 .row
   .small-12.columns
     %h2 User management
-    
+.row
+  .small-12.columns
+    Showing 
+    = @users.total_count
+.row.filter_box
+  .small-4.columns
+    %b Filter by:
+    = form_tag filter_name_admin_users_path do
+      = autocomplete_field_tag :display_name, '', autocomplete_user_display_name_admin_users_path, :value => params[:display_name]     
 .row
   .small-12.columns= paginate @users
   
