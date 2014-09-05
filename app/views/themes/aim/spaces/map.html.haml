@@ -14,7 +14,7 @@
               .columns.small-2
                 .browse_box{:class => "box#{index + (groupindex % 2)}"}
                   .content
-                    .space_name{:class => space.business_name.length > 25 ? :long : false}= space.business_name
+                    .space_name{:class => space.business_name.length > 18 ? :long : false}= space.business_name
                     .space_town= space.hometown
                     .space_metadata
                       - if !space.founding_year.blank?

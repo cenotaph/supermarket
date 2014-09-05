@@ -105,7 +105,7 @@ class SpacesController < ApplicationController
       
 
       my_scope.each do |ms| 
-        chain << Space.send(ms.first, ms.last)
+        chain << Space.send(ms.first, ms.last).approved
       end
       
       if chain.empty?

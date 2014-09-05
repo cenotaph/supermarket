@@ -73,7 +73,7 @@
         .small-4.columns
           - if !@spaces.blank?
             %h4.matchcount
-              = pluralize(@spaces.approved.count, 'initiative')
+              = pluralize(@spaces.count, 'initiative')
               = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
               - unless session[:filter_scope].blank?
 
