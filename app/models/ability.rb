@@ -8,7 +8,7 @@ class Ability
         if user.has_role? :god
           can :manage, :all
         elsif user.has_role? :staff
-          can :manage, [Space, Applicationcomment, Application, Pressrelease, Presslink]
+          can :manage, [Space, Applicationcomment, Spacecomment, Application, Pressrelease, Presslink]
           can :manage, Page, :subsites => {:name => 'supermarket2014'}
           can :manage, Post
           can :manage, Video
@@ -17,13 +17,23 @@ class Ability
           can :read, Subsite, :name => 'supermarket2014'
         elsif user.has_role? :aim_staff
           can :manage, Space
+          can :manage, Exhibitionspacetype
+          can :manage, Activity
+          can :manage, Organisationtype
+          can :manage, Spacecomment
+          can :manage, Businesstype                              
           can :manage, User, :id => user.id
           can :read, Subsite, :name => 'aim'
+          can :manage, Page, :subsites => {:name => 'aim'}        
         elsif user.has_role? :videoproducer
           can :manage, Video
-        elsif user.has_role? :exhibitor
+          cannot :read, Spacecomment
+          cannot :read, Applicationcomment
+        elsif user.has_role? :supermarket_exhibitor
           cannot :manage, Page
-          can :manage, Space, :id => Space.with_role(:exhibitor, user).map(&:id)
+          cannot :read, Spacecomment
+          cannot :read, Applicationcomment          
+          can :manage, Space, :id => Space.with_role(:supermarket_exhibitor, user).map(&:id)
         else
           cannot :manage, [Page, Post]
           can :read, :all

@@ -41,11 +41,11 @@
               %ul.dropdown
                 %li
                   = link_to '/admin/dashboard' do
-                    = fa_icon 'cloud'
+                    = fa_icon 'circle-o-notch'
                     Latest unapproved
                 %li
                   = link_to admin_spaces_path do
-                    = fa_icon 'cloud'
+                    = fa_icon 'paint-brush'
                     All initiatives                    
                 %li
                   = link_to denied_admin_spaces_path do
@@ -56,22 +56,26 @@
               = fa_icon 'gears'
               Setup
             %ul.dropdown
-              %li
-                = link_to '/admin/businesstypes' do
-                  = fa_icon 'institution'
-                  Initiative types
-              %li
-                = link_to '/admin/organisationtypes' do
-                  = fa_icon 'briefcase'
-                  Organisational structures
-              %li
-                = link_to '/admin/activities' do
-                  = fa_icon 'umbrella'
-                  Activities
-              %li
-                = link_to '/admin/exhibitionspacetypes' do
-                  = fa_icon 'cubes'
-                  Exhibition space types
+              - if can? :manage, Businesstype
+                %li
+                  = link_to '/admin/businesstypes' do
+                    = fa_icon 'institution'
+                    Initiative types
+              - if can? :manage, Organisationtype
+                %li
+                  = link_to '/admin/organisationtypes' do
+                    = fa_icon 'briefcase'
+                    Organisational structures
+              - if can? :manage, Activity
+                %li
+                  = link_to '/admin/activities' do
+                    = fa_icon 'umbrella'
+                    Activities
+              - if can? :manage, Exhibitionspacetype
+                %li
+                  = link_to '/admin/exhibitionspacetypes' do
+                    = fa_icon 'cubes'
+                    Exhibition space types
           - if can? :manage, Page
             %li
               = link_to admin_pages_path do
