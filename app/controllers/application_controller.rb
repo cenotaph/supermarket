@@ -39,7 +39,11 @@ class ApplicationController < ActionController::Base
       @posts = Post.by_subsite(@subsite).published.order('published_at DESC').limit(3)
       @video = Video.published.order('created_at DESC').first
     elsif @site == 'aim'
-      @nofilters = true
+      if Rails.env.development?
+        redirect_to map_spaces_path
+      else
+        @nofilters = true
+      end
     end
   end
   

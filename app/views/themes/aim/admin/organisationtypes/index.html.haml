@@ -1,0 +1,25 @@
+.row
+  .small-12.columns
+    %h3 Organisation types/structures
+
+.row
+  .small-12.columns
+    = link_to 'Create new organisation type', new_admin_organisationtype_path, :class => [:button, :round, :small]
+.row
+  .small-10.columns
+    %table
+      %thead
+        %th Name
+        %th Actions
+      %tbody
+        - @organisationtypes.each do |bt|
+          %tr
+            %td= bt.name
+            %td
+              - if can? :modify, bt
+                = link_to 'Edit', edit_admin_organisationtype_path(bt), :class => [:round, :tiny, :button]
+              - if can? :destroy, bt
+                = link_to 'Delete', [:admin, bt], :method => :delete, :class => [:round, :tiny, :button, :alert], :data => {:confirm => "Do you want to delete this forever?" }
+.row
+  .small-12.columns
+    = link_to 'Create new organisation type', new_admin_organisationtype_path, :class => [:button, :round, :small]

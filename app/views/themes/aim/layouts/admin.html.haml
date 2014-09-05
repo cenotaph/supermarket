@@ -51,6 +51,27 @@
                   = link_to denied_admin_spaces_path do
                     = fa_icon 'thumbs-down'
                     All denied
+          %li.has-dropdown
+            = link_to '#' do
+              = fa_icon 'gears'
+              Setup
+            %ul.dropdown
+              %li
+                = link_to '/admin/businesstypes' do
+                  = fa_icon 'institution'
+                  Initiative types
+              %li
+                = link_to '/admin/organisationtypes' do
+                  = fa_icon 'briefcase'
+                  Organisational structures
+              %li
+                = link_to '/admin/activities' do
+                  = fa_icon 'umbrella'
+                  Activities
+              %li
+                = link_to '/admin/exhibitionspacetypes' do
+                  = fa_icon 'cubes'
+                  Exhibition space types
           - if can? :manage, Page
             %li
               = link_to admin_pages_path do

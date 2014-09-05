@@ -1,0 +1,25 @@
+.row
+  .small-12.columns
+    %h3 Exhibition space types
+
+.row
+  .small-12.columns
+    = link_to 'Create new exhibition space type', new_admin_exhibitionspacetype_path, :class => [:button, :round, :small]
+.row
+  .small-10.columns
+    %table
+      %thead
+        %th Name
+        %th Actions
+      %tbody
+        - @exhibitionspacetypes.each do |bt|
+          %tr
+            %td= bt.name
+            %td
+              - if can? :modify, bt
+                = link_to 'Edit', edit_admin_exhibitionspacetype_path(bt), :class => [:round, :tiny, :button]
+              - if can? :destroy, bt
+                = link_to 'Delete', [:admin, bt], :method => :delete, :class => [:round, :tiny, :button, :alert], :data => {:confirm => "Do you want to delete this forever?" }
+.row
+  .small-12.columns
+    = link_to 'Create new exhibition space type', new_admin_exhibitionspacetype_path, :class => [:button, :round, :small]

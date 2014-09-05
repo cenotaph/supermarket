@@ -68,6 +68,7 @@ Aim::Application.routes.draw do
   resources :presslinks
   
   namespace :admin do
+    resources :activities
     resources :applications do
       member do
         post :comment
@@ -75,10 +76,14 @@ Aim::Application.routes.draw do
       end
     end
     resources :backgrounds
+    resources :businesstypes
+
     resources :dashboard
+    resources :exhibitionspacetypes
     resources :frontcarousels
     resources :funders
     resources :internallinks
+    resources :organisationtypes
     resources :pages
     resources :posts
     resources :presslinks
