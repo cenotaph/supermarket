@@ -21,7 +21,16 @@ class Admin::PagesController < Admin::BaseController
   end
   
   def index
-    order = sortable_column_order
+    order = sortable_column_order do |column, direction|
+      case column
+      when "name"
+        "slug #{direction}"
+      when "status"
+        "published #{direction}"
+      else
+        "id #{direction}"
+      end
+    end
     @pages = apply_scopes(Page).includes(:subsites).order(order).page(params[:page]).per(100)
     respond_to do |format|
       format.json { 

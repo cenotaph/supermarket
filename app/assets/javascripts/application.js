@@ -22,6 +22,7 @@
 //= require jquery.clearfield
 //= require jquery.lightbox_me
 //= require jquery_nested_form
+//= require jquery-te-1.4.0.min
 
 var CKEDITOR_BASEPATH = '/assets/ckeditor/';
 

@@ -68,3 +68,24 @@ $helv: "Helvetica", "Verdana", "Arial", sans-serif;
     }
   }
 }
+
+.tabs {
+  dd {
+    border: 1px solid #999;
+  }
+}
+.tabs-content {
+  .content {
+    padding: 5px 20px 0px 20px;
+    border: 1px solid #999;
+    .jqte {
+      width: 55em;
+    }
+    .jqte_editor, .jqte_source {
+      min-height: 350px;
+    }
+    .rich_text {
+      height: 400px;
+    }
+  }
+}

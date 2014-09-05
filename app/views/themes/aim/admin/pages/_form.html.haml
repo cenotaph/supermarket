@@ -1,0 +1,28 @@
+
+= semantic_nested_form_for([:admin, @page], :html => {:multipart => true}) do |f|
+  .row
+    .small-12.columns= f.input :subsites, :collection => Subsite.accessible_by(current_ability),   :label => "Show page on which sites/themes ", :hint => "must choose at least one:", :input_html => {:required => true }
+  .row
+    .small-12.columns
+      %dl{:class => :tabs, :"data-tab" => ''}
+        - I18n.available_locales.each_with_index do |locale, index|
+          %dd{:class => index == 0 ? :active : false}= link_to locale.to_s, "#lang-#{locale.to_s}"
+      .tabs-content
+        - I18n.available_locales.each_with_index do |locale, index|
+          .content{:id => "lang-#{locale}", :class => index == 0 ? :active : false}
+            = f.globalize_fields_for locale do |en|
+              %b
+                Name of page in
+                = locale.to_s
+              = en.text_field :title
+              = en.text_area :body, :class => :rich_text
+
+  .row
+    .small-12.columns= f.input :published
+  .row
+    .small-6.columns= f.submit 'Save', :class => [:button, :round]
+= content_for :jquery do
+  :plain
+    $(".rich_text").jqte();
+    $("#page_subsite_ids").chosen();
+    $('form.page').validate();

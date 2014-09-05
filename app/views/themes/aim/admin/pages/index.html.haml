@@ -1,0 +1,30 @@
+.row
+  .small-12.columns
+    %h3 Static pages
+  
+
+.row
+  .small-12.columns= link_to 'Create new page', new_admin_page_path, :class => [:button, :small, :round]
+.row
+  .small-12.columns
+    %table
+      %thead
+        %th Id
+        %th= sortable_column "Name", :column =>  "name"
+        %th= sortable_column "Status", :column => "status"
+        %th Actions
+      %tbody
+        - @pages.each do |page|
+          - next unless page.subsites.include?(@subsite)
+          %tr
+            %td= page.id.to_s
+            %td= page.name
+            %td= page.published? ? 'published' : 'draft'
+            %td
+              = link_to 'View', page, :target => :_blank, :class => [:button, :round, :tiny]
+              - if can? :modify, page
+                = link_to 'Edit', edit_admin_page_path(page), :class => [:button, :round, :tiny]
+              - if can? :destroy, page
+                = link_to 'Delete', [:admin, page], :method => :delete, :class => [:button, :round, :tiny, :alert], :data => {:confirm => 'Are you sure you want to delete this page permanently from the database?'}
+.row
+  .small-12.columns= link_to 'Create new page', new_admin_page_path, :class => [:button, :small, :round]      
