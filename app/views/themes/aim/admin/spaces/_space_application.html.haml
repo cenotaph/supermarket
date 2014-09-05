@@ -16,6 +16,22 @@
       = link_to 'Edit', edit_admin_space_path(@space), :class => [:button, :round], :target => :_blank
     - if can? :delete, @space
       = link_to 'Delete', [:admin, @space], :method => :delete, :class => [:button, :round, :alert, :tiny], :data => {:confirm => 'Are you sure you want to delete this from the database? You should only use this for incomplete or test entries, otherwise you should use the "deny" button.'}    
+- unless @space.users.blank?
+  .row
+    .small-12.columns
+      %h5 Website users:
+      %ul
+        - @space.space_users.each do |su|
+          %li= "#{su.user.display_name} <#{su.user.email}>"
+- unless @space.applications.empty?
+  .row
+    .small-12.columns
+      %h5 Applied to Supermarket:
+      %ul
+        - @space.applications.each do |app|
+          %li
+            = "#{app.year.year} (#{app.granted_result})"
+            
 - unless @space.spacecomments.empty?
   .row
     .small-10.columns
@@ -23,9 +39,9 @@
         %b= link_to pluralize(@space.spacecomments.size, 'comment') + ' on this space',  '#', :onclick => "javascript:scrollToId('#space_comments');" 
 .row.deny_form
   .small-10.columns
-    %h2= "You are not approving #{@space.name}...."
+    %h5= "You are not approving #{@space.name}...."
   .small-12.columns
-    %h5 Why are you not approving it?
+    %h6 Why are you not approving it?
     = semantic_form_for(Spacecomment.new, :url => comment_admin_space_path(@space)) do |f|
       .row
         .small-3.columns
@@ -34,7 +50,7 @@
             %p= current_user.display_name
         .small-9.columns
           = f.input :user_id, :as => :hidden, :value => current_user.id
-          = f.input :comment, :as => :text
+          = f.input :comment, :as => :text, :label => false
           = f.input :deny_field, :as => :hidden, :value => 1
       .row
         .small-12.columns
@@ -173,7 +189,7 @@
               .small-8.columns= raw s.comment
 .row
   .small-8.columns
-    %h3 Comment on this space
+    %h5 Comment on this space
     = semantic_form_for(Spacecomment.new, :url => comment_admin_space_path(@space)) do |f|
       .row
         .small-3.columns
