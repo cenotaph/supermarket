@@ -49,7 +49,9 @@
       .row
         .small-12.columns= f.input :is_active, :label => t("aim.is_active"), :id => 'activespace'
       .row
-        .small-12.columns= f.input :year_of_closing, :label => t("aim.year_of_closing"), :input_html => {:disabled => :disabled}
+        .small-12.columns= f.input :year_of_closing, :label => t("aim.year_of_closing"), :input_html => {:disabled => (@space.is_active? ? false : disabled)}
+      .row
+        .small-12.columns= f.input :exhibitions_per_year, :label => t("aim.year_of_closing")
       .row
         .small-12.columns= f.input :exhibitors, :as => :select, :collection => [[t("aim.mostly_members"),'mostly members'], [t("aim.mixed_members"), 'mixed members and invited' ], [t("aim.mostly_invited"), 'Mostly invited' ], [t("aim.no_exhibitions"), 'no exhibitions' ]], :label => t("aim.exhibitors")
       .row
@@ -82,3 +84,10 @@
   :plain
     $('#space_organisationtype_ids').chosen();
     $('#space_businesstype_ids').chosen();
+    $('#space_is_active').change(function() {
+      if($(this).is(":checked")) { 
+        $('input#space_year_of_closing').attr('disabled', 'disabled');
+      } else {
+        $('input#space_year_of_closing').removeAttr('disabled');
+      }
+    });

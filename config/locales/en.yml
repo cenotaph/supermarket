@@ -214,7 +214,8 @@ en:
     one_last_step: 'One last step!'
     or: 'or ...'
     sign_up_application_period: " and register your initiative in our forthcoming database of artist-run initiatives (Artist Run Map). It's free of charge to register and you will be connected to an international network of artist-run spaces."
-    supermarket_is_closed: "Applications for the 2014 Supermarket Art Fair are now closed. Thanks to everyone who applied; check back here for news about the fair, exhibitors, and the programme."
+    supermarket_is_closed: 'The application period for Supermarket 2015 has not yet begun. We will notify you via email when the application is open.'
+    #supermarket_is_closed: "Applications for the 2014 Supermarket Art Fair are now closed. Thanks to everyone who applied; check back here for news about the fair, exhibitors, and the programme."
     past_applications: 'Past applications'
     pending_space: 'Awaiting access to...'
     pending_spaces_explanation: 'You have requested access to manage a space or gallery. The current account holders have received an email containing instructions on how to approve your access. If you believe there is an error, please contact info@supermarketartfair.com.'
