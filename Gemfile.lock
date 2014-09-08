@@ -333,7 +333,7 @@ GEM
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rinku (1.5.1)
-    rolify (3.3.0.rc4)
+    rolify (3.4.0)
     ruby-growl (4.1)
       uuid (~> 2.3, >= 2.3.5)
     safe_attributes (1.0.10)
@@ -473,7 +473,7 @@ DEPENDENCIES
   randumb
   ransack
   recaptcha
-  rolify (= 3.3.0.rc4)
+  rolify
   ruby-growl
   safe_attributes
   sass-rails (~> 4.0.0)

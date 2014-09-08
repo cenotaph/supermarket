@@ -93,7 +93,7 @@ gem 'randumb'
 gem 'ransack'
 # gem 'rails3-jquery-autocomplete',   github: 'cenotaph/rails3-jquery-autocomplete', branch: 'master'
 gem 'recaptcha'
-gem 'rolify', '3.3.0.rc4'
+gem 'rolify'
 gem 'ruby-growl', :group => :development
 gem 'safe_attributes'
 gem 'skeleton-rails'

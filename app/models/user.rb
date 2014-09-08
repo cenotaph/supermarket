@@ -17,10 +17,11 @@ class User < ActiveRecord::Base
   has_many :pending_spaces, -> { where("space_users.approved = false").references([:spaces, :space_users]) }, through: :space_users, class_name: "Space", source: :space
 
   has_many :applications
-  scope :all_staff, -> { where("id IN (?) OR id IN (?)", User.with_role(:staff), User.with_role(:god)) }
+  scope :all_staff, -> { where("id IN (?) OR id IN (?)", User.with_role(:staff).map(&:id), User.with_role(:god).map(&:id)) }
   accepts_nested_attributes_for :authentications, :reject_if => proc { |attr| attr['username'].blank? }
   
   mount_uploader :photo, AvatarUploader
+
 
   def apply_omniauth(omniauth)
     if omniauth['provider'] == 'twitter'
