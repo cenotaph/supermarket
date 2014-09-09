@@ -26,6 +26,7 @@
   }
   
   function initialize() {
+  var aimStyle = [ { "featureType": "water", "stylers": [ { "visibility": "on" }, { "color": "#ffffff" } ] },{ "featureType": "landscape.natural", "elementType": "geometry", "stylers": [ { "hue": "#ff00e6" }, { "visibility": "off" } ] },{ "featureType": "road.highway", "stylers": [ { "visibility": "on" } ] } ];
   var darkStyle = [ 
   {featureType: "landscape",
   elementType: "all",
@@ -96,32 +97,32 @@
   ];
   var bounds = new google.maps.LatLngBounds();
   map = buildmap();
-  map.mapTypes.set('darkwater', new google.maps.StyledMapType(darkStyle, { name: 'Dark' }));
+  map.mapTypes.set('darkwater', new google.maps.StyledMapType(aimStyle, { name: 'ARM' }));
 
   //set style options for marker clusters (these are the default styles)
   mcOptions = {styles: [{
   height: 53,
-  url: "/assets/aim/images/star_dot_53.png",
+  url: "/assets/aim/images/clusters/m1.png",
   width: 53
   },
   {
   height: 53,
-  url: "/assets/aim/images/star_dot_53.png",
+  url: "/assets/aim/images/clusters/m2.png",
   width: 53
   },
   {
-  height: 44,
-  url: "/assets/aim/images/star_dot_44.png",
-  width: 44
+  height: 66,
+  url: "/assets/aim/images/clusters/m3.png",
+  width: 65
   },
   {
   height: 78,
-  url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m4.png",
+  url: "/assets/aim/images/clusters/m4.png",
   width: 78
   },
   {
   height: 90,
-  url: "/assets/aim/images/star_dot_biggest.png",
+  url: "/assets/aim/images/clusters/m5.png",
   width: 90
   }]}
 
@@ -129,7 +130,7 @@
 
   var infoWindow = new google.maps.InfoWindow();
   flyImage = {
-  url: "/assets/aim/images/star_dot.png",
+  url: "/assets/aim/images/pink_dot.png",
   size: new google.maps.Size(12, 12),
   scaledSize: new google.maps.Size(12, 12),
   origin: null,

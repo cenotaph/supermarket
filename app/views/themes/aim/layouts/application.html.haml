@@ -10,7 +10,8 @@
     = stylesheet_link_tag 'aim/stylesheets/application', :media => :screen
     = javascript_include_tag :application
     = javascript_include_tag "aim/javascripts/application"
-    
+    %link{:href => "http://fonts.googleapis.com/css?family=Averia+Sans+Libre:300", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Ubuntu:300,400,700", :rel => "stylesheet", :type => "text/css"}/
     %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
     %script{:src => "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer_compiled.js", :type => "text/javascript"}
     = csrf_meta_tags
@@ -26,12 +27,8 @@
   %body{:onload => (@nofilters == true || (@space.blank? && @spaces.blank?)) ? false : 'initialize()'}
     
     .row
-      .small-6.columns
-        %h1
-          %a.button_to{:href => '/'}
-            = image_tag(theme_image_path('arm_logo.png'), :alt => 'Artist Run Map')
-         
-        .languages
+      .small-12.columns
+        .languages.left
           - I18n.available_locales.each do |locale|
             - if session[:locale].nil?
               - if locale == :en
@@ -43,12 +40,12 @@
                 %b= locale.to_s
               - else
                 = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
-        .row
-          .small-12.columns
-            .subtitle= t "aim.header_text"
-      .small-6.columns
-        .row
-          .small-10.small-offset-2.text-right= render :partial => 'layouts/user_info'
+        .small-10.small-offset-2.text-right= render :partial => 'layouts/user_info'
+    .row
+      .small-12.columns
+        %h1.header_title
+          = link_to 'Artist Run Map - ' + t("aim.header_text"), '/'
+          
     - unless flash.blank?
       .flash
         .row
@@ -57,20 +54,10 @@
               .alert{ :class => "alert-#{key}" }
                 %strong
                   = value 
-            
+                  
     - unless @nofilters
       .row
-        .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
-
-
-
-    
-
-    
-
-    - unless @nofilters
-      .row
-        .small-4.columns
+        .small-12.columns
           - if !@spaces.blank?
             %h4.matchcount
               = pluralize(@spaces.count, 'initiative')
@@ -78,19 +65,15 @@
               - unless session[:filter_scope].blank?
 
                 %span.small= link_to '(who?)', '#', :onclick => "javascript:scrollToId('#hit_parade');" 
-          .row
-            .small-12.columns.search= render :partial => 'layouts/search_filter'              
+          
+    - unless @nofilters
+      .row
+        .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
+      .row
+        .small-12.columns.search= render :partial => 'layouts/search_filter'
 
       
-        .small-8.columns
-          .filter_title= t "aim.filter_by_initiative"
-          .row#initiative_filter{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
-            - @filters_businesstype.each do |bt|
-              .small-4.columns
-                %li{:class => (session[:filter_scope]['businesstype'].blank? ? false : (session[:filter_scope]['businesstype'].include?(bt.id) ? :activated : false ) rescue false)}
-                  = link_to bt.name, "/filter_by/businesstype/#{bt.id}"
-                  - unless bt.spaces.to_a.delete_if{|x| x.approved == false}.empty?
-                    = "(#{bt.spaces.size})" 
+
 
     = yield 
 

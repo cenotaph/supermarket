@@ -31,10 +31,9 @@
 // $include-html-grid-classes: $include-html-classes;
 
 
-
- $row-width: 75em;
-// $column-gutter: rem-calc(30);
-// $total-columns: 12;
+$row-width: 75em;
+$column-gutter: rem-calc(30);
+$total-columns: 12;
 
 // We use these to control various global styles
 // $body-bg: #fff;
@@ -52,7 +51,7 @@
 // $default-float: left;
 
 // We use these as default colors throughout
- $primary-color: #4a97c7;
+$primary-color: #008ebd;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;

@@ -114,6 +114,7 @@ class SpacesController < ApplicationController
         @spaces = chain.flatten.uniq
       end
     end
+   
   end
   
   def new

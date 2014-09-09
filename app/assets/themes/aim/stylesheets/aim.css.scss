@@ -5,16 +5,26 @@ $box3: #F7B3C0;
 $box4: #BEA7CF;
 $box5: #C5DCF1;
 $backdrop: #F5FBF1;
-$helv: "Helvetica", "Verdana", "Arial", sans-serif;
+$helv: 'Ubuntu', sans-serif;
+
+@import 'foundation_overrides';
 
 * {
-  font-family: HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+}
+body {
+  font-family: 'Ubuntu', sans-serif;
 }
 a {
   text-decoration: none;
-  color: #444;
+  color: #008ebd;
 }
 
+h1.header_title a {
+  font-family: 'Averia Sans Libre', cursive;
+  font-size: 2rem;
+  color: #333;
+}
 
 .flash {
   background-color: red;
@@ -137,7 +147,7 @@ label.sub {
   .content {
     width: 90%;
     height: 90%;
-    font-family: HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     padding-bottom: 16.666667%;
     position: absolute;
     top:      0;
