@@ -2,7 +2,7 @@
   - organizations = organizations.to_a.delete_if{|o| o.latitude.nil? || o.longitude.nil?}
 
 #google-map
-.filter_container.small-6.columns{:style => "display: " + 'none'}
+.filter_container.small-9.columns.right{:style => "display: " + 'none'}
   .row= render :partial => 'shared/aim_filters'
 %script{:type => "text/javascript"}
   function buildmap() {
@@ -26,6 +26,8 @@
   }
   
   function initialize() {
+  var andreasStyle = [ { "stylers": [ { "saturation": -61 }, { "lightness": -70 }, { "gamma": 0.72 } ] },{ "featureType": "water", "stylers": [ { "lightness": -41 } ] } ];
+  
   var aimStyle = [ { "featureType": "water", "stylers": [ { "visibility": "on" }, { "color": "#ffffff" } ] },{ "featureType": "landscape.natural", "elementType": "geometry", "stylers": [ { "hue": "#ff00e6" }, { "visibility": "off" } ] },{ "featureType": "road.highway", "stylers": [ { "visibility": "on" } ] } ];
   var darkStyle = [ 
   {featureType: "landscape",
@@ -97,7 +99,7 @@
   ];
   var bounds = new google.maps.LatLngBounds();
   map = buildmap();
-  map.mapTypes.set('darkwater', new google.maps.StyledMapType(aimStyle, { name: 'ARM' }));
+  map.mapTypes.set('darkwater', new google.maps.StyledMapType(andreasStyle, { name: 'ARM' }));
 
   //set style options for marker clusters (these are the default styles)
   mcOptions = {styles: [{
