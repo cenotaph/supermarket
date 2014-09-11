@@ -39,11 +39,8 @@ class ApplicationController < ActionController::Base
       @posts = Post.by_subsite(@subsite).published.order('published_at DESC').limit(3)
       @video = Video.published.order('created_at DESC').first
     elsif @site == 'aim'
-      if Rails.env.development?
-        redirect_to map_spaces_path
-      else
-        @nofilters = true
-      end
+      
+      redirect_to map_spaces_path
     end
   end
   
@@ -125,6 +122,11 @@ class ApplicationController < ActionController::Base
       @promoted_posts.compact!
       if @background_image.nil? 
         @background_image = Background.published.order_by_rand
+      end
+    end
+    if @site == 'aim'
+      authenticate_or_request_with_http_basic('Work in progress') do |username, password|
+        username == 'trouble' && password == 'desire'
       end
     end
     @site
