@@ -1,9 +1,8 @@
-- unless organizations.nil?
-  - organizations = organizations.to_a.delete_if{|o| o.latitude.nil? || o.longitude.nil?}
+-# unless organizations.nil?
+-#  organizations = organizations.to_a.delete_if{|o| o.latitude.nil? || o.longitude.nil?}
 
 #google-map
-.filter_container.small-9.columns.right{:style => "display: " + 'none'}
-  .row= render :partial => 'shared/aim_filters'
+
 %script{:type => "text/javascript"}
   function buildmap() {
   var myOptions = {
@@ -141,6 +140,7 @@
   - unless organizations.nil?
     var markers = [];
     - for organization in organizations
+      - next if organization.latitude.nil?
       var myLatLng = new google.maps.LatLng(#{organization.latitude}, #{organization.longitude});
       var marker_#{organization.id} = new google.maps.Marker({
       position: myLatLng,

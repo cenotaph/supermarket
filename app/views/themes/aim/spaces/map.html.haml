@@ -1,38 +1,82 @@
+.row
+  .small-3.columns
+    - unless @nofilters
+      .row
+        .small-12.columns
+          - if !@spaces.blank?
+            %h4.matchcount
+              = pluralize(@spaces.count, 'initiative')
+              = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
+              - unless session[:filter_scope].blank?
+
+                %span.small= link_to '(who?)', '#', :onclick => "javascript:scrollToId('#hit_parade');" 
+      
+    - unless @nofilters
+      .row
+        .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
+      .row
+        .small-12.columns.search= render :partial => 'layouts/search_filter'
+      .filter_container.small-12.columns
+        .row= render :partial => 'shared/aim_filters'
+        
+    .login_bottom.small-12.columns.left
+      = t "aim.connect_instantly"
+      %p= t "aim.login_using"
+      %ul.oauth_choices
+        
+        %li
+          = link_to '/auth/facebook/' do
+            = image_tag theme_image_path('facebook_icon.png')
+            %br/
+            Facebook
+        
+        %li
+          = link_to '/auth/twitter/' do
+            = image_tag theme_image_path('twitter_icon.png')
+            %br/
+            Twitter
+        
+        %li.last
+          = link_to '/auth/google_oauth2' do
+            = image_tag theme_image_path('google_icon.png')
+            %br/
+            Google
+        
+        
+  .small-9.columns  
+    - unless @spaces.blank?
+      = render :partial =>  "shared/google_map", :locals => { :organizations => @spaces }
 - unless @spaces.blank?
-  = render :partial =>  "shared/google_map", :locals => { :organizations => @spaces }
-
-
-
-- unless @spaces.blank?
-  .hit_parade#hit_parade
-    - unless session[:filter_scope].blank?
-      .row.browse
-        - @spaces.in_groups_of(4).each_with_index do |group, groupindex|
-          - group.each_with_index do |space, index|
-            - next if space.nil?
-            = link_to(initiatives_path(space)) do
-              .columns.small-2
-                .browse_box{:class => "box#{index + (groupindex % 2)}"}
-                  .content
-                    .space_name{:class => space.business_name.length > 18 ? :long : false}= space.business_name
-                    .space_town= space.hometown
-                    .space_metadata
-                      - if !space.founding_year.blank?
-                        = space.founding_year
-                        = " - "
-                        - if space.is_active == true
-                          = t :present
-                        - else
-                          = space.year_of_closing
-                      - elsif space.is_active?
-                        = t :active
-                      - unless space.website1.blank?
-                        .box_weblink= link_to space.website1, space.website1_safe
-                      - unless space.website2.blank?
-                        .box_weblink= link_to  space.website2, space.website2_safe
-                    .space_description
-                      = truncate_html(sanitize(space.short_description, tags: %w{b i em strong}), :length => 65) unless space.short_description.blank?
-                      /= link_to "[#{t.read_more}]", '/spaces/' + space.best_id
+  .row
+    .small-12.columns.hit_parade#hit_parade
+      - unless session[:filter_scope].blank?
+        .row.browse
+          - @spaces.in_groups_of(4).each_with_index do |group, groupindex|
+            - group.each_with_index do |space, index|
+              - next if space.nil?
+              = link_to(initiatives_path(space)) do
+                .columns.small-2
+                  .browse_box{:class => "box#{index + (groupindex % 2)}"}
+                    .content
+                      .space_name{:class => space.business_name.length > 18 ? :long : false}= space.business_name
+                      .space_town= space.hometown
+                      .space_metadata
+                        - if !space.founding_year.blank?
+                          = space.founding_year
+                          = " - "
+                          - if space.is_active == true
+                            = t :present
+                          - else
+                            = space.year_of_closing
+                        - elsif space.is_active?
+                          = t :active
+                        - unless space.website1.blank?
+                          .box_weblink= link_to space.website1, space.website1_safe
+                        - unless space.website2.blank?
+                          .box_weblink= link_to  space.website2, space.website2_safe
+                      .space_description
+                        = truncate_html(sanitize(space.short_description, tags: %w{b i em strong}), :length => 65) unless space.short_description.blank?
+                        /= link_to "[#{t.read_more}]", '/spaces/' + space.best_id
 
   :javascript
     $('.slideshow').cycle({

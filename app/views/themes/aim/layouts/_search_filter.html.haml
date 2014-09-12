@@ -1,19 +1,18 @@
 // Search filter partial
-.search_dropdown.row
-  = form_tag("/aiming/search", :method => "post") do
-    .small-3.columns
+= form_tag("/aiming/search", :method => "post") do
+  .search_dropdown.row
+    .small-12.columns
+      .search_title= t :search
+  .row
+    .small-4.columns
       #menu
-        .search_title= t :search
+
         %select{:name => :search_type}
           %option{:value => :name}= t :name
           %option{:value => :activities}= t :activities
           %option{:value => :location}= t :location
-    .small-9.columns.alpha
+    .small-8.columns.alpha
       %input.shadow{:type => :text, :name => :search_term, :value => params[:search_term]}
-    .filter_toggle.small-12.columns        
-      %a{:href => '#', :onClick => '$(".filter_container").slideToggle();$("#map").toggleClass("small")'}
-        = fa_icon 'bars'
-        = t "aim.toggle_filters"
-      - unless session[:filter_scope].nil?
-        = link_to t("aim.clear_all_filters"), clear_filters_spaces_path
+
+
 

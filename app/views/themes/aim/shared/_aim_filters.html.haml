@@ -1,5 +1,5 @@
 
-.small-3.columns.filter_column
+.small-12.columns.filter_column
   .title= t "aim.filter_by_initiative"
   -#row#initiative_filter{:style => "display: " + (@nofilters.nil? ? 'inline' : 'none')}
   %ul
@@ -9,9 +9,9 @@
         = link_to bt.name, "/filter_by/businesstype/#{bt.id}"
         - unless bt.spaces.approved.to_a.flatten.delete_if{|x| x.approved == false}.empty?
           = "(#{bt.spaces.approved.flatten.uniq.size})" 
-.small-3.columns.filter_column
-  .title= t :location
-  #tree
+.small-12.columns.filter_column
+  .title= link_to t("aim.filter_by_location"), 'javascript:$("#tree").toggle();'
+  #tree.location_filter{:style => 'display: none'}
     %ul
       - ISO3166::Country::Data.group_by{|x| x.last["region"]}.each do |region|
         - next if region.first.blank?
@@ -34,17 +34,19 @@
                     %li{:class => check_filter([country.first], 'country', "jstree-open activated ") }
 
                       = link_to country.last['name'] + " (#{@tree[region.first][subregion.first][country.first.downcase].size})", "/filter_by/country/#{country.first}"
-  %br/
-  .title= t "aim.exhibition_space_type"
-  %ul
+
+  .title= link_to t("aim.filter_by_exhibitionspacetype"), 'javascript:$("ul.exhibitionspacetype_filter").toggle();'
+  %ul.exhibitionspacetype_filter{:style => 'display: none'}
     - Exhibitionspacetype.includes([:translations, :spaces]).all.each do |est|
       %li{:class => (session[:filter_scope]['exhibitionspacetype'].blank? ? false : (session[:filter_scope]['exhibitionspacetype'].include?(est.id) ? :activated : false ) rescue false)}
         = link_to est.name, '/filter_by/exhibitionspacetype/' + est.id.to_s
         - unless est.spaces.to_a.delete_if{|x| x.approved == false}.empty?
           = "(#{est.spaces.size})"
-.small-3.columns.filter_column{:style => "border-left: 1px dotted #000;"}
-  .title= t :activities
-  %ul
+          
+          
+.small-12.columns.filter_column
+  .title= link_to t("aim.filter_by_activities"), 'javascript:$("ul.activities_filter").toggle();'
+  %ul.activities_filter{:style => 'display: none'}
     - Activity.all.each do |activity|
       %li{:class => (session[:filter_scope]['activity'].blank? ? false : (session[:filter_scope]['activity'].include?(activity.id) ? :activated : false ) rescue false )}
       
@@ -52,9 +54,9 @@
         - unless activity.spaces.to_a.delete_if{|x| x.approved == false}.empty?
           = "(#{activity.spaces.size})"
 
-.small-3.columns.filter_column.last                  
-  .title= t "aim.organisation_structure"
-  %ul
+.small-12.columns.filter_column.last                  
+  .title= t "aim.filter_by_organisation_structure"
+  %ul.organisationtype_filter{:style => 'display: none'}
     - @filters_organisationtype.all.each do |ot|
       %li{:class => (session[:filter_scope]['organisationtype'].blank? ? false : (session[:filter_scope]['organisationtype'].include?(ot.id) ? :activated : false ) rescue false)}
         = link_to ot.name, "/filter_by/organisationtype/#{ot.id}"

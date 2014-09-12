@@ -91,7 +91,7 @@ en:
     space_handoff_needed: 'This initiative already exists in our database, but your user account is not authorised to update or change the information for it.'
     your_initiative: 'Your initiative: '
     space_basic_details: 'Contact details'
-    instant_sign_in: "You can instantly log into Aiming"
+    instant_sign_in: "You can instantly log into ARM"
     connect_with_facebook: 'Connect instantly with Facebook'
     connect_with_twitter: 'Connect instantly with Twitter'
     connect_with_supermarket: 'Log in with the username and password you used for Supermarket Art Fair'
@@ -137,9 +137,12 @@ en:
     connect_blurb: "Connect to Artist Run Map! If you are here for the first time, it's easy to sign in and register your artist-run initiative into our database. It is free to join. If you are returning, you can update your information and access other services available to users."
     submit_your_initiative: 'Submit your initiative!'
     businesstype_fieldset: 'Which type of initiative are you?'
-    
-    
-    
+    filter_by_activities: 'Filter by activities'
+    filter_by_location: 'Filter by location'
+    filter_by_organisation_structure: 'Filter by organisation structure'
+    filter_by_exhibitionspacetype: 'Filter by exhibition space type'
+    not_logged_in: 'You are not signed in.'
+    choose_language: 'Choose language: '
     
     
   supermarket2014:

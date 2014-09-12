@@ -25,59 +25,43 @@
     = javascript_include_tag "vendor/modernizr"
     
   %body{:onload => (@nofilters == true || (@space.blank? && @spaces.blank?)) ? false : 'initialize()'}
-    
     .row
-      .small-12.columns
-        .languages.left
-          - I18n.available_locales.each do |locale|
-            - if session[:locale].nil?
-              - if locale == :en
-                %b= locale.to_s
-              - else
-                = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
-            - else
-              - if session[:locale] == locale
-                %b= locale.to_s
-              - else
-                = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
-        .small-10.small-offset-2.text-right= render :partial => 'layouts/user_info'
-    .row
-      .small-12.columns
-        %h1.header_title
-          = link_to 'Artist Run Map - ' + t("aim.header_text"), '/'
-          
-    - unless flash.blank?
-      .flash
+      .columns{:class => @nofilters == true ? "small-12" : "small-11"}
         .row
           .small-12.columns
-            - flash.each do |key, value|
-              .alert{ :class => "alert-#{key}" }
-                %strong
-                  = value 
-                  
-    - unless @nofilters
-      .row
-        .small-12.columns
-          - if !@spaces.blank?
-            %h4.matchcount
-              = pluralize(@spaces.count, 'initiative')
-              = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
-              - unless session[:filter_scope].blank?
+            .languages.left
+              = t "aim.choose_language"
+              - I18n.available_locales.each do |locale|
+                - if session[:locale].nil?
+                  - if locale == :en
+                    %b= locale.to_s
+                  - else
+                    = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
+                - else
+                  - if session[:locale] == locale
+                    %b= locale.to_s
+                  - else
+                    = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
 
-                %span.small= link_to '(who?)', '#', :onclick => "javascript:scrollToId('#hit_parade');" 
-          
-    - unless @nofilters
-      .row
-        .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
-      .row
-        .small-12.columns.search= render :partial => 'layouts/search_filter'
+        .row
+          .small-10.columns
+            %h1.header_title
+              = link_to 'Artist Run Map - ' + t("aim.header_text"), '/'
+          .small-2.columns.text-right= render :partial => 'layouts/user_info'
+        - unless flash.blank?
+          .flash
+            .row
+              .small-12.columns
+                - flash.each do |key, value|
+                  .alert{ :class => "alert-#{key}" }
+                    %strong
+                      = value 
 
-      
+        = yield 
 
-
-    = yield 
-
-
+      - unless @nofilters == true
+        .small-1.columns
+          %p strip of images to come soon
                               
     %footer
       .container

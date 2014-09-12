@@ -5,15 +5,15 @@ $box3: #F7B3C0;
 $box4: #BEA7CF;
 $box5: #C5DCF1;
 $backdrop: #F5FBF1;
-$helv: 'Ubuntu', sans-serif;
+$helv: "Trebuchet MS", Helvetica, sans-serif;
 
 @import 'foundation_overrides';
 
 * {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Trebuchet MS", Helvetica, sans-serif''
 }
 body {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 a {
   text-decoration: none;
@@ -49,6 +49,17 @@ h1.header_title a {
     margin-left: 15px;
   }
 
+}
+
+.login_text {
+  margin-top: 25px;
+  font-size: 0.9rem;
+  ul {
+    li {
+      float: left;
+      list-style-type: none;
+    }
+  }
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $helv;
@@ -219,7 +230,11 @@ input.shadow {
   margin-right: 5px;
 }
 
+form .search_dropdown {
+  
+}
 .search {
+  margin-top: 15px;
   #menu {
     select {
 
@@ -439,40 +454,44 @@ input.shadow {
     float: left;
   }
 }
-.header {
-  margin: 36px 0 36px 0;
-  height: 100%;
+.languages {
+  float: right;
   font-family: $helv;
-  
-  .subtitle {
-    font-family: $helv;
+  font-size: 0.7rem;
+  color: #000000;
+  font-weight: 300;
+  text-transform: uppercase;
+  a {
+    color: #333;
     font-weight: bold;
-    font-size: 21pt;
-  }
-  .languages {
-    float: right;
-    font-family: $helv;
-    font-size: 10pt;
-    color: #000000;
-    text-transform: uppercase;
   }
 }
-
-.login_stuff {
+.login_bottom {
+  margin-top: 25px;
   clear: both;
+  padding-left: 0px !important;
   float: right;
   font-family: $helv;
   font-size: 0.8rem;
+  p {
+    font-size: 0.8rem;
+    margin: 10px 0px 5px 0px;
+    padding: 0px;
+  }
   ul.oauth_choices {
     margin: 0px;
     padding: 0px;
     li {
+      
       list-style-type: none;
       float: left; 
-      font-size: 0.9rem;
-      margin-right: 5px;
-      padding-right: 5px;
+      font-size: 0.7rem;
+      text-align: center;
+      padding: 0px 5px;
       border-right: 1px solid $box0;
+      img {
+        max-width: 32px;
+      }
       &.last {
         border-right: none;
       }
@@ -480,24 +499,18 @@ input.shadow {
   }
 }
 
-.filter_container {
-  float: left;
-  border-left: 1px dotted #000000;
-  border-right: 1px dotted #000000;
-  margin-top : -540px;
-  margin-left: 10px;
-  border-radius: 10px;
-  background-color: white;
-  z-index: 1000;
-  opacity: 0.9;
-}
+
 .filter_column {
   overflow: hidden;
   float: left;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 5px 0px 0px !important;
+  a {
+    color: #000;
+  }
   .title {
+    margin-top: 15px;
     font-family: $helv;
-    font-size: 0.95em;
+    font-size: 0.95rem;
     font-weight: bold;
   }
   ul {
@@ -526,9 +539,7 @@ input.shadow {
     }
   }
 
-  &.last {
-    border-left: 1px dotted black;
-  }
+
 }
 
 #map {
@@ -606,7 +617,7 @@ label.error {
 footer {
   margin-top: 20px;
   padding-top: 40px;
-  background-color: #fbfbfb;
+  background-color: #FFF;
 
   a {
     text-decoration: none;
