@@ -17,9 +17,13 @@
 
 body {
   padding: 0;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 12px;
   line-height: 15px;
   margin: 0px;
 }
 
+
+#twitter-widget h1 {
+  font-family: 'PT Sans', sans-serif !important;
+}

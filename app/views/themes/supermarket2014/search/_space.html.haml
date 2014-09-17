@@ -5,7 +5,7 @@
     - if hit.allimages.empty?
       = image_tag 'missing.png'
     - else
-      = image_tag hit.allimages.first.url(:sidebar)
+      = image_tag hit.allimages.flatten.first.url(:sidebar)
     .history
       %strong= t "supermarket2014.exhibited"
       = raw hit.applications.approved.map{|x| link_to x.year.year, exhibitor_year_path(:space => hit, :year => x.year.year) }.join(' / ')      

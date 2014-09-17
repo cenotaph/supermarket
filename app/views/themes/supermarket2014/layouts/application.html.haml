@@ -3,13 +3,14 @@
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? yield(:title) : "Supermarket"
-      %link{:href => theme_image_path('favicon.ico'), :rel => "shortcut icon"}/
+      %link{:href => theme_image_path('favicon_32.ico'), :rel => "shortcut icon"}/
       %meta{:content => content_for?(:description) ? yield(:description) : "Supermarket", :name => "description"}
       %link{:href => posts_path(:format => :rss), :rel => "alternate", :title => "Supermarket Art Fair", :type => "application/rss+xml"}/
       = stylesheet_link_tag :application
       = stylesheet_link_tag 'supermarket2014/stylesheets/application', :media => :screen
       = javascript_include_tag "application"
       / %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
+      %link{:href => "http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic", :rel => "stylesheet", :type => "text/css"}/
       = csrf_meta_tags
 
       %script{:type => "text/javascript"}
@@ -31,7 +32,7 @@
       .container
         .sixteen.columns.header_main.alpha
           .seven.columns.alpha.header_logo
-            = link_to image_tag(theme_image_path('2014siaf_white.png')), '/'
+            = link_to image_tag(theme_image_path('2015siaf_white.png')), '/'
             / = link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/', :class => :tl2
             .dates 
               %p Kulturhuset Stadsteatern
@@ -66,9 +67,9 @@
 
               %nav.social_icons
                 %ul
-                  %li= link_to image_tag(theme_image_path('facebook_icon.png')), 'https://www.facebook.com/supermarketartfair'
-                  %li= link_to image_tag(theme_image_path('twitter_icon.png')), 'https://twitter.com/supermarketart'
-                  %li= link_to image_tag(theme_image_path('tv_icon.png')), '/tv'
+                  %li= link_to image_tag(theme_image_path('fb_30_r.png')), 'https://www.facebook.com/supermarketartfair'
+                  %li= link_to image_tag(theme_image_path('tw_30_r.png')), 'https://twitter.com/supermarketart'
+                  %li= link_to image_tag(theme_image_path('st_30_r.png')), '/tv'
       #menu_base
         .container
           .sixteen_columns.horiz_menu
