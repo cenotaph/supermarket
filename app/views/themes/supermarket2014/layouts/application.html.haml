@@ -10,7 +10,7 @@
       = stylesheet_link_tag 'supermarket2014/stylesheets/application', :media => :screen
       = javascript_include_tag "application"
       / %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
-      %link{:href => "http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic", :rel => "stylesheet", :type => "text/css"}/
+      %link{:href => "http://fonts.googleapis.com/css?<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>", :rel => "stylesheet", :type => "text/css"}/
       = csrf_meta_tags
 
       %script{:type => "text/javascript"}
@@ -36,7 +36,8 @@
             / = link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/', :class => :tl2
             .dates 
               %p Kulturhuset Stadsteatern
-              %p 14-16 February 2014
+              %p 17–19 April 2015
+              %p Press viewing and Professional Preview Thursday 16 April
               %p Friday 11-22
               %p Saturday-Sunday 11-20
           .nine.columns.omega.top_bar_container
@@ -113,9 +114,9 @@
       .container
         
         .five.columns.omega.footer_credits
-          %strong Supermarket 2014
+          %strong Supermarket 2015
           %em Stockholm Independent Art Fair
-          .small_text 14-16 February 2014, Kulturhuset Stadsteatern, Stockholm
+          .small_text 17–19 April 2015, Stockholm
         
 
         .four.columns
