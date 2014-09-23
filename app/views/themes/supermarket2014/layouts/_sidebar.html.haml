@@ -32,11 +32,11 @@
             .subtitle= t "supermarket2014.your_applications"
             %p= t "supermarket2014.supermarket_is_closed"
             %ul
-              - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2014).id).empty? ) &&  Year.find_by(:year => 2014).open?
+              - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2015).id).empty? ) &&  Year.find_by(:year => 2015).open?
                 .year
-                  %strong 2014
-                .submitted_at= t("supermarket2014.not_started_2014")
-                %li.apply_2014= link_to t("supermarket2014.apply_to_supermarket_2014"), '/apply/2014/' + space.slug.to_s                    
+                  %strong 2015
+                .submitted_at= t("supermarket2014.not_started_2015")
+                %li.apply_2014= link_to t("supermarket2014.apply_to_supermarket_2015"), '/apply/2015/' + space.slug.to_s                    
               - space.applications.sort_by{|x| x.year}.each do |sa|
                 %li
                   .submitted_applications

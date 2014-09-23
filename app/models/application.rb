@@ -92,7 +92,7 @@ class Application < ActiveRecord::Base
     elsif space.logo?
       space.logo.url(size)
     elsif !applicationwebimages.empty?
-      applicationwebimages.delete_if{|x| x.imagefile =~ /pdf$/i }.first.imagefile.url(size)
+      applicationwebimages.to_a.delete_if{|x| x.imagefile =~ /pdf$/i }.first.imagefile.url(size)
     else
       'missing-120.png'
     end
@@ -118,7 +118,7 @@ class Application < ActiveRecord::Base
 
   
   def newer_than_this?
-    space.applications.delete_if{|x| x == self }.map{|x| x.year.year }.map{|x| x > year.year }.include?(true)
+    space.applications.to_a.delete_if{|x| x == self }.map{|x| x.year.year }.map{|x| x > year.year }.include?(true)
   end
   
   def sync_with_space
