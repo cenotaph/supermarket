@@ -28,3 +28,8 @@ body {
 #twitter-widget h1 {
   font-family: 'Oxygen', sans-serif !important;
 }
+
+.columns img {
+  max-width: 100%;
+  height: auto;
+}
