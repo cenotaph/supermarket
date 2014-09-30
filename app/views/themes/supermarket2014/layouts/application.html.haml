@@ -113,17 +113,20 @@
         
         .five.columns.omega.footer_credits
           %strong Supermarket 2015
+          %br/
           %em Stockholm Independent Art Fair
-          .small_text 17–19 April 2015, Stockholm
+          .small_text 16–19 April 2015, Svarta Huset, Telefonplan, Stockholm
+          
         
 
         .four.columns
           %ul
+            %li= link_to 'About', page_path('about-supermarket')
             %li= link_to 'FAQ', page_path('faq')
-            %li= link_to 'Tickets', page_path('future-dates')
+            -# %li= link_to 'Tickets', page_path('future-dates')
             %li= link_to 'Super-TV', '/tv'
-            %li= link_to 'Exhibitors 2014', '/exhibitors/2014'
-            %li= link_to 'Talks and Performances 2014', page_path('talks-performance-2014')
+            -# %li= link_to 'Exhibitors 2014', '/exhibitors/2014'
+            -# %li= link_to 'Talks and Performances 2014', page_path('talks-performance-2014')
         .four.columns
           %ul
             %li= link_to t(:disclaimer), page_path('disclaimer')

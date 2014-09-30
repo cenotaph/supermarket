@@ -1,0 +1,6 @@
+%h2 You are associated with more than one initiative....
+
+%ul
+  - current_user.approved_space_users.map(&:space).each do |space|
+    %li= link_to "Apply to Supermarket for #{space.name}", '/apply/2015/' + space.slug
+    
