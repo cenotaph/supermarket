@@ -3,6 +3,12 @@ class ApplicationsController < ApplicationController
   before_filter :authenticate_user!
   steps :address_and_location, :basic_info, :proposals, :secondary_info, :media, :supermarket_particulars, :confirm
   
+  def applylanding 
+    if current_user.approved_space_users.approved.size == 1
+      redirect_to '/apply/2015/' + current_user.spaces.first.slug
+    end
+  end
+  
   def accept_terms
     @application = Application.find(params[:id])
     if @application.space.users.include?(current_user)
@@ -75,7 +81,11 @@ class ApplicationsController < ApplicationController
     year = Year.where(:year => params[:year]).first
     @space = Space.friendly.find(params[:space_id])
     if (@space.users.include?(current_user) || current_user.has_role?(:staff)) && year.open?
-      @application = Application.new(:year_id => year.id, :space_id => @space.id, :user => current_user)
+      if @space.applications.where(:year_id => year).empty?
+        @application = Application.new(:year_id => year.id, :space_id => @space.id, :user => current_user)
+      else
+        @application = @space.applications.where(:year_id => year).first
+      end
     elsif !year.open?
       flash[:error]= 'Applications for ' + year.year.to_s + ' are now closed.'
       redirect_to '/'

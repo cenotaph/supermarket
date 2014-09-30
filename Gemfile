@@ -49,7 +49,7 @@ gem 'execjs', '2.2.1'
 gem 'auto_html'
 gem 'aws-s3',  github: 'bartoszkopinski/aws-s3'
 gem 'bootstrap-sass'
-gem "bullet", :group => "development"
+#gem "bullet", :group => "development"
 gem 'cancan'
 gem 'carrierwave'
 gem 'chosen-rails'

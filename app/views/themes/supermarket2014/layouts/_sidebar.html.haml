@@ -30,14 +30,23 @@
                   %i.icon-pencil
                   = t(:edit_link)
             .subtitle= t "supermarket2014.your_applications"
-            %p= t "supermarket2014.supermarket_is_closed"
+
+            %p= t "supermarket2014.2015_is_open"
             %ul
-              - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2015).id).empty? ) &&  Year.find_by(:year => 2015).open?
-                .year
-                  %strong 2015
-                .submitted_at= t("supermarket2014.not_started_2015")
-                %li.apply_2014= link_to t("supermarket2014.apply_to_supermarket_2015"), '/apply/2015/' + space.slug.to_s                    
-              - space.applications.sort_by{|x| x.year}.each do |sa|
+              .year
+                %strong 2015
+              - if Year.find_by(:year => 2015).open?
+                - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2015).id).empty? )
+                  %li.apply_2014= link_to t("supermarket2014.apply_to_supermarket_2015"), '/apply/2015/' + space.slug.to_s
+                - elsif space.applications.where(:year_id => Year.find_by(:year => 2015).id).to_a.delete_if{|x| !x.finished?}.empty?
+                
+                  %li.apply_2014
+                    = link_to t("supermarket2014.continue_your_application"), '/apply/2015/' + space.slug.to_s
+                    .big Your application has not been completed.
+
+              - space.applications.sort_by{|x| x.year.year}.reverse.each do |sa|
+              
+                - next if sa.year.year == 2015
                 %li
                   .submitted_applications
                     .year= sa.year.year.to_s
@@ -47,9 +56,8 @@
                         = l sa.submitted_at, :format => :long rescue nil
                     .view
                       = link_to t(:view_application), sa
-                    - if sa.year.year == 2014
+                    - if sa.year.year == 2015
                       .view
-                        = t "supermarket2014.2014_is_closed"
                       - if sa.approved_pending_reveal?
                         = t :accepted
                         

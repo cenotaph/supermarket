@@ -10,7 +10,7 @@
       = stylesheet_link_tag 'supermarket2014/stylesheets/application', :media => :screen
       = javascript_include_tag "application"
       / %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
-      %link{:href => "http://fonts.googleapis.com/css?family=Oxygen:400,700", :rel => "stylesheet", :type => "text/css"}/
+      %link{:href => "http://fonts.googleapis.com/css?family=Oxygen:4", :rel => "stylesheet", :type => "text/css"}/
       = csrf_meta_tags
 
       %script{:type => "text/javascript"}
@@ -35,14 +35,15 @@
             = link_to image_tag(theme_image_path('2015siaf_white.png')), '/'
             
           .dates.six.columns
-            %p 17–19 April 2015
+            %p 16–19 April 2015
+            %p Svarta Huset, Telefonplan, Stockholm
             %p Press viewing and Professional Preview Thursday 16 April
             %p Friday 11-22
             %p Saturday-Sunday 11-20
           .eight.columns.omega.top_bar_container
             %nav.top_bar
               %ul
-                %li.big= link_to t(:tickets), page_path('future-dates')
+                -#%li.big= link_to t(:tickets), page_path('future-dates')
                 / %li= link_to t(:faqs), page_path('faq')
                 - if current_user
                   %li= current_user.display_name
@@ -62,8 +63,8 @@
                     = value                    
             .nine.columns.omega
               .dates_mobile
-                %p Kulturhuset Stadsteatern
-                %p 14-16 February 2014
+                %p Svarta Huset, Telefonplan
+                %p 16–19 April 2015
 
               %nav.social_icons
                 %ul
