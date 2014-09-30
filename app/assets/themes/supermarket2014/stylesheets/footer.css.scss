@@ -10,12 +10,12 @@ footer {
       list-style-type: none;
       margin-bottom: 5px;
       a {
-        color: #FFF;
+        color: $menu;
         font-weight: bold;
         text-transform: uppercase;
         font-size: 13px;
         &:hover {
-          color: #CCC;
+          color: $hover;
         }
       }
     }
