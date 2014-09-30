@@ -43,7 +43,10 @@
                   %li.apply_2014
                     = link_to t("supermarket2014.continue_your_application"), '/apply/2015/' + space.slug.to_s
                     .big Your application has not been completed.
+                - elsif space.applications.where(:year_id => Year.find_by(:year => 2015).id).to_a.delete_if{|x| x.finished?}.empty?
 
+                  .view
+                    = link_to t(:view_application), space.applications.where(:year_id => Year.find_by(:year => 2015).id).first
               - space.applications.sort_by{|x| x.year.year}.reverse.each do |sa|
               
                 - next if sa.year.year == 2015

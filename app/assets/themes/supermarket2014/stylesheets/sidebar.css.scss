@@ -56,6 +56,7 @@
       }
     }
   }
+
   .title {
     font: $small-heading;
     margin-bottom: 10px;
@@ -107,3 +108,9 @@
   }
 }
 
+.view {
+  a {
+    font: $small-text;
+    text-transform: uppercase !important;
+  }
+}
