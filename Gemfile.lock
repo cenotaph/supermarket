@@ -90,9 +90,6 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
-    bullet (4.8.0)
-      activesupport
-      uniform_notifier (>= 1.4.0)
     callsite (0.0.11)
     cancan (1.6.10)
     carrierwave (0.10.0)
@@ -380,7 +377,6 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    uniform_notifier (1.5.0)
     uuid (2.3.7)
       macaddr (~> 1.0)
     vimeo (1.5.4)
@@ -419,7 +415,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
-  bullet
   cancan
   carrierwave
   chosen-rails

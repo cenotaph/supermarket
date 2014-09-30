@@ -240,7 +240,7 @@ en:
     space_additional_details: 'Additional details'
     space_basic_details: 'Basic details'    
     space_handoff_needed: 'This gallery/space already exists in our database, but your user account is not authorised to update or change the information for it.'
-    supermarket_proposal: 'How will you utilise your booth at Supermarket 2015?'
+    supermarket_proposal: 'How will you utilise your booth at Supermarket 2015? You can write in English or Swedish.'
     proposal_blurb: ''
     visiting_address_different: 'Visiting address (if different than contact address):'
     we_sent_emails_blurb: 'We have sent emails to the owners of the %{space} account, asking them to approve your access. You will receive an email notification when this has been done.'
