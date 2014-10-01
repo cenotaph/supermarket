@@ -1,6 +1,7 @@
 
 .metadata
-  = "posted on #{l post.published_at.to_date, :format => :long} by #{post.posted_by.display_name}"
+  = "posted on #{l post.published_at.to_date, :format => :long} by "
+  = post.post_as_supermarket == true ? 'Supermarket Art Fair' : post.posted_by.display_name
 
 .body
   = raw post.body
