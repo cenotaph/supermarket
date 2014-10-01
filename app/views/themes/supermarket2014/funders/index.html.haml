@@ -5,7 +5,7 @@
 
 %p Many thanks to the funders and partners supporting Supermarket and our exhibitors last time. In January 2015 we present the new partners.
 
-- @allfunders.sort(&:id).each do |ft|
+- @allfunders.sort_by{|x| x.id}.each do |ft|
   .funder_type.column.alpha.omega
     .title= ft.name
     - ft.funders.sort_by{|x| x.sortorder }.each do |f|
