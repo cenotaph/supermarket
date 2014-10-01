@@ -24,6 +24,11 @@ body {
   letter-spacing: 1px;
 }
 
+strong {
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+
 
 #twitter-widget h1 {
   font-family: 'Oxygen', sans-serif !important;
