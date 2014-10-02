@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: git://github.com/cenotaph/ckeditor.git
-  revision: fdada9e492cec9fba3beb59ff91b87493e7d4c78
+  revision: 963aa9567e165c3d23112e9ba050f56ffb9f4e4e
   specs:
     ckeditor (4.1.0)
       mime-types

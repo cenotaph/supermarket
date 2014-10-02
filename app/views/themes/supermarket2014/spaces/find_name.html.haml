@@ -27,7 +27,7 @@
   = f.input :businesstypes, :as => :check_boxes, :label => t("supermarket2014.business_type_fieldset"), :hint => t("supermarket2014.business_type_hint")
   -#%button.next.fa.fa-arrow-circle-right.icon-large= t :next
   = f.actions do
-    = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-right icon-large'></i>") + t(:next), :as => :button
+    = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-right icon-large'></i>") + t(:next), :as => :button, :button_html => {:class => :next}
 - if user_signed_in?
   = content_for :sidebar do
     = render :partial => 'layouts/sidebar'   

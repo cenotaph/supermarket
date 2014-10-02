@@ -6,6 +6,20 @@
   -# %p{:style => 'clear: left'}= t("supermarket2014.malongen_blurb")
   -# = f.input :apply_to_malongen, :as => :boolean, :label => t("supermarket2014.apply_to_malongen")
   -# = f.input :malongen_use,  :label => t("supermarket2014.malongen_use")
+  
+  - unless @application.space.applications.to_a.delete_if{|x| x == @application}.empty?
+    %li
+      %p
+        %strong Please review the following details about your initiative and make sure they are current.
+    = f.fields_for :space do |ff|
+      = ff.input :decisionmakers_organisation, :label => t("supermarket2014.decision_makers_organisation")
+      = ff.input :decisionmakers_programming, :label => t("supermarket2014.decision_makers_programming")
+      = ff.input :founding_year, :label => t("supermarket2014.founding_year"), :input_html => {:required => true}
+      = ff.input :is_active, :label => t("supermarket2014.is_active")
+      = ff.input :year_of_closing, :label => t("supermarket2014.year_of_closing")
+      = ff.input :organisationtypes, :as => :check_boxes, :label => t("aim.organisation_type_fieldset"), :hint => t("aim.organisation_type_hint")
+
+    
   = f.input :form_direction, :input_html => { :value => "forward"}, :as => :hidden
   = f.actions do
     = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}

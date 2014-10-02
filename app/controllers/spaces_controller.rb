@@ -162,11 +162,18 @@ class SpacesController < ApplicationController
     session[:filter_scope] = nil
     flash[:notice] = t(:all_done) + " "
     flash[:notice] +=  t "supermarket2014.finished_space_blurb"
-    redirect_to '/'
+    # if current_user.applications
+    @space = Space.find(params[:space_id])
+    if @space.applications.where(:year => Year.where(:year => 2015)).empty?
+      redirect_to '/apply/2015/' + @space.slug
+    else
+      redirect_to '/'
+    end
   end
   
   def finish_wizard_path
-    finish_spaces_path
+
+    finish_spaces_path(:space_id => @space.id)
   end
   
   def show_history
