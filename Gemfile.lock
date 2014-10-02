@@ -32,15 +32,6 @@ GIT
       rails (>= 3.0.0)
 
 GIT
-  remote: git://github.com/cenotaph/ckeditor.git
-  revision: 0d8fa61a65d8814e18060e01233cf73ba5641a2d
-  ref: 0d8fa61a65d8814e18060e01233cf73ba5641a2d
-  specs:
-    ckeditor (4.1.0)
-      mime-types
-      orm_adapter (~> 0.5.0)
-
-GIT
   remote: git://github.com/josevalim/inherited_resources.git
   revision: c7b387198ff5f5b19f5da15d19e7ce742c59e4b7
   specs:
@@ -422,7 +413,6 @@ DEPENDENCIES
   cancan
   carrierwave
   chosen-rails
-  ckeditor!
   closure_tree
   coffee-rails
   countries
