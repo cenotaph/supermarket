@@ -1,7 +1,6 @@
 CKEDITOR.editorConfig = function( config ) {
     config.language = 'en';
-    config.assets_languages = ['en']
-    config.assets_plugins = ['image']
+
     config.uiColor = '#AADC6E';
     config.allowedContent = {
         $1: {

@@ -4,9 +4,13 @@ class ApplicationsController < ApplicationController
   steps :address_and_location, :basic_info, :proposals, :secondary_info, :media, :supermarket_particulars, :confirm
   
   def applylanding 
+    
     if current_user.approved_space_users.approved.size == 1
       redirect_to '/apply/2015/' + current_user.spaces.first.slug
+    elsif current_user.approved_space_users.approved.empty?
+      redirect_to new_space_path
     end
+      
   end
   
   def accept_terms
