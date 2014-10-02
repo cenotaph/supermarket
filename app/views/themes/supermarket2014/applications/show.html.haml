@@ -115,7 +115,7 @@
         %li
           %label= t :booth_result
           .appval= t ("supermarket2014.#{@application.granted_result}")      
-  - unless @application.apply_to_malongen == false
+  - unless @application.apply_to_malongen == false || @application.year.year != 2014
     .twelve.columns
       %h3= t "supermarket2014.residency_malongen"
       %ul.application_show

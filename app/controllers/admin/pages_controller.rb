@@ -28,10 +28,10 @@ class Admin::PagesController < Admin::BaseController
       when "status"
         "published #{direction}"
       else
-        "id #{direction}"
+        "pages.id #{direction}"
       end
     end
-    @pages = apply_scopes(Page).includes(:subsites).order(order).page(params[:page]).per(100)
+    @pages = apply_scopes(Page).includes(:subsites).references(:subsites).order(order).page(params[:page]).per(100)
     respond_to do |format|
       format.json { 
         render :json => @pages.to_json(:only => [:id, :title]), :callback => params[:callback]
