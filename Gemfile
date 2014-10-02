@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.5'
+gem 'rails', '4.1.6'
 
 ruby '2.1.1'
 
@@ -53,7 +53,7 @@ gem 'bootstrap-sass'
 gem 'cancan'
 gem 'carrierwave'
 gem 'chosen-rails'
-#gem 'ckeditor', github: 'betesh/ckeditor'
+gem 'ckeditor' #, github: 'betesh/ckeditor'
 gem 'closure_tree'
 gem 'countries'
 gem 'country_select'
