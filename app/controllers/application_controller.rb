@@ -123,6 +123,7 @@ class ApplicationController < ActionController::Base
       if @background_image.nil? 
         @background_image = Background.published.order_by_rand
       end
+      @site_year = Year.all.sort_by(&:year).reverse.first
     end
     if @site == 'aim'
       authenticate_or_request_with_http_basic('Work in progress') do |username, password|

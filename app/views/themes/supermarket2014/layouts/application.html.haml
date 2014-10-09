@@ -35,11 +35,14 @@
             = link_to image_tag(theme_image_path('2015siaf_white.png')), '/'
             
           .dates.six.columns
-            %p
-              %strong 16–19 April 2015
-            %p
-              %strong Svarta Huset, Telefonplan, Stockholm
-            %p Press viewing and Professional Preview Wednesday 15 April
+            - if @site_year.header_html.blank?
+              %p
+                %strong 16–19 April 2015
+              %p
+                %strong Svarta Huset, Telefonplan, Stockholm
+              %p Press viewing and Professional Preview Wednesday 15 April
+            - else
+              = raw @site_year.header_html
           .eight.columns.omega.top_bar_container
             %nav.top_bar
               %ul
@@ -63,8 +66,11 @@
                     = value                    
             .nine.columns.omega
               .dates_mobile
-                %p Svarta Huset, Telefonplan
-                %p 16–19 April 2015
+                - if @site_year.header_html.blank?
+                  %p Svarta Huset, Telefonplan
+                  %p 16–19 April 2015
+                - else
+                  = raw @site_year.header_html
 
               %nav.social_icons
                 %ul
@@ -114,10 +120,13 @@
       .container
         
         .five.columns.omega.footer_credits
-          %strong Supermarket 2015
-          %br/
-          %em Stockholm Independent Art Fair
-          .small_text 16–19 April 2015, Svarta Huset, Telefonplan, Stockholm
+          - if @site_year.footer_html.blank?
+            %strong Supermarket 2015
+            %br/
+            %em Stockholm Independent Art Fair
+            .small_text 16–19 April 2015, Svarta Huset, Telefonplan, Stockholm
+          - else
+            = raw @site_year.footer_html.blank?
           
         
 

@@ -5,13 +5,13 @@ class Admin::YearsController < Admin::BaseController
   end
   
   def update 
-    update! { admin_years_path }
+    update! { '/admin' }
   end
   
   protected
   
   def permitted_params
-    params.permit(:year => [:applications_open, :reveal_decisions, :allow_editing, :year, :tv_description])
+    params.permit(:year => [:applications_open, :reveal_decisions, :header_html, :footer_html, :above_carousel_html, :center_above_carousel_text, :allow_editing, :year, :tv_description])
   end
   
 end

@@ -1,1 +1,18 @@
-Supermarket staff side
+%h1 Supermarket staff side
+
+  
+.quick
+
+
+  %h2
+    Quick settings for current year:
+    = @site_year.year.to_s
+  = semantic_form_for([:admin, @site_year]) do |f|
+    .eight.columns.alpha
+      = f.input :applications_open
+      = f.input :allow_editing, :label => 'Allow late editing?'
+      = f.input :header_html, :label => 'HTML to appear in header'
+      = f.input :footer_html, :label => 'HTML to appear in footer'
+      = f.input :above_carousel_html, :label => 'HTML to appear above frontpage carousel'
+      = f.input :center_above_carousel_text, :label => 'Center text above frontpage carousel?', :hint => 'Will be left justified if unticked'
+    .sixteen.columns.alpha= f.submit 'Save'

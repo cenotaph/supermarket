@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930151007) do
+ActiveRecord::Schema.define(version: 20141009132754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,9 +35,8 @@ ActiveRecord::Schema.define(version: 20140930151007) do
   create_table "activities", force: true do |t|
   end
 
-  create_table "activity_spaces", id: false, force: true do |t|
-    t.integer "activity_id", null: false
-    t.integer "space_id",    null: false
+  create_table "activity_spaces", primary_key: "activity_id", force: true do |t|
+    t.integer "space_id", null: false
   end
 
   add_index "activity_spaces", ["activity_id"], name: "index_activity_spaces_activity", using: :btree
@@ -101,7 +100,7 @@ ActiveRecord::Schema.define(version: 20140930151007) do
     t.string   "exhibitor_state"
     t.string   "hometown"
     t.string   "application_image"
-    t.text     "staff",                     default: "Please pick suitable titles from these alternatives.\n\nMembers: If you have more than 20 members, just write the number of members.\nBoard:\nCo-directors:\nManagers:\nCo-founders:\n! DELETE ALTERNATIVES NOT USED\n"
+    t.text     "staff",                     default: "Please fill in suitable titles for these roles, if appropriate, and delete the rest of the text.\n\nMembers: If you have more than 20 members, just write the number of members.\nBoard:\nCo-directors:\nManagers:\nCo-founders:\n!\n"
     t.date     "submitted_at"
     t.text     "supermarket_proposal"
     t.integer  "booth_applied"
@@ -114,7 +113,7 @@ ActiveRecord::Schema.define(version: 20140930151007) do
     t.boolean  "need_darker_room"
     t.boolean  "wants_open_structure"
     t.string   "vat_number"
-    t.boolean  "allow_late",                default: false,                                                                                                                                                                                                                    null: false
+    t.boolean  "allow_late",                default: false,                                                                                                                                                                                                                                   null: false
     t.integer  "applicationcomments_count", default: 0
     t.boolean  "red_spot"
     t.boolean  "accepted_terms"
@@ -158,10 +157,9 @@ ActiveRecord::Schema.define(version: 20140930151007) do
     t.datetime "updated_at"
   end
 
-  create_table "businesstype_spaces", id: false, force: true do |t|
-    t.integer "businesstype_id",                                                          null: false
-    t.integer "space_id",                                                                 null: false
-    t.integer "id",              default: "nextval('businesstype_spaces_seq'::regclass)"
+  create_table "businesstype_spaces", primary_key: "businesstype_id", force: true do |t|
+    t.integer "space_id",                                                          null: false
+    t.integer "id",       default: "nextval('businesstype_spaces_seq'::regclass)"
   end
 
   add_index "businesstype_spaces", ["businesstype_id"], name: "index_businesstype_spaces_businesstype", using: :btree
@@ -295,9 +293,8 @@ ActiveRecord::Schema.define(version: 20140930151007) do
 
   add_index "menus", ["subsite_id"], name: "index_menus_on_subsite_id", using: :btree
 
-  create_table "organisationtype_spaces", id: false, force: true do |t|
-    t.integer "organisationtype_id", null: false
-    t.integer "space_id",            null: false
+  create_table "organisationtype_spaces", primary_key: "organisationtype_id", force: true do |t|
+    t.integer "space_id", null: false
   end
 
   add_index "organisationtype_spaces", ["organisationtype_id"], name: "index_organisationtype_spaces_organisationtype", using: :btree
@@ -637,10 +634,14 @@ ActiveRecord::Schema.define(version: 20140930151007) do
     t.boolean  "is_legacy"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "applications_open", default: false, null: false
-    t.boolean  "reveal_decisions",  default: false, null: false
-    t.boolean  "allow_editing",     default: false, null: false
+    t.boolean  "applications_open",          default: false, null: false
+    t.boolean  "reveal_decisions",           default: false, null: false
+    t.boolean  "allow_editing",              default: false, null: false
     t.text     "tv_description"
+    t.text     "header_html"
+    t.text     "footer_html"
+    t.text     "above_carousel_html"
+    t.boolean  "center_above_carousel_text"
   end
 
 end
