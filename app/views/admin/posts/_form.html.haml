@@ -10,12 +10,9 @@
             Name of post in
             = locale
           = en.text_field :subject
-          = en.text_area :body, :class => :rich_text
-  / - if f.object.postimage?
-  /   = image_tag f.object.postimage.url(:frontsmall)
-  / = f.input :postimage, :label => "Image for post browser (post icon)", :hint => "Minimum resolution 580x405."
-  / = f.input :dont_show_image, :label => "Don't show post browser image in stand-alone post view", :hint => "Check this if you are using in-post images and don't want the post icon to appear atop the body "
-  / = f.input :promoted, :as => :boolean, :label => "Promoted?", :hint => "Keep sticky on frontpage and in bottom carousel"
+          = en.text_area :body, :class => :tinymce
+
+  = tinymce
   = f.input :posted_by, :as => :select, :collection => User.all_staff.sort_by(&:display_name)
   = f.input :post_as_supermarket, :as => :boolean, :label => "Don't put staff member's name on post, put 'Posted by Supermarket' instead"
   = f.input :subsite, :as => :select, :collection => Subsite.all, :label => "Show post on which sites/themes:"
@@ -41,5 +38,5 @@
 = content_for :jquery do
   :plain
     $('#language-tabs').tabs();
-    $(".rich_text").jqte();
+
     

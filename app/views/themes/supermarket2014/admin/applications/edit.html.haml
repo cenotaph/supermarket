@@ -26,7 +26,8 @@
   
   = f.input :supermarket_proposal
   = f.fields_for :space do |ff|
-    = ff.input :short_description, :input_html => {:class => :ckeditor}
+    = ff.input :short_description, :input_html => {:class => :tinymce, :rows => 40, :cols => 120}
+  = tinymce
   = f.input :booth_granted, :as => :select, :collection => [['Accepted - large booth', 1], ['Accepted - small booth', 2], ['Accepted - presentation stand', 3], ['Not accepted', 4]], :label => t("supermarket2014.the_decision_is")
   = f.actions do
     = f.submit

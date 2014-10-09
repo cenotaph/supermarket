@@ -4,9 +4,10 @@
       .title= link_to menu.item.name, edit_admin_menu_path(menu)
       = menu.item_type
       - unless menu.children.empty?
-        %div
-          submenu:
-          = render :partial => 'recursive_submenu', :locals => {:submenu => menu.children, :parent => menu}
+        .row
+          .small-6.columns
+            submenu:
+            = render :partial => 'recursive_submenu', :locals => {:submenu => menu.children, :parent => menu}
           
 
           
