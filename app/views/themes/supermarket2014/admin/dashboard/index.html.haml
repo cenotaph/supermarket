@@ -11,8 +11,8 @@
     .eight.columns.alpha
       = f.input :applications_open
       = f.input :allow_editing, :label => 'Allow late editing?'
-      = f.input :header_html, :label => 'HTML to appear in header'
-      = f.input :footer_html, :label => 'HTML to appear in footer'
-      = f.input :above_carousel_html, :label => 'HTML to appear above frontpage carousel'
+      = f.input :header_html, :label => 'HTML to appear in header', :as => :text
+      = f.input :footer_html, :label => 'HTML to appear in footer', :as => :text
+      = f.input :above_carousel_html, :label => 'HTML to appear above frontpage carousel', :as => :text
       = f.input :center_above_carousel_text, :label => 'Center text above frontpage carousel?', :hint => 'Will be left justified if unticked'
     .sixteen.columns.alpha= f.submit 'Save'
