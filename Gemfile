@@ -80,7 +80,7 @@ gem 'kaminari'
 gem 'meta-tags', :require => 'meta_tags'
 gem 'mini_magick'
 gem 'nested_form'
-gem "non-stupid-digest-assets"
+# gem "non-stupid-digest-assets"
 gem 'oauth-client'
 gem 'omniauth-facebook' #, '1.4.0'
 gem 'omniauth-google-oauth2'

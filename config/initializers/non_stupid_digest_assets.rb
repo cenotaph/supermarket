@@ -1,1 +1,1 @@
-NonStupidDigestAssets.whitelist = [/tinymce\/.*/]
+# NonStupidDigestAssets.whitelist = [/tinymce\/.*/, "/tinymce/jquery.tinymce.js"]
