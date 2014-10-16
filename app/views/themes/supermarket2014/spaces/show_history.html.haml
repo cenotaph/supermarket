@@ -3,5 +3,5 @@
 %p
   Exhibited years:
   %ul
-    - @space.applications.delete_if{|x| !x.approved? }.each do |app|
+    - @space.applications.to_a.delete_if{|x| !x.approved? }.each do |app|
       = link_to app.year.year, exhibitor_year_path(:space => @space, :year => app.year.year)

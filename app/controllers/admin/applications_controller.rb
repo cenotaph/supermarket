@@ -36,10 +36,12 @@ class Admin::ApplicationsController < Admin::BaseController
       when "red_spot"
         "red_spot #{direction}"
       else
-        "years.year DESC"
+        "years.year DESC, organisation_name"
       end
     end
-    
+    if params[:by_year]
+      @year_scope = params[:by_year]
+    end
     @applications = apply_scopes(Application).includes(:year).order(order).page(params[:page]).per(150)
     if params[:nomalongen] == "1"
       @nomalongen = true
