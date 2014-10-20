@@ -68,6 +68,8 @@ class Application < ActiveRecord::Base
       'accepted - presentation stand'
     when 4
       'not accepted'
+    when 5
+      'maybe'
     else
       'not decided yet'
     end

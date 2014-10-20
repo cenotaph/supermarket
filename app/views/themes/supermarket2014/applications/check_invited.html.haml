@@ -1,9 +1,9 @@
 %h3 Special application
 
-%p Correct! Please click below to begin your 2014 application.
+%p Correct! Please click below to begin your 2015 application.
 
 - current_user.spaces.each do |space|
-  %p= link_to 'Apply to Supermarket 2014 for ' + space.name, '/invited/2014/' + space.slug
+  %p= link_to 'Apply to Supermarket 2015 for ' + space.name, '/invited/2015/' + space.slug
   
 - if user_signed_in?
   = content_for :sidebar do
