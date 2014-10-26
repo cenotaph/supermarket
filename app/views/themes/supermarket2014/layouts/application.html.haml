@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : "Supermarket"
+      = display_meta_tags :site => 'Supermarket Art Fair'
       %link{:href => theme_image_path('favicon_32.ico'), :rel => "shortcut icon"}/
       %meta{:content => content_for?(:description) ? yield(:description) : "Supermarket", :name => "description"}
       %link{:href => posts_path(:format => :rss), :rel => "alternate", :title => "Supermarket Art Fair", :type => "application/rss+xml"}/

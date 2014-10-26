@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009132754) do
+ActiveRecord::Schema.define(version: 20141026111610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -352,6 +352,34 @@ ActiveRecord::Schema.define(version: 20141009132754) do
   end
 
   add_index "pages", ["background_id"], name: "index_pages_on_background_id", using: :btree
+
+  create_table "performanceapplications", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "year_id"
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.string   "description",                      limit: 1000
+    t.string   "prep_time"
+    t.string   "performance_time"
+    t.string   "num_of_participants_on_stage"
+    t.string   "number_of_participants_off_stage"
+    t.text     "technical_requirements"
+    t.string   "weblink1"
+    t.string   "weblink2"
+    t.string   "weblink3"
+    t.string   "weblink4"
+    t.string   "connection_to_visual_arts",        limit: 500
+    t.integer  "decision"
+    t.string   "attachment"
+    t.string   "attachment_content_type"
+    t.string   "attachment_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "performanceapplications", ["user_id"], name: "index_performanceapplications_on_user_id", using: :btree
+  add_index "performanceapplications", ["year_id"], name: "index_performanceapplications_on_year_id", using: :btree
 
   create_table "post_translations", force: true do |t|
     t.integer  "post_id",    null: false

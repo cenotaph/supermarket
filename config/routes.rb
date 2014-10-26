@@ -26,7 +26,7 @@ Aim::Application.routes.draw do
   match '/tv' => 'videos#index', via: :get
   match '/tv/:year' => 'videos#index', via: :get
   get '/auth/failure' => 'sessions#failure'
-
+  get '/performance/:year' => 'performanceapplications#new', year: :year
   match 'auth/:provider/callback' => 'authentications#create', :via => :get
   match '/oauth/authenticate' => 'authentications#create', :via => :get
   resources :authentications
@@ -57,6 +57,7 @@ Aim::Application.routes.draw do
   get '/exhibitor/:id', to: "spaces#show_history", as: 'supermarket_history'
   get '/exhibitor/:space/:year', to: "exhibitors#show", as: 'exhibitor_year'
   resources :pages
+  resources :performanceapplications
   resources :posts
   resources :applications do
     member do
