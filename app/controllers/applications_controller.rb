@@ -90,9 +90,15 @@ class ApplicationsController < ApplicationController
       else
         @application = @space.applications.where(:year_id => year).first
       end
-    elsif !year.open?
+    elsif !year.open? && year.allow_editing == false
       flash[:error]= 'Applications for ' + year.year.to_s + ' are now closed.'
       redirect_to '/'
+    elsif year.allow_editing == true && @space.users.include?(current_user) 
+      if @space.applications.where(:year_id => year).empty?
+        @application = Application.new(:year_id => year.id, :space_id => @space.id, :user => current_user)
+      else
+        @application = @space.applications.where(:year_id => year).first
+      end
     else
       flash[:error] = 'You do not have permission to apply for this organisation.'
       redirect_to '/'
