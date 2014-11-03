@@ -87,6 +87,7 @@ Aim::Application.routes.draw do
     resources :internallinks
     resources :organisationtypes
     resources :pages
+    resources :performanceapplications
     resources :posts
     resources :presslinks
     resources :pressreleases

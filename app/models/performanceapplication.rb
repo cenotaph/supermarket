@@ -4,6 +4,7 @@ class Performanceapplication < ActiveRecord::Base
   validates_presence_of :contact_name, :user_id, :year_id, :contact_email, :contact_phone, :description, :prep_time, :performance_time, :num_of_participants_on_stage, :number_of_participants_off_stage, :technical_requirements
   mount_uploader :attachment, AttachmentUploader
   before_save :get_attachment_metadata
+  scope :by_year, ->(x) { where(:year_id => x)}
   
   def get_attachment_metadata
     if attachment.present?
@@ -12,6 +13,19 @@ class Performanceapplication < ActiveRecord::Base
         self.attachment_file_size = attachment.file.size
       end
     end    
+  end
+  
+  def decision_text
+    case decision 
+    when nil
+      'not decided yet'
+    when 1
+      'Accepted'
+    when 2
+      'No way'
+    when 3
+      'Maybe'
+    end
   end
   
 end

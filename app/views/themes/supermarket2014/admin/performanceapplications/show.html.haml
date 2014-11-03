@@ -1,0 +1,66 @@
+.container.cms_grid
+  .twelve.columns.alpha
+    %h2
+      Red Spot Application:
+      = @performanceapplication.contact_name
+    
+  .six.columns.alpha
+    = @performanceapplication.contact_name
+    %br/
+    = link_to @performanceapplication.contact_email, "mailto:#{@performanceapplication.contact_email}"
+    %br/
+    = @performanceapplication.contact_phone
+  
+  .six.columns.omega
+    %label Description:
+    =  raw @performanceapplication.description
+  %br(clear='all')
+  %br(clear='all')
+  .six.columns.alpha
+    %label Prep time needed:
+    = @performanceapplication.prep_time
+    %br/
+    %label Performance time:
+    = @performanceapplication.performance_time
+    %br/
+    %label Number of participants, on stage
+    = @performanceapplication.num_of_participants_on_stage
+    %br/
+    %label Number of participants, off stage
+    = @performanceapplication.number_of_participants_off_stage
+  .six.columns.omega
+    %label Technical requirements
+    =  raw @performanceapplication.technical_requirements
+  %br(clear='all')
+  %br(clear='all')
+  .six.columns.alpha
+    %label Web links
+    %br/
+    - unless  @performanceapplication.weblink1.blank?
+      = link_to @performanceapplication.weblink1, @performanceapplication.weblink1, :target => :_blank
+      %br/      
+    - unless  @performanceapplication.weblink2.blank?
+      = link_to @performanceapplication.weblink2, @performanceapplication.weblink2, :target => :_blank
+      %br/ 
+    - unless  @performanceapplication.weblink3.blank?
+      = link_to @performanceapplication.weblink3, @performanceapplication.weblink3, :target => :_blank
+      %br/ 
+    - unless  @performanceapplication.weblink4.blank?
+      = link_to @performanceapplication.weblink4, @performanceapplication.weblink4, :target => :_blank
+      %br/            
+  .six.columns.omega
+    %label Connection to visual arts:
+    = @performanceapplication.connection_to_visual_arts
+  - unless @performanceapplication.attachment.blank?
+    .twelve.columns
+      %label Attached file upload:
+      = link_to @performanceapplication.attachment, @performanceapplication.attachment.url
+- if user_signed_in?
+  - if current_user.is_staff?
+    .ten.columns
+      %h2 Make decision:
+      = semantic_form_for([:admin, @performanceapplication]) do |f|
+        = f.input :decision, :as => :select, :collection => [['Accepted', 1], ['No way', 2], ['Maybe', 3]], :label => t("supermarket2014.the_decision_is")
+        %li
+          %label &nbsp;
+          = f.submit t(:change_decision)

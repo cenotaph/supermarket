@@ -18,6 +18,11 @@
       = link_to  admin_applications_path do
         =fa_icon 'globe'
         Applications
+    - if can? :manage, Performanceapplication
+      %li
+        = link_to admin_performanceapplications_path do
+          = fa_icon 'star-half-empty'
+          Red Spot Applications
     %li
       = link_to admin_posts_path do
         = fa_icon 'bullhorn'

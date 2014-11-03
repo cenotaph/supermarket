@@ -8,7 +8,7 @@ class Ability
         if user.has_role? :god
           can :manage, :all
         elsif user.has_role? :staff
-          can :manage, [Space, Applicationcomment, Spacecomment, Application, Pressrelease, Presslink]
+          can :manage, [Space, Applicationcomment, Performanceapplication, Spacecomment, Application, Pressrelease, Presslink]
           can :manage, Page, :subsites => {:name => 'supermarket2014'}
           can :manage, Post
           can :manage, Video
