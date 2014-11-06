@@ -8,8 +8,8 @@ class Performanceapplication < ActiveRecord::Base
   before_save :shorten_long_strings
   
   def shorten_long_strings
-    description = description[0..999]
-    connection_to_visual_arts = connection_to_visual_arts[0..499]
+    self.description = self.description[0..999]
+    self.connection_to_visual_arts = self.connection_to_visual_arts[0..499]
   end
   
   def get_attachment_metadata
