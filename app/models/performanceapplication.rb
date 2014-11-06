@@ -5,6 +5,12 @@ class Performanceapplication < ActiveRecord::Base
   mount_uploader :attachment, AttachmentUploader
   before_save :get_attachment_metadata
   scope :by_year, ->(x) { where(:year_id => x)}
+  before_save :shorten_long_strings
+  
+  def shorten_long_strings
+    description = description[0..999]
+    connection_to_visual_arts = connection_to_visual_arts[0..499]
+  end
   
   def get_attachment_metadata
     if attachment.present?

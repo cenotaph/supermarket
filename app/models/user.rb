@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   mount_uploader :photo, AvatarUploader
 
 
+
   def apply_omniauth(omniauth)
     if omniauth['provider'] == 'twitter'
       logger.warn(omniauth['info'].inspect)
@@ -88,4 +89,6 @@ class User < ActiveRecord::Base
     (first + "@" + rest).html_safe
   end
   
+
+    
 end
