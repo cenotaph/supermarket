@@ -47,12 +47,16 @@
 
                   .view
                     = link_to t(:view_application), space.applications.where(:year_id => Year.find_by(:year => 2015).id).first
+
               - else
                 - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2015).id).empty? )
                   = t :you_did_not_apply_this_year
                 - else
                   .view
                     = link_to t(:view_application), space.applications.where(:year_id => @site_year.id).first
+                    - if space.applications.where(:year_id => Year.find_by(:year => 2015).id).first.approved_pending_reveal? == true
+                      - if space.applications.where(:year_id => Year.find_by(:year => 2015).id).first.accepted_terms != true
+                        %p= link_to "Terms and conditions", terms_application_path(space.applications.where(:year_id => Year.find_by(:year => 2015).id).first)
                   - if @site_year.allow_editing? || space.applications.where(:year_id => @site_year.id).first.allow_late == true
                     = link_to t(:edit_your_application), '/apply/2015/' + space.slug.to_s
                   
