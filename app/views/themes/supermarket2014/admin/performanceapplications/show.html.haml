@@ -56,6 +56,32 @@
       %label Attached file upload:
       = link_to @performanceapplication.attachment, @performanceapplication.attachment.url
 - if user_signed_in?
+  - if can? :create, Performanceapplicationcomment
+    .sixteen.columns#comment_area
+      %h2= t("supermarket2014.staff_comments")
+      - @performanceapplication.performanceapplicationcomments.each do |comment|
+        .comment.twelve.columns
+          .two.columns.alpha
+            = image_tag comment.user.avatar
+            %strong= comment.user.display_name
+            .date= l comment.created_at, :format => :short
+              
+          .eight.columns
+            = simple_format(comment.comment)
+      .twelve.columns
+        %p= t("supermarket2014.leave_comment_blurb")
+      .sixteen.columns
+        = semantic_form_for(Performanceapplicationcomment.new, :url => comment_admin_performanceapplication_path(@performanceapplication)) do |f|
+          .two.columns.alpha
+            = image_tag current_user.avatar
+            %strong
+              = current_user.display_name
+          .eight.columns
+            = f.input :user_id, :as => :hidden, :value => current_user.id
+            = f.input :comment, :as => :text
+          = f.actions do
+            = f.submit
+            
   - if current_user.is_staff?
     .ten.columns
       %h2 Make decision:

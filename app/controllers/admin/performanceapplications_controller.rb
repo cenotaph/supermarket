@@ -4,14 +4,14 @@ class Admin::PerformanceapplicationsController < Admin::BaseController
   handles_sortable_columns
   
   def comment
-    @application = Performanceapplication.find(params[:id])
-    @application.applicationcomments << Performanceapplicationcomment.new(params[:applicationcomment].permit([:user_id, :application_id, :comment]) )
-    if @application.save
+    @performanceapplication = Performanceapplication.find(params[:id])
+    @performanceapplication.performanceapplicationcomments << Performanceapplicationcomment.new(params[:performanceapplicationcomment].permit([:user_id, :performanceapplication_id, :comment]) )
+    if @performanceapplication.save
       flash[:notice] = 'Your comment has been posted.'
     else
       flash[:error] = 'There was an error saving your comment.'
     end
-    redirect_to @application
+    redirect_to [:admin, @performanceapplication]
   end
   
   def index

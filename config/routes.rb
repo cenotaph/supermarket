@@ -87,7 +87,11 @@ Aim::Application.routes.draw do
     resources :internallinks
     resources :organisationtypes
     resources :pages
-    resources :performanceapplications
+    resources :performanceapplications do
+      member do
+        post :comment
+      end
+    end
     resources :posts
     resources :presslinks
     resources :pressreleases

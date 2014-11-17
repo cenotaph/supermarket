@@ -6,6 +6,7 @@ class Performanceapplication < ActiveRecord::Base
   before_save :get_attachment_metadata
   scope :by_year, ->(x) { where(:year_id => x)}
   before_save :shorten_long_strings
+  has_many :performanceapplicationcomments, :dependent => :destroy, :foreign_key => :app_id
   
   def shorten_long_strings
     self.description = self.description[0..999]
