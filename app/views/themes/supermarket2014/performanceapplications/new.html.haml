@@ -1,41 +1,42 @@
 = semantic_form_for @performanceapplication, :html => {:multipart => true} do |f|
   %h2= "Supermarket #{@performanceapplication.year.year} Performance Programme: Application"
   
-  %h4 About the performance programme
-  %p We are sorry that we can not offer financial support for the performance programme. The exhibitors at Supermarket pay a participation fee; there is no fee to perform, but you must be self-financed.
-  
-  = @performanceapplication.errors.full_messages.join(', ')
-  = f.input :user_id, as: :hidden, value: current_user.id, :input_html => {required: true }
-  = f.input :year_id, as: :hidden , value: @performanceapplication.year.id
-  
-  %fieldset
-    %legend Contact Details
-    = f.input :contact_name, :input_html => {required: true }
-    = f.input :contact_email, :input_html => {required: true }
-    = f.input :contact_phone, :input_html => {required: true }
-     
-  %fieldset
-    %legend About your performance
-    = f.input :description, label: 'Describe your performance, max. 1000 characters.', as: :text, hint: 'An additional description can be attached below in PDF/DOC format', :input_html => {required: true }
-    = f.input :prep_time, label: 'Estimate time needed for stage preparation', :input_html => {required: true }
-    = f.input :performance_time, label: 'Estimated time needed for stage performance', :input_html => {required: true }
-    = f.input :num_of_participants_on_stage, label: 'Number of participants on stage?', :input_html => {required: true }
-    = f.input :number_of_participants_off_stage, label: 'Number of participants off stage?', :input_html => {required: true }
-    = f.input :technical_requirements, label: 'Technical requirements', :input_html => {required: true }
-
-  %fieldset
-    %legend Additional materials
-    %p You can provide up to four URLs to additional material, and upload a file (max. size 2MB).
-    = f.input :weblink1, label: 'URL #1:'
-    = f.input :weblink1, label: 'URL #2:'
-    = f.input :weblink1, label: 'URL #3:'
-    = f.input :weblink1, label: 'URL #4:'
-    = f.input :connection_to_visual_arts, as: :text, label: 'What is your connection to the visual arts? (max 500 characters)'
-    = f.input :attachment
-    
-  = f.actions do
-    = f.action :submit, :label => raw("<i class='fa fa-check icon-large'></i>") + t(:complete_your_application), :as => :button,  :button_html => {:class => :completed}
-:javascript
-  $(document).ready(function() {
-    $('#new_performanceapplication').validate();
-  });
+  %h4 Applications are closed
+  %p Applications for the Red Spot performance programme are now closed. Thank you for your interest. We will announce the programme closer to the opening of Supermarket 2015.
+/   %p We are sorry that we can not offer financial support for the performance programme. The exhibitors at Supermarket pay a participation fee; there is no fee to perform, but you must be self-financed.
+/
+/   = @performanceapplication.errors.full_messages.join(', ')
+/   = f.input :user_id, as: :hidden, value: current_user.id, :input_html => {required: true }
+/   = f.input :year_id, as: :hidden , value: @performanceapplication.year.id
+/
+/   %fieldset
+/     %legend Contact Details
+/     = f.input :contact_name, :input_html => {required: true }
+/     = f.input :contact_email, :input_html => {required: true }
+/     = f.input :contact_phone, :input_html => {required: true }
+/
+/   %fieldset
+/     %legend About your performance
+/     = f.input :description, label: 'Describe your performance, max. 1000 characters.', as: :text, hint: 'An additional description can be attached below in PDF/DOC format', :input_html => {required: true }
+/     = f.input :prep_time, label: 'Estimate time needed for stage preparation', :input_html => {required: true }
+/     = f.input :performance_time, label: 'Estimated time needed for stage performance', :input_html => {required: true }
+/     = f.input :num_of_participants_on_stage, label: 'Number of participants on stage?', :input_html => {required: true }
+/     = f.input :number_of_participants_off_stage, label: 'Number of participants off stage?', :input_html => {required: true }
+/     = f.input :technical_requirements, label: 'Technical requirements', :input_html => {required: true }
+/
+/   %fieldset
+/     %legend Additional materials
+/     %p You can provide up to four URLs to additional material, and upload a file (max. size 2MB).
+/     = f.input :weblink1, label: 'URL #1:'
+/     = f.input :weblink1, label: 'URL #2:'
+/     = f.input :weblink1, label: 'URL #3:'
+/     = f.input :weblink1, label: 'URL #4:'
+/     = f.input :connection_to_visual_arts, as: :text, label: 'What is your connection to the visual arts? (max 500 characters)'
+/     = f.input :attachment
+/
+/   = f.actions do
+/     = f.action :submit, :label => raw("<i class='fa fa-check icon-large'></i>") + t(:complete_your_application), :as => :button,  :button_html => {:class => :completed}
+/ :javascript
+/   $(document).ready(function() {
+/     $('#new_performanceapplication').validate();
+/   });
