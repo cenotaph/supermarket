@@ -58,7 +58,7 @@
                       - if space.applications.where(:year_id => Year.find_by(:year => 2015).id).first.accepted_terms != true
                         %p= link_to "Terms and conditions", terms_application_path(space.applications.where(:year_id => Year.find_by(:year => 2015).id).first)
                   - if @site_year.allow_editing? || space.applications.where(:year_id => @site_year.id).first.allow_late == true
-                    = link_to t(:edit_your_application), '/apply/2015/' + space.slug.to_s
+                    = link_to t(:edit_your_application), edit_application_path(space.applications.where(:year_id => @site_year.id).first) # '/apply/2015/' + space.slug.to_s
                   
               - space.applications.sort_by{|x| x.year.year}.reverse.each do |sa|
               
