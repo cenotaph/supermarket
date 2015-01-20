@@ -50,6 +50,7 @@
 
               - else
                 - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2015).id).empty? )
+                  = space.id.to_s
                   = t :you_did_not_apply_this_year
                 - else
                   .view

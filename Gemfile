@@ -87,7 +87,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'public_activity'
 gem 'rails-i18n'
-gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: [:staging, :production]
 gem 'rails4-autocomplete'
 gem 'randumb'
 gem 'ransack'

@@ -200,7 +200,7 @@ en:
     decision_makers_organisation: 'Are the decision makers of the organisation more than 50% artists?'
     decision_makers_programming: 'Are the decision makers of the programming more than 50% artists?'
     exhibition_space_type: 'Exhibition space type'
-    finished_space_blurb: 'Thank you for telling us about your gallery/space. We will add it to the database of artist-run initiatives that we are building.'
+    finished_space_blurb: 'If this is the first time you have submitted your info, we  will add it to the database of artist-run initiatives that we are building. Thank you for your input.'
     founding_year: 'Year of founding?'
     hang_on_a_minute: 'Hang on just a minute ....!'
     hometown_explanation: 'Hometown (in English)'

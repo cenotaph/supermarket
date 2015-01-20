@@ -2,16 +2,13 @@
   %p= t "supermarket2014.proposal_blurb"
   = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), :input_html => {:required => true}
 
-  -# - if @application.year.open?
-  -# %p{:style => 'clear: left'}= t("supermarket2014.malongen_blurb")
-  -# = f.input :apply_to_malongen, :as => :boolean, :label => t("supermarket2014.apply_to_malongen")
-  -# = f.input :malongen_use,  :label => t("supermarket2014.malongen_use")
   
   - unless @application.space.applications.to_a.delete_if{|x| x == @application}.empty?
     %li
       %p
         %strong Please review the following details about your initiative and make sure they are current.
     = f.fields_for :space do |ff|
+      = ff.input :short_description, input_html: { value: strip_tags(ff.object.short_description) }, hint: 'Please keep this description under 1200 characters.'
       = ff.input :decisionmakers_organisation, :label => t("supermarket2014.decision_makers_organisation")
       = ff.input :decisionmakers_programming, :label => t("supermarket2014.decision_makers_programming")
       = ff.input :founding_year, :label => t("supermarket2014.founding_year"), :input_html => {:required => true}
@@ -27,8 +24,12 @@
 - if user_signed_in?
   = content_for :sidebar do
     = render :partial => 'layouts/sidebar'          
+
+
+
 :javascript
   $(document).ready(function() {
+
     $('#application_2014').validate();
     $('form button').click(function() {
       $("#application_form_direction").val($(this).attr('class'));

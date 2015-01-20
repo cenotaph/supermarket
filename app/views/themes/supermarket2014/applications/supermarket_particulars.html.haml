@@ -1,5 +1,15 @@
+.image_banner.twelve.columns
+  %h4 Your application images:
+  %p Please go back and re-upload if there is a problem.
+  - @application.applicationwebimages.each do |image|
+    .columns.three{:style => "min-height: 200px;"}
+      = image_tag image.imagefile.url(:sidebar)
+      %br/
+      %small= image.title
+%br/
+      
 = semantic_nested_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014, :novalidate => true}, :method => :put) do |f|
-  %p= t("supermarket2014.supermarket_particulars_blurb")
+  %h4= t("supermarket2014.supermarket_particulars_blurb")
   = f.input :booth_applied, :as => :select, :label => t("supermarket2014.exhibition_stand_type_wanted"), :collection => {"Large exhibition stand (12–15 m2)" => "2", "Small exhibition stand (6-7 m2)" => "3", "Presentation stand (2 m2)" => "4", "N/A" => "5"}, :input_html => {:disabled => (!@application.year.open? ? :disabled : false), :required => true}
   %p= link_to "Prices and sizes", 'http://www.supermarketartfair.com/pages/exhibition-stand-sizes-and-prices', :target => :_blank
   .longhint= f.input :need_darker_room, :label => t("supermarket2014.need_darker_room"), :hint => t("supermarket2014.darker_room_hint"), :as => :boolean, :input_html => {:disabled => (!@application.year.open? ? :disabled : false)}
