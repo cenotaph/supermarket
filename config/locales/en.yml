@@ -75,7 +75,7 @@ en:
   forgot_password_text: 'Enter the email address through which you registered for the Supermarket website, and we will email you instructions on how to reset your password.'
   send_password_button: ' Send me password reset instructions'
   recaptcha_blurb: 'Enter these two words, so we know you are human'
-  complete_your_application: ' Complete your application'
+  complete_your_application: ' Complete/update your application'
   supermarket_proposal: 'Proposal for Supermarket'
   booth_applied_for: 'Booth type requested'
   replace_file: 'Replace file'

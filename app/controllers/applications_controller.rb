@@ -161,7 +161,7 @@ class ApplicationsController < ApplicationController
       params[:application][:status] = 'active'
       @application.submitted_at = Time.now.localtime.to_date
       # ApplicationMailer.application_confirmation(@application, current_user).deliver
-      flash[:notice] = 'Thank you for completing your application. You will hear from us soon.'
+      flash[:notice] = 'Thank you for completing/updating your application. You will hear from us soon.'
     end
   
     @application.update_attributes(params[:application])
