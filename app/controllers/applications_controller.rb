@@ -65,7 +65,7 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
     @space = @application.space
     if current_user
-      if current_user.has_role?(:god) || @application.allow_late == true
+      if current_user.has_role?(:god) || @application.allow_late == true || @application.year.allow_editing == true
         render :template => 'applications/new'
       else
         flash[:error] = 'You cannot edit this application.'
