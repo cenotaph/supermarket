@@ -11,7 +11,7 @@
 = semantic_nested_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014, :novalidate => true}, :method => :put) do |f|
   %h4= t("supermarket2014.supermarket_particulars_blurb")
   %p 
-    The Nordic Art Association offers one of the participating galleries to access the Malongen residency studio for two weeks before Supermarket 2015. 1–20 April (the studio/flat must be cleaned up in the morning, on the 20th). The gallery can nominate an artist or group who may live and work in the studio. During the fair, up to 6-8 people can stay there.
+    The Nordic Art Association offers one of the participating galleries to access the Malongen residency studio for two weeks before Supermarket 2015. 1–20 April (the studio/flat must be cleaned up in the morning, on the 20th). The gallery can nominate an artist or group who may live and work in the studio. During the fair, up to 6-8 people can stay there. The result of who is selected will be announced on this website within three weeks.
     = link_to 'http://www.nkf.se/malongen', 'http://www.nkf.se/malongen'
   %p Do you want to apply for the Nordic Art Association/Supermarket residency for 2015?
   = f.input :apply_to_malongen, label: t("supermarket2014.apply_to_malongen")
@@ -20,7 +20,7 @@
   %p= link_to "Prices and sizes", 'http://www.supermarketartfair.com/pages/exhibition-stand-sizes-and-prices', :target => :_blank
   .longhint= f.input :need_darker_room, :label => t("supermarket2014.need_darker_room"), :hint => t("supermarket2014.darker_room_hint"), :as => :boolean, :input_html => {:disabled => (!@application.year.open? ? :disabled : false)}
   .longhint= f.input :wants_open_structure, :as => :boolean, :label => t("supermarket2014.wants_open_structure"), :hint => t("supermarket2014.open_structure_hint"), :input_html => {:disabled => (!@application.year.open? ? :disabled : false)}
-  = f.input :special_needs, :label => t("supermarket2014.special_needs"), :input_html => {:disabled => (!@application.year.open? ? :disabled : false)}
+  = f.input :special_needs, :label => t("supermarket2014.special_needs"), :input_html => {:disabled => (!@application.year.open? ? :disabled : false)}, hint: 'This field is now locked. Contact us via email if you have any new special needs or requests.'
   = f.input :form_direction, :input_html => { :value => "forward"}, :as => :hidden
   = f.actions do
     = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}
