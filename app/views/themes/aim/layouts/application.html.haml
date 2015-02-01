@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-    %title= content_for?(:title) ? yield(:title) : "Artist Run Map"
+    = display_meta_tags site: 'Artist Run Map'
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     
     %meta{:content => content_for?(:description) ? yield(:description) : "Worldwide database of artist-run ", :name => "description"}
@@ -25,67 +25,100 @@
     = javascript_include_tag "vendor/modernizr"
     
   %body{:onload => (@nofilters == true || (@space.blank? && @spaces.blank?)) ? false : 'initialize()'}
-    .row
-      .columns{:class => @nofilters == true ? "small-12" : "small-11"}
-        .row
-          .small-12.columns
-            .languages.left
-              = t "aim.choose_language"
-              - I18n.available_locales.each do |locale|
-                - if session[:locale].nil?
-                  - if locale == :en
-                    %b= locale.to_s
-                  - else
-                    = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
+    #user_info
+      .login_bottom
+        = t "aim.connect_instantly"
+        %p= t "aim.login_using"
+        %ul.oauth_choices
+
+          %li
+            = link_to '/auth/facebook/' do
+              = image_tag theme_image_path('facebook_icon.png')
+              %br/
+              Facebook
+
+          %li
+            = link_to '/auth/twitter/' do
+              = image_tag theme_image_path('twitter_icon.png')
+              %br/
+              Twitter
+
+          %li.last
+            = link_to '/auth/google_oauth2' do
+              = image_tag theme_image_path('google_icon.png')
+              %br/
+              Google
+      .sign_in
+        = link_to image_tag(theme_image_path('sign_in.png')), '#', onclick: 'toggle_sign_in(); return false;'
+
+    - unless @spaces.blank?
+      #filters
+        .actual_filters= yield :filters
+      = render :partial =>  "shared/google_map", :locals => { :organizations => @spaces }
+      .toggle_filters
+        = link_to image_tag(theme_image_path('magnifier.png')), '#', onclick: 'toggle_filters(); return false;'
+    %header
+      .row
+
+        .small-12.columns
+          .languages.left
+            = t "aim.choose_language"
+            - I18n.available_locales.each do |locale|
+              - if session[:locale].nil?
+                - if locale == :en
+                  %b= locale.to_s
                 - else
-                  - if session[:locale] == locale
-                    %b= locale.to_s
-                  - else
-                    = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
-
-        .row
-          .small-10.columns
-            %h1.header_title
-              = link_to 'Artist Run Map - ' + t("aim.header_text"), '/'
-          .small-2.columns.text-right= render :partial => 'layouts/user_info'
-        - unless flash.blank?
-          .flash
-            .row
-              .small-12.columns
-                - flash.each do |key, value|
-                  .alert{ :class => "alert-#{key}" }
-                    %strong
-                      = value 
-
-        = yield 
-
-      - unless @nofilters == true
-        .small-1.columns
-          %p strip of images to come soon
-                              
-    %footer
-      .container
-        .row
-          .small-4.columns
-            %label.sub= t :copyright_notice
-          .small-4.columns
-            %label= t :contact
-            %p
-              info at artistrunmap &sdot; org
+                  = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
+              - else
+                - if session[:locale] == locale
+                  %b= locale.to_s
+                - else
+                  = link_to locale.to_s, {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => locale.to_s}
 
       .row
-        .small-1.columns
-          %label= t :follow_us
-        .small-1.columns.facebook
-          %a{:href => "need facebook link"}
-            = image_tag theme_image_path('facebook_icon.png')
-        .small-1.columns.twitter
-          %a{:href => "need twitter link"}
-            = image_tag theme_image_path('twitter_icon.png')
-        .small-8.columns.small-offset-1
-          = t :supporters
-          = image_tag theme_image_path('kknord.png')
-          = image_tag theme_image_path('supermarket_no_year_black.png')
+        .small-12.columns
+          %h1.header_title
+            = link_to 'Artist Run Map - ' + t("aim.header_text"), '/'
+
+      - unless flash.blank?
+        .flash
+          .row
+            .small-12.columns
+              - flash.each do |key, value|
+                .alert{ :class => "alert-#{key}" }
+                  %strong
+                    = value
+    - if @spaces.blank?
+      #non_map= yield
+
+    /
+    /   - unless @nofilters == true
+    /     .small-1.columns
+    /       %p strip of images to come soon
+    /
+    / %footer
+    /   .container
+    /     .row
+    /       .small-4.columns
+    /         %label.sub= t :copyright_notice
+    /       .small-4.columns
+    /         %label= t :contact
+    /         %p
+    /           info at artistrunmap &sdot; org
+    /
+    /   .row
+    /     .small-1.columns
+    /       %label= t :follow_us
+    /     .small-1.columns.facebook
+    /       %a{:href => "need facebook link"}
+    /         = image_tag theme_image_path('facebook_icon.png')
+    /     .small-1.columns.twitter
+    /       %a{:href => "need twitter link"}
+    /         = image_tag theme_image_path('twitter_icon.png')
+    /     .small-8.columns.small-offset-1
+    /       = t :supporters
+    /       = image_tag theme_image_path('kknord.png')
+    /       = image_tag theme_image_path('supermarket_no_year_black.png')
     
   :javascript
     $(document).ready(function() {

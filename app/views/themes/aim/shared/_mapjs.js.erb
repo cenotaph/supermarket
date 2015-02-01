@@ -1,0 +1,189 @@
+function buildmap() {
+  var myOptions = {
+    mapTypeControl: false,
+    zoomControl: true,
+    zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL,
+        position: google.maps.ControlPosition.BOTTOM_RIGHT
+    },
+    scaleControl: false,
+    panControl: false,
+    streetViewControl: false,
+    scrollwheel: true,
+    minZoom: 2,
+    maxzoom: 13,
+    <% if organizations.empty? %>
+      zoom: 14,
+      center: new google.maps.LatLng(47.288828765662416, 7.945261001586914),
+    <% elsif !organizations.first.latitude.nil? %>
+      center: new google.maps.LatLng(<%= sprintf("%5f", organizations.first.latitude) %>, <%= sprintf("%5f", organizations.first.longitude) %>),
+      zoom: 13,
+    <% end %>    
+    mapTypeId: 'darkwater'
+  }
+  return new google.maps.Map(document.getElementById("google-map"), myOptions);
+  }
+  
+  function initialize() {
+    var lightMap = [
+                      {
+                        "stylers": [
+                          { "lightness": -12 },
+                          { "saturation": -55 }
+                        ]
+                      },{
+                        "featureType": "water",
+                        "stylers": [
+                          { "lightness": 7 }
+                        ]
+                      },{
+                        "featureType": "road.highway",
+                        "stylers": [
+                          { "saturation": -63 },
+                          { "lightness": 46 }
+                        ]
+                      },{
+                      }
+                    ];
+    
+  var andreasStyle = [ { "stylers": [ { "gamma": 0.91 }, { "lightness": -73 }, { "saturation": -62 } ] },{ "featureType": "water", "stylers": [ { "lightness": -31 } ] } ];
+  
+  var aimStyle = [ { "featureType": "water", "stylers": [ { "visibility": "on" }, { "color": "#ffffff" } ] },{ "featureType": "landscape.natural", "elementType": "geometry", "stylers": [ { "hue": "#ff00e6" }, { "visibility": "off" } ] },{ "featureType": "road.highway", "stylers": [ { "visibility": "on" } ] } ];
+  var darkStyle = [ 
+  {featureType: "landscape",
+  elementType: "all",
+  stylers: [
+  { hue: "#CACBA6" },
+  { lightness: -20 }]}
+  ,
+  {featureType: "water",
+  elementType: "all",
+  stylers: [
+  { saturation: 40 },         
+  { lightness: 40 }]}
+  ,
+  {featureType: "administrative",
+  elementType: "labels",
+  stylers: [      
+  { hue: "#1100ff" },
+  { saturation: -100 },
+  { lightness: -18 }]}
+  ,
+  {featureType: "poi",
+  elementType: "all",
+  stylers: [
+  { lightness: -18 },
+  { visibility: "off" }]}
+  ,
+  {featureType: "landscape",
+  elementType: "all",
+  stylers: [
+  { visibility: "on" }]}
+  ,
+  {featureType: "water",
+  elementType: "labels",
+  stylers: [      
+  { lightness: -18 },
+  { visibility: "off" }]}
+  ,
+  {featureType: "road",
+  elementType: "labels",
+  stylers: [
+  { hue: "#ffa200" },
+  { visibility: "on" }]}
+  ,
+  {featureType: "administrative",
+  elementType: "geometry",
+  stylers: [
+  { visibility: "simplified" }]}
+  ,
+  {featureType: "road.highway",
+  elementType: "geometry",
+  stylers: [
+  { saturation: -100 }]}
+  ,
+  {featureType: "road.arterial",
+  elementType: "geometry",
+  stylers: [
+  { saturation: -100 }]}
+  ,
+  {featureType: "road.local",
+  elementType: "geometry",
+  stylers: [
+  { lightness: -27 }]}
+  ,
+  {featureType: "transit",
+  elementType: "all",
+  stylers: [
+  { visibility: "off" }]}
+  ];
+  var bounds = new google.maps.LatLngBounds();
+  map = buildmap();
+  map.mapTypes.set('darkwater', new google.maps.StyledMapType(lightMap, { name: 'ARM' }));
+
+  //set style options for marker clusters (these are the default styles)
+  mcOptions = {styles: [{
+  height: 53,
+  url: "/assets/aim/images/clusters/m1.png",
+  width: 53,
+  },
+  {
+  height: 56,
+  url: "/assets/aim/images/clusters/m2.png",
+  width: 56
+  },
+  {
+  height: 66,
+  url: "/assets/aim/images/clusters/m3.png",
+  width: 66
+  },
+  {
+  height: 78,
+  url: "/assets/aim/images/clusters/m4.png",
+  width: 78
+  },
+  {
+  height: 90,
+  url: "/assets/aim/images/clusters/m5.png",
+  width: 90
+  }]}
+
+  //init clusterer with your options
+
+  var infoWindow = new google.maps.InfoWindow();
+  standAlone = {
+    url: "/assets/aim/images/standalone.png",
+    size: new google.maps.Size(36, 36),
+    scaledSize: new google.maps.Size(36, 36),
+    origin: null,
+    anchor: new google.maps.Point(12, 12)
+  };
+  <% unless organizations.nil? %>
+    var markers = [];
+    <% for organization in organizations %>
+      <% next if organization.latitude.nil? %>
+      var myLatLng = new google.maps.LatLng(<%= organization.latitude %>, <%= organization.longitude %>);
+      var marker_<%= organization.id %> = new google.maps.Marker({
+      position: myLatLng,
+      icon: standAlone,
+      map: map,
+      title:"<%= organization.business_name %>"
+      });
+      markers.push(marker_<%= organization.id %>);
+      bounds.extend(myLatLng);
+      google.maps.event.addListener(marker_<%= organization.id %>, 'click', function() {
+      var html='<div style="clear: float; width: 400px;"><a href="/initiatives/<%= organization.slug %>"><img style="float: left;height:75px; width:75px; margin-right: 10px;" src="<%= organization.logo? ? organization.logo.url(:sidebar).gsub(/aim-development/, 'aim-production') : '/assets/missing.png' %>" /></a><p style="float: left; width: 250px;"><strong><a href="/initiatives/<%= organization.slug %>"><%= escape_javascript(organization.business_name) %></a></strong><br /><%= escape_javascript(organization.full_street_address) %><br /><a href="/initiatives/<%= organization.slug %>" target="_blank">View profile</a><br /></p></div>';
+      infoWindow.setContent(html);
+      infoWindow.open(map, marker_<%= organization.id %>);
+      });
+    <% end %>      
+    var mc = new MarkerClusterer(map, markers, mcOptions);
+  <% end %>
+      
+  <% unless organizations.size == 1 %>
+    map.fitBounds(bounds)
+  <% end %>
+    return map;
+  }
+
+ 

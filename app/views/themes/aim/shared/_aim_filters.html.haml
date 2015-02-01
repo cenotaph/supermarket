@@ -44,15 +44,15 @@
           = "(#{est.spaces.size})"
           
           
-.small-12.columns.filter_column
-  .title= link_to t("aim.filter_by_activities"), 'javascript:$("ul.activities_filter").toggle();'
-  %ul.activities_filter{:style => 'display: none'}
-    - Activity.all.each do |activity|
-      %li{:class => (session[:filter_scope]['activity'].blank? ? false : (session[:filter_scope]['activity'].include?(activity.id) ? :activated : false ) rescue false )}
-      
-        = link_to activity.name, "/filter_by/activity/#{activity.id}"
-        - unless activity.spaces.to_a.delete_if{|x| x.approved == false}.empty?
-          = "(#{activity.spaces.size})"
+/ .small-12.columns.filter_column
+/   .title= link_to t("aim.filter_by_activities"), 'javascript:$("ul.activities_filter").toggle();'
+/   %ul.activities_filter{:style => 'display: none'}
+/     - Activity.all.each do |activity|
+/       %li{:class => (session[:filter_scope]['activity'].blank? ? false : (session[:filter_scope]['activity'].include?(activity.id) ? :activated : false ) rescue false )}
+/
+/         = link_to activity.name, "/filter_by/activity/#{activity.id}"
+/         - unless activity.spaces.to_a.delete_if{|x| x.approved == false}.empty?
+/           = "(#{activity.spaces.size})"
 
 .small-12.columns.filter_column.last                  
   .title= t "aim.filter_by_organisation_structure"

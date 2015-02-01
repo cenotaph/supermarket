@@ -1,51 +1,52 @@
-.row
-  .small-3.columns
-    - unless @nofilters
-      .row
-        .small-12.columns
-          - if !@spaces.blank?
-            %h4.matchcount
-              = pluralize(@spaces.count, 'initiative')
-              = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
-              - unless session[:filter_scope].blank?
+= content_for :filters do
+  .row
+    .small-12.columns
+      - unless @nofilters
+        .row
+          .small-12.columns
+            - if !@spaces.blank?
+              %h4.matchcount
+                = pluralize(@spaces.count, 'initiative')
+                = session[:filter_scope].nil? ? t("aim.currently_in_database") :  t("aim.found_by_search")
+                - unless session[:filter_scope].blank?
 
-                %span.small= link_to '(who?)', '#', :onclick => "javascript:scrollToId('#hit_parade');" 
+                  %span.small= link_to '(who?)', '#', :onclick => "javascript:scrollToId('#hit_parade');" 
       
-    - unless @nofilters
-      .row
-        .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
-      .row
-        .small-12.columns.search= render :partial => 'layouts/search_filter'
-      .filter_container.small-12.columns
-        .row= render :partial => 'shared/aim_filters'
+      - unless @nofilters
+        .row
+          .filter_info.small-12.columns= render :partial => 'layouts/filter_info'
+        .row
+          .small-12.columns.search= render :partial => 'layouts/search_filter'
+        .filter_container.small-12.columns
+          .row= render :partial => 'shared/aim_filters'
         
-    .login_bottom.small-12.columns.left
-      = t "aim.connect_instantly"
-      %p= t "aim.login_using"
-      %ul.oauth_choices
+    / .login_bottom.small-12.columns.left
+    /   = t "aim.connect_instantly"
+    /   %p= t "aim.login_using"
+    /   %ul.oauth_choices
+    /
+    /     %li
+    /       = link_to '/auth/facebook/' do
+    /         = image_tag theme_image_path('facebook_icon.png')
+    /         %br/
+    /         Facebook
+    /
+    /     %li
+    /       = link_to '/auth/twitter/' do
+    /         = image_tag theme_image_path('twitter_icon.png')
+    /         %br/
+    /         Twitter
+    /
+    /     %li.last
+    /       = link_to '/auth/google_oauth2' do
+    /         = image_tag theme_image_path('google_icon.png')
+    /         %br/
+    /         Google
         
-        %li
-          = link_to '/auth/facebook/' do
-            = image_tag theme_image_path('facebook_icon.png')
-            %br/
-            Facebook
         
-        %li
-          = link_to '/auth/twitter/' do
-            = image_tag theme_image_path('twitter_icon.png')
-            %br/
-            Twitter
-        
-        %li.last
-          = link_to '/auth/google_oauth2' do
-            = image_tag theme_image_path('google_icon.png')
-            %br/
-            Google
-        
-        
-  .small-9.columns  
-    - unless @spaces.blank?
-      = render :partial =>  "shared/google_map", :locals => { :organizations => @spaces }
+  / .small-9.columns
+  /   - unless @spaces.blank?
+  /     = render :partial =>  "shared/google_map", :locals => { :organizations => @spaces }
 - unless @spaces.blank?
   .row
     .small-12.columns.hit_parade#hit_parade
