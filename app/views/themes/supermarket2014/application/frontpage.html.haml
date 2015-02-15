@@ -14,7 +14,7 @@
   #front_carousel
     - @front_carousel.shuffle.each do |fc|
       .slide
-        .image{style: "background: url(#{fc.image.url.gsub(/staging/, 'production')}) no-repeat ; background-size: 100%; "}
+        .image{style: "background: url(#{fc.image.url(:twelvehundred).gsub(/staging/, 'production')}) no-repeat ; background-size: 100%; "}
         - unless fc.title.blank? && fc.caption.blank?
           .caption
             .title= fc.title
