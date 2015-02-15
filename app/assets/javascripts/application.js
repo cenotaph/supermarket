@@ -18,11 +18,11 @@
 //= require jquery.ui.tabs
 //= require jquery.ui.autocomplete
 //= require autocomplete-rails
-//= require jquery.flexslider-min
+
 //= require jquery.clearfield
 //= require jquery.lightbox_me
 //= require jquery_nested_form
-
+//= require slick-carousel
 
 var CKEDITOR_BASEPATH = '/assets/ckeditor/';
 

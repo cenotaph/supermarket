@@ -12,17 +12,17 @@
   
 - unless @front_carousel.empty?
   #front_carousel
-    %ul.slides
-      - @front_carousel.shuffle.each do |fc|
-        .slide
-          .image= image_tag fc.image.url(:twelvehundred).gsub(/development/, 'production')
-          - unless fc.title.blank? && fc.caption.blank?
-            .caption
-              .title= fc.title
-              .subtitle= fc.caption
+    - @front_carousel.shuffle.each do |fc|
+      .slide
+        .image{style: "background: url(#{fc.image.url.gsub(/development/, 'production')}) no-repeat ; background-size: 100%; "}
+        - unless fc.title.blank? && fc.caption.blank?
+          .caption
+            .title= fc.title
+            .subtitle= fc.caption
               
-.frontpage_exhibitors
-  %h2 Some of this year's exhibitors...
+.container
+  .frontpage_exhibitors.sixteen.columns
+    %h2 Some of this year's exhibitors...
   .sixteen.columns
     - @random_exhibitors.each_with_index do |app, i|
       .four.columns{:class => i == 0 ? :alpha : (i == 3 ? :omega : false)}
@@ -37,34 +37,35 @@
   .sixteen.columns
     %h3= link_to 'See all 2014 exhibitors...', '/exhibitors/2014'
 
-.sixteen.columns.front_three
-  .one-third.column.alpha
-    %h3 What is Supermarket?
-    %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
-    %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
-    - unless @video.nil?
-      %h3 Now showing on SUPER-TV:
-      .video_front
-        = link_to '/tv' do
-          .video_image= image_tag @video.thumbnail.url
-          .video_title= @video.title
-          .video_blurb= truncate_html(@video.description, :length => 120)
-      %h4= link_to 'Watch now!', '/tv'
+.container
+  .sixteen.columns.front_three
+    .one-third.column.alpha
+      %h3 What is Supermarket?
+      %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
+      %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
+      - unless @video.nil?
+        %h3 Now showing on SUPER-TV:
+        .video_front
+          = link_to '/tv' do
+            .video_image= image_tag @video.thumbnail.url
+            .video_title= @video.title
+            .video_blurb= truncate_html(@video.description, :length => 120)
+        %h4= link_to 'Watch now!', '/tv'
       
-  .one-third.column
-    %h3 Latest posts
-    - @posts.each do |post|
-      .post_front
-        .title= link_to post.subject, post
-        .date= time_ago_in_words(post.published_at) + " ago"
-        .excerpt
-          = truncate_html(simple_format(post.body), :length => 75)
-          = link_to "Read more...", post
-    %h3= link_to "See all news...", posts_path
-  .one-third.column.omega
-    %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :height => 400, :"data-widget-id" => "430669969043369985", :"data-chrome" => "nofooter transparent"} Currently on Twitter
-    :javascript
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    .one-third.column
+      %h3 Latest posts
+      - @posts.each do |post|
+        .post_front
+          .title= link_to post.subject, post
+          .date= time_ago_in_words(post.published_at) + " ago"
+          .excerpt
+            = truncate_html(simple_format(post.body), :length => 75)
+            = link_to "Read more...", post
+      %h3= link_to "See all news...", posts_path
+    .one-third.column.omega
+      %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :height => 400, :"data-widget-id" => "430669969043369985", :"data-chrome" => "nofooter transparent"} Currently on Twitter
+      :javascript
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
   
 
@@ -73,10 +74,11 @@
             
 = content_for :jquery do
   :plain
-    $('#front_carousel').flexslider({
-        animation: "slide",
-        namespace: "topslider",
-        controlNav: false,
-        directionNav: false,
-        selector: ".slides > .slide"
-    });             
+    $('#front_carousel').slick({infinite: true,
+      arrows: false,
+      slide: '.slide',
+      variableWidth: false,
+      autoplay: true,
+      autoplaySpeed: 141400,
+      slidesToScroll: 1,
+    });

@@ -14,10 +14,11 @@
       
 = content_for :jquery do
   :plain
-    $('.post_slides').flexslider({
-        animation: "slide",
-        namespace: "topslider",
-        controlNav: false,
-        directionNav: false,
-        selector: ".slides > .slide"
-    });          
+    $('.post_slides').slick({infinite: true,
+      arrows: false,
+      slide: '.slide',
+      variableWidth: false,
+      autoplay: true,
+      autoplaySpeed: 2400,
+      slidesToScroll: 1,
+    });

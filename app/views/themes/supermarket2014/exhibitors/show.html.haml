@@ -1,4 +1,4 @@
-.detail_view
+.container.detail_view
   - if @application.space.logo?
     .four.columns.logo.alpha= image_tag @application.space.logo.url(:profile)
 
@@ -22,13 +22,13 @@
         = raw @application.organisation_description
 
   #exhibitor_images.columns.alpha.omega{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
-    %ul.slides
-      - @application.applicationwebimages.each do |fc|
-        .slide
-          .image= image_tag fc.imagefile.url(:normal).gsub(/aim-development/, 'aim-production')
-          - unless fc.title.blank? && fc.caption.blank?
-            .caption
-              .title= raw fc.title
+
+    - @application.applicationwebimages.each do |fc|
+      .slide
+        .image= image_tag fc.imagefile.url(:normal).gsub(/aim-development/, 'aim-production')
+        - unless fc.title.blank? && fc.caption.blank?
+          .caption
+            .title= raw fc.title
 
   .columns.alpha{:class => (user_signed_in? ? 'six' : 'eight')}
 
@@ -44,10 +44,11 @@
             
 = content_for :jquery do
   :plain
-    $('#exhibitor_images').flexslider({
-        animation: "slide",
-        namespace: "topslider",
-        controlNav: false,
-        directionNav: false,
-        selector: ".slides > .slide"
-    });       
+    $('#exhibitor_images').slick({infinite: true,
+      arrows: false,
+      slide: '.slide',
+      variableWidth: false,
+      autoplay: true,
+      autoplaySpeed: 2400,
+      slidesToScroll: 1,
+    });

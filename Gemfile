@@ -27,7 +27,7 @@ gem 'jquery-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
-
+gem 'bundler', '>= 1.7.0'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -39,6 +39,10 @@ group :development do
   gem 'rails-footnotes',  '>= 3.7.9'
   gem 'quiet_assets'
   gem 'thin'
+end
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-slick-carousel'
 end
 
 gem 'execjs', '2.2.1'

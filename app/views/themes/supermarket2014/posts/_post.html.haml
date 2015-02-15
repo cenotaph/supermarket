@@ -8,14 +8,14 @@
 
 - unless post.postslides.empty?
   .post_slides#post_carousel
-    %ul.slides
-      - post.postslides.each do |ps|
-        .slide
-          .image= image_tag ps.image.url(:large)
-          - unless ps.caption.blank?
-            .caption= raw ps.caption
-          - unless ps.credit.blank?
-            .credit= "Photo credit: #{ps.credit}"
+
+    - post.postslides.each do |ps|
+      .slide
+        .image= image_tag ps.image.url(:large)
+        - unless ps.caption.blank?
+          .caption= raw ps.caption
+        - unless ps.credit.blank?
+          .credit= "Photo credit: #{ps.credit}"
 
 
   .share_this= share_this(post)
