@@ -27,7 +27,7 @@
     - @random_exhibitors.each_with_index do |app, i|
       .four.columns{:class => i == 0 ? :alpha : (i == 3 ? :omega : false)}
         = link_to exhibitor_year_path(:space => app.space, :year => app.year.year) do
-          = image_tag app.applicationwebimages.to_a.delete_if{|x| x.imagefile =~ /tif[f*]$/i || x.imagefile =~ /pdf$/i }.sample.imagefile.url(:slide).gsub(/development/, 'production')
+          = image_tag app.applicationwebimages.to_a.delete_if{|x| x.imagefile =~ /tif[f*]$/i || x.imagefile =~ /pdf$/i }.sample.imagefile.url(:slide).gsub(/staging/, 'production')
           .title
             = link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => app.year.year)
             &sdot;
