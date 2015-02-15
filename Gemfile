@@ -41,9 +41,6 @@ group :development do
   gem 'thin'
 end
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-slick-carousel'
-end
 
 gem 'execjs', '2.2.1'
 
@@ -79,6 +76,7 @@ gem 'httpclient'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'jquery-ui-rails'
 gem 'jquery-validation-rails'
+gem "jquery-slick-rails"
 gem 'kaminari'
 # gem 'kaminari-themes'
 gem 'meta-tags', :require => 'meta_tags'

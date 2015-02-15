@@ -22,7 +22,7 @@
 //= require jquery.clearfield
 //= require jquery.lightbox_me
 //= require jquery_nested_form
-//= require slick-carousel
+//= require jquery.slick
 
 var CKEDITOR_BASEPATH = '/assets/ckeditor/';
 
