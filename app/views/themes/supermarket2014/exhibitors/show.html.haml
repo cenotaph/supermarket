@@ -17,8 +17,8 @@
   .columns.alpha.eleven
     %p 
       = raw @application.space.short_description
-      - unless @application.supermarket_proposal.blank?
-        = raw @application.supermarket_proposal
+      - unless @application.organisation_description.blank?
+        = raw @application.organisation_description
 
   #exhibitor_images.columns.alpha.omega{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
 

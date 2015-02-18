@@ -2,13 +2,14 @@
   %p= t "supermarket2014.proposal_blurb"
   = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), :input_html => {:required => true}
 
-  
+  = f.input :organisation_description, :label => "Presentation text (what you will exhibit this year at Supermarket):"
   - unless @application.space.applications.to_a.delete_if{|x| x == @application}.empty?
     %li
       %p
         %strong Please review the following details about your initiative and make sure they are current.
     = f.fields_for :space do |ff|
-      = ff.input :short_description, input_html: { value: strip_tags(ff.object.short_description) }, hint: 'Please keep this description under 1200 characters.'
+      = ff.input :short_description, input_html: { value: strip_tags(ff.object.short_description) }, hint: 'Please keep this description under 1200 characters.', label: "Overall description of your initiative (do not write about this specific year's exhibition at Supermarket): "
+    
       = ff.input :decisionmakers_organisation, :label => t("supermarket2014.decision_makers_organisation")
       = ff.input :decisionmakers_programming, :label => t("supermarket2014.decision_makers_programming")
       = ff.input :founding_year, :label => t("supermarket2014.founding_year"), :input_html => {:required => true}

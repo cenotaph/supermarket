@@ -158,9 +158,7 @@ class Application < ActiveRecord::Base
       # if booth_granted == 4
       #   space.approved = false
       # end
-      unless organisation_description.blank?
-        space.short_description = organisation_description if space.short_description.blank?
-      end
+
       if space.changed?
         space.save
       end
