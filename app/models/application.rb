@@ -159,7 +159,7 @@ class Application < ActiveRecord::Base
       #   space.approved = false
       # end
       unless organisation_description.blank?
-        space.short_description = organisation_description
+        space.short_description = organisation_description if space.short_description.blank?
       end
       if space.changed?
         space.save
