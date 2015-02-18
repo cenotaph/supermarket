@@ -16,10 +16,12 @@
         %p= link_to @application.contact_email, 'mailto:' + @application.contact_email
   .columns.alpha.eleven
     %p 
-      - if @application.organisation_description.blank?
+      - unless @application.space.short_description.blank?
         = raw @application.space.short_description
-      - else
+      - unless @application.organisation_description.blank?
         = raw @application.organisation_description
+
+
 
   #exhibitor_images.columns.alpha.omega{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
 
