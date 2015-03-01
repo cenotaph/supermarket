@@ -10,4 +10,11 @@
   = f.input :display_name
   = f.input :email    
   
+  - if current_user.has_role? :god
+    %li
+      %label Permissions:
+      
+      = f.select :role_ids,  Role.all.map{|x| [x.name, x.id]}, {}, {:multiple => true} 
+
+  
   = f.submit

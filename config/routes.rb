@@ -96,7 +96,7 @@ Aim::Application.routes.draw do
     resources :presslinks
     resources :pressreleases
     resources :users do
-      
+      get :autocomplete_user_email, :on => :collection
       collection do
         get :autocomplete_user_display_name
         post :filter_name

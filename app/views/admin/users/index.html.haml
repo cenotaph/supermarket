@@ -1,6 +1,11 @@
 %h3 all users
 
 %p= link_to 'export to CSV', admin_users_path(:format => :csv)
+
+.eight.columns
+  .filter_title Find by email:
+  = form_tag '/admin/users', :method => :get do
+    = autocomplete_field_tag 'by_email', params[:by_email], autocomplete_user_email_admin_users_path
 .cms_grid
   = paginate @users
   - @users.each do |user|
@@ -10,6 +15,6 @@
         %span.edit_link= link_to '[edit details]', edit_admin_user_path(user)
       .three.columns= user.display_name
       .three.columns= user.last_active_year
-      .one.columns.omega= user.is_staff? ? 'STAFF' : ''
+      .one.columns.omega= user.roles.map(&:name).join(', ')
 .sixteen.columns= paginate @users
     

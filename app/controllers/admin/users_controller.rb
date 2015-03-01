@@ -2,6 +2,8 @@ class Admin::UsersController < Admin::BaseController
   respond_to :html, :js, :xml, :json, :csv
   handles_sortable_columns
   autocomplete :user, :display_name
+  autocomplete :user, :email, :extra_data => [:email], :display_value => :email
+  has_scope :by_email
   
   def filter_name
     order = sortable_column_order do |column, direction|
@@ -25,7 +27,7 @@ class Admin::UsersController < Admin::BaseController
   end
   
   def update
-    update! { '/admin/dashboard' }
+    update! { '/admin/users' }
   end 
   
   def index
@@ -44,7 +46,7 @@ class Admin::UsersController < Admin::BaseController
     
     respond_to do |format|
       format.html {
-        @users = User.includes([:roles, :spaces]).references(:space_users).order(order).page(params[:page]).per(100)
+        @users = apply_scopes(User).includes([:roles, :spaces]).references(:space_users).order(order).page(params[:page]).per(100)
       }
       format.csv {
         @users = User.all

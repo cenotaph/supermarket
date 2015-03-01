@@ -19,9 +19,10 @@ class User < ActiveRecord::Base
   has_many :applications
   scope :all_staff, -> { where("id IN (?) OR id IN (?)", User.with_role(:staff).map(&:id), User.with_role(:god).map(&:id)) }
   accepts_nested_attributes_for :authentications, :reject_if => proc { |attr| attr['username'].blank? }
-  
+  accepts_nested_attributes_for :roles
   mount_uploader :photo, AvatarUploader
-
+  
+  scope :by_email, -> (name) { where("users.email ILIKE '%" + name + "%'")}
 
 
   def apply_omniauth(omniauth)
