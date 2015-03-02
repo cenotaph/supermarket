@@ -1,22 +1,23 @@
 %h3
   = t :funders_and_partners 
-  (2014)
+  = "(#{@year.year})"
 
 
-%p Many thanks to the funders and partners supporting Supermarket and our exhibitors last time. In January 2015 we present the new partners.
+%p Supermarket Art Fair thanks these supporters:
 
 - @allfunders.sort_by{|x| x.id}.each do |ft|
-  .funder_type.column.alpha.omega
-    .title= ft.name
-    - ft.funders.sort_by{|x| x.sortorder }.each do |f|
-      .funder.columns.three.alpha.omega
-        - if f.url.blank?
-          = image_tag f.logo.url
-          .name= f.name
-        - else
-          = link_to f.url, :target => :_blank do
+  - unless ft.funders.empty?
+    .funder_type.column.alpha.omega
+      .title= ft.name
+      - ft.funders.sort_by{|x| x.sortorder }.to_a.delete_if{|funder| !funder.years.include?(@year) }.each do |f|
+        .funder.columns.three.alpha.omega
+          - if f.url.blank?
             = image_tag f.logo.url
             .name= f.name
+          - else
+            = link_to f.url, :target => :_blank do
+              = image_tag f.logo.url
+              .name= f.name
     
 - if user_signed_in?
   = content_for :sidebar do

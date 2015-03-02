@@ -1,7 +1,13 @@
-= semantic_form_for [:admin, @funder], :html => {:multipart => true} do |f|
-  = f.input :fundertype
-  = f.input :logo
-  = f.input :name
-  = f.input :url
-  = f.input :sortorder
-  = f.submit
+.twelve.columns
+  = semantic_form_for [:admin, @funder], :html => {:multipart => true} do |f|
+    = @funder.errors.full_messages
+    .ten.columns= f.input :fundertype
+    .ten.columns
+      - if f.object.logo?
+        %center= image_tag f.object.logo.url
+      = f.input :logo
+    .ten.columns= f.input :name
+    = f.input :url
+    = f.input :sortorder
+    = f.input :year_ids, collection: Year.all, as: :check_boxes
+    = f.submit

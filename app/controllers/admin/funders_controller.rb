@@ -15,7 +15,7 @@ class Admin::FundersController < Admin::BaseController
   protected
   
   def permitted_params
-    params.permit(:funder => [:logo, :name, :url, :fundertype_id, :sortorder])
+    params.permit(:funder => [:logo, :name, :url, :fundertype_id, :sortorder, year_ids: [] ])
   end
   
 end

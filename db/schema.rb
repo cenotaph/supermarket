@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117111015) do
+ActiveRecord::Schema.define(version: 20150302111735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -247,6 +247,11 @@ ActiveRecord::Schema.define(version: 20141117111015) do
   end
 
   add_index "funders", ["fundertype_id"], name: "index_funders_on_fundertype_id", using: :btree
+
+  create_table "funders_years", id: false, force: true do |t|
+    t.integer "funder_id", null: false
+    t.integer "year_id",   null: false
+  end
 
   create_table "fundertypes", force: true do |t|
     t.string   "name"

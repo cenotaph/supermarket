@@ -20,6 +20,7 @@ Aim::Application.routes.draw do
   # end
     
   match '/support' => "funders#index", :via => :get
+  match '/support/:id/' => "funders#index" , via: :get
   match '/search' => 'search#create', :via => :post
   match '/aiming/search' => 'search#aimsearch', via: :post
   match '/aiming/unsearch/:search_type/:search_term' => 'search#unsearch', via: :get
