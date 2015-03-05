@@ -1,24 +1,26 @@
-%h3
-  = t :funders_and_partners 
-  = "(#{@year.year})"
+.container
+  .twelve.columns
+    %h3
+      = t :funders_and_partners 
+      = "(#{@year.year})"
 
 
-%p Supermarket Art Fair thanks these supporters:
+    %p Supermarket Art Fair thanks these supporters:
 
-- @allfunders.sort_by{|x| x.id}.each do |ft|
-  - unless ft.funders.empty?
-    .funder_type.column.alpha.omega
-      .title= ft.name
-      - ft.funders.sort_by{|x| x.sortorder }.to_a.delete_if{|funder| !funder.years.include?(@year) }.each do |f|
-        .funder.columns.three.alpha.omega
-          - if f.url.blank?
-            = image_tag f.logo.url
-            .name= f.name
-          - else
-            = link_to f.url, :target => :_blank do
-              = image_tag f.logo.url
-              .name= f.name
+    - @allfunders.sort_by{|x| x.id}.each do |ft|
+      - unless ft.funders.empty?
+        .funder_type.column.alpha.omega
+          .title= ft.name
+          - ft.funders.sort_by{|x| x.sortorder }.to_a.delete_if{|funder| !funder.years.include?(@year) }.each do |f|
+            .funder.columns.three.alpha.omega
+              - if f.url.blank?
+                = image_tag f.logo.url
+                .name= f.name
+              - else
+                = link_to f.url, :target => :_blank do
+                  = image_tag f.logo.url
+                  .name= f.name
     
-- if user_signed_in?
-  = content_for :sidebar do
-    = render :partial => 'layouts/sidebar'          
+    - if user_signed_in?
+      = content_for :sidebar do
+        = render :partial => 'layouts/sidebar'          

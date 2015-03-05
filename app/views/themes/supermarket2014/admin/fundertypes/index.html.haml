@@ -1,0 +1,12 @@
+%h2 fundertypes and support
+
+%p= link_to 'Add new fundertype', new_admin_fundertype_path
+
+.cms_grid
+  - @fundertypes.each do |f|
+    .fundertypes
+      = link_to f.name, edit_admin_fundertype_path(f)
+      %span.delete= link_to '[delete]', [:admin, f], :method => :delete, :data => {:confirm => 'Are you sure?'}
+      
+%p= link_to 'Add new funder type', new_admin_fundertype_path
+      

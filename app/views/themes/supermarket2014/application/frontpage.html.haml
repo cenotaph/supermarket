@@ -1,9 +1,6 @@
 
 %h2{:style => 'line-height: 1.4em; margin-bottom: 0px'}
-  - if @site_year.above_carousel_html.blank?
-    %center Supermarket 2015 will take place 16–19 April 2015 in Svarta Huset, Telefonplan, Stockholm.
-    %center= link_to 'Apply now!', '/apply/2015'
-  - else
+  - unless @site_year.above_carousel_html.blank?
     - if @site_year.center_above_carousel_text == true
       %center= raw @site_year.above_carousel_html
     - else

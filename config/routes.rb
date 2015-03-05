@@ -85,6 +85,7 @@ Aim::Application.routes.draw do
     resources :exhibitionspacetypes
     resources :frontcarousels
     resources :funders
+    resources :fundertypes
     resources :internallinks
     resources :organisationtypes
     resources :pages

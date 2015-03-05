@@ -76,6 +76,11 @@
         = link_to admin_years_path do
           =fa_icon 'calendar'
           Year setup
+    - if can? :manage, Fundertype
+      %li
+        = link_to admin_fundertypes_path do
+          = fa_icon 'money'
+          Funder categories        
     - if can? :manage, Subsite
       %li
         = link_to  admin_subsites_path do

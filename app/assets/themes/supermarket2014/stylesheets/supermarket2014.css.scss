@@ -340,7 +340,7 @@ header {
  
       li {
         margin-left: 0px;
-        font-size: 16px;
+        font-size: 0.85rem;
         float: left;
         list-style-type: none;
         padding: 0px 15px 0px 15px;
@@ -349,16 +349,16 @@ header {
           padding-left: 0px !important;
         }
         a {
-          font-size: 14px;
+          font-size: 0.85rem;
           color: $menu;
           &:hover {
             color: $hover;
           }
         }
         &.active {
-          color: #333;
+          color: #FFF;
           a {
-            color: $hover;
+            color: #FFF;
           }
         }
         &.first {

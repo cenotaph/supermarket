@@ -1,0 +1,7 @@
+.twelve.columns
+  = semantic_form_for [:admin, @fundertype], :html => {:multipart => true} do |f|
+    = @fundertype.errors.full_messages.join(', ')
+
+    .ten.columns= f.input :name
+    
+    .ten.columns= f.submit
