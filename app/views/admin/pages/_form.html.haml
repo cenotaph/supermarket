@@ -9,8 +9,8 @@
           %b
             Name of page 
           = en.text_field :title
-          = en.text_area :body, :class => "tinymce"
-  = tinymce
+          = en.text_area :body, :class => "ckeditor"
+  //= tinymce
 
   /= f.input :parent, :as => :select, :collection => recurse_options_from_tree_collection_for_select(Page.roots, :id, :name), :hint => 'Leave blank for top level menu'
   = f.input :show_on_bottom, :as => :boolean, :label => "Show on post/news ticker at bottom (requires image)"

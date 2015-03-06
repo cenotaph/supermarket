@@ -15,7 +15,7 @@
                 Name of page in
                 = locale.to_s
               = en.text_field :title
-              = en.text_area :body, :class => :rich_text
+              = en.text_area :body, :class => [:rich_text, :ckeditor]
 
   .row
     .small-12.columns= f.input :published
@@ -23,6 +23,6 @@
     .small-6.columns= f.submit 'Save', :class => [:button, :round]
 = content_for :jquery do
   :plain
-    $(".rich_text").jqte();
+    // $(".rich_text").jqte();
     $("#page_subsite_ids").chosen();
     $('form.page').validate();
