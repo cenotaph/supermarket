@@ -136,6 +136,7 @@ GEM
       safe_yaml (~> 1.0.0)
     currencies (0.4.2)
     daemons (1.1.9)
+    dalli (2.7.2)
     debug_inspector (0.0.2)
     devise (3.2.4)
       bcrypt (~> 3.0)
@@ -429,6 +430,7 @@ DEPENDENCIES
   coffee-rails
   countries
   country_select
+  dalli
   devise
   devise-encryptable
   execjs (= 2.2.1)

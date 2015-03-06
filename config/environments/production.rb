@@ -23,12 +23,13 @@ Aim::Application.configure do
   config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  config.assets.js_compressor =  Uglifier.new(compress: { unused: false}) if defined? Uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
-
+  config.assets.cache_store = :dalli_store
+  
   # Generate digests for assets URLs.
   config.assets.digest = true
 
@@ -80,6 +81,17 @@ Aim::Application.configure do
   config.action_mailer.default_url_options = {
     :host => 'www.supermarketartfair.com',
   }
+  
+  config.cache_store = :dalli_store,
+                      (ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                      {:username => ENV["MEMCACHIER_USERNAME"],
+                       :password => ENV["MEMCACHIER_PASSWORD"],
+                       :failover => true,
+                       :socket_timeout => 1.5,
+                       :socket_failure_delay => 0.2
+                      }
+                      
+                      
 end
 
 Rails.application.routes.default_url_options[:host] = 'supermarketartfair.com'
