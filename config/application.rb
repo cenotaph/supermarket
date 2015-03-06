@@ -29,3 +29,11 @@ module Aim
 end
 
 I18n.enforce_available_locales = false 
+
+module AssetsInitializers
+  class Railtie < Rails::Railtie
+    initializer "assets_initializers.initialize_rails", :group => :assets do |app|
+      require "#{Rails.root}/config/initializers/ckeditor.rb"
+    end
+  end
+end
