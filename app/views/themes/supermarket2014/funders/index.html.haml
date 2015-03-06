@@ -11,7 +11,7 @@
       - unless ft.funders.empty?
         .funder_type.column.alpha.omega
           .title= ft.name
-          - ft.funders.sort_by{|x| x.sortorder }.to_a.delete_if{|funder| !funder.years.include?(@year) }.each do |f|
+          - ft.funders.sort_by{|x| x.sortorder.to_i }.to_a.delete_if{|funder| !funder.years.include?(@year) }.each do |f|
             .funder.columns.three.alpha.omega
               - if f.url.blank?
                 = image_tag f.logo.url
