@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302111735) do
+ActiveRecord::Schema.define(version: 20150310140150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,20 @@ ActiveRecord::Schema.define(version: 20150302111735) do
   create_table "attachments", force: true do |t|
     t.string "image"
   end
+
+  create_table "attendees", force: true do |t|
+    t.integer  "year_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "organisation"
+    t.string   "email"
+    t.string   "verification_code"
+    t.boolean  "arrival_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attendees", ["year_id"], name: "index_attendees_on_year_id", using: :btree
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -686,6 +700,7 @@ ActiveRecord::Schema.define(version: 20150302111735) do
     t.text     "footer_html"
     t.text     "above_carousel_html"
     t.boolean  "center_above_carousel_text"
+    t.date     "registration_deadline"
   end
 
 end

@@ -10,4 +10,9 @@ class Year < ActiveRecord::Base
   def open?
     applications_open
   end
+  
+  def preview_open?
+    Time.now.to_date < registration_deadline
+  end
+  
 end

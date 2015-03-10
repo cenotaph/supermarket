@@ -18,7 +18,7 @@ Aim::Application.routes.draw do
   # resources :users do
   #   get :my_organisations, :on => :collection
   # end
-    
+  match '/preview/:id' => 'attendees#preview', via: :get
   match '/support' => "funders#index", :via => :get
   match '/support/:id/' => "funders#index" , via: :get
   match '/search' => 'search#create', :via => :post
@@ -31,6 +31,8 @@ Aim::Application.routes.draw do
   match 'auth/:provider/callback' => 'authentications#create', :via => :get
   match '/oauth/authenticate' => 'authentications#create', :via => :get
   resources :authentications
+  resources :attendees
+  
   # devise_for :users, ActiveAdmin::Devise.config.merge({ :controllers => ActiveAdmin::Devise.config[:controllers].merge(:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions') }).merge(:path => '/') do
   devise_for :users, :controllers => {:registrations => 'registrations', :passwords => 'devise/passwords', :sessions => 'sessions'} do
     resources :spaces do

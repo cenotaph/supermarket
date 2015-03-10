@@ -11,7 +11,7 @@ class Admin::YearsController < Admin::BaseController
   protected
   
   def permitted_params
-    params.permit(:year => [:applications_open, :reveal_decisions, :header_html, :footer_html, :above_carousel_html, :center_above_carousel_text, :allow_editing, :year, :tv_description])
+    params.permit(:year => [:applications_open, :reveal_decisions, :registration_deadline, :header_html, :footer_html, :above_carousel_html, :center_above_carousel_text, :allow_editing, :year, :tv_description])
   end
   
 end
