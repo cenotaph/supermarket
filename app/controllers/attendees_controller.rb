@@ -5,7 +5,7 @@ class AttendeesController < ApplicationController
     @attendee = Attendee.new(attendee_params)
     if @attendee.save
       AttendeeMailer.preview_registration(@attendee).deliver
-      flash[:notice] = 'Thank you for registering for the press preview.'
+      flash[:notice] = 'Thank you for registering for the professional preview.'
       redirect_to "/preview/#{@attendee.year.year.to_s}"
     else
       flash[:error]= 'There was an error saving your registration.'
