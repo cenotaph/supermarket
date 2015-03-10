@@ -80,6 +80,11 @@ Aim::Application.routes.draw do
         get :toggle_late
       end
     end
+    resources :attendees do
+      member do
+        get :checkin
+      end
+    end
     resources :backgrounds
     resources :businesstypes
 

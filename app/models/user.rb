@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
   end
 
   def is_staff?
-    return true if has_role?(:staff) || has_role?(:god)
+    return true if has_role?(:staff) || has_role?(:god) || has_role?(:videoproducer) || has_role?(:volunteer)
   end
   
   def protected_email

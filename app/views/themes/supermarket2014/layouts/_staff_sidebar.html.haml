@@ -9,6 +9,11 @@
     = submit_tag "search"
   
   %ul.staff_menu
+    - if can? :manage, Attendee
+      %li
+        = link_to admin_attendees_path do
+          = fa_icon 'glass'
+          Attendee list
     - if can? :manage, Video
       %li
         = link_to admin_videos_path do 

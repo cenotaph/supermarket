@@ -30,6 +30,9 @@ class Ability
           can :manage, Video
           cannot :read, Spacecomment
           cannot :read, Applicationcomment
+          cannot :read, Attendee
+        elsif user.has_role? :volunteer
+          can :manage, Attendee
         elsif user.has_role? :supermarket_exhibitor
           cannot :manage, Page
           cannot :read, Spacecomment

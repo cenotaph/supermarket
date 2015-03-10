@@ -5,6 +5,7 @@ class Attendee < ActiveRecord::Base
   
   before_validation :generate_verification_code
   
+  scope :by_year, ->(x) { where(:year_id => x)}
 
   
   def generate_verification_code

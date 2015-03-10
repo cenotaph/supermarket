@@ -1,3 +1,5 @@
+@import 'variables';
+
 .carousel {
   .small {
     font-size: 9px;
@@ -12,5 +14,31 @@
       margin-left: 0px;
     }
     background-color: blue;
+  }
+}
+
+.attendees_list {
+  table.attendees {
+    th {
+      font-size: 1.5rem;
+    }
+    tr.odd {
+      background-color: #FFEBCB;
+      margin-bottom: 10px;
+    }
+    tr:hover {
+      background-color: $orange4;
+    }
+    td {
+      padding: 10px 25px;
+      font-size: 1.2rem;
+      a.button {
+        text-transform: uppercase;
+        padding: 5px;
+        font-weight: 300;
+        font-size: 0.9rem;
+        border: 2px solid $orange1;
+      }
+    }
   }
 }
