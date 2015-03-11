@@ -1,6 +1,6 @@
 class Attendee < ActiveRecord::Base
   belongs_to :year
-  validates_presence_of :email, :year_id, :verification_code
+  validates_presence_of :email, :year_id, :verification_code, :last_name
   # validates_uniqueness_of :email
   
   before_validation :generate_verification_code
