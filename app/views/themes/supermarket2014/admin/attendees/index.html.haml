@@ -18,7 +18,7 @@
           %tr{class: cycle('odd', false)}
             %td= [attendee.first_name, attendee.last_name].join(' ')
             %td= attendee.email
-            %td= attendee.verification_code
+            %td= attendee.id.to_s
             %td
               - if attendee.arrival_status != true
                 = link_to 'Check in', checkin_admin_attendee_path(attendee), class: :button
