@@ -5,13 +5,13 @@
 
 function toggle_filters() {
 
-  if ($('#filters').is(":visible") ) {
-    $('#filters').animate({width: 'toggle'}); //stop(true,true).hide("slide", { direction: "left" }, 200);
-    $('.toggle_filters').animate({left:  "-=20%"});
+  if ($('.actual_filters').offset().left >= 0  ) {
+    $('#filters').animate({left: '-20%'}); //stop(true,true).hide("slide", { direction: "left" }, 200);
+    // $('.toggle_filters').animate({left :  "0%"});
     $('.toggle_filters img').attr('src', '/assets/aim/images/magnifier.png');
   } else {
-    $('#filters').animate({width: 'toggle'}); //("slide", { direction: "left" }, 200);
-    $('.toggle_filters').animate({left:  "+=20%"});
+    $('#filters').animate({left: '0'}); //("slide", { direction: "left" }, 200);
+    // $('.toggle_filters').animate({right:  "-20%"});
     $('.toggle_filters img').attr('src', '/assets/aim/images/back_arrow.png');
   }
 
@@ -19,10 +19,10 @@ function toggle_filters() {
 
 function toggle_sign_in() {
   var boxheight = $('.login_bottom').css('height');
-  alert(boxheight);
+  var signinheight = $('.sign_in').css('height');
   if ($('#user_info').is(":visible") ) {
     $('.login_bottom ').slideToggle();
-    $('.sign_in').animate({top:  "-=2rem"});
+    $('.sign_in').animate({top:  "-" + signinheight });
     //$('.sign_in img').attr('src', '/assets/aim/images/magnifier.png');
   } else {
     $('.login_bottom ').slideToggle();

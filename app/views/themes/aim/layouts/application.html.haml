@@ -54,9 +54,10 @@
     - unless @spaces.blank?
       #filters
         .actual_filters= yield :filters
+        .toggle_filters
+          = link_to image_tag(theme_image_path('magnifier.png')), '#', onclick: 'toggle_filters(); return false;'
       = render :partial =>  "shared/google_map", :locals => { :organizations => @spaces }
-      .toggle_filters
-        = link_to image_tag(theme_image_path('magnifier.png')), '#', onclick: 'toggle_filters(); return false;'
+      
     %header
       .row
 
@@ -91,34 +92,6 @@
     - if @spaces.blank?
       #non_map= yield
 
-    /
-    /   - unless @nofilters == true
-    /     .small-1.columns
-    /       %p strip of images to come soon
-    /
-    / %footer
-    /   .container
-    /     .row
-    /       .small-4.columns
-    /         %label.sub= t :copyright_notice
-    /       .small-4.columns
-    /         %label= t :contact
-    /         %p
-    /           info at artistrunmap &sdot; org
-    /
-    /   .row
-    /     .small-1.columns
-    /       %label= t :follow_us
-    /     .small-1.columns.facebook
-    /       %a{:href => "need facebook link"}
-    /         = image_tag theme_image_path('facebook_icon.png')
-    /     .small-1.columns.twitter
-    /       %a{:href => "need twitter link"}
-    /         = image_tag theme_image_path('twitter_icon.png')
-    /     .small-8.columns.small-offset-1
-    /       = t :supporters
-    /       = image_tag theme_image_path('kknord.png')
-    /       = image_tag theme_image_path('supermarket_no_year_black.png')
     
   :javascript
     $(document).ready(function() {
