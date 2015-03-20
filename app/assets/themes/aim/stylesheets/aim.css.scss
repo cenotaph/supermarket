@@ -455,6 +455,7 @@ form .search_dropdown {
   }
 }
 .languages {
+  display: none;
   float: right;
   font-family: $helv;
   font-size: 0.7rem;
@@ -467,9 +468,10 @@ form .search_dropdown {
   }
 }
 .login_bottom {
-  margin-top: 25px;
+  margin-top: 0;
+  z-index: 12;
   clear: both;
-  padding-left: 0px !important;
+  padding: 0.2rem;
   float: right;
   font-family: $helv;
   font-size: 0.8rem;

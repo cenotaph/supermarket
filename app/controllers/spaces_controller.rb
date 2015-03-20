@@ -15,6 +15,7 @@ class SpacesController < ApplicationController
     @filter = @space.business_name + " <span class='hometown'>#{@space.hometown}</span>"
     @closedfilters = true
     @nofilters = 1
+    set_meta_tags title: @space.business_name
     if request.xhr?
       render :layout => false
     end

@@ -49,3 +49,4 @@ pickle-email-*.html
 /db/sphinx
 .svn
 /test/*
+.DS_Store

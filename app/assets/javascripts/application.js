@@ -12,11 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.core
+//= require jquery.easing
+//= require jquery-ui/core
 //= require jquery.validate
 //= require jquery.validate.additional-methods
-//= require jquery.ui.tabs
-//= require jquery.ui.autocomplete
+//= require jquery-ui/tabs
+//= require jquery-ui/autocomplete
 //= require autocomplete-rails
 
 //= require jquery.clearfield

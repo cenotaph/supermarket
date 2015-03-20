@@ -43,9 +43,85 @@
     margin: 20px 0 20px 0;
   }
 }
+
+html, body {
+    height:100%;
+}
+#map_container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
 #google-map {
   width: 100%;
-  height: 550px;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   z-index: 0;
+
+}
+
+#user_info {
+  .login_bottom {
+    display: none;
+    width: 20%;
+    position: absolute;
+    z-index: 12;
+    top:0;
+    right:18%;
+    z-index: 1;
+    background-color: white;
+    overflow: hidden;
+  }
+}
+
+#filters {
+  
+  display: none;
+  width: 20%;
+  position: absolute;
+  z-index: 1;
+  top:15%;
+  left:0;
+  z-index: 1;
+  background-color: white;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  direction:rtl;
+  .actual_filters {
+    direction: ltr;
+  }
+  max-height: 80%;
+}
+
+#non_map {
+  padding-top: 8%;
+}
+header {
+  position: absolute;
+  z-index: 11;
+  left: 3%;
+  top: 15px
+}
+
+.toggle_filters {
+  position: absolute;
+  left: 0;
+  z-index: 47;
+  top: 45%;
+}
+
+.sign_in {
+  position: absolute;
+  top: 0;
+  right: 10%;
+  z-index: 47;
 }
 
 .hit_parade {

@@ -78,6 +78,7 @@ gem 'http_accept_language'
 gem 'httpclient'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'jquery-ui-rails'
+gem 'jquery-easing-rails'
 gem 'jquery-validation-rails'
 gem "jquery-slick-rails"
 gem 'kaminari'
