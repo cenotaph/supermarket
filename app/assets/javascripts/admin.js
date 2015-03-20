@@ -1,3 +1,3 @@
-//= require jquery.ui.sortable
-//= require jquery.ui.tabs
+//= require jquery-ui/sortable
+//= require jquery-ui/tabs
 //= require ckeditor/init
