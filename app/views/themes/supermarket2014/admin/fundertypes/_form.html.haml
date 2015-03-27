@@ -3,5 +3,5 @@
     = @fundertype.errors.full_messages.join(', ')
 
     .ten.columns= f.input :name
-    
+    .ten.columns= f.input :sort_order, label: 'Enter sorting number (decimal is ok):'
     .ten.columns= f.submit

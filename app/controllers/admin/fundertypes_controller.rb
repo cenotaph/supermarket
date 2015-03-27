@@ -15,7 +15,7 @@ class Admin::FundertypesController < Admin::BaseController
   protected
   
   def permitted_params
-    params.permit(:fundertype => [:logo, :name, :url, :fundertypetype_id, :sortorder, year_ids: [] ])
+    params.permit(:fundertype => [:logo, :name, :sort_order, :url, :fundertypetype_id, :sortorder, year_ids: [] ])
   end
   
 end

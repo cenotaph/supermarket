@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310140150) do
+ActiveRecord::Schema.define(version: 20150327094014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 20150310140150) do
     t.datetime "updated_at"
   end
 
+  add_index "attendees", ["verification_code"], name: "index_attendees_on_verification_code", unique: true, using: :btree
   add_index "attendees", ["year_id"], name: "index_attendees_on_year_id", using: :btree
 
   create_table "authentications", force: true do |t|
@@ -271,6 +272,7 @@ ActiveRecord::Schema.define(version: 20150310140150) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "sort_order", default: 0.0, null: false
   end
 
   create_table "internallinks", force: true do |t|
