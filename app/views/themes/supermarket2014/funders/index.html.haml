@@ -10,7 +10,7 @@
     - @allfunders.sort_by{|x| x.id}.each do |ft|
       - unless ft.funders.empty?
         .funder_type.column.alpha.omega
-          .title= ft.name
+          .title= ft.name + ft.sort_order.to_s
           - ft.funders.sort_by{|x| x.sortorder.to_i }.to_a.delete_if{|funder| !funder.years.include?(@year) }.each do |f|
             .funder.columns.three.alpha.omega
               - if f.url.blank?
