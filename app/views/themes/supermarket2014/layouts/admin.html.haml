@@ -45,10 +45,12 @@
           .four.columns.omega
             %nav.social_icons
               %h2 STAFF PAGE
+              = link_to 'staff home', '/admin'
     #main
       .container
-        .two.columns.alpha= render :partial => 'layouts/staff_sidebar'
-        .fourteen.omega.columns= yield
+        - unless controller.controller_name == 'attendees'
+          .two.columns.alpha= render :partial => 'layouts/staff_sidebar'
+        .omega.columns{class: controller.controller_name == 'attendees' ? 'sixteen' : 'fourteen'}= yield
           
     %footer
       .container

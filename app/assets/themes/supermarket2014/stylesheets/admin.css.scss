@@ -19,6 +19,7 @@
 
 .attendees_list {
   table.attendees {
+    width: 100%;
     th {
       font-size: 1.5rem;
     }
@@ -30,8 +31,19 @@
       background-color: $orange4;
     }
     td {
-      padding: 10px 25px;
-      font-size: 1.2rem;
+      &.already_in {
+        text-decoration: line-through;
+      }
+      padding: 8px 15px;
+      font-size: 1rem;
+      .small {
+        float: right;
+        padding-left: 5px;
+        a.button {
+          font-size: 0.6rem;
+          border: 2px solid $orange3;
+        }
+      }
       a.button {
         text-transform: uppercase;
         padding: 5px;

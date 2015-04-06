@@ -1,0 +1,10 @@
+%td{class: attendee.arrival_status == true ? :already_in : false}
+  = [attendee.first_name, attendee.last_name].join(' ')
+  - if current_user.has_role? :god
+    .small= link_to (attendee.vip == true ? 'Remove' : 'Make') + ' VIP', toggle_vip_admin_attendee_path(attendee), remote: true, class: [:tiny, :button]
+%td{class: attendee.arrival_status == true ? :already_in : false}= attendee.email
+%td{class: attendee.arrival_status == true ? :already_in : false}= attendee.id.to_s
+%td{class: attendee.arrival_status == true ? :already_in : false}= attendee.vip == true ? 'VIP' : ''
+%td{class: attendee.arrival_status == true ? :already_in : false}
+  - if attendee.arrival_status != true
+    = link_to 'Check in', checkin_admin_attendee_path(attendee), remote: true, class: :button

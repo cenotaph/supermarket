@@ -1,5 +1,5 @@
 .cms_grid
-  .attendees_list.fourteen.columns
+  .attendees_list
     %p
       = link_to 'export as CSV', "/admin/attendees.csv?by_year=#{params[:by_year] ||= 1 }"
 
@@ -12,14 +12,10 @@
         %th Name
         %th Email
         %th Code
+        %th VIP?
         %th
       %tbody
         - @attendees.each do |attendee|
-          %tr{class: cycle('odd', false)}
-            %td= [attendee.first_name, attendee.last_name].join(' ')
-            %td= attendee.email
-            %td= attendee.id.to_s
-            %td
-              - if attendee.arrival_status != true
-                = link_to 'Check in', checkin_admin_attendee_path(attendee), class: :button
+          %tr{class: cycle('odd', false)}[attendee]= render partial: 'attendee_row', locals: {attendee: attendee }
+            
       

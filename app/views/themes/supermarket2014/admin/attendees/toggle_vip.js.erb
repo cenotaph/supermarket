@@ -1,0 +1,1 @@
+$('#attendee_<%= @attendee.id.to_s %>').html('<%= escape_javascript(render partial: 'attendee_row', locals: {attendee: @attendee}) %>');

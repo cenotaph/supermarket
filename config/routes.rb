@@ -78,11 +78,13 @@ Aim::Application.routes.draw do
       member do
         post :comment
         get :toggle_late
+        
       end
     end
     resources :attendees do
       member do
         get :checkin
+        get :toggle_vip
       end
     end
     resources :backgrounds
