@@ -1,4 +1,5 @@
 = semantic_nested_form_for([:admin, @post], :html => {:multipart => true}) do |f|
+  = @post.errors.full_messages
   #language-tabs
     %ul.language-selection
       - I18n.available_locales.each do |locale|

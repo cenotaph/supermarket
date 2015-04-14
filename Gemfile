@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
 
-ruby '2.1.1'
+ruby '2.2.2'
 
 gem 'pg'
 
@@ -15,7 +15,7 @@ gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
-
+gem 'json', '1.8.2'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -54,6 +54,7 @@ gem 'bootstrap-sass'
 #gem "bullet", :group => "development"
 gem 'cancan'
 gem 'carrierwave'
+gem 'carrierwave-aws'
 gem 'chosen-rails'
 gem 'ckeditor', '4.0.2'
 #gem 'ckeditor' , github: 'cenotaph/ckeditor', ref: '0d8fa61a65d8814e18060e01233cf73ba5641a2d'
@@ -63,7 +64,7 @@ gem 'country_select'
 gem 'dalli'
 gem 'devise'
 gem 'devise-encryptable'
-gem 'fog'
+# gem 'fog'
 gem 'font-awesome-rails'
 gem 'formtastic', github: 'justinfrench/formtastic', branch: 'master'
 gem 'foundation-rails'
@@ -110,7 +111,7 @@ gem 'tinymce-rails'
 gem 'truncate_html'
 gem 'vimeo'
 gem 'wicked', '1.0.0'
-gem 'youtube_it', '2.4.0'
+gem 'youtube_it' #, '2.4.0'
 group :doc do
   # bundle ex rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

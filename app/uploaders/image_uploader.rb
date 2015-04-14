@@ -2,7 +2,7 @@
 
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  storage :fog  
+  storage :aws  
 
   def default_url
     ActionController::Base.helpers.asset_path("" + [version_name, "missing.png"].compact.join('_'))
