@@ -1,5 +1,8 @@
 %td{class: attendee.arrival_status == true ? :already_in : false}
   = [attendee.first_name, attendee.last_name].join(' ')
+  - unless attendee.guest_of.blank?
+    %br/
+    %small= attendee.guest_of
   - if current_user.has_role? :god
     .small= link_to (attendee.vip == true ? 'Remove' : 'Make') + ' VIP', toggle_vip_admin_attendee_path(attendee), remote: true, class: [:tiny, :button]
 %td{class: attendee.arrival_status == true ? :already_in : false}= attendee.email
