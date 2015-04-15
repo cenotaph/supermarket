@@ -12,6 +12,11 @@ class Admin::AttendeesController < Admin::BaseController
     end
   end
   
+  def checklist
+    @booths = Application.by_year(Year.where(:reveal_decisions => true).order("year DESC").first.id).booths.joins(:space).order('lower(spaces.business_name)')
+    @stands = Application.by_year(Year.where(:reveal_decisions => true).order("year DESC").first.id).stands.joins(:space).order('lower(spaces.business_name)')
+  end
+  
   def index
     @attendees = apply_scopes(Attendee).all.order(:id, :last_name, :first_name)
     if params[:by_year]

@@ -1,0 +1,45 @@
+.sixteen.columns
+  %h2 Booths
+  %table.checklist
+    %thead
+      %th #
+      %th Name
+      %th Artists exhibited (women)
+      %th Artists exhibited (men)
+      %th Artists exhibited (other)
+      %th Staff here (women)
+      %th Staff here (men)
+      %th Staff here (other)
+    %tbody
+      - @booths.each_with_index do |booth, index|
+        %tr{class: cycle('odd', 'even')}
+          %td= index + 1
+          %td.name= booth.space.business_name
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;          
+  %h2 Presentation Stands
+  %table.checklist
+    %thead
+      %th #
+      %th Name
+      %th Artists exhibited (women)
+      %th Artists exhibited (men)
+      %th Artists exhibited (other)
+      %th Staff here (women)
+      %th Staff here (men)
+      %th Staff here (other)
+    %tbody
+      - @stands.each_with_index do |booth, index|
+        %tr{class: cycle('odd', 'even')}
+          %td= index + 1
+          %td.name= booth.space.business_name
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;
+          %td &nbsp;          

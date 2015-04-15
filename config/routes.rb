@@ -86,6 +86,9 @@ Aim::Application.routes.draw do
         get :checkin
         get :toggle_vip
       end
+      collection do
+        get :checklist
+      end
     end
     resources :backgrounds
     resources :businesstypes

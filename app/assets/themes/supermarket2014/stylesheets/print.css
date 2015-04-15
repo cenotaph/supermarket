@@ -1,0 +1,24 @@
+header {
+  
+  display: none;
+  
+}
+
+footer {
+  display: none;
+}
+
+table.checklist {
+  page-break-after: always;
+  border-collapse: collapse;
+}
+
+
+table.checklist tr.odd {
+  background-color: #DEDEDE;
+}
+table.checklist td {
+  padding: 0.4rem;
+    border: 1px solid #222;
+  
+}
