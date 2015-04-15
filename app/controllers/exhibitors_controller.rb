@@ -17,7 +17,8 @@ class ExhibitorsController < ApplicationController
         redirect_to '/'
       end
     end
-    @page = Page.friendly.find('history') rescue nil
+    @page = Page.friendly.find('history') unless @year.year == Year.where(:reveal_decisions => true).order("year DESC").first.year rescue nil
+    set_meta_tags title: @application.space.business_name
   end
   
   def year
