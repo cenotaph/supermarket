@@ -328,23 +328,26 @@ header {
 .horiz_menu {
 
 
-  padding: 12px 0px;
+  padding: 12px 0px 8px 0px;
 
   
   nav.page_menu, nav.page_submenu  {
+    display: inline-flex;
     select {
       display: none;
     }
     ul {
-
+      margin:0;
+      padding: 0;
  
       li {
         margin-left: 0px;
         font-size: 0.85rem;
         float: left;
         list-style-type: none;
-        padding: 0px 15px 0px 15px;
+        padding: 4px 15px;
         border-left: 1px solid $menu;
+
         &.first {
           padding-left: 0px !important;
         }

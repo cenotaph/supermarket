@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.9'
+gem 'rails', '4.2.1'
 
 ruby '2.2.2'
 
@@ -100,11 +100,12 @@ gem 'randumb'
 gem 'ransack'
 # gem 'rails3-jquery-autocomplete',   github: 'cenotaph/rails3-jquery-autocomplete', branch: 'master'
 gem 'recaptcha'
+gem 'responders', '~> 2.0'
 gem 'rolify'
 gem 'ruby-growl', :group => :development
 gem 'safe_attributes'
 gem 'skeleton-rails'
-gem 'superfish-rails'
+# gem 'superfish-rails'
 gem 'textacular', '~> 3.0'
 gem 'themes_for_rails', github: 'boxcar21/themes_for_rails', branch: 'master'
 gem 'tinymce-rails'
