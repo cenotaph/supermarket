@@ -14,7 +14,7 @@
         .space.four.columns{:class => [(index == 0 ? :alpha : false), (index == 2 ? :omega : false)]}
           .title= link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => @year.year)
           .inside.alpha.column
-            .application_image.two.columns.alpha= image_tag app.any_image(:sidebar)
+            .application_image.two.columns.alpha= link_to image_tag(app.any_image(:sidebar)), exhibitor_year_path(:space => app.space, :year => @year.year)
             .hometown.column.one.omega= raw app.written_country.gsub(/,/, "<br />")
 
   .twelve.columns
@@ -27,7 +27,7 @@
         .space.four.columns{:class => [(index == 0 ? :alpha : false), (index == 2 ? :omega : false)]}
           .title= link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => @year.year)
           .inside.alpha.column
-            .application_image.two.columns.alpha= image_tag app.any_image(:sidebar)
+            .application_image.two.columns.alpha= link_to image_tag( app.any_image(:sidebar)), exhibitor_year_path(:space => app.space, :year => @year.year)
             .hometown.column.one.omega= raw app.written_country.gsub(/,/, "<br />")
             
 - else
