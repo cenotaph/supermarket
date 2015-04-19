@@ -325,6 +325,27 @@ header {
   }
 }
 
+.interested_in_2016 {
+  font-size: 1.1rem;
+  .left {
+    text-align: left;
+  }
+  .right {
+    text-align: right;
+  }
+  background-color: $light-orange;
+  color: white;
+  padding: 0.8rem;
+  a { 
+    color: white; 
+    &:hover {
+      color: red;
+    }
+  }
+  
+}
+
+
 .horiz_menu {
 
 

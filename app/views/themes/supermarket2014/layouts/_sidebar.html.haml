@@ -31,8 +31,15 @@
                   = t(:edit_link)
             .subtitle= t "supermarket2014.your_applications"
 
-            %p= t "supermarket2014.2015_is_open"
+            
             %ul
+              .year 
+                %strong 2016
+                - if space.interested_2016 == true
+                  %p You have pre-registered for the 2016 fair. We will contact you when the full application form is ready.
+                - else
+                  %li.apply_2014
+                    = link_to 'Interested in 2016?', interested_2016_applications_path
               .year
                 %strong= @site_year.year.to_s
               - if @site_year.open?

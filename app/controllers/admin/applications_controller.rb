@@ -48,6 +48,8 @@ class Admin::ApplicationsController < Admin::BaseController
     end
   end
    
+
+  
   def toggle_late
     @application = Application.find(params[:id])
     @application.toggle(:allow_late)

@@ -1,0 +1,17 @@
+.container
+  .ten.columns  
+    %h2 Are you interested in Supermarket 2016?
+  
+  - current_user.spaces.each do |space|  
+    .ten.columns
+      %p
+        If
+        = space.business_name
+        would like to exhibit in 2016, you can apply now to pre-qualify for an invitation which can be used to apply for individual arts funding.
+    
+    .ten.columns.big_button
+      = button_to 'Yes, we are interested in 2016!', interested_2016_space_path(space), method: :get
+
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'       

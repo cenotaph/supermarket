@@ -84,6 +84,15 @@ class SpacesController < ApplicationController
     end
   end
 
+  def interested_2016
+    @space = Space.find(params[:id])
+    if @space.approved_users.include?(current_user)
+      @space.interested_2016 = true
+      @space.save
+    end
+
+  end
+
 
   def map
     # build scopes

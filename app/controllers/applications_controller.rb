@@ -105,6 +105,10 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def interested_2016
+    
+  end
+  
   def notify_of_decision
     @application = Application.find(params[:id])
     @application.space.space_users.approved.map(&:user).each do |u|

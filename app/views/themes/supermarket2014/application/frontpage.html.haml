@@ -1,4 +1,11 @@
-
+- if user_signed_in?
+  .interested_in_2016
+    .container
+      .eight.columns.alpha.right
+        Interested in exhibiting in 2016?
+      .eight.columns.omega.left
+        = link_to 'More info >>>', interested_2016_applications_path
+        
 %h2{:style => 'line-height: 1.4em; margin-bottom: 0px'}
   - unless @site_year.above_carousel_html.blank?
     - if @site_year.center_above_carousel_text == true

@@ -12,7 +12,7 @@ Aim::Application.routes.draw do
     get :browse, :on => :collection
     get :clear_filters, :on => :collection
     get :map, :on => :collection
-
+    get :interested_2016, on: :member
   end
     # 
   # resources :users do
@@ -59,10 +59,14 @@ Aim::Application.routes.draw do
   get '/initiatives/:id', to: "spaces#aim_profile", as: 'initiatives'
   get '/exhibitor/:id', to: "spaces#show_history", as: 'supermarket_history'
   get '/exhibitor/:space/:year', to: "exhibitors#show", as: 'exhibitor_year'
+
   resources :pages
   resources :performanceapplications
   resources :posts
   resources :applications do
+    collection do
+      get :interested_2016
+    end
     member do
       get :terms
       get :notify_of_decision

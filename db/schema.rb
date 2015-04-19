@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415135636) do
+ActiveRecord::Schema.define(version: 20150417122852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -600,6 +600,7 @@ ActiveRecord::Schema.define(version: 20150415135636) do
     t.datetime "updated_at"
     t.boolean  "denied",                                   default: false, null: false
     t.integer  "denied_by"
+    t.boolean  "interested_2016"
   end
 
   add_index "spaces", ["exhibitionspacetype_id"], name: "index_spaces_exhibitionspacetype", using: :btree

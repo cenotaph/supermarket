@@ -1,0 +1,7 @@
+.ten.columns.alpha
+  %h2 That's all for now!
+
+  %p Thank you for registering your interest in next year's Supermarket Art Fair. We will contact you with more information when it becomes available.
+- if user_signed_in?
+  = content_for :sidebar do
+    = render :partial => 'layouts/sidebar'     
