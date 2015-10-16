@@ -83,6 +83,8 @@ class Application < ActiveRecord::Base
       'small'
     when 4
       'stand'
+    when 5
+      'networking'
     else
       'unknown'
     end

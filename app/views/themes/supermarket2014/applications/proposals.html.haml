@@ -1,8 +1,8 @@
 = semantic_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014}, :method => :put) do |f|
   %p= t "supermarket2014.proposal_blurb"
-  = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), :input_html => {:required => true}
+  = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), hint: t("supermarket2014.network_nevermind")
 
-  = f.input :organisation_description, :label => "Presentation text (what you will exhibit this year at Supermarket):"
+  = f.input :organisation_description, :label => "Presentation text (what you will exhibit this year at Supermarket):", hint: t("supermarket2014.network_nevermind")
   - unless @application.space.applications.to_a.delete_if{|x| x == @application}.empty?
     %li
       %p

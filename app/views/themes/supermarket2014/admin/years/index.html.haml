@@ -12,3 +12,5 @@
         = year.reveal_decisions == true ? '' : ' not '
         revealed, editing of applications
         = year.allow_editing == true ? 'ALLOWED' : 'not allowed'
+        
+  %p= link_to 'Create new year', new_admin_year_path

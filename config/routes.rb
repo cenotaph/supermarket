@@ -45,11 +45,11 @@ Aim::Application.routes.draw do
 
   
   root 'application#frontpage'
-  get '/apply/2015/:space_id', to: 'applications#new', :year => 2015
-  get '/apply/2015', to: 'applications#applylanding'
+  get '/apply/2016/:space_id', to: 'applications#new', :year => 2016
+  get '/apply/2016', to: 'applications#applylanding'
   get '/invited', to: 'applications#invited'
   post '/invited', to: 'applications#check_invited'
-  get '/invited/2015/:space_id', to: 'applications#allow_late', :year => 2015
+  get '/invited/2016/:space_id', to: 'applications#allow_late', :year => 2016
   get '/admin', to: 'admin/dashboard#index', as: :admin_dashboard
   get '/exhibitors/:year', to: 'exhibitors#year'
 

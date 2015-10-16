@@ -37,7 +37,7 @@
         - if app.applicationcomments.empty?
           0
         - else
-          = "#{app.applicationcomments_count}, last by #{app.applicationcomments.sort_by(&:created_at).last.user.display_name}"
+          = "#{app.applicationcomments_count}, by #{app.applicationcomments.sort_by(&:created_at).map{|x| x.user.display_name}.uniq.join(', ')}"
       .one.columns= time_ago_in_words(app.updated_at) + " ago"
       .one.column= raw(app.red_spot == true ? 'yes' : '&nbsp;')
       .two.columns

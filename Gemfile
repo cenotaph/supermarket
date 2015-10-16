@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.4'
 
 ruby '2.2.2'
 
@@ -107,7 +107,7 @@ gem 'safe_attributes'
 gem 'skeleton-rails'
 # gem 'superfish-rails'
 gem 'textacular', '~> 3.0'
-gem 'themes_for_rails', github: 'boxcar21/themes_for_rails', branch: 'master'
+gem 'themes_for_rails', github: 'cenotaph/themes_for_rails', branch: 'master'
 gem 'tinymce-rails'
 gem 'truncate_html'
 gem 'vimeo'
