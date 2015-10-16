@@ -1,6 +1,7 @@
 = semantic_form_for(@application, :url =>  (@application.new_record? ? '/applications' : wizard_path(:address_and_location, :application_id => @application.id)), :method =>  (@application.new_record? ? :post : :put), :html => {:id => :application_2014} ) do |f|
   %p= t "supermarket2014.application_intro_text"
   %p= t "supermarket2014.swedish_ok"
+  %p This year, you can apply for a large or small exhibition booth (for exhibition spaces), presentation stand (for other organisations) and/or to be a Professional Networking Participant (participate without exhibiting). Specific information will be found in the application.
 
   = f.input :space_id, :as => :hidden, :input_html => {:value => @application.space_id }
   = f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id }

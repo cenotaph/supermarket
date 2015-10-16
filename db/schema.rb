@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417122852) do
+ActiveRecord::Schema.define(version: 20151016122005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20150417122852) do
     t.boolean  "accepted_terms"
     t.string   "accepting_name",            limit: 255
     t.datetime "notified_of_decision"
+    t.boolean  "networking_only",                       default: false,                                                                                                                                                                                                                                   null: false
   end
 
   add_index "applications", ["year_id"], name: "index_applications_on_year_id", using: :btree
