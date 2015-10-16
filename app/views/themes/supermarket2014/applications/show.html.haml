@@ -94,7 +94,11 @@
       - unless @application.booth_applied.blank?
         %li
           %label= t :booth_applied_for
-          .appval= t ("supermarket2014.booth_#{@application.booth_type}")
+          .appval
+            = t ("supermarket2014.booth_#{@application.booth_type}")
+            - if @application.networking_only == true
+              (Professional Networking Programme)
+          
       %li
         %label= t :supermarket_proposal
         .appval.blocktext

@@ -50,6 +50,9 @@
                 - elsif space.applications.where(:year_id => Year.find_by(:year => 2016).id).to_a.delete_if{|x| x.finished?}.empty?
 
                   .view
+                    .submitted_at
+                      = t(:submitted) + ": "
+                      = l space.applications.where(:year_id => Year.find_by(:year => 2016).id).first.submitted_at, :format => :long rescue nil
                     = link_to t(:view_application), space.applications.where(:year_id => Year.find_by(:year => 2016).id).first
 
               - else

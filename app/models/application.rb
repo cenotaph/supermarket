@@ -84,7 +84,7 @@ class Application < ActiveRecord::Base
     when 4
       'stand'
     when 5
-      'no stand'
+      'no_stand'
     else
       'unknown'
     end
