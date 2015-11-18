@@ -1,0 +1,26 @@
+<h2><%= t :change_your_password %></h2>
+
+
+
+<%= semantic_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :id => :new_password_form, :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div>
+  <%= f.input :password, :autofocus => true, :label => t("supermarket2014.new_password"), :input_html => {:required => true}  %></div>
+
+  <div>
+  <%= f.input :password_confirmation, :label => t("supermarket2014.confirm_new_password"), :input_html => {:required => true}  %></div>
+
+  <div><%= f.action :submit, :label => raw("<i class='icon-thumbs-up icon-large'></i>") + t(:set_new_password), :as => :button,  :button_html => {:class => :next} %></div>
+<% end %>
+
+<script type="text/javascript">
+$('#new_password_form').validate();
+</script>
+<%= content_for :sidebar do %>
+<div class="sidebar_box">
+  <h2><%= t :already_have_account %>
+  </h2>
+  <%= render "devise/shared/links" %>
+<% end %>
