@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016122005) do
+ActiveRecord::Schema.define(version: 20151119134231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20151016122005) do
     t.string   "exhibitor_state",           limit: 255
     t.string   "hometown",                  limit: 255
     t.string   "application_image",         limit: 255
-    t.text     "staff",                                 default: "Please fill in suitable titles for these roles, if appropriate, and delete the rest of the text.\n\nMembers: If you have more than 20 members, just write the number of members.\nBoard:\nCo-directors:\nManagers:\nCo-founders:\n!\n"
+    t.text     "staff"
     t.date     "submitted_at"
     t.text     "supermarket_proposal"
     t.integer  "booth_applied"
@@ -114,13 +114,13 @@ ActiveRecord::Schema.define(version: 20151016122005) do
     t.boolean  "need_darker_room"
     t.boolean  "wants_open_structure"
     t.string   "vat_number",                limit: 255
-    t.boolean  "allow_late",                            default: false,                                                                                                                                                                                                                                   null: false
+    t.boolean  "allow_late",                            default: false, null: false
     t.integer  "applicationcomments_count",             default: 0
     t.boolean  "red_spot"
     t.boolean  "accepted_terms"
     t.string   "accepting_name",            limit: 255
     t.datetime "notified_of_decision"
-    t.boolean  "networking_only",                       default: false,                                                                                                                                                                                                                                   null: false
+    t.boolean  "networking_only",                       default: false, null: false
   end
 
   add_index "applications", ["year_id"], name: "index_applications_on_year_id", using: :btree
