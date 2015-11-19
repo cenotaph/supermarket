@@ -192,13 +192,13 @@
       .twelve.columns
         %p= t("supermarket2014.leave_comment_blurb")
       .sixteen.columns
-        = semantic_form_for(Applicationcomment.new, :url => comment_admin_application_path(@application)) do |f|
+        = semantic_form_for(Applicationcomment.new(:user_id => current_user.id), :url => comment_admin_application_path(@application)) do |f|
           .two.columns.alpha
             = image_tag current_user.avatar
             %strong
               = current_user.display_name
           .eight.columns
-            = f.input :user_id, :as => :hidden, :value => current_user.id
+            = f.input :user_id, :as => :hidden, :data => {:value => current_user.id }
             = f.input :comment, :as => :text
           = f.actions do
             = f.submit
