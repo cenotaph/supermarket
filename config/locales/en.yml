@@ -30,6 +30,7 @@ en:
   caption: 'Caption:'
   further_links: 'Further links:'
   login: 'Sign in'
+  staff: 'People running the space:'
   subscribe_to_newsletter: 'Subscribe to our newsletter'
   remove_url: 'Remove this link'
   change_decision: 'Change decision'
