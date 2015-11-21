@@ -6,6 +6,12 @@
 
   %h2= @application.space.name
   %h3= @application.hometown
+  - if user_signed_in?
+
+    - if current_user.is_staff?
+      %h4
+        submitted by
+        = @application.user.email
 
   - if @application.finished?
     .submitted
