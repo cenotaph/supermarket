@@ -70,6 +70,8 @@ class Application < ActiveRecord::Base
       'not accepted'
     when 5
       'maybe'
+    when 6
+      'yes - PNP'
     else
       'not decided yet'
     end
@@ -154,7 +156,7 @@ class Application < ActiveRecord::Base
       if exhibitor_country_changed?
         space.visiting_country = exhibitor_country
       end
-      if [1,2,3].include?(booth_granted)
+      if [1,2,3,6].include?(booth_granted)
         space.approved = true
       end
       # if booth_granted == 4
