@@ -19,6 +19,8 @@ class ApplicationMailer < ActionMailer::Base
           render "presentation_stand_acceptance"
         elsif @application.booth_granted == 5
           render "maybe"
+        elsif @application.booth_granted == 4
+          render "no"
         end
       }
     end
