@@ -68,6 +68,7 @@ button {
   }
 }
 #main {
+
 //    background: url('/assets/supermarket2014/images/BG_mindmap1.gif') repeat top left;
     background-color: #FEFEF5;
     padding-bottom: 35px;
@@ -751,4 +752,31 @@ iframe.twitter-timeline {
 p.registration_error {
   font-size: 1.2rem;
   color: red;
+}
+
+fieldset.pnp {
+  margin-top: 3rem;
+  
+  legend {
+    font-size: 0.9rem;
+    margin-left: 80px;
+    font-weight: 400;
+  }
+  li {
+    margin-left: 0.4rem;
+    clear: none;
+  }
+  
+}
+
+.pnp_submit {
+  fieldset.actions {
+    margin-left: 225px;
+    clear: both;
+  }
+}
+
+.pnps {
+  padding-left: 0.53rem;
+  padding-right: 0.53rem;
 }

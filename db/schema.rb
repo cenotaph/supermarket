@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119134231) do
+ActiveRecord::Schema.define(version: 20160130110119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -419,6 +419,42 @@ ActiveRecord::Schema.define(version: 20151119134231) do
   add_index "performanceapplications", ["user_id"], name: "index_performanceapplications_on_user_id", using: :btree
   add_index "performanceapplications", ["year_id"], name: "index_performanceapplications_on_year_id", using: :btree
 
+  create_table "pnps", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "postal_address"
+    t.string   "city"
+    t.string   "country"
+    t.string   "postcode"
+    t.string   "organisation"
+    t.string   "other_organisations"
+    t.string   "others_from_same"
+    t.boolean  "programme_meetings"
+    t.boolean  "programme_party"
+    t.boolean  "programme_discussion"
+    t.boolean  "programme_lounge"
+    t.boolean  "programme_exhibitions"
+    t.boolean  "programme_exhibitors"
+    t.boolean  "programme_talks"
+    t.boolean  "programme_performances"
+    t.boolean  "hope_newpartners"
+    t.boolean  "hope_newknowledge"
+    t.boolean  "hope_othercountries"
+    t.boolean  "hope_exhibitionpossibilities"
+    t.boolean  "hope_supermarketoverall"
+    t.integer  "role_in_scene"
+    t.string   "languages"
+    t.boolean  "willing_to_do_survey"
+    t.string   "planning_to_write"
+    t.text     "other_comments"
+    t.integer  "year_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "pnps", ["year_id"], name: "index_pnps_on_year_id", using: :btree
+
   create_table "post_translations", force: :cascade do |t|
     t.integer  "post_id",                null: false
     t.string   "locale",     limit: 255, null: false
@@ -712,4 +748,5 @@ ActiveRecord::Schema.define(version: 20151119134231) do
     t.date     "registration_deadline"
   end
 
+  add_foreign_key "pnps", "years"
 end

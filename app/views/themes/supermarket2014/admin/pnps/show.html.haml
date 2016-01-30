@@ -1,0 +1,24 @@
+%h2 PNP application
+
+%h3
+  Year:
+  = @pnp.year.year
+  
+  
+%fieldset
+  %legend Who?
+  
+  %p
+    %strong= @pnp.name
+    %br/
+    = @pnp.organisation
+    %br/
+    = @pnp.email
+    %br/
+    = @pnp.phone_number
+    %br/
+    = @pnp.postal_address
+    %br/
+    = @pnp.postcode
+    = @pnp.city
+    = Country[@pnp.country].name

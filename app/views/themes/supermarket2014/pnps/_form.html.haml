@@ -1,0 +1,59 @@
+= semantic_form_for (@pnp) do |f|
+  = f.input :year_id, as: :hidden
+  = f.input :name, label: 'Your name', input_html: {:required => true }
+  = f.input :email, label: 'Email', input_html: {:required => true }
+  = f.input :phone_number,  label: 'Contact phone number', input_html: {:required => true }
+  = f.input :postal_address, label: 'Postal address' , input_html: {:required => true }
+  = f.input :city, input_html: {:required => true }
+  = f.input :country, include_blank: 'Please choose...', input_html: {:required => true }
+  = f.input :postcode, input_html: {:required => true }
+  = f.input :organisation, label: 'Are you representing any organisation/s? If so, which ones?'
+  = f.input :other_organisations,  label: 'Do you have any other connections to artist-run spaces/initiatives?'
+  = f.input :others_from_same, label: 'Is there more than one person from the same organisation applying? If so, who?'
+  %fieldset.pnp
+    %legend Which parts of Supermarket and the PNP programme are you the most intested in? (select at most 5)
+    = f.input :programme_meetings, label: 'Taking part in the Meetings Programme', as: :boolean, input_html: { class: :limit_5 }
+    = f.input :programme_party, label: 'Exhibitor gatherings and Exhibitor party', as: :boolean, input_html: { class: :limit_5 }
+    = f.input :programme_discussion, label: 'Special discussion seminar', as: :boolean, input_html: { class: :limit_5 }
+    = f.input :programme_lounge, label: 'Access to an Exhibitor lounge (a fixed point)', as: :boolean, input_html: { class: :limit_5 }
+    = f.input :programme_exhibitions, label: 'The exhibitions', as: :boolean, input_html: { class: :limit_5 }
+    = f.input :programme_exhibitors, label: 'To be able to meet exhibitors (representatives and artists)', input_html: { class: :limit_5 }
+    = f.input :programme_talks, label: 'The talks and panel discussions', as: :boolean, input_html: { class: :limit_5 }
+    = f.input :programme_performances, label: 'The performances', input_html: { class: :limit_5 }
+
+  %fieldset.pnp
+    %legend What would you hope to obtain?
+
+    = f.input :hope_newpartners, label: 'New partners, new artists', as: :boolean
+    = f.input :hope_newknowledge, label: 'New knowledge about how to run an art space', as: :boolean
+    = f.input :hope_othercountries, label: 'Knowledge about the situation in other countries', as: :boolean
+    = f.input :hope_exhibitionpossibilities, label: 'Contacts for my own exhibition possibilities', as: :boolean
+    = f.input :hope_supermarketoverall, label: 'As much of the Supermarket experience as possible', as: :boolean
+
+
+
+  = f.input :role_in_scene, as: :select, collection: [['Artist', 1], ['Curator', 2], ['Art theorist', 3], ['Writer/critic', 4], ['Entrepreneur', 5], ['Institution/gallery/museum employee', 6], ['Arts administrator', 7], ['Art lecturer/teacher', 8], ['Other', 9]],  label: 'How do you best describe your role in the art scene?', include_blank: 'Please choose...', input_html: {:required => true }
+  -#, Art theorist, Writer/critic, Entrepreneur, Institution/gallery/museum employee, Arts administrator, Art lecturer/teacher, Other
+
+  = f.input :languages, label: 'What languages do you speak?', input_html: {:required => true }
+
+  = f.input :willing_to_do_survey, label: 'Would you willing to spend two hours to fill in a survey and write down feedback after Supermarket?'
+
+  = f.input :planning_to_write, label: 'Are you planning to write something about the event? If so, what?', hint: 'A report, article, blog, photo reportage, etc.?'
+
+  = f.input :other_comments, label: 'Any other comments that you think could help us to plan a good PNP experience for you and the others?'
+  .pnp_submit
+    = f.actions do
+      = f.action :submit, :label => raw("<i class='fa fa-check icon-large'></i> ") + t(:submit_your_application), :as => :button,  :button_html => {:class => :completed}
+  
+= content_for :jquery do
+  :plain
+    $('form#new_pnp').validate();
+  
+    $('input.limit_5').on('change', function(evt) {
+   
+       if($('input.limit_5:checked').length > 5) {
+ 
+           this.checked = false;
+       }
+    });

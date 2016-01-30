@@ -1,0 +1,20 @@
+%h3 PNP applications
+
+.cms_grid
+
+  %table 
+    %thead
+      %th id
+      %th Name
+      %th Organisation
+      %td Where
+      %th Actions
+    %tbody
+      - @pnps.each do |pnp|
+        %tr
+          %td= pnp.id
+          %td= pnp.name
+          %td= pnp.organisation
+          %td= [pnp.city, pnp.country].join(', ')
+          %td
+            = link_to 'View', [:admin, pnp]
