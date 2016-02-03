@@ -46,6 +46,9 @@ class Admin::ApplicationsController < Admin::BaseController
     if params[:nomalongen] == "1"
       @nomalongen = true
     end
+    if params[:shortversion] == "1"
+      @shortversion = true
+    end
   end
    
 

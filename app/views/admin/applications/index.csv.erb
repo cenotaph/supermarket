@@ -1,5 +1,7 @@
 <% if params[:nomalongen] == "1" %>
 Id,Organisation Name,Organisation Email,Organisation Contact Email,Contact First Name,Contact Last Name,Contact Email,Contact Address1,Contact Address2,Contact City,Contact Postcode,Contact State,Contact Country,Contact Phone,Exhibitor Address1,Exhibitor Address2,Exhibitor City,Exhibitor Postcode,Exhibitor State,Exhibitor Country,Exhibitor Phone,Websites,Hometown,Booth Applied,Booth Granted,Accepted Terms,Special Needs,Need Darker Room,Wants Open Structure,Vat Number
+<% elsif params[:shortversion] == "1" %>
+Organisation Name,Hometown,Booth Granted
 <% else %>
 Id,Organisation Name,Organisation Email,Organisation Contact Email,Contact First Name,Contact Last Name,Contact Email,Contact Address1,Contact Address2,Contact City,Contact Postcode,Contact State,Contact Country,Contact Phone,Exhibitor Address1,Exhibitor Address2,Exhibitor City,Exhibitor Postcode,Exhibitor State,Exhibitor Country,Exhibitor Phone,Websites,Hometown,Booth Applied,Booth Granted,Accepted Terms,Apply to Malongen,Malongen Use,Special Needs,Need Darker Room,Wants Open Structure,Vat Number
 <% end %>
@@ -7,6 +9,8 @@ Id,Organisation Name,Organisation Email,Organisation Contact Email,Contact First
    @applications.each do |cs|
      if params[:nomalongen] == "1"
        csv << [cs.id,  cs.organisation_name, cs.space.email, cs.space.contact_email, cs.contact_first_name, cs.contact_last_name, cs.contact_email, cs.contact_address1,cs.contact_address2,cs.contact_city,cs.contact_postcode,cs.contact_state,cs.contact_country.blank? ? 'not specified' : Country[cs.contact_country].name,cs.contact_phone, cs.exhibitor_address1,cs.exhibitor_address2,cs.exhibitor_city,cs.exhibitor_postcode,cs.exhibitor_state,cs.exhibitor_country.blank? ? 'not specified' : Country[cs.exhibitor_country].name ,cs.exhibitor_phone,cs.applicationlinks.map(&:url).join(';'), cs.hometown, cs.booth_type, cs.granted_result, cs.accepted_terms, cs.special_needs, cs.need_darker_room, cs.wants_open_structure, cs.vat_number]
+     elsif params[:shortversion] == "1"
+       csv << [cs.organisation_name, cs.hometown_or_city, cs.exhibitor_country.blank? ? 'not specified' : Country[cs.exhibitor_country].name , cs.granted_result  ]
      else
        csv << [cs.id, cs.organisation_name,cs.space.email, cs.space.contact_email, cs.contact_first_name, cs.contact_last_name, cs.contact_email, cs.contact_address1,cs.contact_address2,cs.contact_city,cs.contact_postcode,cs.contact_state,cs.contact_country.blank? ? 'not specified' : Country[cs.contact_country].name,cs.contact_phone, cs.exhibitor_address1,cs.exhibitor_address2,cs.exhibitor_city,cs.exhibitor_postcode,cs.exhibitor_state,cs.exhibitor_country.blank? ? 'not specified' : Country[cs.exhibitor_country].name ,cs.exhibitor_phone,cs.applicationlinks.map(&:url).join(';'), cs.hometown, cs.booth_type, cs.granted_result, cs.accepted_terms, cs.apply_to_malongen, cs.malongen_use, cs.special_needs, cs.need_darker_room, cs.wants_open_structure, cs.vat_number]      
      end

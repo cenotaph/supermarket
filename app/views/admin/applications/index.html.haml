@@ -3,6 +3,8 @@
 %p
   = link_to 'export as CSV', "/admin/applications.csv?by_year=#{params[:by_year] ||= 1 }"
   = link_to '(without Malongen)', "/admin/applications.csv?by_year=#{params[:by_year] ||= 1 }&nomalongen=1"
+  |
+  = link_to '(short version)', "/admin/applications.csv?by_year=#{params[:by_year] ||= 1 }&shortversion=1"
 %p
   Restrict by year:
   = select_tag :year_filter, options_from_collection_for_select(Year.order(:year).reverse, :id, :year, @year_scope), {:include_blank => true, :onchange => "document.location.href='/admin/applications?by_year=' + $(this).val()"}

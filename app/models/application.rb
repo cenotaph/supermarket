@@ -169,11 +169,23 @@ class Application < ActiveRecord::Base
     end
   end
   
+  def hometown_or_city
+    if hometown.blank?
+      if exhibitor_city.blank?
+        space.city.to_s
+      else
+        exhibitor_city.to_s
+      end
+    else
+      hometown.to_s
+    end
+  end
+  
   def written_country
     if hometown.blank?
       out = ''
       if exhibitor_city.blank?
-        out += space.city.humanize + ', '
+        out += space.city.to_s.humanize + ', '
       else
         out += exhibitor_city.humanize + ', '
       end
