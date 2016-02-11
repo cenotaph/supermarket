@@ -53,7 +53,7 @@ Aim::Application.routes.draw do
   get '/invited/2016/:space_id', to: 'applications#allow_late', :year => 2016
   get '/admin', to: 'admin/dashboard#index', as: :admin_dashboard
   get '/exhibitors/:year', to: 'exhibitors#year'
-
+  get '/pnp', to: 'pnps#index'
   get '/press', to: 'pressreleases#index'
   get '/browse', to: "spaces#browse"
   get '/filter_by/:filter_type/:value', to: "spaces#add_to_scope"
