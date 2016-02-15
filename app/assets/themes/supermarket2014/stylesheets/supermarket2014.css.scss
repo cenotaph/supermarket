@@ -480,8 +480,14 @@ header {
       }
     }
   }  
-  
-  
+  #front_carousel .slide .image {
+    min-height: 100px;
+    width: 100%;
+  }
+  .above_carousel {
+    padding: 1rem;
+    max-width: 95%;
+  }
 
   
 }

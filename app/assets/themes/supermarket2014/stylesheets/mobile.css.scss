@@ -28,5 +28,21 @@
     }
   }
   
+
   
+
+}
+
+@media only screen and (min-width: 700px) {
+  
+  #front_carousel {
+    margin: 30px 0px;
+
+    clear: left;
+    .slide {
+      .image {
+        min-height: 420px;
+      }
+    }
+  }
 }
