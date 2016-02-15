@@ -1,12 +1,12 @@
 
-        
-%h2{:style => 'line-height: 1.4em; margin-bottom: 0px'}
+.above_carousel        
+
   - unless @site_year.above_carousel_html.blank?
     - if @site_year.center_above_carousel_text == true
       %center= raw @site_year.above_carousel_html
     - else
       = raw @site_year.above_carousel_html
-  
+
   
 - unless @front_carousel.empty?
   #front_carousel
