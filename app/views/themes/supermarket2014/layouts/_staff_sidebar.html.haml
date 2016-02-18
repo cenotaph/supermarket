@@ -23,6 +23,11 @@
       = link_to  admin_applications_path do
         =fa_icon 'globe'
         Applications
+    - if can? :manage, Pnp
+      %li
+        = link_to admin_pnps_path do
+          = fa_icon 'glass'
+          PnP Apps
     - if can? :manage, Performanceapplication
       %li
         = link_to admin_performanceapplications_path do
@@ -61,6 +66,7 @@
         = link_to admin_menus_path do
           =fa_icon 'list-ul'
           Menu config
+      
     - if can? :manage, User
       %li
         = link_to admin_users_path do

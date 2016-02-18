@@ -22,3 +22,83 @@
     = @pnp.postcode
     = @pnp.city
     = Country[@pnp.country].name
+  - unless @pnp.other_organisations.blank?
+    %p 
+      Connection to other organisations:
+      = @pnp.other_organisations
+  - unless @pnp.others_from_same.blank?
+    %p
+      Also applying from
+      = @pnp.organisation
+      = ": #{@pnp.others_from_same}"
+      
+%fieldset
+  %legend Most interested in?
+  %ul
+    - unless @pnp.programme_meetings.blank?
+      %li Taking part in the Meetings Programme
+    - unless @pnp.programme_party.blank?
+      %li Exhibitor gatherings and Exhibitor party
+    - unless @pnp.programme_discussion.blank?
+      %li Special discussion seminar
+    - unless @pnp.programme_lounge.blank?
+      %li Access to an Exhibitor lounge 
+    - unless @pnp.programme_exhibitions.blank?
+      %li The exhibitions                      
+    - unless @pnp.programme_exhibitors.blank?
+      %li To be able to meet exhibitors 
+    - unless @pnp.programme_talks.blank?
+      %li The talks and panel discussions
+    - unless @pnp.programme_performances.blank?
+      %li The performances
+
+%fieldset
+  %legend Hoping to obtain:
+  %ul
+    - unless @pnp.hope_newpartners.blank?
+      %li New partners, new artists
+    - unless @pnp.hope_newknowledge.blank?
+      %li New knowledge about how to run an art space
+    - unless @pnp.hope_othercountries.blank?
+      %li Knowledge about the situation in other countries
+    - unless @pnp.hope_exhibitionpossibilities.blank?
+      %li Contacts for my own exhibition possibilities 
+    - unless @pnp.hope_supermarketoverall.blank?
+      %li As much of the Supermarket experience as possible
+      
+  
+%fieldset
+  %p 
+    Role in scene:
+    - case @pnp.role_in_scene 
+      - when 1
+        Artist
+      - when 2
+        Curator
+      - when 3
+        Art theorist
+      - when 4
+        Writer/critic
+      - when 5
+        Entrepreneur
+      - when 6
+        Institution/gallery/museum employee
+      - when 7
+        Arts administrator
+      - when 8
+        Art lecturer/teacher
+      - when 9
+        Other
+  %p
+    Speaks languages:
+    = @pnp.languages
+  %p
+    Willing to spend two hours on survey:
+    = @pnp.willing_to_do_survey
+  %p
+    Planning to write:
+    = @pnp.planning_to_write
+    
+  %p 
+    Other comments:
+    = @pnp.other_comments
