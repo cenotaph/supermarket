@@ -3,6 +3,7 @@
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       = display_meta_tags :site => 'Supermarket Art Fair'
+      %meta{property: 'og:description', content: 'SUPERMARKET - Stockholm Independent Art Fair, an international artist-run art fair' }
       %link{:href => theme_image_path('favicon_32.ico'), :rel => "shortcut icon"}/
       %meta{:content => content_for?(:description) ? yield(:description) : "Supermarket", :name => "description"}
       %link{:href => posts_path(:format => :rss), :rel => "alternate", :title => "Supermarket Art Fair", :type => "application/rss+xml"}/
