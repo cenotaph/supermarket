@@ -1,8 +1,8 @@
 = semantic_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014}, :method => :put) do |f|
   %p= t "supermarket2014.proposal_blurb"
-  = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), hint: t("supermarket2014.network_nevermind")
+  = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), hint: t("supermarket2014.network_nevermind"), input_html: {disabled: (@application.approved? ? :disabled : false ) }
 
-  = f.input :organisation_description, :label => "Presentation text (what you will exhibit this year at Supermarket):", hint: t("supermarket2014.network_nevermind")
+  = f.input :organisation_description, :label => "Presentation text (what you will exhibit this year at Supermarket):", hint: t("supermarket2014.network_nevermind"), input_html: {disabled: (@application.approved? ? :disabled : false ) }
   - unless @application.space.applications.to_a.delete_if{|x| x == @application}.empty?
     %li
       %p
@@ -10,13 +10,13 @@
     = f.fields_for :space do |ff|
       = ff.input :short_description, input_html: { value: strip_tags(ff.object.short_description) }, hint: 'Please keep this description under 1200 characters.', label: "Overall description of your initiative (do not write about this specific year's exhibition at Supermarket): "
     
-      = ff.input :decisionmakers_organisation, :label => t("supermarket2014.decision_makers_organisation")
-      = ff.input :decisionmakers_programming, :label => t("supermarket2014.decision_makers_programming")
-      = ff.input :founding_year, :label => t("supermarket2014.founding_year"), :input_html => {:required => true}
-      = ff.input :is_active, :label => t("supermarket2014.is_active")
-      = ff.input :year_of_closing, :label => t("supermarket2014.year_of_closing")
-      = ff.input :organisationtypes, :as => :check_boxes, :label => t("aim.organisation_type_fieldset"), :hint => t("aim.organisation_type_hint")
-
+      = ff.input :decisionmakers_organisation, :label => t("supermarket2014.decision_makers_organisation"), input_html: {disabled: (@application.approved? ? :disabled : false ) }
+      = ff.input :decisionmakers_programming, :label => t("supermarket2014.decision_makers_programming"), input_html: {disabled: (@application.approved? ? :disabled : false ) }
+      = ff.input :founding_year, :label => t("supermarket2014.founding_year"), :input_html => {:required => true, disabled: (@application.approved? ? :disabled : false ) }
+      = ff.input :is_active, :label => t("supermarket2014.is_active"), input_html: {disabled: (@application.approved? ? :disabled : false ) }
+      = ff.input :year_of_closing, :label => t("supermarket2014.year_of_closing"), input_html: {disabled: (@application.approved? ? :disabled : false ) }
+      - unless @application.approved?
+        = ff.input :organisationtypes, :as => :check_boxes, :label => t("aim.organisation_type_fieldset"), :hint => t("aim.organisation_type_hint")
     
   = f.input :form_direction, :input_html => { :value => "forward"}, :as => :hidden
   = f.actions do
