@@ -1,0 +1,11 @@
+.cms_grid
+  .sixteen.columns
+    %h2 Processing import...
+    
+    - @imports.each do |line|
+      %br/
+      = line[0]
+      = line[1].join(' / ')
+    
+  .sixteen.columns
+    = link_to 'Return to attendee list', '/admin/attendees'

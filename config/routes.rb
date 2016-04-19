@@ -93,6 +93,8 @@ Aim::Application.routes.draw do
         get :toggle_vip
       end
       collection do
+        get :import
+        post :process_import
         get :checklist
       end
     end

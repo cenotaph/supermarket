@@ -6,7 +6,8 @@ class Attendee < ActiveRecord::Base
   before_validation :generate_verification_code
   
   scope :by_year, ->(x) { where(:year_id => x)}
-
+  scope :arrived, ->() { where(arrival_status: true)}
+  scope :not_arrived, ->() { where("arrival_status is not true")}
   
   def generate_verification_code
     self.verification_code = loop do

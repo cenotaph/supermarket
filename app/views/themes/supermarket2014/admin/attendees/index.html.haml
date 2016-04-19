@@ -2,11 +2,20 @@
   .attendees_list
     %p
       = link_to 'export as CSV', "/admin/attendees.csv?by_year=#{params[:by_year] ||= 1 }"
-
+      |
+      = link_to 'import CSV', "/admin/attendees/import"
     %p
       Restrict by year:
       = select_tag :year_filter, options_from_collection_for_select(Year.order(:year).reverse, :id, :year, @year_scope), {:include_blank => true, :onchange => "document.location.href='/admin/attendees?by_year=' + $(this).val()"}
       
+    %p
+      %span#total_count= pluralize(@attendees.size, 'person') 
+      registered /
+      %span#checked_in= pluralize(@attendees.arrived.size, 'person') 
+      checked in / 
+      %span#not_checked_in= pluralize(@attendees.not_arrived.size, 'person')
+      still out there
+
     %table.attendees
       %thead
         %th Name

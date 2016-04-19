@@ -1,1 +1,4 @@
 $('#attendee_<%= @attendee.id.to_s %>').html('<%= escape_javascript(render partial: 'attendee_row', locals: {attendee: @attendee}) %>');
+$('#total_count').html('<%= pluralize(@attendees.size, 'person')  %>');
+$('#checked_in').html('<%= pluralize(@attendees.arrived.size, 'person')  %>');
+$('#not_checked_in').html('<%= pluralize(@attendees.not_arrived.size, 'person')  %>');
