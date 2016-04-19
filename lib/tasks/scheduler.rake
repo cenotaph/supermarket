@@ -47,12 +47,12 @@ task :get_feed => [:environment] do
       c = Cash.where(source: 'instagram',  issued_at: item["created_time"], sourceid: item["id"], 
                   title: strip_emoji(item["caption"]["text"]), link_url: item["link"]).first_or_create
       unless c.image?
-        c.image = URI.parse(item["images"]["standard_resolution"]["url"])
+        c.remote_image_url = item["images"]["standard_resolution"]["url"]
         c.save
       end
     end
   rescue
-    
+  #
   end
  
 end
