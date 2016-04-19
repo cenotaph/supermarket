@@ -786,3 +786,17 @@ fieldset.pnp {
   padding-left: 0.53rem;
   padding-right: 0.53rem;
 }
+
+.history {
+  background: url(https://aim-production.s3.amazonaws.com/carousel/image/41/OHYRAjoakim.jpg) no-repeat center center;
+  background-size: cover;
+  min-height: 400px;
+  .blurb {
+    background-color: white;
+    padding: 4px 0;
+    text-align: center;
+    margin-top: 350px;
+  }
+  margin: 10px 0;
+
+}
