@@ -184,6 +184,15 @@ header {
 }
 
 .post_front {
+  .post_image {
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    img {
+      max-width: 380px;
+      height: auto;
+    }
+  }
   .title {
     a {
       font-weight:  bold;
