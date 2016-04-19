@@ -1,7 +1,8 @@
 
-.above_carousel        
 
-  - unless @site_year.above_carousel_html.blank?
+
+- unless @site_year.above_carousel_html.blank?
+  .above_carousel   
     - if @site_year.center_above_carousel_text == true
       %center= raw @site_year.above_carousel_html
     - else
