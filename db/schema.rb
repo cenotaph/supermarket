@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130110119) do
+ActiveRecord::Schema.define(version: 20160419151342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -195,6 +195,23 @@ ActiveRecord::Schema.define(version: 20160130110119) do
 
   create_table "businesstypes", force: :cascade do |t|
     t.integer "spaces_count", default: 0
+  end
+
+  create_table "cashes", force: :cascade do |t|
+    t.text     "title"
+    t.string   "image"
+    t.integer  "image_size"
+    t.integer  "image_width"
+    t.integer  "image_height"
+    t.string   "image_content_type"
+    t.string   "source"
+    t.string   "link_url"
+    t.text     "content"
+    t.integer  "order"
+    t.string   "sourceid"
+    t.integer  "issued_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
