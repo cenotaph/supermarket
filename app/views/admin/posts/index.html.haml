@@ -3,7 +3,7 @@
   .new_link= link_to 'create new', new_admin_post_path
 
 .cms_grid
-  - @posts.each do |post|
+  - @posts.sort_by{|x| x.created_at }.reverse.each do |post|
     .post.ten.columns
       .two.columns.alpha
         = post.published_at.strftime("%d %B %Y")

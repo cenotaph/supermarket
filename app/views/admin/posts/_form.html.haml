@@ -21,6 +21,11 @@
   = f.input :published, :as => :boolean, :label => "Published?", :hint => "If blank, only logged-in staff will be able to see it"
   = f.input :published_at, :as => :date_picker, :label => "Date of post"
   
+  - unless f.object.new_record?
+    - if f.object.postimage
+      = image_tag f.object.postimage.url(:frontsmall)
+  = f.input :postimage, label: 'Add single image for frontpage', hint: 'You can add additional images below'
+  
   %h2 images (if more than one is attached they will show in a gallery)
 
   
