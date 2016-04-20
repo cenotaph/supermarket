@@ -90,9 +90,11 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     arel (6.0.3)
-    auto_html (1.6.4)
-      redcarpet (~> 3.1)
-      rinku (~> 1.5.0)
+    auto_html (2.0.0)
+      gemoji (~> 2.1)
+      redcarpet (~> 3.3)
+      rinku (~> 1.7)
+      tag_helper (~> 0.5)
     autoprefixer-rails (5.1.9)
       execjs
       json
@@ -183,6 +185,7 @@ GEM
       railties (>= 3.1.0)
       sass (>= 3.2.0)
     fssm (0.2.10)
+    gemoji (2.1.0)
     geocoder (1.2.8)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -344,6 +347,9 @@ GEM
     rails-i18n (4.0.4)
       i18n (~> 0.6)
       railties (~> 4.0)
+    rails-timeago (2.13.0)
+      actionpack (>= 3.1)
+      activesupport (>= 3.1)
     rails4-autocomplete (1.1.1)
       rails (>= 3.0)
     rails_12factor (0.0.3)
@@ -369,11 +375,11 @@ GEM
       polyamorous (~> 1.2)
     rdoc (4.2.0)
     recaptcha (0.4.0)
-    redcarpet (3.2.3)
+    redcarpet (3.3.4)
     request_store (1.1.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rinku (1.5.1)
+    rinku (1.7.3)
     rolify (4.0.0)
     ruby-growl (4.1)
       uuid (~> 2.3, >= 2.3.5)
@@ -405,6 +411,7 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     systemu (2.6.5)
+    tag_helper (0.5.0)
     textacular (3.2.2)
       activerecord (>= 3.0, < 5.0)
     thin (1.6.3)
@@ -428,6 +435,8 @@ GEM
       memoizable (~> 0.4.0)
       naught (~> 1.0)
       simple_oauth (~> 0.3.0)
+    twitter-text (1.13.4)
+      unf (~> 0.1.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
@@ -467,7 +476,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  auto_html
+  auto_html (= 2.0.0)
   aws-s3!
   better_errors
   binding_of_caller
@@ -526,6 +535,7 @@ DEPENDENCIES
   rails (= 4.2.4)
   rails-footnotes (>= 3.7.9)
   rails-i18n
+  rails-timeago (~> 2.0)
   rails4-autocomplete
   rails_12factor
   randumb
@@ -544,6 +554,7 @@ DEPENDENCIES
   tinymce-rails
   truncate_html
   twitter
+  twitter-text
   uglifier
   vimeo
   wicked (= 1.0.0)

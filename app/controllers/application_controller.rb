@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
       @posts = Post.by_subsite(@subsite).published.order('published_at DESC').limit(3)
       @video = Video.published.order('created_at DESC').first
       @social_media = Cash.where(source: 'instagram').order(issued_at: :desc).limit(5)
+      @tweets = Cash.where(source: 'twitter').order(issued_at: :desc).limit(5)
     elsif @site == 'aim'
       
       redirect_to map_spaces_path

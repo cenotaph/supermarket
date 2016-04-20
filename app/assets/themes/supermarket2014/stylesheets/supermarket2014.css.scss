@@ -821,3 +821,12 @@ fieldset.pnp {
 .bottom_border {
   border-bottom: 1px solid $orange3;
 }
+
+ul.twitter_feed {
+  padding: 0;
+  margin: 5px 0;
+  li {
+    list-style-type: none;
+    margin-bottom: 10px;
+  }
+}

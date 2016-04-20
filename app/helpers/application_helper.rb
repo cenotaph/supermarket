@@ -1,5 +1,6 @@
 module ApplicationHelper
   include AutoHtml
+  include Twitter::Autolink
   
   def check_filter(initial, filter_scope, class_name)
     if session[:filter_scope].nil?
@@ -41,5 +42,9 @@ module ApplicationHelper
     return out.html_safe
   end
   
+  def timeago(time, options = {})
+    options[:class] ||= "timeago"
+    content_tag(:abbr, time.to_s, options.merge(:title => time.getutc.iso8601)) if time
+  end
     
 end

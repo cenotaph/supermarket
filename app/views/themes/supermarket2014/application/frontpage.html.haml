@@ -65,6 +65,19 @@
       %h3 What is Supermarket?
       %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
       %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
+      
+      %h3 Follow us on Twitter!
+      - link_filter = AutoHtml::Link.new(target: '_blank')
+      -# twitter_filter = AutoHtml::Hashtag.new
+      %ul.twitter_feed
+        - @tweets.each do |sm|
+          %li
+            = link_to fa_icon('twitter'), sm.link_url, target: :_blank
+
+            = raw auto_link(sm.content, target_blank: true)
+            .timestamp= link_to timeago_tag(Time.at(sm.issued_at)),  sm.link_url, target: :_blank
+          
+      %p= link_to 'Follow @supermarketart!', 'http://twitter.com/supermarketart'
       / - unless @video.nil?
       /   %h3 Now showing on SUPER-TV:
       /   .video_front
