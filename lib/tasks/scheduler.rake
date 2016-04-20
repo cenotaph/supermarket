@@ -31,6 +31,27 @@ end
 desc "Get Instagram feed"
 task :get_feed => [:environment] do
 
+  # twitter
+  # start with Twitter
+  now = Time.now.to_i
+  twitter_client = Twitter::REST::Client.new do |config|
+    config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+    config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET'] 
+    config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
+    config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
+  end  
+
+      
+  begin
+    tweets = twitter_client.user_timeline("supermarketart")
+    tweets.each do |tweet|
+      Cash.where(source: 'twitter',  issued_at: tweet.created_at.to_i, sourceid: tweet.id, title: tweet.text, 
+                 content: tweet.text, link_url: tweet.uri.to_s).first_or_create
+    end
+
+  rescue Twitter::Error::NotFound
+    # do nothing if twitter isn't connecting
+  end  
 
 
 
@@ -40,6 +61,7 @@ task :get_feed => [:environment] do
   require 'json'
   remove_emojis = /[\u{1F600}-\u{1F6FF}]/
   
+
 
   begin
     instagram = JSON.parse(open("https://www.instagram.com/supermarketart/media/").read)

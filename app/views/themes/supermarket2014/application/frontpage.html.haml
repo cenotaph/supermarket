@@ -38,7 +38,8 @@
         .excerpt
           = truncate_html(simple_format(post.body), :length => 75)
           = link_to "Read more...", post
-  %h3= link_to "See all news...", posts_path
+  .sixteen.columns
+    %h3= link_to "See all news...", posts_path
     
             
 .container
@@ -55,7 +56,7 @@
             = raw app.written_country
           .blurb
             %p= raw truncate_html( (app.organisation_description.blank? ? app.space.short_description : app.organisation_description), :length => 350)
-  .sixteen.columns
+  .sixteen.columns.bottom_border
     %h3= link_to 'See all 2016 exhibitors...', '/exhibitors/2016'
 
 .container
