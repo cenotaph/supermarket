@@ -40,7 +40,7 @@ class Admin::AttendeesController < Admin::BaseController
 
     File.open(params[:csv_file].path, "r").readlines.each do |line|
       csv = CSV.parse(line)
-      a = Attendee.new(year: @year, first_name: csv[0][0], last_name: csv[0][1], email: csv[0][2], organisation: csv[0][3], vip: csv[0][4])
+      a = Attendee.new(year: @year, first_name: csv[0][1], last_name: csv[0][0], email: csv[0][2], organisation: csv[0][3], vip: csv[0][4])
       if a.save
         @imports << ['imported ', csv[0]]
       else

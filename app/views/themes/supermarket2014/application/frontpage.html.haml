@@ -76,9 +76,10 @@
 
     .eight.columns.omega
       %h3 Supermarket on Instagram
-      - @social_media.each do |i|
-        = image_tag i.image.url
-        = i.inspect
+      .instagram
+        - @social_media.each do |i|
+          .slide= link_to image_tag(i.image.url), i.link_url
+
       / %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :height => 400, :"data-widget-id" => "430669969043369985", :"data-chrome" => "nofooter transparent"} Currently on Twitter
       / :javascript
       /   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
@@ -96,5 +97,15 @@
       variableWidth: false,
       autoplay: true,
       autoplaySpeed: 3500,
+      slidesToScroll: 1,
+    });
+    $('.instagram').slick({infinite: true,
+      arrows: false,
+      slide: '.slide',
+      variableWidth: false,
+      fade: true,
+      cssEase: 'linear',
+      autoplay: true,
+      autoplaySpeed: 4000,
       slidesToScroll: 1,
     });
