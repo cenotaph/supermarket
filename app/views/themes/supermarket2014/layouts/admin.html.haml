@@ -17,45 +17,46 @@
         = csrf_meta_tags
         = yield(:head)
   %body
-    %header
-      .container
-        .sixteen.columns
-          - flash.each do |key, value|
-            .flash
-              .alert{ :class => "alert-#{key}" }
-                %strong
-                  = value
-          %nav.top_bar
-            %ul
-              %li= link_to t(:faqs), page_path('faq')
-              - if current_user
-                %li= current_user.display_name
-                - if current_user.has_role?(:staff) || current_user.has_role?(:god)
-                  %li= link_to 'Public side', '/'
-                %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
-              - else
-                %li= link_to t(:login), new_user_session_path
-                %li= link_to t(:sign_up), new_user_registration_path
-              %li
-                = form_tag('/search') do |f|
-                  = text_field_tag :searchterm,  t(:search)
-        .sixteen.columns.header_main.alpha
-          .twelve.columns.alpha.header_logo
-            = link_to image_tag(theme_image_path('supermarket_title.png')), '/'
-            = link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/'
-          .four.columns.omega
-            %nav.social_icons
-              %h2 STAFF PAGE
-              = link_to 'staff home', '/admin'
-    #main
-      .container
-        - unless controller.controller_name == 'attendees'
-          .two.columns.alpha= render :partial => 'layouts/staff_sidebar'
-        .omega.columns{class: controller.controller_name == 'attendees' ? 'sixteen' : 'fourteen'}= yield
+    #outer_container
+      %header
+        .container
+          .sixteen.columns
+            - flash.each do |key, value|
+              .flash
+                .alert{ :class => "alert-#{key}" }
+                  %strong
+                    = value
+            %nav.top_bar
+              %ul
+                %li= link_to t(:faqs), page_path('faq')
+                - if current_user
+                  %li= current_user.display_name
+                  - if current_user.has_role?(:staff) || current_user.has_role?(:god)
+                    %li= link_to 'Public side', '/'
+                  %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+                - else
+                  %li= link_to t(:login), new_user_session_path
+                  %li= link_to t(:sign_up), new_user_registration_path
+                %li
+                  = form_tag('/search') do |f|
+                    = text_field_tag :searchterm,  t(:search)
+          .sixteen.columns.header_main.alpha
+            .twelve.columns.alpha.header_logo
+              = link_to image_tag(theme_image_path('supermarket_title.png')), '/'
+              = link_to image_tag(theme_image_path('supermarket_top_logo.png')), '/'
+            .four.columns.omega
+              %nav.social_icons
+                %h2 STAFF PAGE
+                = link_to 'staff home', '/admin'
+      #main
+        .container
+          - unless controller.controller_name == 'attendees'
+            .two.columns.alpha= render :partial => 'layouts/staff_sidebar'
+          .omega.columns{class: controller.controller_name == 'attendees' ? 'sixteen' : 'fourteen'}= yield
           
-    %footer
-      .container
-        .footer_text.sixteen.columns= render :partial => 'layouts/footer'                                
+      %footer
+        .container
+          .footer_text.sixteen.columns= render :partial => 'layouts/footer'                                
   :javascript
     $(document).ready(function() {
       $('input#searchterm').clearField();
