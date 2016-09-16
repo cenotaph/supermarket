@@ -12,14 +12,14 @@
   - unless @application.approved?
     %h4= t("supermarket2014.supermarket_particulars_blurb")
     %p 
-      The Nordic Art Association offers one of the participating galleries to access the Malongen residency studio during April. The gallery can nominate an artist or group who may live and work in the studio. During the fair, a group of people can stay there.
+      The Nordic Art Association offers one of the participating galleries to access the Malongen residency studio during March. The gallery can nominate an artist or group who may live and work in the studio. During the fair, a group of people can stay there.
       = link_to 'http://www.nkf.se/malongen', 'http://www.nkf.se/malongen'
-    %p Do you want to apply for the Nordic Art Association/Supermarket residency for 2015?
+    %p Do you want to apply for the Nordic Art Association/Supermarket residency for 2017?
     = f.input :apply_to_malongen, label: t("supermarket2014.apply_to_malongen")
     = f.input :malongen_use, label: t("supermarket2014.malongen_use"), hint: "Maximum 500 characters, please"
     %br{clear: :all}
     %p 
-      This year we open up a new possibility to take part as a Professional Networking Participant (PNP). PNPs don't exhibit but get invited to the Meetings Programme, Exhibitor gatherings, Exhibitor party, a special discussion seminar and have access to our new Exhibitor lounge. The application should be made by an organisation, that can be represented by one person. For instance you can apply for an exhibition booth primarily, and to be a PNP as a second option.
+      For the second year, you have the possibility to take part as a Professional Networking Participant (PNP). PNPs don't exhibit but get invited to the Meetings Programme, Exhibitor gatherings, Exhibitor party, special mini seminars, and have access to the Exhibitor lounge. The application should be made by an organisation, that can be represented by one person (in some cases more than one). For instance, you can apply for an exhibition booth primarily, and to be a PNP as a second option.
       %br/
       Professional Networking Participation fee: SEK 1000 + VAT (SEK 1250)
     = f.input :networking_only, as: :boolean, label: 'This organisation is applying for the Professional Networking Programme. (Also tick if you want this to be a second option even if you are applying for an exhibition stand.)'

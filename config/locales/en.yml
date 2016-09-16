@@ -214,7 +214,7 @@ en:
     is_active: 'Is this currently active?'
     login_to_reclaim: 'If you already have access to one of these accounts on the Supermarket website, please sign out and log in as one of them to update the %{space} information.'
     email_to_reclaim: "Or, you may request access to this exhibition space/gallery from these users. Requesting access sends an email to the above user account(s), allowing them to authorise your account for the %{space} space."
-    malongen_blurb: 'The Nordic Art Association offers one of the participating galleries to access the Malongen residency studio during April. The gallery can nominate an artist or group who may live and work in the studio. During the fair, a group of people can stay there.'
+    malongen_blurb: 'The Nordic Art Association offers one of the participating galleries to access the Malongen residency studio during March. The gallery can nominate an artist or group who may live and work in the studio. During the fair, a group of people can stay there.'
     the_decision_is: 'The decision is ....'
     malongen_use: 'How do you intend to use the NAA studio?'
     mostly_members: 'Mostly members'
@@ -225,7 +225,7 @@ en:
     no_exhibitions: 'No exhibitions'
     no_space_yet: 'You have not yet told us about your exhibition space or gallery.'
     name_of_space: 'Enter the name of your gallery, exhibition space or other project:'
-    new_space_info: 'Apply to Supermarket 2015 and also register your space in our online database!'
+    new_space_info: 'Apply to Supermarket and also register your space in our online database!'
     one_last_step: 'One last step!'
     or: 'or ...'
     sign_up_application_period: " and register your initiative in our forthcoming database of artist-run initiatives (Artist Run Map). It's free of charge to register and you will be connected to an international network of artist-run spaces."
