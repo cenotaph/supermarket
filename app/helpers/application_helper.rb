@@ -25,10 +25,11 @@ module ApplicationHelper
   end
   
   def figure_video_type(video, width = 800, height = 600)
+    link_filter = AutoHtml::Link.new(target: '_blank')
     if video.video_provider == 'youtube' || video.url =~ /youtube\.com/
-      return auto_html(video.url) { youtube(:width => width, :height => height)}
+      return link_filter.call(video.url) { youtube(:width => width, :height => height)}
     elsif video.video_provider == 'vimeo'|| video.url =~ /vimeo\.com/
-      return auto_html(video.url) { vimeo(:width => width, :height => height)}
+      return link_filter.call(video.url) { vimeo(:width => width, :height => height)}
     end
   end
 
