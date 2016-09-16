@@ -29,123 +29,124 @@
       -# %script{:type => "text/javascript"} stLight.options({publisher: "fec021ac-bd8c-4517-b7db-cd4a0d0ad212", doNotHash: false, doNotCopy: false, hashAddressBar: false});
       = yield(:head)
   %body
-    %header
-      .container
-        .sixteen.columns.header_main.alpha
-          .two.columns.alpha.header_logo
-            = link_to image_tag(theme_image_path('2016siaf_white.png')), '/'
+    #outer_container 
+      %header
+        .container
+          .sixteen.columns.header_main.alpha
+            .two.columns.alpha.header_logo
+              = link_to image_tag(theme_image_path('2017siaf_white.png')), '/'
             
-          .dates.six.columns
-            - if @site_year.header_html.blank?
-              %p
-                %strong 21–24 April 2016
-              -#%p
-              -#  %strong Svarta Huset, Telefonplan, Stockholm
-              -#%p Press viewing and Professional Preview Wednesday 15 April
-            - else
-              = raw @site_year.header_html
-          .eight.columns.omega.top_bar_container
-            %nav.top_bar
-              %ul
-                -#%li.big= link_to t(:tickets), page_path('future-dates')
-                / %li= link_to t(:faqs), page_path('faq')
-                - if current_user
-                  %li= current_user.display_name
-                  - if current_user.has_role?(:staff) || current_user.has_role?(:god)
-                    %li= link_to 'Admin side', '/admin'
-                  %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
-                - else
-                  %li= link_to t(:login), new_user_session_path
-                  %li= link_to t(:sign_up), new_user_registration_path
-                %li
-                  = form_tag('/search') do |f|
-                    = text_field_tag :searchterm,  t(:search)
-                 
-            .eight.columns.omega
-              .dates_mobile
-                - if @site_year.header_html.blank?
-                  -#%p Svarta Huset, Telefonplan
-                  %p 21–24 April 2016
-                - else
-                  = raw @site_year.header_html
-
-              %nav.social_icons
+            .dates.six.columns
+              - if @site_year.header_html.blank?
+                %p
+                  %strong 23-26 March 2017
+                -#%p
+                -#  %strong Svarta Huset, Telefonplan, Stockholm
+                -#%p Press viewing and Professional Preview Wednesday 15 April
+              - else
+                = raw @site_year.header_html
+            .eight.columns.omega.top_bar_container
+              %nav.top_bar
                 %ul
-                  %li= link_to image_tag(theme_image_path('fb_30_r.png')), 'https://www.facebook.com/supermarketartfair', target: :_blank
-                  %li= link_to image_tag(theme_image_path('tw_30_r.png')), 'https://twitter.com/supermarketart', target: :_blank
-                  %li= link_to image_tag(theme_image_path('ig_icon.png')), 'http://instagram.com/supermarketart/', target: :_blank
-      #menu_base
-        .container
-          .sixteen_columns.horiz_menu
-            %nav.page_menu
-              %select
-                - Menu.roots.includes(:item).by_subsite(@subsite.id).published.sort_by(&:sort_order).each do |menu|
-                  %option{:value => ''} Go to ...
-                  %option{:value => menu.link, :selected => (request.path == menu.link ? 'selected' : false)}= menu.item.name
-                  - unless menu.children.empty?
-                    = render :partial => 'layouts/recursive_select', :locals => {:submenu => menu.children, :depth => menu.depth }
-              %ul
-                - Menu.roots.includes(:item).by_subsite(@subsite.id).published.sort_by(&:sort_order).each_with_index do |menu, index|
-                  %li{:class => [(index == 0 ? :first : false) , (!@page.nil? ? (@page.child_of?(menu) ? :active : false) : (menu.item.class == Internallink ? ( controller.controller_name == menu.item.controller ? :active : false) : false )), (request.fullpath == menu.link ? :active : false)], :id => "menu_#{menu.id.to_s}"}= link_to menu.item.name, menu.link
-                
-      - if @page
-        -# top level
-        - unless @page.menus.map(&:depth).flatten.compact.uniq == [0] && @page.menus.map(&:children).flatten.compact.empty?
-          - unless @page.menus.published.empty?
-            = render :partial => 'layouts/recursive_menu', :locals => {:level => 1, :entry => @page, :items => @page.menus.published.first.self_and_ancestors.map(&:self_and_descendants).flatten.delete_if{|x| x.depth != 1  }.sort_by{|x| x.sort_order.to_i}.uniq }
-      - else
-        - if controller.controller_name =~ /^press/
-          - top = Internallink.find_by(:name => 'Press')
-          = render :partial => 'layouts/recursive_menu', :locals => {:level => 1, :entry => top, :items => top.menus.published.first.self_and_ancestors.map(&:self_and_descendants).flatten.delete_if{|x| x.depth != 1  }.sort_by{|x| x.sort_order.to_i}.uniq }
-        / - elsif controller.controller_name =~ /^funders/
-        /   - top = Internallink.find_by(:controller => 'funders')
-        /   = render :partial => 'layouts/recursive_menu', :locals => {:level => 1, :entry => top, :items => top.menus.published.first.self_and_ancestors.map(&:self_and_descendants).flatten.delete_if{|x| x.depth != 1  }.sort_by{|x| x.sort_order.to_i}.uniq }
-    = yield :extra_header
-    / #main{:style => (!@background_image.nil? ? "background: url('#{@background_image.background_image.url}') no-repeat top left" : false), :class => controller.controller_name}
-    
-    - flash.each do |key, value|
-      .flash
-        .alert{ :class => "alert-#{key}" }
-          %strong
-            = value
-    
-    - if !content_for?(:sidebar)   || controller.controller_name == 'videos'
-      #main{:class => controller.controller_name}= yield        
-    - else
-      #main{:class => controller.controller_name}
-        .container
-          .twelve.columns.alpha= yield
-          .four.columns.omega= yield :sidebar
+                  -#%li.big= link_to t(:tickets), page_path('future-dates')
+                  / %li= link_to t(:faqs), page_path('faq')
+                  - if current_user
+                    %li= current_user.display_name
+                    - if current_user.has_role?(:staff) || current_user.has_role?(:god)
+                      %li= link_to 'Admin side', '/admin'
+                    %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+                  - else
+                    %li= link_to t(:login), new_user_session_path
+                    %li= link_to t(:sign_up), new_user_registration_path
+                  %li
+                    = form_tag('/search') do |f|
+                      = text_field_tag :searchterm,  t(:search)
+                 
+              .eight.columns.omega
+                .dates_mobile
+                  - if @site_year.header_html.blank?
+                    -#%p Svarta Huset, Telefonplan
+                    %p 23-26 March 2017
+                  - else
+                    = raw @site_year.header_html
 
-    %footer
-      .container
+                %nav.social_icons
+                  %ul
+                    %li= link_to image_tag(theme_image_path('fb_30_r.png')), 'https://www.facebook.com/supermarketartfair', target: :_blank
+                    %li= link_to image_tag(theme_image_path('tw_30_r.png')), 'https://twitter.com/supermarketart', target: :_blank
+                    %li= link_to image_tag(theme_image_path('ig_icon.png')), 'http://instagram.com/supermarketart/', target: :_blank
+        #menu_base
+          .container
+            .sixteen_columns.horiz_menu
+              %nav.page_menu
+                %select
+                  - Menu.roots.includes(:item).by_subsite(@subsite.id).published.sort_by(&:sort_order).each do |menu|
+                    %option{:value => ''} Go to ...
+                    %option{:value => menu.link, :selected => (request.path == menu.link ? 'selected' : false)}= menu.item.name
+                    - unless menu.children.empty?
+                      = render :partial => 'layouts/recursive_select', :locals => {:submenu => menu.children, :depth => menu.depth }
+                %ul
+                  - Menu.roots.includes(:item).by_subsite(@subsite.id).published.sort_by(&:sort_order).each_with_index do |menu, index|
+                    %li{:class => [(index == 0 ? :first : false) , (!@page.nil? ? (@page.child_of?(menu) ? :active : false) : (menu.item.class == Internallink ? ( controller.controller_name == menu.item.controller ? :active : false) : false )), (request.fullpath == menu.link ? :active : false)], :id => "menu_#{menu.id.to_s}"}= link_to menu.item.name, menu.link
+                
+        - if @page
+          -# top level
+          - unless @page.menus.map(&:depth).flatten.compact.uniq == [0] && @page.menus.map(&:children).flatten.compact.empty?
+            - unless @page.menus.published.empty?
+              = render :partial => 'layouts/recursive_menu', :locals => {:level => 1, :entry => @page, :items => @page.menus.published.first.self_and_ancestors.map(&:self_and_descendants).flatten.delete_if{|x| x.depth != 1  }.sort_by{|x| x.sort_order.to_i}.uniq }
+        - else
+          - if controller.controller_name =~ /^press/
+            - top = Internallink.find_by(:name => 'Press')
+            = render :partial => 'layouts/recursive_menu', :locals => {:level => 1, :entry => top, :items => top.menus.published.first.self_and_ancestors.map(&:self_and_descendants).flatten.delete_if{|x| x.depth != 1  }.sort_by{|x| x.sort_order.to_i}.uniq }
+          / - elsif controller.controller_name =~ /^funders/
+          /   - top = Internallink.find_by(:controller => 'funders')
+          /   = render :partial => 'layouts/recursive_menu', :locals => {:level => 1, :entry => top, :items => top.menus.published.first.self_and_ancestors.map(&:self_and_descendants).flatten.delete_if{|x| x.depth != 1  }.sort_by{|x| x.sort_order.to_i}.uniq }
+      = yield :extra_header
+      / #main{:style => (!@background_image.nil? ? "background: url('#{@background_image.background_image.url}') no-repeat top left" : false), :class => controller.controller_name}
+    
+      - flash.each do |key, value|
+        .flash
+          .alert{ :class => "alert-#{key}" }
+            %strong
+              = value
+    
+      - if !content_for?(:sidebar)   || controller.controller_name == 'videos'
+        #main{:class => controller.controller_name}= yield        
+      - else
+        #main{:class => controller.controller_name}
+          .container
+            .twelve.columns.alpha= yield
+            .four.columns.omega= yield :sidebar
+
+      %footer
+        .container
         
-        .five.columns.omega.footer_credits
-          - if @site_year.footer_html.blank?
-            %strong Supermarket 2016
-            %br/
-            %em Stockholm Independent Art Fair
-            .small_text 21-24 April 2016
-            -#, Svarta Huset, Telefonplan, Stockholm
-          - else
-            = raw @site_year.footer_html
+          .five.columns.omega.footer_credits
+            - if @site_year.footer_html.blank?
+              %strong Supermarket 2017
+              %br/
+              %em Stockholm Independent Art Fair
+              .small_text 23-26 March 2017
+              -#, Svarta Huset, Telefonplan, Stockholm
+            - else
+              = raw @site_year.footer_html
           
         
 
-        .four.columns
-          %ul
-            %li= link_to 'About', page_path('about-supermarket')
-            %li= link_to 'FAQ', page_path('faq')
-            -# %li= link_to 'Tickets', page_path('future-dates')
-            %li= link_to 'Super-TV', '/tv'
-            -# %li= link_to 'Exhibitors 2014', '/exhibitors/2014'
-            -# %li= link_to 'Talks and Performances 2014', page_path('talks-performance-2014')
-        .four.columns
-          %ul
-            %li= link_to t(:disclaimer), page_path('disclaimer')
-            %li= link_to t(:contact_us), page_path('contact')
-            %li.last= link_to t(:subscribe_to_newsletter), 'http://admin.getanewsletter.com/subscription/RAaDe8sxcYaWuhKev/add/', :target => :_blank
-        .three.columns.alpha= link_to image_tag(theme_image_path('2016siaf_white.png')), '/'
+          .four.columns
+            %ul
+              %li= link_to 'About', page_path('about-supermarket')
+              %li= link_to 'FAQ', page_path('faq')
+              -# %li= link_to 'Tickets', page_path('future-dates')
+              %li= link_to 'Super-TV', '/tv'
+              -# %li= link_to 'Exhibitors 2014', '/exhibitors/2014'
+              -# %li= link_to 'Talks and Performances 2014', page_path('talks-performance-2014')
+          .four.columns
+            %ul
+              %li= link_to t(:disclaimer), page_path('disclaimer')
+              %li= link_to t(:contact_us), page_path('contact')
+              %li.last= link_to t(:subscribe_to_newsletter), 'http://admin.getanewsletter.com/subscription/RAaDe8sxcYaWuhKev/add/', :target => :_blank
+          .three.columns.alpha= link_to image_tag(theme_image_path('2017siaf_white.png')), '/'
           
   :javascript
     $(document).ready(function() {

@@ -36,35 +36,31 @@
               .year
                 %strong= @site_year.year.to_s
               - if @site_year.open?
-                - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2016).id).empty? )
-                  - if space.interested_2016 == true
-                    %p You have pre-registered for the 2016 fair. The full application form is now ready.
-                    %li.apply_2014= link_to t("supermarket2014.continue_your_application"), '/apply/2016/' + space.slug.to_s
-                  - else
-                    %li.apply_2014= link_to t("supermarket2014.apply_to_supermarket"), '/apply/2016/' + space.slug.to_s
-                - elsif space.applications.where(:year_id => Year.find_by(:year => 2016).id).to_a.delete_if{|x| !x.finished?}.empty?
+                - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2017).id).empty? )
+                  %li.apply_2014= link_to t("supermarket2014.apply_to_supermarket"), '/apply/2017/' + space.slug.to_s
+                - elsif space.applications.where(:year_id => Year.find_by(:year => 2017).id).to_a.delete_if{|x| !x.finished?}.empty?
                 
                   %li.apply_2014
-                    = link_to t("supermarket2014.continue_your_application"), '/apply/2016/' + space.slug.to_s
+                    = link_to t("supermarket2014.continue_your_application"), '/apply/2017/' + space.slug.to_s
                     .big Your application has not been completed.
-                - elsif space.applications.where(:year_id => Year.find_by(:year => 2016).id).to_a.delete_if{|x| x.finished?}.empty?
+                - elsif space.applications.where(:year_id => Year.find_by(:year => 2017).id).to_a.delete_if{|x| x.finished?}.empty?
 
                   .view
                     .submitted_at
                       = t(:submitted) + ": "
-                      = l space.applications.where(:year_id => Year.find_by(:year => 2016).id).first.submitted_at, :format => :long rescue nil
-                    = link_to t(:view_application), space.applications.where(:year_id => Year.find_by(:year => 2016).id).first
+                      = l space.applications.where(:year_id => Year.find_by(:year => 2017).id).first.submitted_at, :format => :long rescue nil
+                    = link_to t(:view_application), space.applications.where(:year_id => Year.find_by(:year => 2017).id).first
 
               - else
-                - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2016).id).empty? )
+                - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2017).id).empty? )
 
                   = t :you_did_not_apply_this_year
                 - else
                   .view
                     = link_to t(:view_application), space.applications.where(:year_id => @site_year.id).first
-                    - if space.applications.where(:year_id => Year.find_by(:year => 2016).id).first.approved_pending_reveal? == true
-                      - if space.applications.where(:year_id => Year.find_by(:year => 2016).id).first.accepted_terms != true
-                        %p= link_to "Terms and conditions", terms_application_path(space.applications.where(:year_id => Year.find_by(:year => 2016).id).first)
+                    - if space.applications.where(:year_id => Year.find_by(:year => 2017).id).first.approved_pending_reveal? == true
+                      - if space.applications.where(:year_id => Year.find_by(:year => 2017).id).first.accepted_terms != true
+                        %p= link_to "Terms and conditions", terms_application_path(space.applications.where(:year_id => Year.find_by(:year => 2017).id).first)
                   - if @site_year.allow_editing? || space.applications.where(:year_id => @site_year.id).first.allow_late == true
                     = link_to t(:edit_your_application), edit_application_path(space.applications.where(:year_id => @site_year.id).first) # '/apply/2015/' + space.slug.to_s
                   
@@ -80,7 +76,7 @@
                         = l sa.submitted_at, :format => :long rescue nil
                     .view
                       = link_to t(:view_application), sa
-                    - if sa.year.year == 2016
+                    - if sa.year.year == 2017
                       .view
                       - if sa.approved_pending_reveal?
                         = t :accepted
