@@ -175,7 +175,7 @@ class SpacesController < ApplicationController
     # if current_user.applications
     @space = Space.find(params[:space_id])
     if @space.applications.where(:year => Year.where(:year => 2017)).empty?
-      redirect_to '/apply/2015/' + @space.slug
+      redirect_to '/apply/2017/' + @space.slug
     else
       redirect_to '/'
     end
