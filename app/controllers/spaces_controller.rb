@@ -179,7 +179,7 @@ class SpacesController < ApplicationController
     else
       redirect_to '/'
     end
-  end
+  end 
   
   def finish_wizard_path
 
