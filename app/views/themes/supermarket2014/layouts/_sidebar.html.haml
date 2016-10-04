@@ -50,6 +50,9 @@
                       = t(:submitted) + ": "
                       = l space.applications.where(:year_id => Year.find_by(:year => 2017).id).first.submitted_at, :format => :long rescue nil
                     = link_to t(:view_application), space.applications.where(:year_id => Year.find_by(:year => 2017).id).first
+                    - if @site_year.allow_editing? || space.applications.where(:year_id => @site_year.id).first.allow_late == true
+                      %br/
+                      = link_to t(:edit_your_application), edit_application_path(space.applications.where(:year_id => @site_year.id).first) # '/apply/2015/' + space.slug.to_s                    
 
               - else
                 - if ( space.applications.empty? || space.applications.where(:year_id => Year.find_by(:year => 2017).id).empty? )
@@ -62,7 +65,9 @@
                       - if space.applications.where(:year_id => Year.find_by(:year => 2017).id).first.accepted_terms != true
                         %p= link_to "Terms and conditions", terms_application_path(space.applications.where(:year_id => Year.find_by(:year => 2017).id).first)
                   - if @site_year.allow_editing? || space.applications.where(:year_id => @site_year.id).first.allow_late == true
+                    %br/
                     = link_to t(:edit_your_application), edit_application_path(space.applications.where(:year_id => @site_year.id).first) # '/apply/2015/' + space.slug.to_s
+
                   
               - space.applications.sort_by{|x| x.year.year}.reverse.each do |sa|
               
