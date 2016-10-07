@@ -6,7 +6,7 @@ re-ordering submenu items for
 .cms_grid#reorder
   - @parent.children.sort_by{|x| x.sort_order.to_i }.each do |menu|
     .menu_item.column{:id => "menu_#{menu.id.to_s}"}
-      .title= menu.item.name
+      .title= menu.item.name rescue 'deleted'
       - unless menu.children.empty?
         (has it's own submenu with
         = menu.children.published.size

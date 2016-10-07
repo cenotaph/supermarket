@@ -14,7 +14,7 @@
         = link_to ' re-order submenu', reorder_admin_menu_path(sm.id)
       %p
         %i.icon-frown
-        = link_to ' delete ' + sm.item.name + ' menu entry (and any submenus)', [:admin, sm], :method => :delete, :data => {:confirm => "Are you sure?????"}   rescue 'deleted'      
+        = link_to ' delete ' + (sm.item.name rescue 'deleted' )+ ' menu entry (and any submenus)', [:admin, sm], :method => :delete, :data => {:confirm => "Are you sure?????"} 
 / / .clear
 / /           %p sub-menu:
 / /           %div{:id => "submenu_#{menu.id.to_s}"}
