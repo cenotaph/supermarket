@@ -3,6 +3,6 @@
   - (depth+1).times do
     - prefix += '-'
     
-  %option{:value => menu.link, :selected => (request.path == menu.link ? 'selected' : false)}= prefix + " " + menu.item.name
+  %option{:value => menu.link, :selected => (request.path == menu.link ? 'selected' : false)}= prefix + " " + menu.item.name rescue 'deleted'
   - unless menu.children.empty?
     = render :partial => 'layouts/recursive_select', :locals => {:submenu => menu.children, :depth => menu.depth }

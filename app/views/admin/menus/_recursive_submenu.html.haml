@@ -1,7 +1,7 @@
 %div{:id => "submenu_#{parent.id.to_s}"}
   - submenu.sort_by{|x| x.sort_order.to_i}.each do |sm|
     .submenu_item.column{:id => "submenu_#{sm.id.to_s}"}
-      .title= link_to sm.item.name, edit_admin_menu_path(sm)
+      .title= link_to sm.item.name, edit_admin_menu_path(sm) rescue 'deleted'
       - unless sm.children.empty?
         %div
           submenu:
@@ -14,7 +14,7 @@
         = link_to ' re-order submenu', reorder_admin_menu_path(sm.id)
       %p
         %i.icon-frown
-        = link_to ' delete ' + sm.item.name + ' menu entry (and any submenus)', [:admin, sm], :method => :delete, :data => {:confirm => "Are you sure?????"}        
+        = link_to ' delete ' + sm.item.name + ' menu entry (and any submenus)', [:admin, sm], :method => :delete, :data => {:confirm => "Are you sure?????"}   rescue 'deleted'      
 / / .clear
 / /           %p sub-menu:
 / /           %div{:id => "submenu_#{menu.id.to_s}"}

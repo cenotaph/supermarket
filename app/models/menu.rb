@@ -14,7 +14,7 @@ class Menu < ActiveRecord::Base
   
   def link
     if item_type == 'Page'
-      "/pages/" + item.slug
+      "/pages/" + item.slug rescue 'deleted'
     elsif item_type == 'Internallink'
       if item.custom_url.blank?
         "/" + [item.controller, item.action, item.parameter].delete_if{|x| x.blank?}.compact.join("/")
