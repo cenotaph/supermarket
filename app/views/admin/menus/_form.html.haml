@@ -1,7 +1,7 @@
 = semantic_form_for([:admin, @menu]) do |f|
   = f.input :subsite, :label => t(:menu_for_which_site?), :include_blank => false
   = f.input :item_type, :as => :select, :label => t(:type_of_menu_link), :collection => [["Page", "Page"], ["Internal Link", "Internallink"], ["External URL", "external_link"]]
-  = f.input :parent_id, :as => :select, :collection => Menu.all.to_a.delete_if{|x| x == f.object }.map{|x| [x.item.name, x.id]}
+  = f.input :parent_id, :as => :select, :collection => Menu.all.to_a.delete_if{|x| x == f.object }.delete_if{|x| x.item.nil?}.map{|x| [x.item.name, x.id]}
   = f.input :item_id, :as => :select , :collection => (f.object.item.nil? ? [] : f.object.item_type.constantize.all.map{|x| [x.name, x.id]})
   = f.input :published
   = f.submit t(:save)
