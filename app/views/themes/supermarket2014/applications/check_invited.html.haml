@@ -3,7 +3,7 @@
 %p Correct! Please click below to begin your 2016 application.
 
 - current_user.spaces.each do |space|
-  %p= link_to 'Apply to Supermarket 2016 for ' + space.name, '/invited/2016/' + space.slug
+  %p= link_to 'Apply to Supermarket 2017 for ' + space.name, '/invited/2017/' + space.slug
   
 - if user_signed_in?
   = content_for :sidebar do

@@ -43,7 +43,7 @@ class ApplicationsController < ApplicationController
   end
   
   def check_invited
-    if params[:password] != 'SM10ya'
+    if params[:password] != 'SM10ya' 
       flash[:error] = 'Sorry, that is not the correct password'
       redirect_to invited_path
     end
