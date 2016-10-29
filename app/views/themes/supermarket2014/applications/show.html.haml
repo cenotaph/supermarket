@@ -156,7 +156,7 @@
             
         - @application.videolinks.each do |v|
           .asset_container.column.two
-            .asset= figure_video_type(v, 320, 200)
+            .asset= raw figure_video_type(v, 320, 200)
             .title= v.title
   - unless @application.applicationlinks.empty? && (!@application.upload1? || !@application.upload2?)
     .twelve.columns
