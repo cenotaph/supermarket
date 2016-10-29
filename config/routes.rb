@@ -44,7 +44,7 @@ Aim::Application.routes.draw do
   # ActiveAdmin.routes(self)
   themes_for_rails
 
-  
+  get '/user', to: 'users#profile'
   root 'application#frontpage'
   get '/apply/2017/:space_id', to: 'applications#new', :year => 2017
   get '/apply/2017', to: 'applications#applylanding'

@@ -1,0 +1,40 @@
+.show_view
+  .nine.columns
+    %h1 Your information
+    
+  - unless @user.spaces.empty?
+    .nine.columns
+      %h2 Your initiatives
+    - @user.spaces.each do |space|
+      %fieldset{style: 'margin-bottom: 2rem;'}
+        .nine.columns
+          %h3= space.business_name
+          %p= space.full_contact_address
+        
+        - unless space.applications.empty?
+          .nine.columns
+            %h4 Applications:
+          - space.applications.sort_by{|x| x.year.year}.reverse.each do |app|
+            .nine.columns
+              %strong= app.year.year
+              = ": #{app.granted_result}"
+              = link_to '[View application]', app
+              %br/
+              - if app.approved_pending_reveal?
+                - if app.accepted_terms != true
+                  You have not accepted the terms and conditions yet.
+                  = link_to '[Accept terms]', terms_application_path(app)
+                  %br/
+                  %br/
+              
+                
+        %br/
+        %br/
+            
+        
+        
+    
+
+= content_for :sidebar do
+  = render :partial => 'layouts/sidebar'        
+  
