@@ -5,7 +5,7 @@ class ApplicationsController < ApplicationController
   
   def applylanding   
     if current_user.approved_space_users.approved.size == 1
-      redirect_to '/apply/2016/' + current_user.spaces.first.slug
+      redirect_to '/apply/2017/' + current_user.spaces.first.slug
     elsif current_user.approved_space_users.approved.empty?
       redirect_to new_space_path
     end
@@ -89,7 +89,7 @@ class ApplicationsController < ApplicationController
       else
         @application = @space.applications.where(:year_id => year).first
       end
-    elsif !year.open? && year.allow_editing == false
+    elsif !year.open? # && year.allow_editing == false
       flash[:error]= 'Applications for ' + year.year.to_s + ' are now closed.'
       redirect_to '/'
     elsif year.allow_editing == true && @space.users.include?(current_user) 
