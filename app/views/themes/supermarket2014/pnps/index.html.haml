@@ -1,11 +1,4 @@
 - if @page.nil?
-  .row
-    .small-12.columns
-      %h2= @page.title
-
-  .row
-    .small-9.columns= raw @page.body
-- else
   %h2 Professional Networking Participants (PNP)
 
   %p
@@ -18,4 +11,12 @@
 
   %p
     %strong The application is open 15 November–15 December 2016.
+- else
+  .row
+    .small-12.columns
+      %h2= @page.title
+
+  .row
+    .small-9.columns= raw @page.body
+
 %h2= link_to 'To the application!', '/pnp/new/2017'
