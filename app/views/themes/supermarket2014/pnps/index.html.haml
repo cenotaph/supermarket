@@ -1,13 +1,21 @@
-%h2 Professional Networking Participants (PNP)
+- if @page.nil?
+  .row
+    .small-12.columns
+      %h2= @page.title
 
-%p
-  The Professional Networking Participant (PNP) programme started last year and due to its success we are now offering you yet another possibility to take active part in Supermarket 2017.
-  PNPs don't exhibit but get invited to participate in special seminars and discussions, the Meetings Programme, Exhibitor gatherings, Exhibitor party, and to gain access to our VIP Exhibitor lounge. The participation fee is SEK 1250 including VAT.
+  .row
+    .small-9.columns= raw @page.body
+- else
+  %h2 Professional Networking Participants (PNP)
+
+  %p
+    The Professional Networking Participant (PNP) programme started last year and due to its success we are now offering you yet another possibility to take active part in Supermarket 2017.
+    PNPs don't exhibit but get invited to participate in special seminars and discussions, the Meetings Programme, Exhibitor gatherings, Exhibitor party, and to gain access to our VIP Exhibitor lounge. The participation fee is SEK 1250 including VAT.
 
   
 
   
 
-%p
-  %strong The application is open 15 November–15 December 2017.
+  %p
+    %strong The application is open 15 November–15 December 2016.
 %h2= link_to 'To the application!', '/pnp/new/2017'

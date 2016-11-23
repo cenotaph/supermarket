@@ -9,6 +9,7 @@ class PnpsController < ApplicationController
   end
   
   def index
+    @page = Page.friendly.find('pnp-application')
   end
   
   def new
