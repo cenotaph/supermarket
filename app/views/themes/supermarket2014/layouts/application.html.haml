@@ -111,7 +111,7 @@
               = value
     
       - if !content_for?(:sidebar)   || controller.controller_name == 'videos'
-        #main{:class => controller.controller_name}= yield        
+        .container#main{:class => controller.controller_name}= yield        
       - else
         #main{:class => controller.controller_name}
           .container

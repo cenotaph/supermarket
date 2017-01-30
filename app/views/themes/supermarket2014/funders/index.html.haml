@@ -1,10 +1,12 @@
-.funders_index
+.funders_index.row
   %h3
     = t :funders_and_partners 
     = "(#{@year.year})"
 
 
-  %p Supermarket Art Fair thanks these supporters:
+  %p Supermarket Art Fair thanks the following supporters. 
+  %p
+    %em (The list is updated when funding decisions are known).
 
   - @allfunders.each do |ft|
     - unless ft.funders.empty?
