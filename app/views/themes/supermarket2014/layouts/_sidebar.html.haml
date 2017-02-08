@@ -28,7 +28,7 @@
               .small_link
                 = link_to edit_space_path(space) do 
                   %i.icon-pencil
-                  = t(:edit_link)
+                  = 'Click here to edit basic details (address, website, etc.)'
             .subtitle= t "supermarket2014.your_applications"
 
             
@@ -65,8 +65,7 @@
                       - if space.applications.where(:year_id => Year.find_by(:year => 2017).id).first.accepted_terms != true
                         %p= link_to "Terms and conditions", terms_application_path(space.applications.where(:year_id => Year.find_by(:year => 2017).id).first)
                   - if @site_year.allow_editing? || space.applications.where(:year_id => @site_year.id).first.allow_late == true
-                    %br/
-                    = link_to t(:edit_your_application), edit_application_path(space.applications.where(:year_id => @site_year.id).first) # '/apply/2015/' + space.slug.to_s
+                    = link_to "Edit your #{@site_year.year} application", edit_application_path(space.applications.where(:year_id => @site_year.id).first) 
 
                   
               - space.applications.sort_by{|x| x.year.year}.reverse.each do |sa|
@@ -90,7 +89,7 @@
                           .big= link_to 'You must accept the terms and regulations.', terms_application_path(sa)
                         - else
                           - if sa.year.allow_editing? && sa.approved_pending_reveal?
-                            .big= link_to 'Edit your application', edit_application_path(sa)
+                            .big= link_to "Edit your #{sa.year.year} application", edit_application_path(sa)
                           
   %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :"data-widget-id" => "430669969043369985", :"data-chrome" => "nofooter transparent", :height => 650} Currently on Twitter
   :javascript

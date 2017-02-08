@@ -19,6 +19,8 @@
               %strong= app.year.year
               = ": #{app.granted_result}"
               = link_to '[View application]', app
+              - if @site_year.allow_editing? || space.applications.where(:year_id => @site_year.id).first.allow_late == true
+                = link_to "[Edit your #{app.year.year} application]", edit_application_path(app)
               %br/
               - if app.approved_pending_reveal?
                 - if app.accepted_terms != true
