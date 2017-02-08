@@ -62,9 +62,10 @@
                   %li
                     = form_tag('/search') do |f|
                       = text_field_tag :searchterm,  t(:search)
-                %br/
-                %ul
-                  %li= link_to 'Your info/applications', current_user
+                - if current_user
+                  %br/
+                  %ul
+                    %li= link_to 'Your info/applications', current_user
               .eight.columns.omega
                 .dates_mobile
                   - if @site_year.header_html.blank?
