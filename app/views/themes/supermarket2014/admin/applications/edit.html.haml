@@ -26,6 +26,12 @@
   = f.input :organisation_description, label: 'Presentation text for website'
   .row
     .eight.columns
+      - if f.object.application_image?
+        Application image is 
+        = image_tag f.object.application_image.url(:sidebar)
+      = f.input :application_image, label: f.object.application_image? ? 'Change image' : 'Set image'
+  .row
+    .eight.columns
       %strong Space description (will apply to all years and appear in ARM):
       = f.fields_for :space do |ff|
         - if ff.object.logo?
