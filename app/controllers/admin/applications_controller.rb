@@ -71,7 +71,17 @@ class Admin::ApplicationsController < Admin::BaseController
   protected
   
   def permitted_params
-    params.permit(:application => [:booth_granted, :red_spot, :space_id, :year_id, :user_id, :accepted_terms, :organisation_name, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :contact_address1, :contact_address2, :contact_city, :contact_state, :contact_country, :contact_postcode, :form_direction, :exhibitor_address1, :exhibitor_address2, :organisation_description,  :exhibitor_city, :exhibitor_state, :exhibitor_country, :allow_late,  :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use, :upload1, :upload2, :remove_upload1, :remove_upload2, :supermarket_proposal, :need_darker_room, :wants_open_structure, :booth_applied, :vat_number, :special_needs,  space_attributes: [:exhibitors, :id, :exhibitionspacetype_id, :short_description], website_attributes: [:id, :url, :application_id], applicationlinks_attributes: [:id, :_destroy, :url, :title, :application_id], videolinks_attributes: [:id, :application_id, :_destroy, :video_provider, :title, :url], applicationwebimages_attributes: [:id, :application_id, :_destroy, :imagefile, :title, :sortorder]])
+    params.permit(:application => [:booth_granted, :red_spot, :space_id, :year_id, :user_id, :accepted_terms, :organisation_name, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :contact_address1, :contact_address2, :contact_city, :contact_state, :contact_country, 
+      :contact_postcode, :form_direction, :exhibitor_address1, :exhibitor_address2, 
+      :organisation_description,  :exhibitor_city, :exhibitor_state, :exhibitor_country, :allow_late, 
+       :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use,
+        :upload1, :upload2, :remove_upload1, :remove_upload2, :supermarket_proposal, :need_darker_room, 
+        :wants_open_structure, :booth_applied, :vat_number, :special_needs,  
+        space_attributes: [:exhibitors, :id, :exhibitionspacetype_id, :short_description, :logo], 
+        website_attributes: [:id, :url, :application_id], 
+        applicationlinks_attributes: [:id, :_destroy, :url, :title, :application_id], 
+        videolinks_attributes: [:id, :application_id, :_destroy, :video_provider, :title, :url], 
+        applicationwebimages_attributes: [:id, :application_id, :_destroy, :imagefile, :title, :sortorder]])
   end
 
 end
