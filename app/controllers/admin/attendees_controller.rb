@@ -21,6 +21,16 @@ class Admin::AttendeesController < Admin::BaseController
   def import
   end
   
+  def year
+    @year = Year.where(year: params[:year])
+    @attendees = apply_scopes(Attendee).by_year(@year).order(:id, :last_name, :first_name)
+    if params[:by_year]
+      @year_scope = params[:by_year]
+    end
+    set_meta_tags title: 'Professional Preview attendee list: ' + params[:year]
+    render template: 'admin/attendees/index'
+  end
+  
   def index
     @attendees = apply_scopes(Attendee).by_year(Year.where(:reveal_decisions => true).order("year DESC").first.id).order(:id, :last_name, :first_name)
     if params[:by_year]

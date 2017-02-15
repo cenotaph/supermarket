@@ -28,6 +28,7 @@ Aim::Application.routes.draw do
   match '/tv' => 'videos#index', via: :get
   match '/tv/:year' => 'videos#index', via: :get
   get '/auth/failure' => 'sessions#failure'
+  get '/admin/attendees/:year' => 'admin/attendees#year'
   get '/performance/:year' => 'performanceapplications#new', year: :year
   match 'auth/:provider/callback' => 'authentications#create', :via => :get
   match '/oauth/authenticate' => 'authentications#create', :via => :get
