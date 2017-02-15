@@ -6,7 +6,7 @@
       = link_to 'import CSV', "/admin/attendees/import"
     %p
       Restrict by year:
-      = select_tag :year_filter, options_from_collection_for_select(Year.order(:year).reverse, :id, :year, @year_scope), {:include_blank => true, :onchange => "document.location.href='/admin/attendees?by_year=' + $(this).val()"}
+      = select_tag :year_filter, options_from_collection_for_select(Year.order(:year).reverse, :year, :year, @year_scope), {:include_blank => true, :onchange => "document.location.href='/admin/attendees/' + $(this).val()"}
       
     %p
       %span#total_count= pluralize(@attendees.size, 'person') 
