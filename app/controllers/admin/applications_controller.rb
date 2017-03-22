@@ -77,7 +77,7 @@ class Admin::ApplicationsController < Admin::BaseController
        :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use,
         :upload1, :upload2, :remove_upload1, :remove_upload2, :supermarket_proposal, :need_darker_room, 
         :wants_open_structure, :booth_applied, :vat_number, :special_needs,  
-        space_attributes: [:exhibitors, :id, :exhibitionspacetype_id, :short_description, :logo], 
+        space_attributes: [:exhibitors, :id, :exhibitionspacetype_id, :short_description, :logo, :website1, :website2], 
         website_attributes: [:id, :url, :application_id], 
         applicationlinks_attributes: [:id, :_destroy, :url, :title, :application_id], 
         videolinks_attributes: [:id, :application_id, :_destroy, :video_provider, :title, :url], 
