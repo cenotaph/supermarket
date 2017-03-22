@@ -1,19 +1,22 @@
 = semantic_nested_form_for([:admin, @post], :html => {:multipart => true}) do |f|
-  = @post.errors.full_messages
+  - unless @post.errors.empty?
+    = @post.errors.full_messages
   #language-tabs
     %ul.language-selection
-      - I18n.available_locales.each do |locale|
+      - [:en].each do |locale|
         %li{:id => "lang-#{locale}"}= link_to locale.to_s, "#lang-#{locale}"
-    - I18n.available_locales.each do |locale|
+    - [:en].each do |locale|
       %div{:id => "lang-#{locale}"}
         = f.globalize_fields_for locale do |en|
-          %b
-            Name of post in
-            = locale
-          = en.text_field :subject
-          = en.text_area :body, :class => :tinymce
+          %p
+            %b
+              Title/subject of blog post
 
-  = tinymce
+            = en.text_field :subject
+          
+          = en.cktext_area :body #, cols: 40, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' } #, :class => :tinymce
+
+  -#= tinymce
   = f.input :posted_by, :as => :select, :collection => User.all_staff.sort_by(&:display_name)
   = f.input :post_as_supermarket, :as => :boolean, :label => "Don't put staff member's name on post, put 'Posted by Supermarket' instead"
   = f.input :subsite, :as => :select, :collection => Subsite.all, :label => "Show post on which sites/themes:"

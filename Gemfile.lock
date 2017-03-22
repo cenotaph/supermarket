@@ -131,12 +131,15 @@ GEM
       railties (>= 3.0)
       sass-rails (>= 3.2)
     chunky_png (1.3.4)
-    ckeditor (4.0.2)
-      mime-types
-      orm_adapter
+    ckeditor (4.2.2)
+      cocaine
+      orm_adapter (~> 0.5.0)
+    climate_control (0.1.0)
     closure_tree (5.2.0)
       activerecord (>= 3.2.0)
       with_advisory_lock (>= 3.0.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -488,7 +491,7 @@ DEPENDENCIES
   carrierwave
   carrierwave-aws
   chosen-rails
-  ckeditor (= 4.0.2)
+  ckeditor (= 4.2.2)
   closure_tree
   coffee-rails
   countries
