@@ -35,6 +35,8 @@ class Admin::AttendeesController < Admin::BaseController
     @attendees = apply_scopes(Attendee).by_year(Year.where(:reveal_decisions => true).order("year DESC").first.id).order(:id, :last_name, :first_name)
     if params[:by_year]
       @year_scope = params[:by_year]
+    else
+      @year_scope = 2017
     end
     set_meta_tags title: 'Professional Preview attendee list'
   end
