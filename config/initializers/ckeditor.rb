@@ -1,5 +1,5 @@
 Ckeditor.setup do |config|
   require "ckeditor/orm/active_record"
-  # config.assets_languages = ['en']
-  # config.assets_plugins = ['image', 'filebrowser', 'link']
+  # //cdn.ckeditor.com/<version.number>/<distribution>/ckeditor.js
+  config.cdn_url = "//cdn.ckeditor.com/4.6.1/basic/ckeditor.js"
 end
