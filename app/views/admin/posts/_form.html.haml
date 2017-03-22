@@ -14,7 +14,7 @@
 
             = en.text_field :subject
           
-          = en.cktext_area :body #, cols: 40, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' } #, :class => :tinymce
+          = en.cktext_area :body , ckeditor: { language: 'en'}#, cols: 40, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' } #, :class => :tinymce
 
   -#= tinymce
   = f.input :posted_by, :as => :select, :collection => User.all_staff.sort_by(&:display_name)
