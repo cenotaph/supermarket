@@ -32,7 +32,8 @@
         .post_image
           - if post.postimage?
             = image_tag post.postimage.url(:standard)
-        
+          - elsif !post.postslides.empty?
+            = image_tag post.postslides.first.image.url(:slide)
         .title= link_to post.subject, post
         .date= time_ago_in_words(post.published_at) + " ago"
         .excerpt
