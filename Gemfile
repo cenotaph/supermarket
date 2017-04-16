@@ -42,6 +42,11 @@ group :development do
   gem 'thin'
 end
 
+gem 'capistrano'#, '~> 3.1.0'
+gem 'capistrano-rails'#, '~> 1.1.0'
+gem 'capistrano-rvm'
+gem 'capistrano-bundler'
+gem 'capistrano3-puma'
 
 gem 'execjs', '2.2.1'
 
