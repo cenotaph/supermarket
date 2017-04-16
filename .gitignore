@@ -54,3 +54,6 @@ config/deploy.rb
 Capfile
 config/deploy/*
 lib/capistrano/*
+
+# Ignore application configuration
+/config/application.yml
