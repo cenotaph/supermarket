@@ -567,6 +567,7 @@ DEPENDENCIES
   paper_trail!
   pg
   public_activity
+  puma
   quiet_assets
   rails (= 4.2.8)
   rails-footnotes (>= 3.7.9)
