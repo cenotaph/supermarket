@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>AIM Network</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #4E5869;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element-/taggväljare ~~ */
+ul, ol, dl { /* På grund av skillnader mellan webbläsare är det bäst att nollställa utfyllnad (padding) och marginal (margin) i listor. För att få det konsekvent kan du ange värdena du vill ha antingen här eller i listobjekten (LI, DT, DD) som de innehåller. Kom ihåg att det du gör här överlappar till navigeringslistan om du inte skriver en mer specifik väljare. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* om du tar bort toppmarginalen kringgår du ett problem där marginaler kan försvinna från sin innehålls-div. Bottenmarginalen som finns kvar håller den undan från efterföljande element. */
+	padding-right: 20px;
+	padding-left: 20px; /* om du lägger till utfyllnaden på sidorna av elementen i divarna, i stället för i divarna själva, slipper du all rutmodellsmatematik. Du kan även som alternativ metod använda en kapslad div med utfyllnad på sidorna. */
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+}
+a img { /* den här väljaren tar bort den blå kanten som visas i vissa webbläsare runt en bild när den omges av en länk */
+	border: none;
+}
+
+/* ~~ Formateringen av webbplatsens länkar måste förbli i den här ordningen – inklusive gruppen av väljare som skapar hover-effekten. ~~ */
+a:link {
+	color:#414958;
+	text-decoration: underline; /* såvida du inte formaterar dina länkar så att de ser extremt unika ut, är det bäst att använda understrykning för snabb visuell igenkänning */
+}
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* den här gruppen väljare ger den som använder tangentbord samma hover-upplevelse som den som använder mus. */
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* ~~ den här behållaren omger alla övriga divar och ger dem deras procentbaserade bredd ~~ */
+.container {
+	width: 80%;
+	max-width: 900px;/* en max-width kan vara till nytta om du vill hindra att layouten blir för bred på en stor skärm. Det gör radlängden mer läsbar. IE6 beaktar inte den här deklarationen. */
+	min-width: 400px;/* en min-width kan vara till nytta om du vill hindra att layouten blir för smal. Det gör radlängden mer läsbar i sidokolumnerna. IE6 beaktar inte den här deklarationen. */
+	background-color: #FFF;
+	margin: 0 auto; /* det automatiska värdet på sidorna, tillsammans med bredden, centrerar layouten. Det behövs inte om du anger behållarens (.container) bredd till 100 %. */
+}
+
+/* ~~ du anger inte någon bredd för sidhuvudet. Det sträcker sig över layoutens hela bredd. Det innehåller en bildplatshållare som ska ersättas med din egen länkade logotyp ~~ */
+.header {
+	background-color: #6F7D94;
+}
+
+/* ~~ Det här är layoutinformationen. ~~ 
+
+1) Utfyllnad (padding) anges bara i topp och/eller botten på diven. Elementen i den här diven har utfyllnad på sidorna. Detta besparar dig all ”rutmodellsmatematik”. Kom ihåg att om du lägger till någon utfyllnad eller kant på sidorna på själva diven, läggs detta till bredden som du definierar och bildar den ”totala” bredden. Du kan också välja att ta bort utfyllnaden på elementet i diven och placera en andra div inuti det utan någon bredd och med den utfyllnad som designen kräver.
+
+*/
+.content {
+	padding: 20px 0;
+}
+.contentcaption {
+	padding: 20px 0;
+	font: 80%/1.2 Tahoma, Arial, Helvetica, sans-serif;
+}
+ .bild {   
+    max-width: 100%; 
+	height:auto;
+  } 
+/* ~~ Den här grupperade väljaren anger listorna i innehållsområdet ~~ */
+.content ul, .content ol { 
+	padding: 20px 20px 40px; /* den här utfyllnaden (padding) speglar utfyllnaden åt höger i rubrikerna och styckelinjen ovan. Utfyllnad placerades längst ned för att få mellanrum mellan andra element i listorna och till vänster för att skapa indraget. Detta kan du anpassa efter egna önskemål. */
+}
+
+/* ~~ Sidfoten ~~ */
+.footer {
+	padding: 20px 0;
+	background-color: #6F7D94;
+}
+
+/* ~~ olika float/clear-klasser ~~ */
+.fltrt {  /* den här klassen kan du använda för att låta ett element flyta åt höger på sidan. Det flytande elementet måste komma före elementet som det ska ligga bredvid på sidan. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* den här klassen kan du använda för att låta ett element flyta åt vänster på sidan. Det flytande elementet måste komma före elementet som det ska ligga bredvid på sidan. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* den här klassen kan du placera på en <br /> eller tom div som sista element efter den sista flytande diven (i behållaren, #container) om sidfoten tas bort ur behållaren */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+-->
+</style></head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+    <table width="100%" border="0" cellpadding="0">
+      <tr height="15">
+         <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><p><a href="#"><img src="/assets/aim/images/static/aim_logo.png" alt="AIM" name="AIM" width="177" height="80" id="AIM"; display:block;="display:block;"" /></a></p>
+         <p><a href="meetings.html"><strong>The meetings</strong></a><strong> | </strong><a href="artistrunmap.html"><strong>The artist-run map</strong></a><a href="#"></a><strong> | </strong><a href="publication.html"><strong>Publication</strong></a><strong> | </strong><a href="members.html"><strong>Members of the network</strong></a></p></td>
+      </tr>
+      <tr height="15">
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="content">
+    <table width="100%" border="0" cellpadding="0" valign="top">
+      <tr valign="top">
+        <td width="287" align="top"><h2><img src="/assets/aim/images/images_aim/static/aim_cover.jpg" alt="" width="267" height="400" vspace="10"/><br />
+        </h2></td>
+    
+        <td align="top"><h1>The AIM Network </h1>
+        <p dir="ltr"><strong id="docs-internal-guid-65406f11-a02f-e4ea-d87c-e496bc2c9d52">This is a publication about the AIM Network, a diverse network of European artists' initiatives and their exchange of knowledge and experiences over a period of six years. The members got to know each other at Supermarket, an international art fair for artist-run spaces held annually in Stockholm, and continued meeting in different cities in and out of Europe to discuss key issues of self-organised exhibition spaces. They also engaged in an idea of developing an online Artist-Run Map that would gather artist-run initiatives to enhance their visibility and provide space for artistic exchange. </strong><strong>There can be found many examples of attempts to create a similar map, but they have all failed, being either incomplete or becoming fast outdated.</strong></p></td>
+      </tr>
+    </table>
+    <p>AIM have discussed the problematics surrounding this project, identified the main obstacles and developed a number of conceivable solutions, but as of now have not gathered the resources to perfect and launch a functioning Artist-Run Map. Hopefully, the groundwork done by AIM can be used by anyone seeking to realise a similar resource, and contribute to formation of creative encounters where ideas and knowledge are exchanged. <strong><br />
+    </strong></p>
+    <p><strong><br />
+      </strong>ISBN 978-91-639-3500-8 <br />
+      © 2017 AIM Network/Supermarket – Stockholm Independent Art Fair<br />
+     Editors: Andreas Ribbung and Anna Tomaszewska <br />
+    Text editing: Alice Maselnikova, Stuart Mayes  <br />
+    Graphic design: Dennis Hanqvist <br />
+    <!-- end .content --></p>
+  </div>
+  <div class="footer">
+    <p>AIM Network / Artist-run map</strong> <strong id="docs-internal-guid-65406f11-9c74-0165-063b-af3414d84ea8"><a href="mailto:info@artistrunmap.org">info@artistrunmap.org</a></strong></p>
+    <p><a href="https://www.nordiskkulturkontakt.org/en" target="new"><img src="/assets/aim/images/static/nkk.png" alt="" width="421" height="63" /></a><span class="fltrt contentcaption"> Supported by Nordic Culture Point 2011–2016</span></p>
+    <!-- end .footer --></div>
+  <!-- end .container --></div>
+</body>
+</html>

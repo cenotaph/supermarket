@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Artist-run map</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #4E5869;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element-/taggväljare ~~ */
+ul, ol, dl { /* På grund av skillnader mellan webbläsare är det bäst att nollställa utfyllnad (padding) och marginal (margin) i listor. För att få det konsekvent kan du ange värdena du vill ha antingen här eller i listobjekten (LI, DT, DD) som de innehåller. Kom ihåg att det du gör här överlappar till navigeringslistan om du inte skriver en mer specifik väljare. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* om du tar bort toppmarginalen kringgår du ett problem där marginaler kan försvinna från sin innehålls-div. Bottenmarginalen som finns kvar håller den undan från efterföljande element. */
+	padding-right: 20px;
+	padding-left: 20px; /* om du lägger till utfyllnaden på sidorna av elementen i divarna, i stället för i divarna själva, slipper du all rutmodellsmatematik. Du kan även som alternativ metod använda en kapslad div med utfyllnad på sidorna. */
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+}
+a img { /* den här väljaren tar bort den blå kanten som visas i vissa webbläsare runt en bild när den omges av en länk */
+	border: none;
+}
+
+/* ~~ Formateringen av webbplatsens länkar måste förbli i den här ordningen – inklusive gruppen av väljare som skapar hover-effekten. ~~ */
+a:link {
+	color:#414958;
+	text-decoration: underline; /* såvida du inte formaterar dina länkar så att de ser extremt unika ut, är det bäst att använda understrykning för snabb visuell igenkänning */
+}
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* den här gruppen väljare ger den som använder tangentbord samma hover-upplevelse som den som använder mus. */
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* ~~ den här behållaren omger alla övriga divar och ger dem deras procentbaserade bredd ~~ */
+.container {
+	width: 80%;
+	max-width: 900px;/* en max-width kan vara till nytta om du vill hindra att layouten blir för bred på en stor skärm. Det gör radlängden mer läsbar. IE6 beaktar inte den här deklarationen. */
+	min-width: 400px;/* en min-width kan vara till nytta om du vill hindra att layouten blir för smal. Det gör radlängden mer läsbar i sidokolumnerna. IE6 beaktar inte den här deklarationen. */
+	background-color: #FFF;
+	margin: 0 auto; /* det automatiska värdet på sidorna, tillsammans med bredden, centrerar layouten. Det behövs inte om du anger behållarens (.container) bredd till 100 %. */
+}
+
+/* ~~ du anger inte någon bredd för sidhuvudet. Det sträcker sig över layoutens hela bredd. Det innehåller en bildplatshållare som ska ersättas med din egen länkade logotyp ~~ */
+.header {
+	background-color: #6F7D94;
+}
+
+/* ~~ Det här är layoutinformationen. ~~ 
+
+1) Utfyllnad (padding) anges bara i topp och/eller botten på diven. Elementen i den här diven har utfyllnad på sidorna. Detta besparar dig all ”rutmodellsmatematik”. Kom ihåg att om du lägger till någon utfyllnad eller kant på sidorna på själva diven, läggs detta till bredden som du definierar och bildar den ”totala” bredden. Du kan också välja att ta bort utfyllnaden på elementet i diven och placera en andra div inuti det utan någon bredd och med den utfyllnad som designen kräver.
+
+*/
+.content {
+	padding: 20px 0;
+}
+.contentcaption {
+	padding: 20px 0;
+	font: 80%/1.2 Tahoma, Arial, Helvetica, sans-serif;
+}
+ .bild {   
+    max-width: 100%; 
+	height:auto;
+  } 
+/* ~~ Den här grupperade väljaren anger listorna i innehållsområdet ~~ */
+.content ul, .content ol { 
+	padding: 20px 20px 40px; /* den här utfyllnaden (padding) speglar utfyllnaden åt höger i rubrikerna och styckelinjen ovan. Utfyllnad placerades längst ned för att få mellanrum mellan andra element i listorna och till vänster för att skapa indraget. Detta kan du anpassa efter egna önskemål. */
+}
+
+/* ~~ Sidfoten ~~ */
+.footer {
+	padding: 20px 0;
+	background-color: #6F7D94;
+}
+
+/* ~~ olika float/clear-klasser ~~ */
+.fltrt {  /* den här klassen kan du använda för att låta ett element flyta åt höger på sidan. Det flytande elementet måste komma före elementet som det ska ligga bredvid på sidan. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* den här klassen kan du använda för att låta ett element flyta åt vänster på sidan. Det flytande elementet måste komma före elementet som det ska ligga bredvid på sidan. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* den här klassen kan du placera på en <br /> eller tom div som sista element efter den sista flytande diven (i behållaren, #container) om sidfoten tas bort ur behållaren */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+-->
+</style></head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+    <table width="100%" border="0" cellpadding="0">
+      <tr height="15">
+         <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><p><a href="index.html"><img src="/assets/aim/images/static/aim_logo.png" alt="AIM" name="AIM" width="177" height="80" id="AIM"; display:block;="display:block;"" /></a></p>
+          <p><a href="meetings.html"><strong>The meetings</strong></a><strong> | </strong><a href="artistrunmap.html"><strong>The artist-run map</strong></a><a href="#"></a><strong> | </strong><a href="publication.html"><strong>Publication</strong></a><strong> | </strong><a href="members.html"><strong>Members of the network</strong></a></p></td>
+      </tr>
+      <tr height="15">
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="content">
+    <h1>Artist-run map</h1>
+    <p dir="ltr"><strong id="docs-internal-guid-a113fd09-9cad-c46f-5a0b-c6da65ae638b">Mapping the network<br />
+      </strong>text: Pau Waelder    <strong><br />
+    </strong></p>
+    <p dir="ltr">When the participants at the first meeting of what would become AIM Europe found themselves sitting around a large table in a conference room at the Swedish Embassy in Berlin, they did not really know each other. The representatives of ten artist-run organisations from ten European countries (the Netherlands, United Kingdom, Switzerland, Denmark, Romania, Spain, Germany, Finland, Sweden and Poland), they had been invited by the organisers of the Supermarket – Stockholm Independent Art Fair to discuss the possibility of creating a translocal network of artist-run organisations and developing a large cultural project that would take place in different cities across Europe. The first session of the two-day meeting had been allocated to presentations of each of the organisations and their local art scene. At that point, a map began to emerge in the minds of those present in the room: geographical locations came alive in each speaker’s descriptions, common problems and challenges were identified. The need for artist-run spaces to reach beyond their respective local networks and support each other, both in terms of sharing knowledge and access to infrastructures, and finding financial resources, was immediately clear. It was also agreed that an online platform had to be developed in order to bring more visibility to artist-run initiatives among the public at large.</p>
+    <p dir="ltr"> In the subsequent meetings that took place over the course of four years in Stockholm, Copenhagen, Mallorca, Helsinki, and Athens, AIM continued to work as a nomadic office, while the number of participants changed, some partners dropping from the project, others stepping in. The online platform gradually became the main subject and objective of every assembly as although it was undeniable that the organisations in each country faced different situations and challenges, depending on local politics, funding, and culture, they all shared a lack of visibility. Artist-run spaces might be known of, but people usually have trouble finding them in their own city. Therefore the approach of creating a map (an art map for each city, and then a map for all artist-run initiatives in Europe and other continents) seemed most appropriate since the most basic condition for visibility is to be locatable. </p>
+    <p dir="ltr">Establishing a balance between the ubiquity of an online platform and the specific location of each physical gallery, an Artist-Run Map began to take shape. It focused on attaining AIMs three main objectives: enhancing the visibility of artist-run initiatives, establishing a translocal network, and sharing resources. The website would include a directory of artist-run spaces in Europe, maps of European cities showing the location of these spaces, articles and resources, and an intranet where AIM members could work together on shared projects. Among the challenges that this platform had to face, the main ones were the funding of an infrastructure to support its maintenance (both in terms of dealing with web hosting and practical issues such as employing dedicated staff), the short lifespan of some artist-run initiatives (which could make the map unreliable or even obsolete), and the question of selection – whether a committee should decide what is included and if public institutions, artist-in-residence programmes, and even commercial galleries could somehow be present on this platform. </p>
+    <p dir="ltr">While developing the prototype, the work focused on minimising maintenance, at the same time being aware that to make the Artist-Run Map completely self-maintaining was not possible. The main objective, in this respect, was to have less demanding registration and updating processes where the registered organisations update their own profile and content. In order to deal with the problem of the short lifespan of some artist’s initiatives, a feature that allows information to continue having a function and meaning was suggested: the registered partners would be contacted annually by an automated email message, where they are prompted to log in and confirm or update their information. If this is not done their status changes so that they appear in the archive of the artists’ initiatives that have ceased to exist. The organisation can revert to an active state if it becomes active again. </p>
+    <p dir="ltr">The selection of partners to be included in the Artist-Run Map proved to be the most complex issue: while it was desirable to keep an open registration (given that the map is presenting self-organised activities), it could generate an indiscriminate number of irrelevant entries that would add confusion and compromise the initial objective of the project. Therefore, several strategies of demarcation were discussed: for instance, to include only artist-run exhibition activities in the search function, while keeping the option of an extended search that included other types of artist initiatives, such as residencies, collective workshops, studio groups, cross-cultural art centres and so on. Every user registering an organisation would select one or more type of activity, and these parameters would control the search results. However the policy for delimiting what types of activities or organisations that would be allowed on the platform, or be included in the search results, remained to be decided: should a boundary be set to establish what could be considered an “artist-run” activity? Should it be non-commercial, non-institutional? Where to draw the line, considering that some activities combine different art forms, amateur art, or even activities of a completely disparate nature? A solution was proposed that involved a small team devoted to approving or denying applications on a regular basis, using an online tool. If a registration was approved by at least two or three members of the committee, it would be automatically accepted. </p>
+    <p dir="ltr">The prototype works with the same database as the applications to Supermarket. For the last couple of years applicants have been asked if they want to add their organisation to the database, and it is also possible to register only for the Artist-Run Map at Supermarket’s website. However, the registrations made before 2013 and 2014 were missing some parameters and had their geographic information handled differently, which caused incompatibility problems and they needed to be registered anew. </p>
+    <p dir="ltr">Despite being based in the database that collected all these registrations over the years, the Artist-Run Map currently exists as a private beta version, still not open to the public. AIM decided not to reveal the prototype, given that some key issues remain to be resolved, such as the selection method, a proper system to handle submissions and questions from participating organisations, as well as the user interface itself. Several previous attempts have been made to create a similar platform but they all ended up being inaccurate after a short time. AIM has opted to wait until a stable platform can be fully developed rather than make the same mistake. </p>
+    <p dir="ltr">While the map takes its final form, it is already strengthening the network of those involved. By working together on a common goal, a group of artists and curators who initially knew little about each other have developed a community that has expanded over the years, despite the differences and the distance involved. Nurtured in the halls of Supermarket, evolving over the years, and generating other initiatives and fruitful exchanges as it consolidates its platform, the Artist-Run Map is already more than just cartography. The publication about the network explains the process of developing the map as a way to discuss key issues of self-organisation and methods for transferring knowledge and experience, in order to engage other artist-run organisations enabling them either to join the project, or to develop their own map. As it evolves, however, the map is clearly drawn in the minds of those who participated in AIM, thus it already continues to grow beyond its explored territories, as more and more artist-run spaces keep connecting the dots. <br />
+      <br />
+    </p>
+    <p dir="ltr">Pau Waelder is a curator and researcher based in Mallorca and Barcelona. PhD in Information and Knowledge Society, he is consulting lecturer at the University Oberta de Catalunya (UOC) and Editor of Media Art at art.es contemporary art magazine.</p>
+    <p dir="ltr">&nbsp;</p>
+    <p dir="ltr"><a href="/spaces/map">A prototype of the map can be accessed with a username and password</a><br />
+    </p>
+  </div>
+  <div class="footer">
+    <p>AIM Network / Artist-run map</strong> <strong id="docs-internal-guid-65406f11-9c74-0165-063b-af3414d84ea8"><a href="mailto:info@artistrunmap.org">info@artistrunmap.org</a></strong> </p>
+    <p><a href="https://www.nordiskkulturkontakt.org/en" target="new"><img src="/assets/aim/images/static/nkk.png" width="421" height="63" /></a><span class="fltrt contentcaption"> Supported by Nordic Culture Point 2011–2016</span></p></div>
+  <!-- end .container --></div>
+</body>
+</html>

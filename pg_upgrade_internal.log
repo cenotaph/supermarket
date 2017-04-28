@@ -1,0 +1,14 @@
+Running in verbose mode
+
+-----------------------------------------------------------------
+  pg_upgrade run on Fri Apr 28 19:08:16 2017
+-----------------------------------------------------------------
+
+"/usr/local/Cellar/postgresql/9.5.4_1/bin/pg_ctl" -w -l "pg_upgrade_server.log" -D "/usr/local/var/postgres95/" -o "-p 50432 -c autovacuum=off -c autovacuum_freeze_max_age=2000000000  -c listen_addresses='' -c unix_socket_permissions=0700" start >> "pg_upgrade_server.log" 2>&1
+
+*failure*
+There were problems executing ""/usr/local/Cellar/postgresql/9.5.4_1/bin/pg_ctl" -w -l "pg_upgrade_server.log" -D "/usr/local/var/postgres95/" -o "-p 50432 -c autovacuum=off -c autovacuum_freeze_max_age=2000000000  -c listen_addresses='' -c unix_socket_permissions=0700" start >> "pg_upgrade_server.log" 2>&1"
+Consult the last few lines of "pg_upgrade_server.log" for
+the probable cause of the failure.
+There seems to be a postmaster servicing the old cluster.
+Please shutdown that postmaster and try again.

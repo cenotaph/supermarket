@@ -41,8 +41,8 @@ class ApplicationController < ActionController::Base
       @social_media = Cash.where(source: 'instagram').order(issued_at: :desc).limit(5)
       @tweets = Cash.where(source: 'twitter').order(issued_at: :desc).limit(5)
     elsif @site == 'aim'
-      
-      redirect_to map_spaces_path
+      render file: 'static/index.html', layout: false
+      # redirect_to map_spaces_path
     end
   end
   
@@ -115,7 +115,7 @@ class ApplicationController < ActionController::Base
   end
   
   def get_site
-    @site = request.host =~ /\.artistrunmap/ ? 'aim' : 'supermarket2014'
+    @site = request.host =~ /artistrunmap/ ? 'aim' : 'supermarket2014'
 
     @subsite = Subsite.where(:name => @site).first
     unless @site == 'aim'
@@ -127,7 +127,8 @@ class ApplicationController < ActionController::Base
       end
       @site_year = Year.all.sort_by(&:year).reverse.first
     end
-    if @site == 'aim'
+
+    if @site == 'aim' && request.path =~ /^\/spaces/
       authenticate_or_request_with_http_basic('Work in progress') do |username, password|
         username == 'trouble' && password == 'desire'
       end

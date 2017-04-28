@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Artists' Initiatives' Meetings</title>
+
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #4E5869;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element-/taggväljare ~~ */
+ul, ol, dl { /* På grund av skillnader mellan webbläsare är det bäst att nollställa utfyllnad (padding) och marginal (margin) i listor. För att få det konsekvent kan du ange värdena du vill ha antingen här eller i listobjekten (LI, DT, DD) som de innehåller. Kom ihåg att det du gör här överlappar till navigeringslistan om du inte skriver en mer specifik väljare. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* om du tar bort toppmarginalen kringgår du ett problem där marginaler kan försvinna från sin innehålls-div. Bottenmarginalen som finns kvar håller den undan från efterföljande element. */
+	padding-right: 20px;
+	padding-left: 20px; /* om du lägger till utfyllnaden på sidorna av elementen i divarna, i stället för i divarna själva, slipper du all rutmodellsmatematik. Du kan även som alternativ metod använda en kapslad div med utfyllnad på sidorna. */
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+}
+a img { /* den här väljaren tar bort den blå kanten som visas i vissa webbläsare runt en bild när den omges av en länk */
+	border: none;
+}
+
+/* ~~ Formateringen av webbplatsens länkar måste förbli i den här ordningen – inklusive gruppen av väljare som skapar hover-effekten. ~~ */
+a:link {
+	color:#414958;
+	text-decoration: underline; /* såvida du inte formaterar dina länkar så att de ser extremt unika ut, är det bäst att använda understrykning för snabb visuell igenkänning */
+}
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* den här gruppen väljare ger den som använder tangentbord samma hover-upplevelse som den som använder mus. */
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* ~~ den här behållaren omger alla övriga divar och ger dem deras procentbaserade bredd ~~ */
+.container {
+	width: 80%;
+	max-width: 900px;/* en max-width kan vara till nytta om du vill hindra att layouten blir för bred på en stor skärm. Det gör radlängden mer läsbar. IE6 beaktar inte den här deklarationen. */
+	min-width:400px;/* en min-width kan vara till nytta om du vill hindra att layouten blir för smal. Det gör radlängden mer läsbar i sidokolumnerna. IE6 beaktar inte den här deklarationen. */
+	background-color: #FFF;
+	margin: 0 auto; /* det automatiska värdet på sidorna, tillsammans med bredden, centrerar layouten. Det behövs inte om du anger behållarens (.container) bredd till 100 %. */
+}
+
+/* ~~ du anger inte någon bredd för sidhuvudet. Det sträcker sig över layoutens hela bredd. Det innehåller en bildplatshållare som ska ersättas med din egen länkade logotyp ~~ */
+.header {
+	background-color: #6F7D94;
+}
+
+/* ~~ Det här är layoutinformationen. ~~ 
+
+1) Utfyllnad (padding) anges bara i topp och/eller botten på diven. Elementen i den här diven har utfyllnad på sidorna. Detta besparar dig all ”rutmodellsmatematik”. Kom ihåg att om du lägger till någon utfyllnad eller kant på sidorna på själva diven, läggs detta till bredden som du definierar och bildar den ”totala” bredden. Du kan också välja att ta bort utfyllnaden på elementet i diven och placera en andra div inuti det utan någon bredd och med den utfyllnad som designen kräver.
+
+*/
+.content {
+	padding: 20px 0;
+}
+.contentcaption {
+	padding: 20px 0;
+	font: 80%/1.2 Tahoma, Arial, Helvetica, sans-serif;
+}
+ .bild {   
+    max-width: 100%; 
+	height:auto;
+  } 
+
+/* ~~ Den här grupperade väljaren anger listorna i innehållsområdet ~~ */
+.content ul, .content ol { 
+	padding: 20px 20px 40px; /* den här utfyllnaden (padding) speglar utfyllnaden åt höger i rubrikerna och styckelinjen ovan. Utfyllnad placerades längst ned för att få mellanrum mellan andra element i listorna och till vänster för att skapa indraget. Detta kan du anpassa efter egna önskemål. */
+}
+
+/* ~~ Sidfoten ~~ */
+.footer {
+	padding: 20px 0;
+	background-color: #6F7D94;
+}
+
+/* ~~ olika float/clear-klasser ~~ */
+.fltrt {  /* den här klassen kan du använda för att låta ett element flyta åt höger på sidan. Det flytande elementet måste komma före elementet som det ska ligga bredvid på sidan. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* den här klassen kan du använda för att låta ett element flyta åt vänster på sidan. Det flytande elementet måste komma före elementet som det ska ligga bredvid på sidan. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* den här klassen kan du placera på en <br /> eller tom div som sista element efter den sista flytande diven (i behållaren, #container) om sidfoten tas bort ur behållaren */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+-->
+</style>
+
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+    <table width="100%" border="0" cellpadding="0">
+      <tr height="15">
+         <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><p><a href="index.html"><img src="/assets/aim/images/static/aim_logo.png" alt="AIM" name="AIM" width="177" height="80" id="AIM"; display:block;="display:block;"" /></a></p>
+             <p><a href="meetings.html"><strong>The meetings</strong></a><strong> | </strong><a href="artistrunmap.html"><strong>The artist-run map</strong></a><a href="#"></a><strong> | </strong><a href="publication.html"><strong>Publication</strong></a><strong> | </strong><a href="members.html"><strong>Members of the network</strong></a></p></td>
+      </tr>
+      <tr height="15">
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="content">
+    <h1>Artists’ Initiatives’ Meetings</h1>
+    <p dir="ltr"><strong id="docs-internal-guid-99244f85-9c8a-504e-3c4b-9362146a2769">A network for exchange of knowledge and experience</strong></p>
+    <br />
+    <p dir="ltr">In 2010, Supermarket introduced a new programme aimed to connect its participants to each other and to allow for exchange of ideas: the Supermarket Meetings. A large number of exhibitors taking part in Supermarket were invited to participate in scheduled meetings where they could exchange ideas and make new contacts. The Meetings sessions are relatively short, closed to the public, and involve a small group of five or six participants.</strong></p>
+    <p dir="ltr">The artists who run Supermarket realised that the exchange of experience and knowledge that was generated in these meetings could be developed further, and therefore they took the initiative to host a two-day conference in Berlin. Nine other artists&rsquo; initiatives were invited, all of whom had previously participated in Supermarket. They represented different types of artist-run project spaces, galleries and other creative groups to allow for some of the common issues to be discussed from different perspectives.</strong></p>
+    <br />
+    </strong>
+    <h3 dir="ltr">The AIM meetings 2010–2016</h3>
+    <p dir="ltr"><strong>AIM Berlin</strong>, October 2010 was held at the Swedish Embassy in Berlin with nineteen participants from ten organisations. Initially the situation of the artist-run activities in the different countries were presented and compared, as well as the relationship to the rest of the art scene and the audience. A series of problems and possible solutions was identified, followed by discussion regarding the possibility of creating common platforms. The AIM Network was formally established, and its long-term goals concerning exchange, collaboration, mobility, visibility and accessibility were formulated on the basis of the preceding discussions.</strong></p>
+    <p dir="ltr">The previews of Art Forum Berlin, the ABC Art Berlin Contemporary, Preview Berlin, and other art events were visited. The AIM Berlin participants (all of whom were practising visual artists) organised the group show &lsquo;Private View Berlin&rsquo; (6 October) at the artist-run gallery Artillerie in Wedding. The show presented works by Alex Baggaley, Raphael Egli, Kim Dotty Hachmann, Julia Hurter, Dafna Maimon, Monika Müller, Sari Palosaari, Pontus Raud, Andreas Ribbung, Matthias Roth, Meggi Sandell, Bertram Schilling, Ben Tomlinson, Signe Vad, Marcos Vidal, and Ricarda Wallhäuser.</strong><br />
+      <br />
+      <img src="/assets/aim/images/static/images_aim/2010_berlin/JPEG/DSCN0326.jpg" class="bild" width="708" height="531" /><br />
+    <span class="contentcaption">First Meeting in the Swedish Embassy, Berlin, 2010. Andreas Ribbung (elbow), Pontus Raud, Pau Waelder, Marcos Vidal, Kim Dotty Hachmann Julia Hürter, Ricarda Wallhäuser, Monika Müller, Raphael Egli, Marta Szymanska, Timo Soppela, Bertram Schilling, Meggi Sandell, Ben Tomlinson, Alex Baggaley. (missing Johan Gustavsson, Nico Feragnoli, Signe Vad, Matthias Roth, Mihaela Lutea). Photo: Nico Feragnoli. <br />
+    </span><br />
+    </p>
+    <p dir="ltr"><strong>AIM Stockholm</strong>, February 2011 was organised at Kulturhuset in Stockholm in conjunction with Supermarket 2011 – Stockholm Independent Art Fair, and with fifteen participants from seven partner organisations. During this meeting the network discussed ways in which it could be expanded, and how theoretical ideas and writings on the artist-run scene and self-organisation should be collected and made accessible.</strong></p>
+    <p dir="ltr">Economic influence in the art world and its impact on the status of non-profit operations, along with the differences of interests and focus were also discussed. Further themes included how artists&rsquo; initiatives relate to &lsquo;DIY culture&rsquo; and self-organised representation, and the concept of &lsquo;trans-local interrelations&rsquo; in relation to &lsquo;international cooperation&rsquo;. These topics were embraced in short presentations and a series of group meetings with 23 Swedish artist-run initiatives who were participating in Supermarket 2011.</strong></p>
+    <p dir="ltr">Visits were made to &nbsp;art fairs Market and Supermarket as well as to a number of other art events.<br />
+    </p>
+    <p dir="ltr">&nbsp;</p>
+    <p dir="ltr"><strong>AIM Copenhagen</strong>, September 2011 took place at the Danish Art Workshops in Copenhagen with fourteen participants from five partner organisations and two specially invited artist-run initiatives from the Baltic countries: Art Container from Tallinn, Estonia, and Totaldobze from Riga, Latvia. During this meeting the network began to discuss the possibility of gathering information on and experience of self-organised exhibition activities and projects through a survey, to establish a knowledge base, and to create a list and a map that would raise awareness of this often invisible scene. Aarhus based exhibition space Spanien 19C and Copenhagen based internet platform Netfilmmakers presented their activities and participated in the discussion during one of the days.</strong></p>
+    <p dir="ltr">Visits were made to ART Copenhagen and the alternative art fair Alt_Cph11.<br />
+      <br />
+      <img src="/assets/aim/images/static/images_aim/2011_copenhagen/JPEG/DSCF4556.jpg" width="708" height="531" class="bild" /><br />
+      <span class="contentcaption">AIM Copenhagen 2011 in the Danish Art Workshops. Signe Vad, Pontus Raud, Meggi Sandell, Tanel Saar, Sandra Jõgeva, Janno Bergmann, Kim Dotty Hachmann, Nico Feragnoli, Kaspars Lielgalvis. Photo: Andreas Ribbung      </span><br />
+      <br />
+    </p>
+    <p dir="ltr"><strong>AIM Mallorca</strong>, March 2012 was hosted at Can Gelabert Binissalem in Mallorca with ten participants from five partner organisations, as well as Alvaro Campo from the Nordic Art Association. Based on the idea of creating a web portal and database/CMS for artist-run initiatives discussions were about what goals could be achieved by such undertaking, and what kind of target audience would be addressed. A stakeholder analysis of existing interest in such a database served as the basis for discussion. A number of problems were identified: how to market the service to users, how organisations might be registered on the database, how long-term funding might be achieved, how the database should be maintained, and how to ensure that only appropriate organisations are listed in search results – or whether total openness for participation is important for it to be consistent with the idea of self-organisation. A proposed solution to the last problem was to keep the openness, but ensure that different lists could be extracted based on the keywords and parameters contained in the registered information.</strong></p>
+    <p dir="ltr">Invited guests Carles Gispert and Jose Troya presented &lsquo;Icouldbeyou&rsquo; from Mallorca and &lsquo;La Xina art&rsquo; from Barcelona: two artists&rsquo; initiatives that were part of a very active network in the 90s and vanished due to lack of both funding and communication channels.</strong></p>
+    <p dir="ltr">Visits were made to the Crida residency, and Pilar and Joan Miro Foundation in Palma. The meeting coincided with the &lsquo;Art Brunch&rsquo; gallery open day in Palma. The exhibition &lsquo;Next Stop Mallorca&rsquo; at Cultural Centre Can Gelabert in Binissalem was organised in collaboration with the AIM meeting and featured artists: Alvaro Campo, Kim Dotty Hachmann, Pontus Raud, Andreas Ribbung, Matthias Roth, Signe Vad, Marcos Vidal, and a sound art compilation by Muu, Helsinki.</p>
+    <p dir="ltr">Since 2013 AIM has arranged annual public events in the Supermarket Talks seminar programme: a part of Supermarket – Stockholm Independent Art Fair.</strong><br />
+      <br />
+    <img src="/assets/aim/images/static/images_aim/2012_mallorca/JPEG/cristal_palma.jpg" width="800" height="133" class="bild" /><br />
+      <span class="contentcaption">Meeting in Bar Cristal, Palma de Mallorca. Andreas Ribbung, Rita Leppiniemi, Pontus Raud, Kim Dotty Hachmann, Signe Vad, Hanne Ivars, Timo Soppela, Alvaro Campo, Marcos Vidal, Matthias Roth. Photo collage: Andreas Ribbung </span><br />
+      <br />
+    </p>
+    <p dir="ltr"><strong>Public event at Supermarket Talks in Stockholm, February 2013. </strong></strong></p>
+    <p dir="ltr">Supermarket Talks were held in Studio 3 at Kulturhuset. The seminar started with Andreas Ribbung and John W. Fail presenting the database/CMS for artists&rsquo; initiatives around the world,designed &nbsp;both as a network platform and a public web directory. Signe Vad moderated a panel discussion called &lsquo;Visibility – an empty buzzword or an important focus issue?&rsquo;. Artists Sookyoung Huh, Philip Tonda Heide, and Nico Feragnoli, talked about artist-run initiatives in relation to the public sphere, and whether they can compete with institutions and private companies regarding audience. The panel considered if such a competition is even worth the effort, what the benefits are, what the costs are, and what are the alternatives.</strong></p>
+    <p dir="ltr">The seminar concluded with Kaspars Lielgalvis showing his &lsquo;Culture Currencies&rsquo; project, which strives to overcome one of the main challenges preventing the development of non-governmental institutions – the constant lack of funding.</strong></p>
+    <p dir="ltr">Eleven participants from nine partner organisations and a Finnish guest organisation took part in ten smaller meetings organised in the framework of Supermarket Meetings. During a joint working meeting possible features and content of a web portal were discussed, e.g. a directory/map, event listings, open calls and residencies, a database of articles and resources about artist-run initiatives, social media features, links to other information, and intranet facilities for AIM members where work documents and messages could be exchanged.</strong></p>
+    <br />
+    </strong>
+    <p dir="ltr"><strong>AIM Helsinki</strong>, September 2013, held at the Business Meeting Park Kamppi, with eleven participants from seven partner organisations. Included were visits and meetings with representatives from Huuto Gallery, Gallery Forum Box and MUU Gallery, where the particular support systems for artists exhibiting in Finland led to a discussion about cultural support and ways of operating for the arts in different countries. The network decided to develop a pilot version of the database/CSM – and different solutions to the previously identified problems were discussed in detail.</strong></p>
+    <p dir="ltr">At the Cable Factory there were meetings with representatives of HIAP, Frame Visual Art Finland, and Checkpoint Helsinki. A group exhibition with Philip Tonda Heide, Kim Dotty Hachmann, Anni Laakso, Pontus Raud, Andreas Ribbung, Matthias Roth, Meggi Sandell, Bertram Schilling, Signe Vad, and Marcos Vidal was held at Cable Gallery during Art Fair Suomi, an annual membership exhibition organised by two artists' associations representing new media in contemporary art: Artists&rsquo; Association MUU and the Photographic Artists&rsquo; Association.<br />
+      <br />
+    <img src="/assets/aim/images/static/images_aim/2013_helsinki/JPEG/2013-Helsinki_photo-M-Roth_DSF2309.jpg" width="797" height="531" class="bild" /></p>
+    <p dir="ltr"><span class="contentcaption">Insérez Le Nom, Signe Vad, Andreas Ribbung, Kim Dotty Hachmann, Marcos Vidal, Nico Feragnoli, Kaspars Lielgalvis, Hanna Uusi-Seppä outside Huuto Gallery, Helsinki, 2013. Photo: Matthias Roth</span><br />
+      <br />
+    </p>
+    <p dir="ltr"><strong>Public event at Supermarket Talks in Stockholm, February 2014. </strong></strong></p>
+    <p dir="ltr">AIM organised two panel discussions at Supermarket Talks, once again, as in the previous year, held in Studio 3 at Kulturhuset. First of the discussions was &lsquo;Life Beyond the Budget – a panel discussion about alternative financial strategies&rsquo;, with contributions from Nini Palavandishvili (GeoAIR, Tbilisi), Amy Fee (House of Dance, Stockholm), and Kaspars Lielgalvis (Totaldobze, Riga), moderated by John W. Fail (Ptarmigan, Tallinn). The panel considered how art and cultural initiatives can go beyond traditional models of financial support – looking at methods of economic survival, and brainstorming to find new ways of collaboration toward the creation of alternative structures that actively respond to changes in state policies, social trends and other cultural patterns.</strong></p>
+    <p dir="ltr">The second event was &lsquo;Going Public: studios, work and outreach&rsquo;, a panel discussion with Josh Ginsburg (co-founder and resident artist at Atlantic House in Cape Town), Elisa Pessoa and Gabriela Maciel (resident artist/founder of TAL at Fabrica Bhering in Rio de Janeiro) and Lucian Indrei (co-founder of Lateral Artspace in Cluj-Napoca, Romania), and was moderated by Signe Vad. The panel discussed collective workspaces and studio partnerships that facilitate exhibitions and residencies. The panel brought up the positive impact of working with public activities, rather than non-public, gaining inputs from other artists through residencies and exhibitions, for example.</strong></p>
+    <p dir="ltr">In addition to the public program, eleven participants from nine partner organisations had fourteen smaller meetings in the Meetings Programme, and a working meeting where work on the programming of the database/CMS was reported and a research workshop planned.<br />
+    <br />
+    </strong>    </p>
+    <p dir="ltr"><strong>AIM Athens</strong>, June 2014 was at Art-Athina in the Taekwondo Stadium, Athens, with thirteen participants from nine partner organisations. For the second year Art-Athina ran &lsquo;Platforms Project @ Art-Athina&rsquo; (a section for artist-run spaces and artists&rsquo; groups) and AIM were invited to participate in their seminar program. A discussion moderated by George Oreopoulos and Delia Potaminaou from the radio station Βeton7ArtRadio opened the conference. They hosted a group interview, a model commonly used in the radio programme Art Therapy, using questions that often arise within an artist-run initiative, such as how the membership is composed, what is easy or difficult with the cooperation and collaboration, if non-profit work is (unavoidably) exhausting, if their own artist practice come in conflict with – or is inspired by – the non-profit work. It also examined projects, as inspiration and formal ways of operating that lead to the selection of certain types of art, curatorial practices, funding and sharing of resources, and the relationship of artist-run initiatives to the commercial and institutional art world.</strong></p>
+    <p dir="ltr">Local artist initiatives Salon de Vortex, Lo and Behold, and Filopappou Group were invited to present their projects, which was preceded by short introductions from the partner organisations. Subsequent discussion revolved around how activities affect the availability and sustainability of premises. The conference included a regular working meeting for the network partners where the pilot version of the database was shown and where data collection and the map function were developed further.<br />
+      <br />
+      <img src="/assets/aim/images/static/images_aim/2014_athens/JPEG/2014-Athens_photo-M-Roth_LUX3234.jpg" width="780" height="531" class="bild" /><br />
+      <span class="contentcaption">Internal meeting, Platforms Project, Art-Athena, Faliro Pavilion (TaeKwonDo), Athens, 2014. Photo: Matthias Roth</span><br />
+      <br />
+    </p>
+    <p dir="ltr"><strong>AIM Riga</strong>, September 2014 was held at Totaldobze, Press House, Riga, with seven participants from five partner organisations. The meeting was preceded by a three-day workshop at Tasu Manor, Grobina in Latvia&rsquo;s countryside, which was directed towards research and networking with artist-run initiatives around the world. Serious TV LiVe &nbsp;recorded a broadcast – &lsquo;Conversations with Artists from European Artist-run Exhibition Platforms: Goals and Challenges&rsquo;.</strong></p>
+    <p dir="ltr">Discussions in Riga about the database focussed on the map function, user interface, and design. The local artist-run initiatives &lsquo;427&rsquo; and &lsquo;Ziema&rsquo; presented their activities and participated in a discussion which started from Riga&rsquo;s particular situation with an abundance of abandoned buildings and attempts to make these spaces available for cultural activities.<br />
+      <br />
+      <img src="/assets/aim/images/static/images_aim/2014_grobina%3Ariga/JPEG/IMG_5764.jpg" width="708" height="531" class="bild" /><br />
+      <span class="contentcaption">Serious TV LiVe broadcast. Signe Vad interviews Kaspars Lielgalvis, Tāši manor, Grobina, AIM Latvia 2014. Photo: Andreas Ribbung      </span><br />
+      <br />
+    </p>
+    <p dir="ltr"><strong>Public event at Supermarket Talks in Stockholm, April 2015. </strong></strong></p>
+    <p dir="ltr">AIM organised three panel discussions at Supermarket Talks, which this year was held at Konstfack: University College of Arts, Crafts and Design, next to Svarta Huset – the new location for Supermarket 2015.</strong></p>
+    <p dir="ltr">In &lsquo;Cultural Exchange Rate&rsquo; speakers considered the meaning and value of cultural exchange in an imbalanced world. This discussion raised the challenge of having open attitude towards cultural exchange and the inherent difficulties given the existing inequalities in international participation. The discussion was introduced and moderated by Jeroen van der Hulst, Editor-in-Chief at Pamphlet Magazine (NL), with participants: Abir Boukhari, founder of AllArtNow, Damascus (SY); Nia Pushkarova, founder of Water Tower Arts Fest, Sofia (BG); Signe Vad, founder of Udstillingsstedet TYS, Copenhagen (DK). This discussion was made possible with support from the Swedish Institute.</strong></p>
+    <p dir="ltr">Nafasi Art Space in Dar es Salaam, Tanzania, presented their background and current work in a discussion with historian Mikela Lundahl under the title &lsquo;Visions and visibility – challenges for the artist-run scene in Tanzania&rsquo;. &nbsp;The debate concerned power structures within the art world, east African and gender identity politics, western hegemony and hierarchy, international influence and the post-colonial context of these issues. Who is (not) represented and (how) is it possible to change? The participants were: Rehema Chachage, artist and artistic manager of programmes at Nafasi Art Space; Diana Kamara, artist and poet, Dar es Salaam; and Mikela Lundahl, PhD in History of Ideas with Research In Critical Heritage Studies, Gothenburg / Copenhagen.</strong></p>
+    <p dir="ltr">The third discussion &lsquo;Art in the margins&rsquo; considered migration and immigration, and asked how can artistic projects represent the unrepresented and illuminate the experiences of excluded communities. Erik Berggren (Museum of Forgetting) introduced Secil Yayali from the artist-run space Pasaj that operates in the Tarlabasi neighborhood, a historic area in the centre of Istanbul, that has always been a home for minorities suffering discrimination from Turkish authorities and the wider society, and Olson Lamaj from the artist-run space Miza (Tirana) presented artists who discuss the experiences of Albanian immigrants in their new countries of residence.<br />
+    </p>
+    <p dir="ltr">In addition to the public programme twelve participants from seven partner organisations and two guest (from Lithuania and Bulgaria, who became new partners) got together in twelve smaller meetings in the Meetings programme. A general working meeting dealt with the obstacles to publishing the unfinished pilot version of the database, and meaningful ways to extend the network&rsquo;s experience by creating opportunities for other artist-run initiatives to share knowledge and experiences.<br />
+      <br />
+    <img src="/assets/aim/images/static/images_aim/2015_sth/JPEG/foto.jpg" width="796" height="531" class="bild" />    <br />
+    <span class="contentcaption">&lsquo;Cultural Exchange Rate&rsquo;, Abir Boukhari, founder of AllArtNow, Damascus (SY); Nia Pushkarova, founder of Water Tower Arts Fest, Sofia (BG; Jeroen van der Hulst, Editor-in-Chief at Pamphlet Magazine (NL); Signe Vad, founder of Udstillingsstedet TYS, Copenhagen (DK).</span> <br />
+    <br />
+    </p>
+    <p dir="ltr"><strong>Public event at Supermarket Talks in Stockholm, April 2016. </strong></strong></p>
+    <p dir="ltr">Three panel discussions were organised at Supermarket Talks, which this year was held in Svarta Huset at Telefonplan, Stockholm.</strong></p>
+    <p dir="ltr">&lsquo;Reinventing Independence – Ten Years of the Artist-run Scene&rsquo; was a special seminar with Andreas Ribbung, Pontus Raud and invited representatives of the partner organisations, together with exhibitors of Supermarket 2016, all of whom brought their expertise and experience to the discussion. The seminar considered the ways that the artist-run scene has developed during the last ten years. It also asked what kind of conclusions can be drawn and what strategies do we have for the future – one point of agreement was that the self-confidence of artist-run initiatives has increased.</strong></p>
+    <p dir="ltr">Eight participants from seven partner organisations participated in fifteen smaller meetings in the Meetings programme. In addition to the exhibition and the existing talks and performance programmes, a new way to participate was introduced – Professional Networking Participants aimed at individual artists working with curatorial and organisational activities. The AIM network met with two representatives of Wroclaw 2016 European Capital of Culture to plan a forthcoming workshop. </strong></p>
+    <br />
+    </strong>
+    <p dir="ltr"><strong>AIM Wrocław, Politics of collaboration</strong>, 12–14 May, 2016, Wrocław, Poland<br />
+      (text: Anna Tomaszewska, based on Aleksandra Smolińska’s notes) </p>
+    <p dir="ltr">Poland has a long tradition of grassroots initiatives, although most of them are characterised by ephemerality. Artists increasingly complain about the lack of financial support, conservative cultural policies, an overwhelming dominance of public institutions, and lack of media interest. Is it possible to improve this situation? We addressed this question, alongside many others, during the three-days of &lsquo;Politics of Collaboration&rsquo; – the last of AIM's meetings series. We invited representatives of artists' initiatives from across Poland, local activists, and students of the Wrocław Academy of Fine Arts. Events were held at Barbara, Wykwit and Entropia Wrocław.</p>
+    <p dir="ltr">The collective character of the meeting was reflected in the exhibition 'Abracadabra – Politics of Collaboration', as well as in the preparatory phase and the selection of subjects for discussion. We focused on specific aspects of collaboration at different levels: international, national, local, and within artist initiatives. It was essential for us to concentrate on the aspect of &lsquo;empowerment&rsquo; in the context of the current political situations in both Europe and on global scale: the rise of isolationist tendencies in different countries, diminishing budgets for independent, experimental and critical practice, dominance of public institutions and commercial galleries, putting the material interests of individuals before the collective interest (mainly in the context of competitiveness within the art world), low status and poor visibility of independent galleries, and the lack of bargaining power in negotiations with the local authorities, institutions, etc. We did our best to look at the flipside of these issues and focus on what can be done, how and why it can be achieved, by learning from each other, providing inspiration, arguing, and supporting one another.</strong></p>
+    <p dir="ltr"> </p>
+    <p dir="ltr">For three days Wrocław hosted a total of thirty-one artists and curators from ten countries (1646 gallery from the Netherlands, LTMK from Lithuania, the Danish initiative TYS, St Marc from Spain, Supermarket from Sweden, Totaldobze from Estonia, MUU from Finland, Microwesten from Germany, Watertower Art Fest from Bulgaria), a number of organisations from Poland: the Miłość gallery from Toruń, F.A.I.T. from Cracow, the Wschodnia gallery from Łódź, the Szara gallery from Katowice (previously based in Cieszyn), STROBOSKOP from Warsaw, the Salony Foundation from Zielona Góra, Wrocław-based organisations: Wykwit, Entropia and U galleries, the Art Transparent Foundation, and students from the Academy of Fine Arts, Wroclaw who also represented the MD-S gallery. The agenda for the meetings and seminars was supervised by Anna Tomaszewska, a curator and lecturer. The production of the project was overseen by Katarzyna Zielińska and Marta Kołodziejska of the European Capital of Culture Wrocław 2016 Festival Office, while the exhibition accompanying the event was curated by Andreas Ribbung from Supermarket.</strong><br />
+      <br />
+    <img src="/assets/aim/images/static/images_aim/2016_wroclaw/JPEG/aim1_3_fot.alicjakielan.jpg" width="797" height="531" class="bild" />    <br />
+    <span class="contentcaption">Meeting workshop during AIM Wrocław 2016 ‘Politics of collaboration’, Culture centre Barbara, European Capital of Culture Wrocław 2016. Photo: Alicja Kielan    </span></p>
+    <p dir="ltr">The guests were presented with a detailed agenda and assigned to international working groups, whose moderated discussions focused on the current problems, limitations and challenges faced by artist-run initiatives. The jointly agreed items to be discussed concerned both abstract and very concrete matters including:</strong></p>
+    <ul>
+      <ul>
+        <li>cooperation of galleries with similar profiles in different countries;</strong></li>
+        <li>cooperation at the local level;</strong></li>
+        <li>local experiences versus the international (global) context; the significance of cooperation of independent initiatives in order to strengthen their position and prestige in the art world;</strong></li>
+        <li>the importance of creating spaces for experimenting and stimulating critical thinking;</strong></li>
+        <li>collaboration policies in the context of growing nationalistic tendencies in Europe;</strong></li>
+        <li>issues connected with equal rights of artists invited to exhibit and ways of running galleries;</strong></li>
+        <li>financing the activity;</strong></li>
+        <li>ways of functioning without a budget;</strong></li>
+        <li>issues connected with selling works or intentionally resigning from commercial activity;</strong></li>
+        <li>ways of combining artistic practice with other forms of earning a living. </li>
+      </ul>
+    </ul>
+    <p dir="ltr"><img src="/assets/aim/images/static/images_aim/2016_wroclaw/JPEG/aim1_7_fot.alicjakielan.jpg" width="797" height="531" class="bild" /><br />
+      <span class="contentcaption">Mindaugas Gapševičius, Anita Welter and Karolina Włodek at the meeting workshop during AIM Wrocław 2016 ‘Politics of collaboration’, Culture centre Barbara, European Capital of Culture Wrocław 2016. Photo: Alicja Kielan</span> <br />
+    </p>
+    <p dir="ltr">An important aspect of the meeting was the local context which became the pretext for reflecting on the long tradition of self-organisation in Wrocław. The visiting artists and curators had the opportunity to talk with the representatives of local independent initiatives and visit their spaces. At Entropia, one of the oldest galleries in Wrocław, Dominika Łabądź, co-founder of the U Gallery, presented the history and programme of the initiative that used to be in a rented tenement building on Jedności Narodowej Street. The building, which had been renovated and adapted through the efforts of Dominika Łabądź, Marysia Orzeszyna-Kułakowska and Małgorzata Sawicka, operated for five years as an autonomous platform for artistic work. In 2015 the owner demolished the building, and new apartments are being erected on the site. Despite not having a physical space U Gallery is still active in what the artist described as &lsquo;symbolic&rsquo; space, being involved in local, often controversial, issues connected with the municipal cultural policies.</p>
+    <p dir="ltr">Alicja and Mariusz Jodko, the curators of the Entropia Gallery, which has been operating since 1988, familiarised the guests with the reality of self-organisation in the difficult period of transformation in the 1980s, when two artistic currents were simultaneously developing in Poland – an official and an underground one. At that time, a gallery was one of the few acceptable forms of counterculture – a &lsquo;quasi&rsquo; or &lsquo;extra&rsquo; institution providing an alternative to the existing institutions (also in the social, environmental and countercultural sense), that operated parallel to the officially sanctioned art scene of the communist era. This is how the &lsquo;independence&rsquo; of the galleries being set up in Poland in the 1980s should be understood, although most of them paradoxically depended organisationally, administratively or financially on the local councils or larger institutions, such as cultural centres and universities. The Entropia Gallery was no exception – operating under the auspices of the municipal council of Wrocław. Although as an institution it is controlled by the local administration, it was set up as a grassroots initiative by its founders, and from the very beginning it has functioned as an individual and original project.</p>
+    <p dir="ltr">Discussions about the history of Entropia Gallery, which is firmly rooted in the collective conscience of Wrocław residents, and the story of the tenement building at 93 Jedności Narodowej Street, was continued in a new venue for art, an old house &nbsp;at 21 Jana Kochanowskiego Street where the basement had been converted to an exhibition venue. There was an opportunity to explore the house, which dates back to around 1900 when Wrocław was the German city of Breslau. In an informal atmosphere of a picnic in the garden, the founders of the Wykwit gallery answered questions about running the house. Wykwit is a space where art and private life permeate each other, without any predefined programme or common ideological denominator. Since the artists who run the gallery also live in the building, supporting it depends on collective efforts. The founders emphasised that their artistic-curatorial practice is completely independent of external institutions and curators.</p>
+    <p dir="ltr">The discussions initiated on the first day were continued during the summary meetings and semi-open seminar held on the following day and moderated by Anna Tomaszewska. In keeping with the title of the programme the conversations revolved around the importance of artists&rsquo; self-organisation and the specific contextual aspects of collaboration (within a gallery, locally, nationally, and internationally). An important facet of the discussion was the local context of the meeting. For this reason participants were invited to analyse the history of artists&rsquo; self-organisation in Wrocław and the reception of their activities by the local audience. Among other challenges addressed on this day were the issues of selling works by initiatives that are non-commercial, the justification of creating residency programmes dedicated to artists running their own spaces, e.g. research sojourns in different cities in Poland and elsewhere, and inviting artists connected with independent spaces to Wrocław.<br />
+      <br />
+      <img src="/assets/aim/images/static/images_aim/2016_wroclaw/JPEG/aim2_3_fot.alicjakielan.jpg" width="797" height="531" class="bild" /><br />
+      <span class="contentcaption">Norbert Delman, Nico Feragnoli, Nia Pushkarova and Kim Dotty Hachmann at a summing-up session during AIM Wrocław 2016 ‘Politics of collaboration’, Culture centre Barbara, European Capital of Culture Wrocław 2016. Photo: Alicja Kielan</span><br />
+    </p>
+    <p dir="ltr">Apart from the shared subjects, each of the five international groups focused on one specific aspect of running self-organised initiatives. Group one (moderated by Signe Vad from TYS Exhibition Space (Copenhagen) and comprising Marcos Vidal Font from St Marc (Mallorca), Alicja Jodko and Mariusz Jodko from Entropia (Wrocław), Anna Stec from SURVIVAL (Wrocław), and Iwona Ogrodzka from the Academy of Fine Arts (Wrocław)) discussed issues connected with the limits of artistic freedom. The group&rsquo;s starting point was the notion of censorship, considering self-organised initiatives in the context of a counterculture functioning in parallel to an officially endorsed art. Understood in this way, grassroots initiatives are treated as a basis for the democratisation of art, which can be practiced and curated virtually by anyone, and thus blurs the distinction between those who are artists and those who are not, between what is acceptable as artistic expression and what is stifled or regarded as taboo. As the moderator observed, the discussion on the limits of artistic expression quickly turned into a wider conversation about the changing political and social contexts in which the art scene functions; among the addressed topics was the positive example of Entropia Gallery which began in the 1990s to incorporate new technologies and mobile apps in its activities to avoid being stuck in one schema. The general reflection pointed toward a conclusion that an open art market, and increasing competitiveness of the official and non-official spaces for art, inevitably leads to certain concessions to the ruling &lsquo;system,&rsquo; because in order to increase visibility and reach the audience, even &lsquo;the most independent&rsquo; initiatives must think about communications strategies and maintaining visibility.</strong></p>
+    <p dir="ltr">The second group (led by Nico Feragnoli and comprising Mathias Roth from Microwesten (Berlin), Lina Rukeviciute Sodų 4, (Vilnius), Norbert Delman from STROBOSKOP (Warsaw), Joanna Rzepka-Dziedzic and Łukasz Dziedzic from Galeria Szara (Katowice), and Jagoda Dobecka from Academy of Fine Arts (Wrocław)) considered the advantages and limitations of grassroots initiatives and their more institutionalised equivalents. Although the discussion was very animated the group admitted that they did not arrive at clear conclusions as both ways of approaching artistic actions seem to be more or less functional depending on the local political, social and financial contexts. The participants did agree that establishing new spaces for art in environments where official cultural-artistic institutions already exist stems from the natural need to take up initiative and create a field for individual expression, free from organisational profiles and budgets. Against this backdrop founders of independent galleries fulfil the role of activists, unlike curators who are always separated from the audience by certain impassable distance. However, the group members highlighted that grassroots initiatives undertaken by these artists-activists are not in opposition to the mainstream arts scene; instead they supplement it by providing a critical or simply alternative options for managing art and culture.</p>
+    <p dir="ltr">Group three (moderated by Andreas Ribbung from Candyland and Supermarket (Stockholm) with participants Mindaugas Gapsevicius (Germany/Lithuania), Piotr Lisowski and Natalia Wiśniewska from Miłość (Toruń), Adam Martyniak from Wykwit (Wrocław), Karolina Włodek and Anita Welter from the Academy of Fine Arts (Wrocław)</strong>) dealt with the challenges faced by artist collectives and focused on issues such as group potential versus individualism, &lsquo;victimless&rsquo; activities, and the effective use of a group&rsquo;s potential. The participants drew on their personal experience and different practices used in collective work. Everybody agreed that private initiatives are also subject to structuring, and the members involved in them must be responsible for acquiring funds, negotiating with partners, and organising exhibitions. Even initiatives verging on the principle of a &lsquo;non-ideological commune&rsquo; such as Wykwit, whose members live and work in a shared space, need to adhere to a set of rules. Here, collective work includes a number of activities – from minor house repairs, through thinking about the house as a venue for creative interventions, to exceeding the limits of their &lsquo;own backyard&rsquo; and inviting people from the outside to co-create the gallery. It was observed that the best guarantor of a group&rsquo;s smooth, &lsquo;victimless&rsquo; functioning is basing it on the individual resources of each of its members, using their talents and predispositions. The group also attempted to define the notion of &lsquo;collaboration&rsquo; and concluded that it is based on potential exchange, direct contact with each other and with the audience, and an open dialogue rather than a mentorship model.<br />
+      <br />
+    <img src="/assets/aim/images/static/images_aim/2016_wroclaw/JPEG/aim2_2_fot.alicjakielan.jpg" width="797" height="531" class="bild" />    <br />
+    <span class="contentcaption">Anna Tomaszewska, Andreas Ribbung and Mindaugas Gapševičius at a summing-up session during AIM Wrocław 2016 ‘Politics of collaboration’, Culture centre Barbara, European Capital of Culture Wrocław 2016. Photo: Alicja Kielan</span> <br />
+    </p>
+    <p dir="ltr">Group four (chaired by Kaspars Lielgalvis from Totaldobze (Riga) with Timo Soppela from MUU gallery (Helsinki ), Gaweł Kownacki from f.a.i.t. (Kraków), Karolina Bieniek from SURVIVAL (Wrocław) and Ewa Służyńska from A-I-R Wro (Wrocław)) examined the purposefulness of independent organisations by posing questions about the reasons for their establishment, their programme offer, and the ways of providing access to art that is alternative to the main stream. Despite considerable differences (the participants came from initiatives of varying structures and sizes), the group members began by giving the reasons for doing what they do, and concluded that the existing system of curating and managing art failed to provide them with a feeling of security, both financial and ideological. Disappointed with the official art scene, they set out to create their unique versions of it, following their own priorities and original artistic programmes. They considered their overarching value to be in retaining their independence and ensuring contact with live art, not just as artists, but also as mediators and organisers of events, exhibitions and creative activities. The participants also agreed that the main driving force behind their actions is not solely the effect of their work but the process itself, while the idea they try to follow is &lsquo;life as art.</p>
+    <p dir="ltr">The fifth and last group (moderated by Anna Tomaszewska (Warsaw/Stockholm) and comprising Nia Puskarova from Watertower Arts Fest (Sofia), Kim Dotty Hachmann from Microwesten (Berlin), Marta Gendera from Fundacja Salony (Zielona Góra), &nbsp;Ewelina Chmielewska from Wschodnia Gallery (Łódź), and Michał Mejnartowicz &nbsp;and Karolina Balcer from Wykwit (Wrocław)) considered the notion of space in which artists operate. The discussion concerned the overlapping of private and professional life, and including artistic activities in everyday life due to working in a space that simultaneously fulfils the roles of a flat, office and gallery. The conversation began from examples of good practices, represented by the aforementioned U Gallery and Wykwit, as well as by the apartment-gallery in Wschodnia Street in Łódź. As reported by Ewelina Chmielewska, who represented the Wschodnia Gallery, the overlapping of everyday life and professional duties is a natural function of the gallery that was set up under the communist regime as a way of relocating suppressed artistic expressions into a private space. At that time it was a venue for theatre rehearsals and free jazz sessions as well as a site of clandestine political activity. Although it was a highly inspiring situation, where a constant inflow of new artistic ideas led to an open attitude, and the informal meetings often assumed the character of artistic interventions, operating in a private residence unavoidably means coming up with ways of communicating and cooperating with neighbours. This working group devoted a lot of time and attention to the notion of equal rights in the context of the make-up and programme of artist-run galleries. As it turned out, even initiatives like these rarely analyse their functioning from the point of view of selecting exhibitors and dividing the duties within the gallery.</strong></p>
+    <p dir="ltr">The issue of residency programmes for artists running their own spaces was discussed extensively during the seminar. It was unanimously concluded that the idea of international meetings and exchanges offers the possibility of being exposed to a multitude of specifically local cultural and social attitudes, which translates tangibly into activeness based on collaboration and bridge-building between organisations operating outside of the official art scenes. Such residency programmes are offered by the Dutch project space &lsquo;1646&rsquo;, which hosts independent artists and curators for a period of up to two months. The Wschodnia and Wykwit galleries also offer similar programmes.</p>
+    <p dir="ltr">In the context of Poland the lack of, and the need for, creating a forum for discussions, presentations and meetings is very real. Resembling Supermarket - Stockholm Independent Art Fair (Sweden) such a platform could raise the status of domestic initiatives and the whole independent art scene: the idea of creating such a platform in Katowice (with the Szara gallery) emerged.</strong>    </p>
+    <p dir="ltr">Following the group discussions a more in depth presentation of the initiatives comprising AIM and those participating in the Supermarket Independent Art Fair took place (Polish initiatives have been taking part in Supermarket since 2008).The participants in the meeting also exchanged ideas about ways of funding operational activities, e.g. using crowd funding platforms, adopting a multi-level system of membership fees, the possibility of donating 1% of tax to non-governmental organisations (which is particularly popular in Poland), or incorporating commercial events in the functioning of artist-run spaces (for example auctions and events). There were also more alternative ideas such as the 'action-vernissage' mentioned by the representatives of Wykwit who documented the process of producing cider that was then sold to visitors.</p>
+    <p dir="ltr">The final element of the meeting was the opening of the exhibition: Abracadabra - Politics of Collaboration. Curated by Andreas Ribbung, it featured works by artists belonging to the AIM network. The show was the result of many years of collaboration in the form of meetings, presentations, debates and conferences. It also featured video works by Polish artists connected with the galleries invited to Wrocław, and Karolina Szymanowska&rsquo;s urban installation titled Re: CYKLING, curated by Mariusz Jodko.</p>
+    <p dir="ltr">During the closed meeting of the AIM network members&rsquo; plans for future functioning were discussed, including the possibility of inviting initiatives from other countries (also from Poland) to join the network. Most of the participants agreed that working in small groups was a positive aspect of the Wrocław meeting, which made it possible to learn about and compare the specificity of artist-run organisations in Poland and abroad, and it also established more intimate and &lsquo;real&rsquo; contact between their representatives. Another advantage of the discussions in small groups was the varied background of the participants, which enabled them to acquaint themselves with the particular contexts of different organisations. The students felt the event to be extremely inspiring. Due to the limitations of time it was not possible to discuss all the subjects on the agenda as extensively as would have been desirable.<br />
+      <br />
+      <img src="/assets/aim/images/static/images_aim/2016_wroclaw/JPEG/aim3_2_fot.alicjakielan.jpg" width="797" height="531" class="bild" /><br />
+      <span class="contentcaption">Opening of the group exhibition ‘Abracadabra. Politics of collaboration’, Culture centre Barbara, European Capital of Culture Wrocław 2016. Works by Andreas Ribbung, Penka Mincheva and Clara Pallí Monguilod. Photo: Alicja Kielan</span> <br />
+    <br />
+  </p>
+  </div>
+  <div class="footer">
+    <p>AIM Network / Artist-run map</strong> <strong id="docs-internal-guid-65406f11-9c74-0165-063b-af3414d84ea8"><a href="mailto:info@artistrunmap.org">info@artistrunmap.org</a></strong></p>
+    <p><a href="https://www.nordiskkulturkontakt.org/en" target="new"><img src="/assets/aim/images/static/nkk.png" alt="" width="421" height="63" class="bild" /></a><span class="fltrt contentcaption"> Supported by Nordic Culture Point 2011–2016</span></p>
+  <!-- end .footer --></div>
+  <!-- end .container --></div>
+</body>
+</html>
