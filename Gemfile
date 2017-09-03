@@ -108,7 +108,7 @@ gem 'rails-timeago', '~> 2.0'
 gem 'randumb'
 gem 'ransack'
 # gem 'rails3-jquery-autocomplete',   github: 'cenotaph/rails3-jquery-autocomplete', branch: 'master'
-gem 'recaptcha'
+gem "recaptcha", require: "recaptcha/rails"
 gem 'responders', '~> 2.0'
 gem 'rolify'
 gem 'ruby-growl', :group => :development
