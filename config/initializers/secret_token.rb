@@ -16,7 +16,7 @@
   
   CarrierWave.configure do |config|
     config.storage    = :aws
-    config.aws_bucket = 'aim-' + Rails.env.to_s
+    config.aws_bucket = 'aim-' + (Rails.env.development? ? 'development' : 'production')
     config.aws_acl    = :public_read
     config.aws_authenticated_url_expiration = 60 * 60 * 24 * 365
 
