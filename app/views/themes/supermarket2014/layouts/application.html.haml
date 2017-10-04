@@ -106,7 +106,7 @@
           /   - top = Internallink.find_by(:controller => 'funders')
           /   = render :partial => 'layouts/recursive_menu', :locals => {:level => 1, :entry => top, :items => top.menus.published.first.self_and_ancestors.map(&:self_and_descendants).flatten.delete_if{|x| x.depth != 1  }.sort_by{|x| x.sort_order.to_i}.uniq }
       = yield :extra_header
-      / #main{:style => (!@background_image.nil? ? "background: url('#{@background_image.background_image.url}') no-repeat top left" : false), :class => controller.controller_name}
+      -# #main{:style => (!@background_image.nil? ? "background: url('#{@background_image.background_image.url}') no-repeat top left" : false), :class => controller.controller_name}
     
       - flash.each do |key, value|
         .flash

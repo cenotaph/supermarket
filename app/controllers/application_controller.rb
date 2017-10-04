@@ -134,6 +134,13 @@ class ApplicationController < ActionController::Base
         username == 'trouble' && password == 'desire'
       end
     end
+    
+    if Rails.env.staging?
+      authenticate_or_request_with_http_basic('Work in progress') do |username, password|
+        username == 'trouble' && password == 'desire'
+      end
+    end
+    
     @site
   end
   
@@ -149,9 +156,9 @@ class ApplicationController < ActionController::Base
   # 
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password, :remember_token, :remember_created_at, :sign_in_count) }
-    devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:display_name, :photo, :email, :password, :password_confirmation, :current_password) }    
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :display_name, :password_confirmation) }
+    devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:email, :password, :remember_token, :remember_created_at, :sign_in_count) }
+    devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:display_name, :photo, :email, :password, :password_confirmation, :current_password) }    
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :display_name, :password_confirmation) }
   end
   
 end
