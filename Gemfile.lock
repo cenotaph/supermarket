@@ -315,6 +315,7 @@ GEM
     nifty-generators (0.4.6)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    non-stupid-digest-assets (1.0.5)
     oauth (0.5.3)
     oauth-client (0.1.0)
       json (>= 1.1.2)
@@ -580,6 +581,7 @@ DEPENDENCIES
   mysql2
   nested_form
   nifty-generators
+  non-stupid-digest-assets
   oauth-client
   omniauth-facebook
   omniauth-google-oauth2

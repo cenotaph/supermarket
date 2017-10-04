@@ -22,7 +22,8 @@
 
     config.aws_credentials = {
       access_key_id:     ENV.fetch('AWS_ACCESS_KEY'),
-      secret_access_key: ENV.fetch('AWS_SECRET_KEY')
+      secret_access_key: ENV.fetch('AWS_SECRET_KEY'),
+      region: 'eu-west-1'
     }
   end
   #
