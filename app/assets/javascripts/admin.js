@@ -1,2 +1,2 @@
-//= require jquery-ui/sortable
-//= require jquery-ui/tabs
+//= require jquery-ui/widgets/sortable
+//= require jquery-ui/widgets/tabs

@@ -3,20 +3,20 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.8'
 
-ruby '2.2.2'
+ruby '2.4.2'
 
 gem 'pg'
 gem 'puma', group: :production
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+# gem 'sass-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
-gem 'json', '1.8.2'
+gem 'json'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -30,6 +30,7 @@ gem 'mail', '2.6.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
 gem 'bundler', '>= 1.7.0'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -57,7 +58,8 @@ gem 'execjs', '2.2.1'
 gem 'auto_html', '2.0.0'
 gem 'twitter-text'
 gem 'aws-s3',  github: 'bartoszkopinski/aws-s3'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'sass-rails', '>= 3.2'
 #gem "bullet", :group => "development"
 gem 'cancan'
 gem 'carrierwave'
@@ -66,7 +68,7 @@ gem 'chosen-rails'
 gem 'ckeditor', '4.2.2'
 #gem 'ckeditor'# , github: 'cenotaph/ckeditor', ref: '0d8fa61a65d8814e18060e01233cf73ba5641a2d'
 gem 'closure_tree'
-gem 'countries'
+gem 'countries', require: 'countries/global'
 gem 'country_select'
 gem 'dalli'
 gem 'devise'

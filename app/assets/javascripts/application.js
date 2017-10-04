@@ -16,8 +16,8 @@
 //= require jquery-ui/core
 //= require jquery.validate
 //= require jquery.validate.additional-methods
-//= require jquery-ui/tabs
-//= require jquery-ui/autocomplete
+//= require jquery-ui/widgets/tabs
+//= require jquery-ui/widgets/autocomplete
 //= require autocomplete-rails
 
 //= require jquery.clearfield
