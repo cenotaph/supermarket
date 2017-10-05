@@ -1,8 +1,10 @@
 = semantic_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014}, :method => :put) do |f|
-  %p= t "supermarket2014.proposal_blurb"
-  = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), hint: t("supermarket2014.network_nevermind"), input_html: {disabled: (@application.approved? ? :disabled : false ) }
+  %p
+    = t "supermarket2014.proposal_blurb"
+  = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), hint: raw(t("supermarket2014.network_nevermind") + "<div id='remain_proposal' class='counter'></div>"), input_html: {disabled: (@application.approved? ? :disabled : false ) }
 
-  = f.input :organisation_description, :label => "Presentation text (what you will exhibit this year at Supermarket):", hint: t("supermarket2014.network_nevermind"), input_html: {disabled: (@application.approved? ? :disabled : false ) }
+  = f.input :organisation_description, :label => "Presentation text (what you will exhibit this year at Supermarket):", hint: raw(t("supermarket2014.network_nevermind")+ "<div id='presentation_proposal' class='counter'></div>"), input_html: {disabled: (@application.approved? ? :disabled : false ) }
+
   - unless @application.space.applications.to_a.delete_if{|x| x == @application}.empty?
     %li
       %p
@@ -30,7 +32,22 @@
 
 :javascript
   $(document).ready(function() {
-
+    $('#remain_proposal').text((1500 - $('#application_supermarket_proposal').val().length) + ' characters remaining');
+    $('#presentation_proposal').text((1500 - $('#application_organisation_description').val().length) + ' characters remaining');
+    $('#application_supermarket_proposal').keyup(function() {
+      var tlength = $(this).val().length;
+      $(this).val($(this).val().substring(0,1500));
+      var tlength = $(this).val().length;
+      remain = parseInt(tlength);
+      $('#remain_proposal').text((1500 - remain) + ' characters remaining');
+    });   
+    $('#application_organisation_description').keyup(function() {
+      var plength = $(this).val().length;
+      $(this).val($(this).val().substring(0,1500));
+      var plength = $(this).val().length;
+      remain = parseInt(plength);
+      $('#presentation_proposal').text((1500 - remain) + ' characters remaining');
+    });
     $('#application_2014').validate();
     $('form button').click(function() {
       $("#application_form_direction").val($(this).attr('class'));
