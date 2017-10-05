@@ -34,15 +34,20 @@
         .container
           .sixteen.columns.header_main.alpha
             .two.columns.alpha.header_logo
-              = link_to image_tag(theme_image_path('2017siaf.png')), '/'
+              = link_to image_tag(theme_image_path('2018siaf.png')), '/'
             
             .dates.six.columns
               - if @site_year.header_html.blank?
                 %p
-                  %strong 23-26 March 2017
-                -#%p
-                -#  %strong Svarta Huset, Telefonplan, Stockholm
-                -#%p Press viewing and Professional Preview Wednesday 15 April
+                  %strong 12–15 April 2018
+                %p 
+                  %strong Press viewing and Professional Preview 11 April 2018                  
+                %p
+                  %strong 
+                    Slakthusområdet (Meatpacking district)
+                    %br/
+                    Metro Globen, Stockholm
+
               - else
                 = raw @site_year.header_html
             .eight.columns.omega.top_bar_container
@@ -127,11 +132,11 @@
         
           .five.columns.omega.footer_credits
             - if @site_year.footer_html.blank?
-              %strong Supermarket 2017
+              %strong Supermarket 2018
               %br/
               %em Stockholm Independent Art Fair
-              .small_text 23-26 March 2017
-              -#, Svarta Huset, Telefonplan, Stockholm
+              .small_text 2–15 April 2018
+              Slakthusområdet, Metro Globen, Stockholm
             - else
               = raw @site_year.footer_html
           
@@ -150,7 +155,7 @@
               %li= link_to t(:disclaimer), page_path('disclaimer')
               %li= link_to t(:contact_us), page_path('contact')
               %li.last= link_to t(:subscribe_to_newsletter), 'http://admin.getanewsletter.com/subscription/RAaDe8sxcYaWuhKev/add/', :target => :_blank
-          .three.columns.alpha= link_to image_tag(theme_image_path('2017siaf_white.png')), '/'
+          .three.columns.alpha= link_to image_tag(theme_image_path('2018siaf_white.png')), '/'
           
   :javascript
     $(document).ready(function() {
