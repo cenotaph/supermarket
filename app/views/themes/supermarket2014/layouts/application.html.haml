@@ -75,7 +75,7 @@
                 .dates_mobile
                   - if @site_year.header_html.blank?
                     -#%p Svarta Huset, Telefonplan
-                    %p 23-26 March 2017
+                    %p 12–15 April 2018
                   - else
                     = raw @site_year.header_html
 
@@ -155,7 +155,7 @@
               %li= link_to t(:disclaimer), page_path('disclaimer')
               %li= link_to t(:contact_us), page_path('contact')
               %li.last= link_to t(:subscribe_to_newsletter), 'http://admin.getanewsletter.com/subscription/RAaDe8sxcYaWuhKev/add/', :target => :_blank
-          .three.columns.alpha= link_to image_tag(theme_image_path('2018siaf_white.png')), '/'
+          .three.columns.alpha= link_to image_tag(theme_image_path('2018siaf_white_200.png'), width: 100), '/'
           
   :javascript
     $(document).ready(function() {
