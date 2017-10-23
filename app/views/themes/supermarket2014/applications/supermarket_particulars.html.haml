@@ -7,19 +7,19 @@
       %br/
       %small= image.title
 %br/
-      
+
 = semantic_nested_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014, :novalidate => true}, :method => :put) do |f|
   - unless @application.approved?
     %h4= t("supermarket2014.supermarket_particulars_blurb")
 
     %br{clear: :all}
-    %p 
+    %p
       For the second year, you have the possibility to take part as a Professional Networking Participant (PNP). PNPs don't exhibit but get invited to the Meetings Programme, Exhibitor gatherings, Exhibitor party, special mini seminars, and have access to the Exhibitor lounge. The application should be made by an organisation, that can be represented by one person (in some cases more than one). For instance, you can apply for an exhibition booth primarily, and to be a PNP as a second option.
       %br/
       Professional Networking Participation fee: SEK 1200 + VAT (SEK 1500)
     = f.input :networking_only, as: :boolean, label: 'This organisation is applying for the Professional Networking Programme. (Also tick if you want this to be a second option even if you are applying for an exhibition stand.)'
-  
-    = f.input :booth_applied, :as => :select, :label => t("supermarket2014.exhibition_stand_type_wanted"), :collection => {"Large exhibition stand (12–15 m2)" => "2", "Small exhibition stand (6-7 m2)" => "3", "Presentation stand (2 m2)" => "4", "No exhibition stand" => "5"}, :input_html => {:disabled => (!@application.year.open? ? false : false), :required => true}
+
+    = f.input :booth_applied, :as => :select, :label => t("supermarket2014.exhibition_stand_type_wanted"), :collection => {"Large exhibition stand (12–15 m2)" => "2", "Small exhibition stand (6-7 m2)" => "3", "Presentation stand (2 m2)" => "4", "No exhibition stand" => "5"}, :input_html => {:disabled => (!@application.year.open? ? false : false), :required => ''}
     %p= link_to "Prices and sizes", 'http://www.supermarketartfair.com/pages/exhibition-stand-sizes-and-prices', :target => :_blank
     .longhint= f.input :need_darker_room, :label => t("supermarket2014.need_darker_room"), :hint => t("supermarket2014.darker_room_hint"), :as => :boolean, :input_html => {:disabled => (!@application.year.open? ? false : false)}
     .longhint= f.input :wants_open_structure, :as => :boolean, :label => t("supermarket2014.wants_open_structure"), :hint => t("supermarket2014.open_structure_hint"), :input_html => {:disabled => (!@application.year.open? ? false : false)}
@@ -30,8 +30,8 @@
     = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-right icon-large'></i>") + t(:next), :as => :button
 - if user_signed_in?
   = content_for :sidebar do
-    = render :partial => 'layouts/sidebar'      
-    
+    = render :partial => 'layouts/sidebar'
+
 
 :javascript
   $(document).ready(function() {

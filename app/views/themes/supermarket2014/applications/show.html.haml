@@ -17,7 +17,7 @@
     .submitted
       = t(:submitted) + ":"
       = l @application.submitted_at, :format => :long
-  
+
   .six.columns.alpha
     %h3= t :contact_details
     %ul.application_show
@@ -30,11 +30,11 @@
       %li
         %label= t :contact_email
         .appval= link_to @application.contact_email, "mailto:#{@application.contact_email}"
-      
+
       %li
         %label= t :contact_address
         .appval= raw @application.contact_full_address
-    
+
   .six.columns.omega
     %h3= t :address_and_location
     %ul.application_show
@@ -68,7 +68,7 @@
           .appval
             %span.bigquote= raw("&#8220;")
             %p= raw @application.staff
-            %span.bigquote= raw("&#8221;")          
+            %span.bigquote= raw("&#8221;")
     .six.columns.omega
       %ul.application_show
         %li
@@ -93,18 +93,21 @@
             %label= t("supermarket2014.your_application_image")
             .appval= image_tag(@application.application_image.url)
 
-            
+
   .twelve.columns
     %h3= t :supermarket_proposal
     %ul.application_show
-      - unless @application.booth_applied.blank?
+      - if @application.booth_applied.blank?
+        %li
+          %strong The applicant has not yet selected a booth size.
+      - else
         %li
           %label= t :booth_applied_for
           .appval
             = t ("supermarket2014.booth_#{@application.booth_type}")
             - if @application.networking_only == true
               (Professional Networking Programme)
-          
+
       %li
         %label= t :supermarket_proposal
         .appval.blocktext
@@ -120,7 +123,7 @@
       %li
         %label= t("supermarket2014.special_needs")
         .appval= @application.special_needs
-    
+
       - unless @application.booth_granted.blank? || @application.year.reveal_decisions == false
         %li
           %label= t :booth_result
@@ -129,7 +132,7 @@
         %li
           %label= t "Presentation text"
           .appval= raw @application.organisation_description
-  - unless @application.apply_to_malongen == false || @application.year.year < 2014
+  - unless @application.apply_to_malongen == false || @application.year.year < 2014 || @application.year.year > 2017
     .twelve.columns
       %h3= t "supermarket2014.residency_malongen"
       %ul.application_show
@@ -153,7 +156,7 @@
               $('#appwebimage_#{aw.id.to_s} img').click(function() {
                 $('#appwebimage_#{aw.id.to_s}_orig img').lightbox_me();
               });
-            
+
         - @application.videolinks.each do |v|
           .asset_container.column.two
             .asset= raw figure_video_type(v, 320, 200)
@@ -173,13 +176,14 @@
             - if @application.upload1?
               %p= link_to @application.upload1.file.filename, @application.upload1.url
             - if @application.upload2?
-              %p= link_to @application.upload2.file.filename, @application.upload2.url              
+              %p= link_to @application.upload2.file.filename, @application.upload2.url
 
 - if user_signed_in?
 
   - if current_user.is_staff?
     .sixteen.columns
       %h2 Administrative
+
       - if @application.allow_late == true
         = link_to 'Stop allowing late editing', toggle_late_admin_application_path
       - else
@@ -192,7 +196,7 @@
             = image_tag comment.user.avatar
             %strong= comment.user.display_name
             .date= l comment.created_at, :format => :short
-              
+
           .eight.columns
             = simple_format(comment.comment)
       .twelve.columns
@@ -232,4 +236,4 @@
               = @application.notified_of_decision
             %p= link_to "Send another notification", notify_of_decision_application_path(@application)
   = content_for :sidebar do
-    = render :partial => 'layouts/sidebar'      
+    = render :partial => 'layouts/sidebar'
