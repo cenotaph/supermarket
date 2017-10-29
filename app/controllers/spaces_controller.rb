@@ -147,7 +147,7 @@ class SpacesController < ApplicationController
         if @site == 'aim'
           SpaceMailer.aim_add_user_access(@space, current_user, su.approval_token).deliver
         elsif @site == 'supermarket2014'
-          SpaceMailer.supermarket2014_aim_add_user_access(@space, current_user, su.approval_token).deliver
+          SpaceMailer.supermarket2014_add_user_access(@space, current_user, su.approval_token).deliver
         end
       else
         flash[:error] = 'Could not save for some reason'
