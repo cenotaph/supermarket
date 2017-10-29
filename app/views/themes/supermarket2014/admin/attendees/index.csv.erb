@@ -1,0 +1,8 @@
+Name,Email,Code,VIP?
+<%= CSV.generate do |csv|
+   @attendees.each do |cs|
+     csv << [cs.name, cs.email ,cs.id.to_s, attendee.vip == true ? 'VIP' : '']
+
+   end
+ end .html_safe
+ %>
