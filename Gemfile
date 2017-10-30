@@ -117,7 +117,7 @@ gem 'ruby-growl', :group => :development
 gem 'safe_attributes'
 gem 'skeleton-rails'
 # gem 'superfish-rails'
-gem 'textacular', '~> 3.0'
+gem 'textacular', '~> 4.0'
 gem 'themes_for_rails', github: 'cenotaph/themes_for_rails', branch: 'master'
 gem 'tinymce-rails'
 gem 'truncate_html'

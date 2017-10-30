@@ -1,7 +1,7 @@
 Aim::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
-  
+
   resources :spaces do
     # resources :build, controller: 'spaces/build'
     get :request_access
@@ -14,7 +14,7 @@ Aim::Application.routes.draw do
     get :map, :on => :collection
     get :interested_2016, on: :member
   end
-    # 
+    #
   # resources :users do
   #   get :my_organisations, :on => :collection
   # end
@@ -77,14 +77,14 @@ Aim::Application.routes.draw do
   end
   resources :pressreleases
   resources :presslinks
-  
+
   namespace :admin do
     resources :activities
     resources :applications do
       member do
         post :comment
         get :toggle_late
-        
+
       end
     end
     resources :pnps
@@ -126,7 +126,7 @@ Aim::Application.routes.draw do
       end
     end
     resources :menus do
-      collection do 
+      collection do
         post :sort
       end
       member do

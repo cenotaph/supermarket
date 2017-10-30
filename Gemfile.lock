@@ -465,8 +465,8 @@ GEM
     systemu (2.6.5)
     tag_helper (0.5.0)
     temple (0.8.0)
-    textacular (3.2.2)
-      activerecord (>= 3.0, < 5.0)
+    textacular (4.0.1)
+      activerecord (>= 3.0, < 5.1)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -607,7 +607,7 @@ DEPENDENCIES
   sass-rails (>= 3.2)
   sdoc
   skeleton-rails
-  textacular (~> 3.0)
+  textacular (~> 4.0)
   themes_for_rails!
   thin
   tinymce-rails
@@ -623,4 +623,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.0.pre.3

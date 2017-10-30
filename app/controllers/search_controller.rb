@@ -6,19 +6,20 @@ class SearchController < ApplicationController
     unless country.nil?
       countrycode = country.alpha2.downcase
     end
-    
+
     @hits = []
     # @hits += Page.by_subsite(@subsite.id).includes(:translations).advanced_search(params[:searchterm])
     @hits += Post.by_subsite(@subsite.id).includes(:translations).advanced_search(params[:searchterm]).published
-    
-    @hits += Application.fuzzy_search(params[:searchterm]).to_a.delete_if{|x| !x.approved?}.map(&:space)
-    @hits += Space.fuzzy_search(params[:searchterm]).to_a.delete_if {|x| x.applications.approved.empty? } 
+
+    @hits += Application.fuzzy_search(params[:searchterm]).to_a.delete_if{|x| !x.approved? }.map(&:space)
+
+    @hits += Space.fuzzy_search(params[:searchterm]).to_a.delete_if {|x| x.applications.approved.empty? }
     @hits += Space.where(["lower(country) = ? OR lower(visiting_country) = ?", countrycode, countrycode]).to_a.delete_if {|x| x.applications.approved.empty? } unless countrycode.nil?
 
     @hits.uniq!
   end
 
-  
+
   def unsearch
     session[:filter_scope]['search'].uniq.each do |search|
       if search['search_type'] == params[:search_type] && search['search_term'] == params[:search_term]
@@ -29,7 +30,7 @@ class SearchController < ApplicationController
     params[:search_term] = nil
     redirect_to '/spaces/map'
   end
-  
+
   def aimsearch
     if session[:filter_scope].blank?
       @spaces = []
@@ -38,7 +39,7 @@ class SearchController < ApplicationController
       session[:filter_scope]["search"]  << {'search_type' => params['search_type'], 'search_term' => params['search_term'] }
       session[:filter_scope]['search'].uniq!
       @spaces = get_from_filter_or
-      
+
       # process existing filter scope first
     end
 
@@ -61,5 +62,5 @@ class SearchController < ApplicationController
 
     render :template => 'spaces/map'
   end
-  
+
 end
