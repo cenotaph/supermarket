@@ -3,14 +3,14 @@
     %h2
       Red Spot Application:
       = @performanceapplication.contact_name
-    
+
   .six.columns.alpha
     = @performanceapplication.contact_name
     %br/
     = link_to @performanceapplication.contact_email, "mailto:#{@performanceapplication.contact_email}"
     %br/
     = @performanceapplication.contact_phone
-  
+
   .six.columns.omega
     %label Description:
     =  raw @performanceapplication.description
@@ -28,6 +28,12 @@
     %br/
     %label Number of participants, off stage
     = @performanceapplication.number_of_participants_off_stage
+    %br/
+    %label Number of assistants needed
+    = @performanceapplication.number_of_assistants
+    %br/
+    %label Additional comments
+    = @performanceapplication.additional_comments
   .six.columns.omega
     %label Technical requirements
     =  raw @performanceapplication.technical_requirements
@@ -38,16 +44,16 @@
     %br/
     - unless  @performanceapplication.weblink1.blank?
       = link_to @performanceapplication.weblink1, @performanceapplication.weblink1, :target => :_blank
-      %br/      
+      %br/
     - unless  @performanceapplication.weblink2.blank?
       = link_to @performanceapplication.weblink2, @performanceapplication.weblink2, :target => :_blank
-      %br/ 
+      %br/
     - unless  @performanceapplication.weblink3.blank?
       = link_to @performanceapplication.weblink3, @performanceapplication.weblink3, :target => :_blank
-      %br/ 
+      %br/
     - unless  @performanceapplication.weblink4.blank?
       = link_to @performanceapplication.weblink4, @performanceapplication.weblink4, :target => :_blank
-      %br/            
+      %br/
   .six.columns.omega
     %label Connection to visual arts:
     = @performanceapplication.connection_to_visual_arts
@@ -65,7 +71,7 @@
             = image_tag comment.user.avatar
             %strong= comment.user.display_name
             .date= l comment.created_at, :format => :short
-              
+
           .eight.columns
             = simple_format(comment.comment)
       .twelve.columns
@@ -81,7 +87,7 @@
             = f.input :comment, :as => :text
           = f.actions do
             = f.submit
-            
+
   - if current_user.is_staff?
     .ten.columns
       %h2 Make decision:
