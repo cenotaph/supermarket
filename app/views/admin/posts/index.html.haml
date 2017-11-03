@@ -16,4 +16,4 @@
           = link_to 'edit', edit_admin_post_path(post)
         - if can? :destroy, Post
           |
-          = link_to 'delete', [:admin, post], :data => {:confirm => 'are you sure? there is no going back'}
+          = link_to 'delete', [:admin, post], method: :delete,  :data => {:confirm => 'are you sure? there is no going back'}
