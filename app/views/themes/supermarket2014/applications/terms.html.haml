@@ -6,7 +6,7 @@
     %ol
       %li Read through.
       %li Fill in your name at the top of this page.
-      %li Click accept at the bottom of this page. 
+      %li Click accept at the bottom of this page.
 
 
   -# %p You will be notified by email when you have made your agreement.
@@ -25,13 +25,13 @@
 
 
     %p
-      %strong 2. The participation fee must be paid in full to the organiser by the date stated on the invoice, if not otherwise agreed with the organiser. 
-      = link_to '(Exhibition stand sizes and prices)', "<http://www.supermarketartfair.com/pages/exhibition-stand-sizes-and-prices"
+      %strong 2. The participation fee must be paid in full to the organiser by the date stated on the invoice, if not otherwise agreed with the organiser.
+      = link_to '(Exhibition stand sizes and prices)', "http://www.supermarketartfair.com/pages/exhibition-stand-sizes-and-prices"
       If not, the organiser is entitled to offer the place to another exhibitor. This does not imply exception from the obligation to pay the fee, unless a different agreement has been made with the organiser.
 
 
     %p
-      %strong 3. The transfer of space rented to another party, either complete or in part, is not allowed without permission from the organiser. 
+      %strong 3. The transfer of space rented to another party, either complete or in part, is not allowed without permission from the organiser.
       If a participant host another exhibitor (for instance another gallery presented by the exhibiting gallery), only the original participant is presented in the list of exhibitors, the catalogue and on the website.
 
 
@@ -79,16 +79,16 @@
       %strong 12. If due to circumstances beyond the organiser’s control there are restrictions to heating, electricity or water supply, the exhibitor is not entitled to reimbursement of the participation fee in full or in part, or to any other form of compensation.
 
 
-    
+
     - if @application.accepted_terms != true
       %strong
         %h3= f.input :accepted_terms, :label => 'Yes, I accept these terms and regulations.', :input_html => {:required => true}
-  
+
       = f.submit "Accept"
-  
+
 = content_for :sidebar do
-  = render :partial => 'layouts/sidebar'      
-  
+  = render :partial => 'layouts/sidebar'
+
 = content_for :jquery do
   :plain
     $('#application_accepting_name').focus();
