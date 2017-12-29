@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  include ThemesForRails::ActionController 
+  include ThemesForRails::ActionController
   include Recaptcha::ClientHelper
   protect_from_forgery with: :null_session
   before_filter :get_site
@@ -15,11 +15,11 @@ class ApplicationController < ActionController::Base
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
-  
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
   end
-  
+
   def after_sign_in_path_for(resource)
     stored_location_for(resource) ||
       if resource.has_role?(:staff) || resource.has_role?(:god)
@@ -28,11 +28,11 @@ class ApplicationController < ActionController::Base
         '/'
       end
   end
-  
+
   def after_sign_out_path_for(resource)
     '/'
   end
-    
+
   def frontpage
     if @site =='supermarket2014'
       @front_carousel = Frontcarousel.by_subsite(@subsite).published.random(8)
@@ -46,8 +46,8 @@ class ApplicationController < ActionController::Base
       # redirect_to map_spaces_path
     end
   end
-  
-  
+
+
   def get_from_filter_or
     out = []
     my_scope ||= Hash.new
@@ -75,17 +75,17 @@ class ApplicationController < ActionController::Base
         end
 
         my_scope["by_" + f.first] = f.last
-        my_scope.each do |ms| 
+        my_scope.each do |ms|
           out << Space.send(ms.first, ms.last)
         end
       end
     end
-    
+
     return out.flatten.uniq
   end
-  
+
   def render *args
-    
+
     if @site == 'aim'
       unless @nofilters == true
         @filters_businesstype = Businesstype.all
@@ -102,11 +102,11 @@ class ApplicationController < ActionController::Base
     super
   end
 
-  def get_locale 
+  def get_locale
     if params[:locale]
       session[:locale] = params[:locale]
     end
-    
+
     if session[:locale].blank?
       available  = %w{en et ru}
       I18n.locale = http_accept_language.compatible_language_from(available)
@@ -114,16 +114,16 @@ class ApplicationController < ActionController::Base
       I18n.locale = session[:locale]
     end
   end
-  
+
   def get_site
-    @site = request.host =~ /artistrunmap/ ? 'aim' : 'supermarket2014'
+    @site = (request.host =~ /artistrunmap/ ||  request.host =~ /artistsinitiatives/) ? 'aim' : 'supermarket2014'
 
     @subsite = Subsite.where(:name => @site).first
     unless @site == 'aim'
       @promoted_posts = Post.by_subsite(@subsite.id).published.promoted
       @promoted_posts += Page.includes(:subsites).by_subsite(@subsite.id).published.promoted
       @promoted_posts.compact!
-      if @background_image.nil? 
+      if @background_image.nil?
         @background_image = Background.published.order_by_rand
       end
       @site_year = Year.all.sort_by(&:year).reverse.first
@@ -134,18 +134,18 @@ class ApplicationController < ActionController::Base
         username == 'trouble' && password == 'desire'
       end
     end
-    
+
     if Rails.env.staging?
       authenticate_or_request_with_http_basic('Work in progress') do |username, password|
         username == 'trouble' && password == 'desire'
       end
     end
-    
+
     @site
   end
-  
+
   protected
-  
+
   # def devise_parameter_sanitizer
   #   if resource_class == User
   #     User::ParameterSanitizer.new(User, :user, params)
@@ -153,12 +153,12 @@ class ApplicationController < ActionController::Base
   #     super
   #   end
   # end
-  # 
+  #
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:email, :password, :remember_token, :remember_created_at, :sign_in_count) }
-    devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:display_name, :photo, :email, :password, :password_confirmation, :current_password) }    
+    devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:display_name, :photo, :email, :password, :password_confirmation, :current_password) }
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :display_name, :password_confirmation) }
   end
-  
+
 end
