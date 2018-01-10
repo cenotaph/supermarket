@@ -1,26 +1,26 @@
 class Admin::AttendeesController < Admin::BaseController
 
   has_scope :by_year, default: Year.order(year: :desc).first
-  
+
   def checkin
     @attendee = Attendee.find(params[:id])
     @attendee.toggle!(:arrival_status)
     @attendees = apply_scopes(Attendee).by_year(Year.where(:reveal_decisions => true).order("year DESC").first.id).order(:id, :last_name, :first_name)
     if request.xhr?
       respond_to do |format|
-        format.js 
+        format.js
       end
     end
   end
-  
+
   def checklist
     @booths = Application.by_year(Year.where(:reveal_decisions => true).order("year DESC").first.id).booths.joins(:space).order('lower(spaces.business_name)')
     @stands = Application.by_year(Year.where(:reveal_decisions => true).order("year DESC").first.id).stands.joins(:space).order('lower(spaces.business_name)')
   end
-  
+
   def import
   end
-  
+
   def year
     @year = Year.where(year: params[:year])
     @attendees = apply_scopes(Attendee).by_year(@year).order(:id, :last_name, :first_name)
@@ -30,17 +30,18 @@ class Admin::AttendeesController < Admin::BaseController
     set_meta_tags title: 'Professional Preview attendee list: ' + params[:year]
     render template: 'admin/attendees/index'
   end
-  
+
   def index
     @attendees = apply_scopes(Attendee).by_year(Year.where(:reveal_decisions => true).order("year DESC").first.id).order(:id, :last_name, :first_name)
     if params[:by_year]
       @year_scope = params[:by_year]
     else
       @year_scope = 2017
+      params[:by_year] = Year.find_by(year: 2017).id
     end
     set_meta_tags title: 'Professional Preview attendee list'
   end
-  
+
   def process_import
     @year = Year.find(params[:year_id])
     @imports = []
@@ -60,9 +61,9 @@ class Admin::AttendeesController < Admin::BaseController
       end
     end
   end
-  
+
   def toggle_vip
-    @attendee = Attendee.find(params[:id]) 
+    @attendee = Attendee.find(params[:id])
     if current_user.has_role? :god
       @attendee.toggle!(:vip)
     end
@@ -72,5 +73,5 @@ class Admin::AttendeesController < Admin::BaseController
       end
     end
   end
-  
+
 end
