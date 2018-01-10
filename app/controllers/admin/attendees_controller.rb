@@ -22,10 +22,12 @@ class Admin::AttendeesController < Admin::BaseController
   end
 
   def year
-    @year = Year.where(year: params[:year])
+    @year = Year.find_by(year: params[:year])
     @attendees = apply_scopes(Attendee).by_year(@year).order(:id, :last_name, :first_name)
     if params[:by_year]
       @year_scope = params[:by_year]
+    else
+      params[:by_year] = @year.id
     end
     set_meta_tags title: 'Professional Preview attendee list: ' + params[:year]
     render template: 'admin/attendees/index'
