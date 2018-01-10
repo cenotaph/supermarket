@@ -1,9 +1,9 @@
 
 - unless @hits.empty?
   %h2= t "supermarket2014.choose_existing_space"
-  
+
   %p= t "supermarket2014.search_database_blurb"
-  
+
   .hits
     - @hits.each do |hit|
       .hit
@@ -14,11 +14,12 @@
             = " / " + Country[hit.country].name
 
   %h2= t "supermarket2014.or"
-  
+
 %h2= t "supermarket2014.basic_details"
-  
+
 = semantic_form_for(@space, :url => wizard_path(:find_name, :space_id => @space.id), :method => :put, :html => {:id => :space_form}) do |f|
   = f.input :business_name, :value => params[:searchterm], :label => t("supermarket2014.name_of_space"), :input_html => {:required => true }
+  = f.input :contact_email, label: 'Organisation email', hint: 'Please enter a contact email - this will be public, so don\'t enter a personal one!', input_html: {required: ''}
   = f.input :address1, :label => t("supermarket2014.address1"), :input_html => {:required => true }
   = f.input :address2, :label => t("supermarket2014.address2")
   = f.input :city, :label => t("supermarket2014.city"), :input_html => {:required => true }
@@ -30,6 +31,6 @@
     = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-right icon-large'></i>") + t(:next), :as => :button, :button_html => {:class => :next}
 - if user_signed_in?
   = content_for :sidebar do
-    = render :partial => 'layouts/sidebar'   
+    = render :partial => 'layouts/sidebar'
 :javascript
   $('#space_form').validate();

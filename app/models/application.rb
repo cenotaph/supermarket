@@ -3,13 +3,13 @@ class Application < ActiveRecord::Base
   belongs_to :space
   belongs_to :year
   belongs_to :user
-  
+
   has_many :websites, :dependent => :destroy
   has_many :applicationwebimages, :dependent => :destroy
   has_many :applicationlinks, :dependent => :destroy
   has_many :videolinks, :dependent => :destroy
   has_many :applicationcomments, :dependent => :destroy
-  
+
   validates :organisation_name, :presence => true, :if => :finished?
   validates :space_id, :presence => true
   validates_uniqueness_of :space_id, :scope => :year_id
@@ -23,10 +23,10 @@ class Application < ActiveRecord::Base
   mount_uploader :application_image, ApplicationimageUploader
   mount_uploader :upload1, AttachmentUploader
   mount_uploader :upload2, AttachmentUploader
-  
+
   before_save :sync_with_space
 
-  
+
   scope :by_year, ->(x) { where(:year_id => x)}
   scope :approved, -> { includes(:year).where("booth_granted >= 1 and booth_granted <= 3 and years.reveal_decisions is true").references(:years)}
   scope :approved_preview, -> { where("booth_granted >= 1 and booth_granted <= 3 ")}
@@ -36,7 +36,7 @@ class Application < ActiveRecord::Base
   # attr_accessible :status, :year_id, :organisation_name, :contact_email, :contact_first_name, :contact_last_name, :space_id, :user_id, :application_image, :space_attributes, :hometown, :staff, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :form_direction, :contact_phone
 
   attr_accessor :form_direction
-  
+
   def approved?
     if booth_granted.nil?
       false
@@ -46,7 +46,7 @@ class Application < ActiveRecord::Base
       false
     end
   end
-  
+
   def approved_pending_reveal?
     if booth_granted.nil?
       false
@@ -57,7 +57,7 @@ class Application < ActiveRecord::Base
     end
   end
 
-  
+
   def granted_result
     case booth_granted
     when 1
@@ -76,7 +76,7 @@ class Application < ActiveRecord::Base
       'not decided yet'
     end
   end
-  
+
   def booth_type
     case booth_applied
     when 2
@@ -91,7 +91,7 @@ class Application < ActiveRecord::Base
       'unknown'
     end
   end
-  
+
   def any_image(size = :sidebar)
     if application_image?
       application_image.url(size)
@@ -103,7 +103,7 @@ class Application < ActiveRecord::Base
       'missing-120.png'
     end
   end
-  
+
   def contact_full_address
 
     [contact_address1, contact_address2, contact_postcode.to_s + " " + contact_city.to_s, contact_state, contact_country.blank? ? nil : (Country[contact_country].class == FalseClass ? contact_country : (Country[contact_country].nil? ? contact_country : Country[contact_country].name))].delete_if(&:blank?).join('<br />')
@@ -113,20 +113,28 @@ class Application < ActiveRecord::Base
     wouldbe = [exhibitor_address1, exhibitor_address2, exhibitor_postcode.to_s + " " + exhibitor_city.to_s, exhibitor_state, exhibitor_country.blank? ? nil : (Country[exhibitor_country].class == FalseClass ? exhibitor_country : Country[exhibitor_country].name)].delete_if(&:blank?)
     wouldbe.empty? ? contact_full_address : wouldbe.join('<br />')
   end
-  
+
   def contact_full_name
     [contact_first_name, contact_last_name].join(' ')
   end
-  
+
   def finished?
     status == 'active'
   end
 
+  def organisation_email
+    space.contact_email
+  end
   
+  def organisation_email=(email)
+    space.update_attribute(:contact_email, email)
+
+  end
+
   def newer_than_this?
     space.applications.to_a.delete_if{|x| x == self }.map{|x| x.year.year }.map{|x| x > year.year }.include?(true)
   end
-  
+
   def sync_with_space
     unless newer_than_this?
       if contact_address1_changed?
@@ -168,7 +176,7 @@ class Application < ActiveRecord::Base
       end
     end
   end
-  
+
   def hometown_or_city
     if hometown.blank?
       if exhibitor_city.blank?
@@ -180,7 +188,7 @@ class Application < ActiveRecord::Base
       hometown.to_s
     end
   end
-  
+
   def written_country
     if hometown.blank?
       out = ''
@@ -192,7 +200,7 @@ class Application < ActiveRecord::Base
     else
       out = hometown + ', '
     end
-    
+
     if exhibitor_country.blank?
       if space.country.blank?
         out += space.visiting_country

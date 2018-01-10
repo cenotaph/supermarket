@@ -12,7 +12,7 @@ Aim::Application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-
+  config.active_record.raise_in_transactional_callbacks = true
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :letter_opener
@@ -39,7 +39,7 @@ Aim::Application.configure do
   # #   Bullet.airbrake = false
   #
   # end
-  
+
 end
 Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
@@ -53,3 +53,10 @@ Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 #     end
 #   end
 # end
+
+
+if defined? BetterErrors && ENV['EDITOR'].include?('atom')
+  BetterErrors.editor = proc { |file, line|
+    "atom://core/open/file?filename=#{CGI.escape(file)}&line=#{line}"
+  }
+end

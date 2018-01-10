@@ -7,7 +7,9 @@
   = f.input :user_id, :as => :hidden, :input_html => {:value => current_user.id }
   = f.input :year_id, :as => :hidden
   = f.input :organisation_name, :input_html => {:required => true, :value => (@application.organisation_name.blank? ? @space.business_name : @application.organisation_name)}
+  = f.input :organisation_email, input_html: {required: ''}
   .subtitle= t "supermarket2014.contact_info"
+
   %p= t "supermarket2014.contact_info_text"
   = f.input :contact_first_name, :input_html => {:required => true, :value => (@application.contact_first_name.blank? ? current_user.display_name.split(/\s/).first  : @application.contact_first_name rescue "Your First Name")}
   = f.input :contact_last_name, :input_html => {:required => true, :value => (@application.contact_last_name.blank? ? current_user.display_name.split(/\s/).last  : @application.contact_last_name rescue "Your Last Name")}
@@ -19,7 +21,7 @@
 
 - if user_signed_in?
   = content_for :sidebar do
-    = render :partial => 'layouts/sidebar'          
+    = render :partial => 'layouts/sidebar'
 
 :javascript
   $(document).ready(function() {

@@ -2,16 +2,16 @@ class ApplicationsController < ApplicationController
   include Wicked::Wizard
   before_filter :authenticate_user!
   steps :address_and_location, :basic_info, :proposals, :secondary_info, :media, :supermarket_particulars, :confirm
-  
-  def applylanding   
+
+  def applylanding
     if current_user.approved_space_users.approved.size == 1
       redirect_to '/apply/2018/' + current_user.spaces.first.slug
     elsif current_user.approved_space_users.approved.empty?
       redirect_to new_space_path
     end
-      
+
   end
-  
+
   def accept_terms
     @application = Application.find(params[:id])
     if @application.space.users.include?(current_user)
@@ -28,7 +28,7 @@ class ApplicationsController < ApplicationController
       redirect_to '/'
     end
   end
-  
+
   def allow_late
     year = Year.where(:year => params[:year]).first
     @space = Space.friendly.find(params[:space_id])
@@ -41,14 +41,14 @@ class ApplicationsController < ApplicationController
     end
 
   end
-  
+
   def check_invited
-    if params[:password] != 'ABat40T' 
+    if params[:password] != 'ABat40T'
       flash[:error] = 'Sorry, that is not the correct password'
       redirect_to invited_path
     end
   end
-  
+
   def create
     @application = Application.create(params[:application])
     unless @application.space.website1.blank?
@@ -59,7 +59,7 @@ class ApplicationsController < ApplicationController
     end
     redirect_to wizard_path(steps.first, :application_id => @application.id)
   end
-    
+
   def edit
     @application = Application.find(params[:id])
     @space = @application.space
@@ -75,11 +75,11 @@ class ApplicationsController < ApplicationController
       redirect_to '/'
     end
   end
-  
+
   def invited
-    
+
   end
-  
+
   def new
     year = Year.where(:year => params[:year]).first
     @space = Space.friendly.find(params[:space_id])
@@ -92,7 +92,7 @@ class ApplicationsController < ApplicationController
     elsif !year.open? # && year.allow_editing == false
       flash[:error]= 'Applications for ' + year.year.to_s + ' are now closed.'
       redirect_to '/'
-    elsif year.allow_editing == true && @space.users.include?(current_user) 
+    elsif year.allow_editing == true && @space.users.include?(current_user)
       if @space.applications.where(:year_id => year).empty?
         @application = Application.new(:year_id => year.id, :space_id => @space.id, :user => current_user)
       else
@@ -105,9 +105,9 @@ class ApplicationsController < ApplicationController
   end
 
   def interested_2016
-    
+
   end
-  
+
   def notify_of_decision
     @application = Application.find(params[:id])
     @application.space.space_users.approved.map(&:user).each do |u|
@@ -126,7 +126,7 @@ class ApplicationsController < ApplicationController
         flash[:error] = 'This is not your application to view'
         redirect_to '/'
       end
-    else        
+    else
       @application = Application.find(params[:application_id])
       unless @application.space.approved_users.include?(current_user)  || current_user.has_role?(:god)
         flash[:error] = 'This is not your application to view'
@@ -145,10 +145,10 @@ class ApplicationsController < ApplicationController
     else
       flash[:error] = 'This is not your application.'
       redirect_to '/'
-    end    
+    end
   end
-  
-  
+
+
   def update
 
     if params[:id] =~ /^\d*$/
@@ -158,7 +158,7 @@ class ApplicationsController < ApplicationController
       @application = Application.find(params[:application_id])
       # step = params[:id] if step.nil?
     end
-    
+
     params[:application][:status] = step.to_s
     if params[:application][:form_direction] == 'completed'
       params[:application][:status] = 'active'
@@ -166,7 +166,7 @@ class ApplicationsController < ApplicationController
       # ApplicationMailer.application_confirmation(@application, current_user).deliver
       flash[:notice] = 'Thank you for completing/updating your application. You will hear from us soon.'
     end
-  
+
     @application.update_attributes(params[:application])
 
     if params[:application][:form_direction] == 'previous'
@@ -185,14 +185,14 @@ class ApplicationsController < ApplicationController
     end
   end
 
-  
+
   private
-  
+
   def application_params
-    params.require(:application).permit(:space_id, :year_id, :user_id, :organisation_name, :networking_only, :accepting_name, :accepted_terms, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :contact_address1, :contact_address2, :contact_city, :contact_state, :contact_country, :contact_postcode, :form_direction, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :organisation_description,  :exhibitor_state, :exhibitor_country, :allow_late,  :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use, :upload1, :upload2, :remove_upload1, :remove_upload2, :supermarket_proposal, :need_darker_room, :wants_open_structure, :booth_applied, :vat_number, :special_needs,  space_attributes: [:exhibitors, :id, :exhibitionspacetype_id, :short_description, :decisionmakers_organisation, :decisionmakers_programming, :founding_year, :is_active, :year_of_closing, :organisationtype_ids], website_attributes: [:id, :url, :application_id], applicationlinks_attributes: [:id, :_destroy, :url, :title, :application_id], videolinks_attributes: [:id, :application_id, :_destroy, :video_provider, :title, :url], applicationwebimages_attributes: [:id, :application_id, :_destroy, :imagefile, :title, :sortorder]
+    params.require(:application).permit(:space_id, :year_id, :user_id, :organisation_name, :organisation_email, :networking_only, :accepting_name, :accepted_terms, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :contact_address1, :contact_address2, :contact_city, :contact_state, :contact_country, :contact_postcode, :form_direction, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :organisation_description,  :exhibitor_state, :exhibitor_country, :allow_late,  :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use, :upload1, :upload2, :remove_upload1, :remove_upload2, :supermarket_proposal, :need_darker_room, :wants_open_structure, :booth_applied, :vat_number, :special_needs,  space_attributes: [:exhibitors, :id, :exhibitionspacetype_id, :short_description, :decisionmakers_organisation, :decisionmakers_programming, :founding_year, :is_active, :year_of_closing, :organisationtype_ids], website_attributes: [:id, :url, :application_id], applicationlinks_attributes: [:id, :_destroy, :url, :title, :application_id], videolinks_attributes: [:id, :application_id, :_destroy, :video_provider, :title, :url], applicationwebimages_attributes: [:id, :application_id, :_destroy, :imagefile, :title, :sortorder]
 
     )
   end
-    
+
 
 end
