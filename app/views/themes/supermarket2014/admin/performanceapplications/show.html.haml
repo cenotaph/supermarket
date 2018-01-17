@@ -68,7 +68,7 @@
       - @performanceapplication.performanceapplicationcomments.each do |comment|
         .comment.twelve.columns
           .two.columns.alpha
-            = image_tag comment.user.avatar
+            = image_tag comment.user.avatar rescue ''
             %strong= comment.user.display_name
             .date= l comment.created_at, :format => :short
 
@@ -83,7 +83,7 @@
             %strong
               = current_user.display_name
           .eight.columns
-            = f.input :user_id, :as => :hidden, :value => current_user.id
+            = f.input :user_id, :as => :hidden, input_html: { :value => current_user.id }
             = f.input :comment, :as => :text
           = f.actions do
             = f.submit
