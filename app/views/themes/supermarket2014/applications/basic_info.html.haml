@@ -2,7 +2,7 @@
   .subtitle= t "supermarket2014.visiting_address_different"
   = f.input :exhibitor_address1,  :input_html => {:required => true, :value => (@application.exhibitor_address1.blank? ? (@application.space.visiting_address1.blank? ? @application.space.address1 : @application.space.visiting_address1) : @application.exhibitor_address1) }
   
-  = f.input :exhibitor_address2,  :input_html => {:value => (@application.exhibitor_address2.blank? ? ( (@application.space.visiting_address2.blank? && @application.space.visiting_address1.blank?) ? @application.space.address2 : @application.space.visiting_address2 ) : @application.exhibitor_address2) }
+  = f.input :exhibitor_address2#,  :input_html => {:value => (@application.exhibitor_address2.blank? ? ( (@application.space.visiting_address2.blank? && @application.space.visiting_address1.blank?) ? ( : @application.space.visiting_address2 ) : @application.exhibitor_address2) }
   
   = f.input :exhibitor_city,  :input_html => {:required => true,  :value => (@application.exhibitor_city.blank? ? (@application.space.visiting_city.blank? ? @application.space.city : @application.space.visiting_city) : @application.exhibitor_city) }
   = f.input :exhibitor_state,  :input_html => {:value => (@application.exhibitor_state.blank? ? (@application.space.visiting_state.blank? ? @application.space.state :  @application.space.visiting_state) : @application.exhibitor_state) }
