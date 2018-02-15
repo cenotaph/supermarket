@@ -15,16 +15,19 @@
       - unless @application.contact_email.blank?
         %p= link_to @application.contact_email, 'mailto:' + @application.contact_email
   .columns.alpha.eleven
-    %p 
-      = raw @application.space.short_description
-      - unless @application.organisation_description.blank?
-        = raw @application.organisation_description
+    - if @application.text_2018.blank?
+      %p 
+        = raw @application.space.short_description
+        - unless @application.organisation_description.blank?
+          = raw @application.organisation_description
+    - else
+      %p= @application.text_2018
 
   #exhibitor_images.columns.alpha.omega{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
 
     - @application.applicationwebimages.each do |fc|
       .slide
-        .image= image_tag fc.imagefile.url(:normal).gsub(/aim-development/, 'aim-production')
+        .image= image_tag fc.imagefile.url(:normal)
         - unless fc.title.blank? && fc.caption.blank?
           .caption
             .title= raw fc.title
@@ -45,7 +48,7 @@
   :plain
     $('#exhibitor_images').slick({infinite: true,
       arrows: false,
-      slide: '.slide',
+
       variableWidth: false,
       autoplay: true,
       autoplaySpeed: 2400,

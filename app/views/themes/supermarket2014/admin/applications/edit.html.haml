@@ -3,6 +3,9 @@
 %p don't do this unless you have a good reason
 = semantic_nested_form_for([:admin, @application], :html => {:multipart => true}) do |f|
   = f.input :organisation_name, :label => 'Name of initiative'
+
+  = f.input :text_2018, label: 'Special 2018 text to cut and paste'
+  %br{clear: :all}
   %fieldset
     %legend Contact info
     = f.input :contact_address1
@@ -29,6 +32,8 @@
     .eight.columns
       - if f.object.application_image?
         Application image is 
+        = link_to f.object.application_image.url, f.object.application_image.url
+        %br/
         = image_tag f.object.application_image.url(:sidebar)
       = f.input :application_image, label: f.object.application_image? ? 'Change image' : 'Set image'
   .row
@@ -36,6 +41,9 @@
       %strong Space description (will apply to all years and appear in ARM):
       = f.fields_for :space do |ff|
         - if ff.object.logo?
+          space logo is 
+          = link_to ff.object.logo.url, ff.object.logo.url
+          %br/
           = image_tag ff.object.logo.url(:sidebar)
         = ff.input :logo, label: 'Logo for initiative (will remain for multiple years and appear on ARM)'
         = ff.input :short_description, :input_html => {:class => :tinymce, :rows => 40, :cols => 120}

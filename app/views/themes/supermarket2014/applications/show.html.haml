@@ -96,6 +96,11 @@
 
   .twelve.columns
     %h3= t :supermarket_proposal
+    - unless @application.text_2018.blank?
+      %p
+        %strong Text for 2018:
+        = @application.text_2018
+
     %ul.application_show
       - if @application.booth_applied.blank?
         %li

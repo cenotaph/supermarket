@@ -25,7 +25,7 @@
 //= require jquery_nested_form
 //= require jquery.slick
 //= require rails-timeago
-//var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+var CKEDITOR_BASEPATH = '/assets/ckeditor/';
 
 function scrollToId(id){
     var aTag = $(id);
