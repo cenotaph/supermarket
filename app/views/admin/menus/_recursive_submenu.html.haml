@@ -15,27 +15,3 @@
       %p
         %i.icon-frown
         = link_to ' delete ' + (sm.item.name rescue 'deleted' )+ ' menu entry (and any submenus)', [:admin, sm], :method => :delete, :data => {:confirm => "Are you sure?????"} 
-/ / .clear
-/ /           %p sub-menu:
-/ /           %div{:id => "submenu_#{menu.id.to_s}"}
-/ /             - menu.children.sort_by(&:sort_order).each do |sm|
-/ /               .submenu_item
-/ /                 .title= link_to sm.item.name, edit_admin_menu_path(sm)
-/ /                 %i.icon-plus-sign-alt
-/ /                 = link_to (sm.children.empty? ? ' start a' : ' add to') + ' submenu', new_admin_menu_path(:parent_id => sm.id)
-/ / 
-/ /           .clear
-/ /             %p=link_to 'add to submenu', new_admin_menu_path(:parent_id => menu.id)
-/ / 
-/ /       
-/           %p sub-menu:
-/           %div{:id => "submenu_#{menu.id.to_s}"}
-/             - menu.children.sort_by(&:sort_order).each do |sm|
-/               .submenu_item{:id => "submenu_#{sm.id.to_s}"}
-/                 .title= link_to sm.item.name, edit_admin_menu_path(sm)
-/                 %i.icon-plus-sign-alt
-/                 = link_to (sm.children.empty? ? ' start a' : ' add to') + ' submenu', new_admin_menu_path(:parent_id => sm.id)
-/ 
-/             .clear
-/               %p=link_to 'add to submenu', new_admin_menu_path(:parent_id => menu.id)
-/ / 
