@@ -93,14 +93,15 @@ class Application < ActiveRecord::Base
   end
 
   def any_image(size = :sidebar)
-    if application_image?
+    if application_image? && application_image.url !~ /pdf$/i
       application_image.url(size)
+
     elsif space.logo?
-      space.logo.url(size)
+      space.logo.url(:profile)
     elsif !applicationwebimages.empty?
       applicationwebimages.to_a.delete_if{|x| x.imagefile =~ /pdf$/i }.first.imagefile.url(size)
     else
-      'missing-120.png'
+      '/assets/missing-120.png'
     end
   end
 
