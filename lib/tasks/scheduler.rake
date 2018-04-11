@@ -64,7 +64,7 @@ task :get_feed => [:environment] do
 
 
   begin
-    instagram = JSON.parse(open("https://www.instagram.com/supermarketart/media/").read)
+    instagram = JSON.parse(open("https://www.instagram.com/supermarketart/?__a=1").read)
     instagram['items'].each do |item|
       c = Cash.where(source: 'instagram',  issued_at: item["created_time"], sourceid: item["id"], 
                   title: strip_emoji(item["caption"]["text"]), link_url: item["link"]).first_or_create

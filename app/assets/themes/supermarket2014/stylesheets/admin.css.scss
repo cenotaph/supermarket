@@ -31,6 +31,10 @@
       background-color: $orange4;
     }
     td {
+      &.email {
+        max-width: 150px;
+        font-size: 0.8rem;
+      }
       &.already_in {
         text-decoration: line-through;
       }
