@@ -14,14 +14,14 @@
           = link_to website.url.gsub(/^http\:\/\//i, ''), website.url_safe
       - unless @application.contact_email.blank?
         %p= link_to @application.contact_email, 'mailto:' + @application.contact_email
-  .columns.alpha.eleven
-    - if @application.text_2018.blank?
-      %p 
-        = raw @application.space.short_description
-        - unless @application.organisation_description.blank?
-          = raw @application.organisation_description
-    - else
-      %p= @application.text_2018
+  -# .columns.alpha.eleven
+  -#   - if @application.text_2018.blank?
+  -#     %p 
+  -#       = raw @application.space.short_description
+  -#       - unless @application.organisation_description.blank?
+  -#         = raw @application.organisation_description
+  -#   - else
+  -#     %p= @application.text_2018
 
   #exhibitor_images.columns.alpha.omega{:class => (user_signed_in? ? 'twelve' : 'sixteen')}
 

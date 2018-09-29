@@ -5,7 +5,7 @@ class ApplicationsController < ApplicationController
 
   def applylanding
     if current_user.approved_space_users.approved.size == 1
-      redirect_to '/apply/2018/' + current_user.spaces.first.slug
+      redirect_to '/apply/2019/' + current_user.spaces.first.slug
     elsif current_user.approved_space_users.approved.empty?
       redirect_to new_space_path
     end

@@ -3,12 +3,12 @@
 %p Correct!
 
 - current_user.spaces.each do |space|
-  - if  space.applications.where(:year_id => Year.find_by(year: 2018).id).empty?
-    %p  Please click below to begin your 2018 application.
-    %p= link_to 'Apply to Supermarket 2018 for ' + space.name, '/invited/2018/' + space.slug
+  - if  space.applications.where(:year_id => Year.find_by(year: 2019).id).empty?
+    %p  Please click below to begin your 2019 application.
+    %p= link_to 'Apply to Supermarket 2019 for ' + space.name, '/invited/2019/' + space.slug
   - else
     %p You have already started an application.
-    %p= link_to 'Continue/edit your application to Supermarket 2018', edit_application_path(space.applications.where(:year_id => Year.find_by(year: 2018).id).first) 
+    %p= link_to 'Continue/edit your application to Supermarket 2019', edit_application_path(space.applications.where(:year_id => Year.find_by(year: 2019).id).first) 
 - if user_signed_in?
   = content_for :sidebar do
     = render :partial => 'layouts/sidebar'   

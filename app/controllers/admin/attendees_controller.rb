@@ -39,7 +39,7 @@ class Admin::AttendeesController < Admin::BaseController
       @year_scope = params[:by_year]
     else
       
-      params[:by_year] = Year.find_by(year: 2018).id
+      params[:by_year] = Year.find_by(year: 2019).id
       @year_scope = params[:by_year]
     end
     @attendees = apply_scopes(Attendee).by_year(@year_scope).order(:id, :last_name, :first_name)
