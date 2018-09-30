@@ -3,7 +3,8 @@
 
 .application.container
   - if @site_year.above_carousel_html.blank?
-    .above_carousel= "&nbsp;"
+    .above_carousel
+      &nbsp;
   - else
     .above_carousel   
       - if @site_year.center_above_carousel_text == true
