@@ -114,6 +114,8 @@ gem 'ransack'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'responders', '~> 2.0'
 gem 'rolify'
+gem 'rollbar'
+
 gem 'ruby-growl', :group => :development
 gem 'safe_attributes'
 gem 'skeleton-rails'

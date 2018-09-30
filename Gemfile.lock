@@ -431,6 +431,8 @@ GEM
       railties (>= 4.2.0, < 5.3)
     rinku (1.7.3)
     rolify (5.2.0)
+    rollbar (2.18.0)
+      multi_json
     ruby-growl (4.1)
       uuid (~> 2.3, >= 2.3.5)
     ruby_parser (3.11.0)
@@ -610,6 +612,7 @@ DEPENDENCIES
   recaptcha
   responders (~> 2.0)
   rolify
+  rollbar
   ruby-growl
   safe_attributes
   sass-rails (>= 3.2)
