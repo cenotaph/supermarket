@@ -1,6 +1,6 @@
 module ApplicationHelper
   include AutoHtml
-  include Twitter::Autolink
+  include Twitter::TwitterText::Autolink
   
   def check_filter(initial, filter_scope, class_name)
     if session[:filter_scope].nil?

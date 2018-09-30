@@ -3,6 +3,7 @@ html, body {
   margin:0;
   padding:0;
   height:100%;
+
 } 
 
 a {
@@ -54,6 +55,10 @@ button {
       font-weight: bold;
     }
   }
+}
+
+.above_carousel {
+  padding: 3rem 0;
 }
 
 .terms {
@@ -190,6 +195,10 @@ header {
       }
     }
   }  
+}
+
+#player {
+  max-width: 100%;
 }
 
 .post_front {

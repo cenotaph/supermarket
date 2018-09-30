@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.8'
+gem 'rails', '4.2.10'
 
-ruby '2.4.2'
+ruby '2.5.1'
 
-gem 'pg'
+gem 'pg', '~> 0.21'
 gem 'puma', group: :production
 
 # Use SCSS for stylesheets
@@ -102,6 +102,7 @@ gem 'oauth-client'
 gem 'omniauth-facebook' #, '1.4.0'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
+gem 'plyr-rails'
 gem 'public_activity'
 gem 'rails-i18n'
 gem 'rails_12factor', group: [:staging, :production]

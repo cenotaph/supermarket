@@ -1,111 +1,115 @@
+%video#player{"playsinline" => '', "controls" => ''}
+  %source{src: 'https://s3-eu-west-1.amazonaws.com/supermarket-press/2019/Supermarket+Independent+Artfair+2018(1).mp4'}
 
+.application.container
+  - unless @site_year.above_carousel_html.blank?
+    .above_carousel   
+      - if @site_year.center_above_carousel_text == true
+        %center= raw @site_year.above_carousel_html
+      - else
+        = raw @site_year.above_carousel_html
 
-
-- unless @site_year.above_carousel_html.blank?
-  .above_carousel   
-    - if @site_year.center_above_carousel_text == true
-      %center= raw @site_year.above_carousel_html
-    - else
-      = raw @site_year.above_carousel_html
-
-  
-- unless @front_carousel.empty?
-  #front_carousel
-    - @front_carousel.shuffle.each do |fc|
-      .slide
-        .image{style: "background: url(#{fc.image.url(:twelvehundred).gsub(/staging/, 'production')}) no-repeat ; background-size: 100%; "}
-        - unless fc.title.blank? && fc.caption.blank?
-          .caption
-            .title= fc.title
-            .subtitle= fc.caption
-.container.history_container
-  .sixteen.columns.history
-    .blurb
-      %h3 
-        Follow our 10 year anniversary celebration on social media! 
-        = link_to '#supermarkethistory', 'https://www.facebook.com/hashtag/supermarkethistory'
-
-.container.posts_container    
-  - @posts.take(3).each do |post|
-    .one-third.column 
-      .post_front
-        .post_image
-          - if post.postimage?
-            = image_tag post.postimage.url(:standard)
-          - elsif !post.postslides.empty?
-            = image_tag post.postslides.first.image.url(:slide)
-        .title= link_to post.subject, post
-        .date= time_ago_in_words(post.published_at) + " ago"
-        .excerpt
-          = truncate_html(simple_format(post.body), :length => 75)
-          = link_to "Read more...", post
-  .sixteen.columns
-    %h3= link_to "See all news...", posts_path
     
-            
-.container
-  .frontpage_exhibitors.sixteen.columns
-    %h2 Some of this year's exhibitors...
-  .sixteen.columns
-    - @random_exhibitors.each_with_index do |app, i|
-      .four.columns{:class => i == 0 ? :alpha : (i == 3 ? :omega : false)}
-        = link_to exhibitor_year_path(:space => app.space, :year => app.year.year) do
-          = image_tag app.applicationwebimages.to_a.delete_if{|x| x.imagefile =~ /tif[f*]$/i || x.imagefile =~ /pdf$/i }.sample.imagefile.url(:slide).gsub(/staging/, 'production')
-          .title
-            = link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => app.year.year)
-            &sdot;
-            = raw app.written_country
-          .blurb
-            %p= raw truncate_html( (app.organisation_description.blank? ? app.space.short_description : app.organisation_description), :length => 350)
-  .sixteen.columns.bottom_border
-    %h3= link_to 'See all 2017 exhibitors...', '/exhibitors/2017'
+  - unless @front_carousel.empty?
+    #front_carousel
+      - @front_carousel.shuffle.each do |fc|
+        .slide
+          .image{style: "background: url(#{fc.image.url(:twelvehundred).gsub(/staging/, 'production')}) no-repeat ; background-size: 100%; "}
+          - unless fc.title.blank? && fc.caption.blank?
+            .caption
+              .title= fc.title
+              .subtitle= fc.caption
+  .container.history_container
+    .sixteen.columns.history
+      .blurb
+        %h3 
+          Follow our 10 year anniversary celebration on social media! 
+          = link_to '#supermarkethistory', 'https://www.facebook.com/hashtag/supermarkethistory'
 
-.container
-  .sixteen.columns.front_three
-    .eight.columns.alpha
-      %h3 What is Supermarket?
-      %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
-      %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
+  .container.posts_container    
+    - @posts.take(3).each do |post|
+      .one-third.column 
+        .post_front
+          .post_image
+            - if post.postimage?
+              = image_tag post.postimage.url(:standard)
+            - elsif !post.postslides.empty?
+              = image_tag post.postslides.first.image.url(:slide)
+          .title= link_to post.subject, post
+          .date= time_ago_in_words(post.published_at) + " ago"
+          .excerpt
+            = truncate_html(simple_format(post.body), :length => 75)
+            = link_to "Read more...", post
+    .sixteen.columns
+      %h3= link_to "See all news...", posts_path
       
-      %h3 Follow us on Twitter!
-      - link_filter = AutoHtml::Link.new(target: '_blank')
-      -# twitter_filter = AutoHtml::Hashtag.new
-      %ul.twitter_feed
-        - @tweets.each do |sm|
-          %li
-            = link_to fa_icon('twitter'), sm.link_url, target: :_blank
+              
+  .container
+    .frontpage_exhibitors.sixteen.columns
+      %h2 Some of this year's exhibitors...
+    .sixteen.columns
+      - @random_exhibitors.each_with_index do |app, i|
+        .four.columns{:class => i == 0 ? :alpha : (i == 3 ? :omega : false)}
+          = link_to exhibitor_year_path(:space => app.space, :year => app.year.year) do
+            = image_tag app.applicationwebimages.to_a.delete_if{|x| x.imagefile =~ /tif[f*]$/i || x.imagefile =~ /pdf$/i }.sample.imagefile.url(:slide).gsub(/staging/, 'production')
+            .title
+              = link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => app.year.year)
+              &sdot;
+              = raw app.written_country
+            .blurb
+              %p= raw truncate_html( (app.organisation_description.blank? ? app.space.short_description : app.organisation_description), :length => 350)
+    .sixteen.columns.bottom_border
+      %h3= link_to 'See all 2017 exhibitors...', '/exhibitors/2017'
 
-            = raw auto_link(sm.content, target_blank: true)
-            .timestamp= link_to timeago_tag(Time.at(sm.issued_at)),  sm.link_url, target: :_blank
-          
-      %p= link_to 'Follow @supermarketart!', 'http://twitter.com/supermarketart'
-      / - unless @video.nil?
-      /   %h3 Now showing on SUPER-TV:
-      /   .video_front
-      /     = link_to '/tv' do
-      /       .video_image= image_tag @video.thumbnail.url
-      /       .video_title= @video.title
-      /       .video_blurb= truncate_html(@video.description, :length => 120)
-      /   %h4= link_to 'Watch now!', '/tv'
-      
+  .container
+    .sixteen.columns.front_three
+      .eight.columns.alpha
+        %h3 What is Supermarket?
+        %p.front The goal of SUPERMARKET, the international artist-run art fair, is to provide a showcase for artists' initiatives from all over the world and to create opportunities for new networks in the Swedish as well as the international art scene.
+        %p.front The exhibitors are generally not-for-profit exhibition spaces. In addition to the exhibition, the event includes a seminar programme, a performance art stage and a meeting programme for networking.
+        
+        %h3 Follow us on Twitter!
+        - link_filter = AutoHtml::Link.new(target: '_blank')
+        -# twitter_filter = AutoHtml::Hashtag.new
+        %ul.twitter_feed
+          - @tweets.each do |sm|
+            %li
+              = link_to fa_icon('twitter'), sm.link_url, target: :_blank
 
-    .eight.columns.omega
-      %h3 Supermarket on Instagram
-      .instagram
-        - @social_media.each do |i|
-          .slide= link_to image_tag(i.image.url), i.link_url
-
-      / %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :height => 400, :"data-widget-id" => "430669969043369985", :"data-chrome" => "nofooter transparent"} Currently on Twitter
-      / :javascript
-      /   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-      /
-      /
-
-
+              = raw auto_link(sm.content, target_blank: true)
+              .timestamp= link_to timeago_tag(Time.at(sm.issued_at)),  sm.link_url, target: :_blank
             
-            
+        %p= link_to 'Follow @supermarketart!', 'http://twitter.com/supermarketart'
+        / - unless @video.nil?
+        /   %h3 Now showing on SUPER-TV:
+        /   .video_front
+        /     = link_to '/tv' do
+        /       .video_image= image_tag @video.thumbnail.url
+        /       .video_title= @video.title
+        /       .video_blurb= truncate_html(@video.description, :length => 120)
+        /   %h4= link_to 'Watch now!', '/tv'
+        
+
+      .eight.columns.omega
+        %h3 Supermarket on Instagram
+        .instagram
+          - @social_media.each do |i|
+            .slide= link_to image_tag(i.image.url), i.link_url
+
+        / %a{:class => "twitter-timeline", :href => "https://twitter.com/twitterapi", :height => 400, :"data-widget-id" => "430669969043369985", :"data-chrome" => "nofooter transparent"} Currently on Twitter
+        / :javascript
+        /   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+        /
+        /
+
+
+              
+              
 = content_for :jquery do
   :plain
+    document.addEventListener("turbolinks:load", function() {
+      const player = new Plyr('#player');
+    });
     $('#front_carousel').slick({infinite: true,
       arrows: false,
 
