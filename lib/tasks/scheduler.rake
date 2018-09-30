@@ -60,22 +60,21 @@ task :get_feed => [:environment] do
   require 'open-uri'
   require 'json'
   remove_emojis = /[\u{1F600}-\u{1F6FF}]/
-  
-
 
   begin
-    instagram = JSON.parse(open("https://www.instagram.com/supermarketart/?__a=1").read)
-    instagram['graphql']['user']['edge_owner_to_timeline_media']['edges'].each_with_index do |item, index|
-      c = Cash.where(source: 'instagram',  
-        issued_at: item['node']["taken_at_timestamp"], 
-        sourceid: item['node']["id"], 
-        title: strip_emoji(item["node"]["edge_media_to_caption"]['edges'][0]['node']['text']), 
-        link_url: "https://www.instagram.com/p/#{item['node']['shortcode']}/?taken-by=supermarketart").first_or_create
+    instagram = InstagramApi.user.recent_media
+    # instagram = JSON.parse(open("https://www.instagram.com/supermarketart/?__a=1").read)
+    instagram['data'].each_with_index do |item, index|
+    # instagram['graphql']['user']['edge_owner_to_timeline_media']['edges'].each_with_index do |item, index|
+      c = Cash.where(source: 'instagram', 
+        issued_at: item['created_time'],
+        sourceid:  item['id'],
+        title:     strip_emoji(item['caption']['text']),
+        link_url:  item['link']).first_or_create
       unless c.image?
-        c.remote_image_url = item["node"]["display_url"]
+        c.remote_image_url = item['images']['standard_resolution']['url']
         c.save
       end
-
     end
   rescue
     

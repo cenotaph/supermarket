@@ -255,6 +255,10 @@ GEM
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
     idn-ruby (0.1.0)
+    instagram_api_client (0.2.1)
+      hashie
+      httparty
+      plural
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
     jmespath (1.4.0)
@@ -353,6 +357,7 @@ GEM
       rack
     orm_adapter (0.5.0)
     pg (0.21.0)
+    plural (0.1.0)
     plyr-rails (3.3.7)
     public_activity (1.6.2)
       actionpack (>= 3.0.0)
@@ -574,6 +579,7 @@ DEPENDENCIES
   http_accept_language
   httpclient
   inherited_resources!
+  instagram_api_client
   jbuilder (~> 1.0.1)
   jquery-easing-rails
   jquery-rails
