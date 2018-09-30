@@ -14,10 +14,12 @@
 
     %br{clear: :all}
     %p
-      For the second year, you have the possibility to take part as a Professional Networking Participant (PNP). PNPs don't exhibit but get invited to the Meetings Programme, Exhibitor gatherings, Exhibitor party, special mini seminars, and have access to the Exhibitor lounge. The application should be made by an organisation, that can be represented by one person (in some cases more than one). For instance, you can apply for an exhibition booth primarily, and to be a PNP as a second option.
+      We would like to make you aware of the possibility to take part in the SUPERMARKET Professional Networking Participant programme (PNP). PNPs do not exhibit but get invited to the Meetings Programme, Exhibitor gatherings, Exhibitor party, special programme of seminars and presentations. PNPs have access to the Exhibitor lounge. The application should be made by an organisation that selects one person as their representative.
       %br/
-      Professional Networking Participation fee: SEK 1200 + VAT (SEK 1500)
-    = f.input :networking_only, as: :boolean, label: 'This organisation is applying for the Professional Networking Programme. (Also tick if you want this to be a second option even if you are applying for an exhibition stand.)'
+      You can apply for an exhibition booth primarily and take part as a PNP as a second option in case you do not get selected as exhibitor; or if your organisation would like to take part both as exhibitors and delegate a PNP participant. Please note that the exhibitor’s fee does not include the PNP participation fee.
+    %p
+      Professional Networking Participation fee: SEK 1500 + VAT (SEK 1850)
+    = f.input :networking_only, as: :boolean, label: 'This organisation is applying for the Professional Networking Programme. (Also tick if you want this to be a second option in case you are not selected with your application for an exhibition stand.)'
 
     = f.input :booth_applied, :as => :select, :label => t("supermarket2014.exhibition_stand_type_wanted"), :collection => {"Large exhibition stand (12–15 m2)" => "2", "Small exhibition stand (6-7 m2)" => "3", "Presentation stand (2 m2)" => "4", "No exhibition stand" => "5"}, :input_html => {:disabled => (!@application.year.open? ? false : false), :required => ''}
     %p= link_to "Prices and sizes", 'http://www.supermarketartfair.com/pages/exhibition-stand-sizes-and-prices', :target => :_blank
