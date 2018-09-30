@@ -2,7 +2,9 @@
   %source{src: 'https://s3-eu-west-1.amazonaws.com/supermarket-press/2019/Supermarket+Independent+Artfair+2018(1).mp4'}
 
 .application.container
-  - unless @site_year.above_carousel_html.blank?
+  - if @site_year.above_carousel_html.blank?
+    .above_carousel= &nbsp;
+  - else
     .above_carousel   
       - if @site_year.center_above_carousel_text == true
         %center= raw @site_year.above_carousel_html
