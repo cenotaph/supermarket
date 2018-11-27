@@ -36,21 +36,25 @@
   %legend Most interested in?
   %ul
     - unless @pnp.programme_meetings.blank?
-      %li Taking part in the Meetings Programme
+      %li Meetings Programme
     - unless @pnp.programme_party.blank?
       %li Exhibitor gatherings and Exhibitor party
     - unless @pnp.programme_discussion.blank?
       %li Special discussion seminar
     - unless @pnp.programme_lounge.blank?
-      %li Access to an Exhibitor lounge 
+      %li Access to Exhibitor lounge 
     - unless @pnp.programme_exhibitions.blank?
-      %li The exhibitions                      
+      %li Exhibition
     - unless @pnp.programme_exhibitors.blank?
-      %li To be able to meet exhibitors 
+      %li Being able to meet exhibitors 
     - unless @pnp.programme_talks.blank?
-      %li The talks and panel discussions
+      %li Talks and panel discussions
     - unless @pnp.programme_performances.blank?
-      %li The performances
+      %li Performances
+    - unless @pnp.delivering_talk.blank?
+      %li Delivering talk or lecture
+    - unless @pnp.writing_about_supermarket.blank?
+      %li Writing about Supermarket
 
 %fieldset
   %legend Hoping to obtain:
@@ -68,6 +72,9 @@
       
   
 %fieldset
+  %p
+    Vegetable
+    %li= @pnp.vegetable
   %p 
     Role in scene:
     - case @pnp.role_in_scene 

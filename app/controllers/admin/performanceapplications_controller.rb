@@ -33,7 +33,7 @@ class Admin::PerformanceapplicationsController < Admin::BaseController
       @year_scope = params[:by_year]
     end
     @performanceapplications = apply_scopes(Performanceapplication).includes(:year).order(order).page(params[:page]).per(150)
-    set_meta_tags :title => 'Red Spot applications'
+    set_meta_tags :title => 'Performance applications'
   end
    
   def show

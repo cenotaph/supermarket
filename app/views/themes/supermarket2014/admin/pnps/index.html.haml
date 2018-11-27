@@ -1,18 +1,22 @@
 %h3 PNP applications
-
+%p
+  Restrict by year:
+  = select_tag :year_filter, options_from_collection_for_select(Year.order(:year).reverse, :id, :year, @year_scope), {:include_blank => true, :onchange => "document.location.href='/admin/pnps?by_year=' + $(this).val()"}
 .cms_grid
 
   %table 
     %thead
-      %th id
-      %th Name
-      %th Organisation
+      %th= sortable_column 'id'
+      %th= sortable_column 'Year'
+      %th= sortable_column 'Name'
+      %th= sortable_column 'Organisation'
       %td Where
       %th Actions
     %tbody
       - @pnps.each do |pnp|
         %tr
           %td= pnp.id
+          %td= pnp.year.year
           %td= pnp.name
           %td= pnp.organisation
           %td= [pnp.city, pnp.country].join(', ')
