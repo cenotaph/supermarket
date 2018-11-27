@@ -5,11 +5,13 @@
       = @performanceapplication.contact_name
 
   .six.columns.alpha
-    = @performanceapplication.contact_name
-    %br/
-    = link_to @performanceapplication.contact_email, "mailto:#{@performanceapplication.contact_email}"
-    %br/
-    = @performanceapplication.contact_phone
+    %dd= @performanceapplication.contact_name
+
+    %dd= link_to @performanceapplication.contact_email, "mailto:#{@performanceapplication.contact_email}"
+
+    %dd= @performanceapplication.contact_phone
+    %dd= @performanceapplication.city
+    %dd= Country[@performanceapplication.country] rescue @performanceapplication.country
 
   .six.columns.omega
     %label Description:
@@ -17,26 +19,37 @@
   %br(clear='all')
   %br(clear='all')
   .six.columns.alpha
-    %label Prep time needed:
-    = @performanceapplication.prep_time
+    %label
+      %em Prep time needed:
+    %dd= @performanceapplication.prep_time
     %br/
-    %label Performance time:
-    = @performanceapplication.performance_time
+    %label
+      %em Performance time:
+    %dd= @performanceapplication.performance_time
     %br/
-    %label Number of participants, on stage
-    = @performanceapplication.num_of_participants_on_stage
+    %label
+      %em Number of participants, on stage
+    %d= @performanceapplication.num_of_participants_on_stage
     %br/
-    %label Number of participants, off stage
-    = @performanceapplication.number_of_participants_off_stage
+    %label
+      %em Number of participants, off stage
+    %dd= @performanceapplication.number_of_participants_off_stage
     %br/
-    %label Number of assistants needed
-    = @performanceapplication.number_of_assistants
+    %label
+      %em Number of assistants needed for preparation
+    %dd= @performanceapplication.number_of_assistants
     %br/
-    %label Additional comments
-    = @performanceapplication.additional_comments
+    %label
+      %em Number of assistants needed during
+    %dd= @performanceapplication.number_of_assistants
+    %br/
+    %label
+      %em Additional comments
+    %dd= @performanceapplication.additional_comments
   .six.columns.omega
-    %label Technical requirements
-    =  raw @performanceapplication.technical_requirements
+    %label
+      %em Technical requirements
+    %dd=  raw @performanceapplication.technical_requirements
   %br(clear='all')
   %br(clear='all')
   .six.columns.alpha
@@ -55,8 +68,9 @@
       = link_to @performanceapplication.weblink4, @performanceapplication.weblink4, :target => :_blank
       %br/
   .six.columns.omega
-    %label Connection to visual arts:
-    = @performanceapplication.connection_to_visual_arts
+    %label
+      %em Connection to visual arts:
+    %dd= @performanceapplication.connection_to_visual_arts
   - unless @performanceapplication.attachment.blank?
     .twelve.columns
       %label Attached file upload:

@@ -4,8 +4,8 @@
   -#  %h4 Applications are closed
   -#  %p Applications for the Red Spot performance programme are now closed. Thank you for your interest. We will announce the programme closer to the opening of Supermarket 2016.
 
-  %p Unfortunately, we cannot offer financial support for the performance programme. The exhibitors at Supermarket pay a participation fee; there is no fee to perform, but you must be self-financed. However, we can provide a letter of invitation to support your external funding applications. We also offer basic technical support and assistance of our volunteers team.
-
+  %p  Please note that we cannot offer financial support for the Performance programme. The exhibitors at Supermarket pay a participation fee; there is no fee to perform but you must be self-financed. We can provide a letter of invitation to support your external funding applications.
+  %p Please note that we offer basic technical support and assistance of our volunteers, but we do not provide a technician on the stage. Performances with less technical demands are preferred. If you have any specific technical requirements, you need to be able to manage them yourself/provide your technician/be able to explain them to our volunteers.
 
   = @performanceapplication.errors.full_messages.join(', ')
 
@@ -17,6 +17,8 @@
     = f.input :contact_name, :input_html => {required: true }
     = f.input :contact_email, :input_html => {required: true }
     = f.input :contact_phone, :input_html => {required: true }
+    = f.input :city, input_html: { required: true }
+    = f.input :country, input_html: { required: true }
 
   %fieldset
     %legend About your performance
@@ -25,8 +27,9 @@
     = f.input :performance_time, label: 'Estimated time needed for stage performance', :input_html => {required: true }
     = f.input :num_of_participants_on_stage, label: 'Number of participants on stage?', :input_html => {required: true }
     = f.input :number_of_participants_off_stage, label: 'Number of participants off stage?', :input_html => {required: true }
-    = f.input :technical_requirements, label: 'Technical requirements', :input_html => {required: true }
-    = f.input :number_of_assistants, label: 'Number of assistants needed?'
+    = f.input :technical_requirements, label: 'Technical requirements', :input_html => {required: true }, hint: 'Please note that we are unable to provide a technician prior to or during the performances.'
+    = f.input :assistants_prep, label: 'Number of assistants needed for the preparation of the performance?'
+    = f.input :number_of_assistants, label: 'Number of assistants needed during the performance?'
     = f.input :additional_comments, label: 'Additional comments, max. 500 characters.'
   %fieldset
     %legend Additional materials
