@@ -15,14 +15,18 @@ class AttendeesController < ApplicationController
   
   def preview
     @year = Year.find_by year: params[:id]
-    if !@year.preview_open?
-      render template: 'attendees/closed'
-    else  
-      @attendee = Attendee.new(year: @year)
-      render
+    if @year.nil?
+      redirect_to '/'
+    else
+      if !@year.preview_open?
+        render template: 'attendees/closed'
+      else  
+        @attendee = Attendee.new(year: @year)
+        render
+      end
     end
   end
-
+  
   protected
   
   def attendee_params
