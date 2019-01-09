@@ -8,7 +8,7 @@ class ExhibitorsController < ApplicationController
       @application = Application.find_by(:space => Space.friendly.find(params[:space]), :year => @year)
       if @application.nil?
         flash[:error] = 'No such application.'
-        redirect_to '/'
+        redirect_to '/' and return
       elsif !@application.approved?
         if user_signed_in?
           if !current_user.is_staff?
