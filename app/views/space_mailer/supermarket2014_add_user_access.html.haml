@@ -16,7 +16,7 @@
     %p
       To approve this access, click the link below:
 
-    %p= link_to 'Grant access to ' + @new_user.display_name, "http://supermarketartfair.com" + grant_access_space_path(@token)
+    %p= link_to 'Grant access to ' + @new_user.display_name, "http://supermarketartfair.com" + grant_access_space_url(@token)
 
     %p
       Approving access for

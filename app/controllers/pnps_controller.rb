@@ -13,7 +13,12 @@ class PnpsController < ApplicationController
   end
   
   def new
-    @pnp = Pnp.new(year: Year.find_by(year: params[:year_id]))
+    year = Year.find_by(year: params[:year_id])
+    if year.nil?
+      redirect_to '/pnps' and return
+    else
+      @pnp = Pnp.new(year: year)
+    end
   end
   
   protected

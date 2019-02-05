@@ -29,7 +29,24 @@
           .inside.alpha.column
             .application_image.two.columns.alpha= link_to image_tag( app.any_image(:sidebar)), exhibitor_year_path(:space => app.space, :year => @year.year)
             .hometown.column.one.omega= raw app.written_country.gsub(/,/, "<br />")
-            
+
+  - unless @year.applications.approved_preview.associates.empty?
+    .twelve.columns
+      %p
+        %strong Associate galleries:
+      %p
+        %em Satellite gallery spaces around Stockholm.
+
+    .exhibitors_year
+      - @year.applications.approved_preview.associates.sort_by{|x| x.space.business_name.downcase}.in_groups_of(3).each do |group| 
+        - group.each_with_index do |app, index|
+          - next if app.nil?
+          .space.four.columns{:class => [(index == 0 ? :alpha : false), (index == 2 ? :omega : false)]}
+            .title= link_to app.organisation_name, exhibitor_year_path(:space => app.space, :year => @year.year)
+            .inside.alpha.column
+              .application_image.two.columns.alpha= link_to image_tag( app.any_image(:sidebar)), exhibitor_year_path(:space => app.space, :year => @year.year)
+              .hometown.column.one.omega= raw app.written_country.gsub(/,/, "<br />")
+
 - else
   = t("supermarket2014.will_reveal_later")
   %p Browse through the last catalogue:

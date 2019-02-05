@@ -6,8 +6,8 @@ class Page < ActiveRecord::Base
   translates :title, :body
   accepts_nested_attributes_for :translations, :reject_if => proc {|att| att['title'].blank? }
   acts_as_tree
-  has_many :subsites, :through => :page_subsites
   has_many :page_subsites
+  has_many :subsites, :through => :page_subsites
   belongs_to :background
   has_many :menus, as: :item
 

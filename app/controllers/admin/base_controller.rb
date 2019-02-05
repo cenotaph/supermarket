@@ -1,11 +1,11 @@
 class Admin::BaseController < InheritedResources::Base
   layout 'admin'
-  before_filter :authenticate_user!
-  before_filter :authenticate_admin
+  before_action :authenticate_user!
+  before_action :authenticate_admin
   #load_and_authorize_resource
   # check_authorization
   # load_and_authorize_resource
-  # skip_before_filter :require_no_authentication
+  # skip_before_action :require_no_authentication
   check_authorization
   load_and_authorize_resource #:find_by => :slug
   

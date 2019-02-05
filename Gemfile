@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.10'
+gem 'rails', '5.2.2'
 
-ruby '2.5.1'
+ruby '2.6.1'
 
 gem 'pg', '~> 0.21'
 gem 'puma', group: :production
@@ -16,7 +16,7 @@ gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
-gem 'json'
+# gem 'json'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -26,10 +26,10 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 
-gem 'mail', '2.6.3'
+# gem 'mail', '2.6.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.0.1'
-gem 'bundler', '>= 1.7.0'
+# gem 'jbuilder', '~> 1.0.1'
+# gem 'bundler', '>= 1.7.0'
 
 group :development do
   gem 'better_errors'
@@ -39,8 +39,6 @@ group :development do
   gem 'meta_request'
   gem 'mysql2'
   gem 'nifty-generators'
-  gem 'rails-footnotes',  '>= 3.7.9'
-  gem 'quiet_assets'
   gem 'thin'
 end
 
@@ -50,7 +48,6 @@ gem 'capistrano-rvm'
 gem 'capistrano-bundler'
 gem 'capistrano3-puma'
 
-gem 'execjs', '2.2.1'
 
 # gem 'activerecord', :github => 'rails/rails', branch: '4-0-stable'
 # gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
@@ -61,7 +58,7 @@ gem 'aws-s3',  github: 'bartoszkopinski/aws-s3'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 #gem "bullet", :group => "development"
-gem 'cancan'
+gem 'cancancan', '~> 2.0'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'chosen-rails'
@@ -81,9 +78,10 @@ gem 'foundation-rails', '5.4.3.1'
 gem "friendly_id",  :github => "FriendlyId/friendly_id"
 gem 'geocoder'
 gem 'paper_trail', github: 'airblade/paper_trail' , branch: 'master'
-gem 'globalize',  '~> 4.0.2'
+gem 'globalize', git: 'https://github.com/globalize/globalize'
+gem 'activemodel-serializers-xml'
 gem 'haml'
-gem 'handles_sortable_columns'
+gem 'handles_sortable_columns', github: 'cenotaph/handles_sortable_columns'
 gem 'has_scope'
 gem 'http_accept_language'
 gem 'httpclient'
@@ -109,25 +107,24 @@ gem 'rails-i18n'
 gem 'rails_12factor', group: [:staging, :production]
 gem 'rails4-autocomplete'
 gem 'rails-timeago', '~> 2.0'
-gem 'randumb'
+# gem 'randumb'
 gem 'ransack'
 # gem 'rails3-jquery-autocomplete',   github: 'cenotaph/rails3-jquery-autocomplete', branch: 'master'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'responders', '~> 2.0'
 gem 'rolify'
 gem 'rollbar'
-
 gem 'ruby-growl', :group => :development
 gem 'safe_attributes'
 gem 'skeleton-rails'
 # gem 'superfish-rails'
-gem 'textacular', '~> 4.0'
+gem 'textacular', '~> 5.0'
 gem 'themes_for_rails', github: 'cenotaph/themes_for_rails', branch: 'master'
 gem 'tinymce-rails'
 gem 'truncate_html'
 gem 'twitter'
 gem 'vimeo'
-gem 'wicked', '1.0.0'
+gem 'wicked'
 gem 'youtube_it' #, '2.4.0'
 group :doc do
   # bundle ex rake doc:rails generates the API under doc/api.

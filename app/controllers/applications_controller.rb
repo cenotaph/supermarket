@@ -1,6 +1,10 @@
 class ApplicationsController < ApplicationController
   include Wicked::Wizard
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
+  skip_before_action :setup_wizard, only: %i[applylanding accept_terms
+                                             notify_of_decision allow_late
+                                             check_invited edit new show invited
+                                             terms]
   steps :address_and_location, :basic_info, :proposals, :secondary_info, :media, :supermarket_particulars, :confirm
 
   def applylanding
@@ -150,7 +154,6 @@ class ApplicationsController < ApplicationController
 
 
   def update
-
     if params[:id] =~ /^\d*$/
       @application = Application.find(params[:id])
       step = steps.first

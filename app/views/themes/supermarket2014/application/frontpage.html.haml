@@ -49,7 +49,10 @@
               
   .container
     .frontpage_exhibitors.sixteen.columns
-      %h2 Some of this year's exhibitors...
+      %h2
+        Some of
+        = @last_year.nil? ? 'this' : 'last'
+        year's exhibitors...
     .sixteen.columns
       - @random_exhibitors.each_with_index do |app, i|
         .four.columns{:class => i == 0 ? :alpha : (i == 3 ? :omega : false)}
@@ -62,7 +65,7 @@
             .blurb
               %p= raw truncate_html( (app.organisation_description.blank? ? app.space.short_description : app.organisation_description), :length => 350)
     .sixteen.columns.bottom_border
-      %h3= link_to 'See all 2017 exhibitors...', '/exhibitors/2017'
+      %h3= link_to "See all #{@last_year.nil? ? Time.current.year : @last_year} exhibitors...", "/exhibitors/#{@last_year.nil? ? Time.current.year : @last_year}"
 
   .container
     .sixteen.columns.front_three

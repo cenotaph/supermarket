@@ -1,5 +1,5 @@
 class PerformanceapplicationsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def create
     @performanceapplication = Performanceapplication.new(perfapp_params)

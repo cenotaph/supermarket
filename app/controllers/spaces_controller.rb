@@ -1,7 +1,9 @@
 class SpacesController < ApplicationController
   include Wicked::Wizard
+  skip_before_action :setup_wizard, only: %i[select_existing aim_profile browse
+                                             grant_access clear_filters map]
   autocomplete :space, :business_name
-  before_filter :authenticate_user!, :except => [:grant_access, :map, :clear_filters, :browse, :add_to_scope, :aim_profile]
+  before_action :authenticate_user!, :except => [:grant_access, :map, :clear_filters, :browse, :add_to_scope, :aim_profile]
   steps :find_name, :basic_details, :secondary_details
   has_scope :by_country #, :default => proc { |c| c.session[:filter_scope]['country'] }
   has_scope :by_organisationtype 

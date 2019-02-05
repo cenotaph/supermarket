@@ -3,7 +3,6 @@ class Admin::ApplicationsController < Admin::BaseController
   has_scope :by_year
   handles_sortable_columns
 
-
   def comment
     @application = Application.find(params[:id])
     @application.applicationcomments << Applicationcomment.new(params[:applicationcomment].permit([:user_id, :application_id, :comment]) )
@@ -14,8 +13,6 @@ class Admin::ApplicationsController < Admin::BaseController
     end
     redirect_to @application
   end
-
-
 
   def index
     order = sortable_column_order do |column, direction|
@@ -53,8 +50,6 @@ class Admin::ApplicationsController < Admin::BaseController
       @shortversion = true
     end
   end
-
-
 
   def toggle_late
     @application = Application.find(params[:id])

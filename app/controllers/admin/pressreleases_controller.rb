@@ -1,6 +1,5 @@
 class Admin::PressreleasesController < Admin::BaseController
   
-  
   def create
     create! { admin_pressreleases_path }
   end

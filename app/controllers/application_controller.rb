@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
+# main application controller. Also contains frontpage
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   include ThemesForRails::ActionController
   include Recaptcha::ClientHelper
   protect_from_forgery with: :null_session
-  before_filter :get_site
-  before_filter :get_locale
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-
+  before_action :get_site
+  before_action :get_locale
+  before_action :configure_permitted_parameters, if: :devise_controller?
   theme :get_site
 
-  before_filter do
+  before_action do
     resource = controller_path.singularize.gsub('/', '_').to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
@@ -34,9 +36,15 @@ class ApplicationController < ActionController::Base
   end
 
   def frontpage
-    if @site =='supermarket2014'
-      @front_carousel = Frontcarousel.by_subsite(@subsite).published.random(8)
-      @random_exhibitors =  Application.includes([:year, :applicationwebimages]).approved.where(:year_id => Year.find_by(:year => Time.now.year).id).where("applicationwebimages.id is not null and applicationwebimages.imagefile not LIKE '%pdf' and applicationwebimages.imagefile not LIKE '%tiff'" ).random(4)
+    last_revealed = Year.where(reveal_decisions: true).order(year: :desc).first.year
+    if @site == 'supermarket2014'
+      @front_carousel = Frontcarousel.by_subsite(@subsite).published.order('RANDOM()').limit(8)
+      if Time.now.year == last_revealed
+        @random_exhibitors = Application.includes([:year, :applicationwebimages]).approved.where(:year_id => Year.find_by(:year => Time.now.year).id).where("applicationwebimages.id is not null and applicationwebimages.imagefile not LIKE '%pdf' and applicationwebimages.imagefile not LIKE '%tiff'" ).order('RANDOM()').limit(4)
+      else
+        @last_year = last_revealed
+        @random_exhibitors = Application.includes([:year, :applicationwebimages]).approved.where(year_id: Year.find_by(year: last_revealed).id).where("applicationwebimages.id is not null and applicationwebimages.imagefile not LIKE '%pdf' and applicationwebimages.imagefile not LIKE '%tiff'" ).order('RANDOM()').limit(4)
+      end
       @posts = Post.by_subsite(@subsite).published.order('published_at DESC').limit(3)
       @video = Video.published.order('created_at DESC').first
       @social_media = Cash.where(source: 'instagram').order(issued_at: :desc).limit(5)
@@ -46,7 +54,6 @@ class ApplicationController < ActionController::Base
       # redirect_to map_spaces_path
     end
   end
-
 
   def get_from_filter_or
     out = []
@@ -124,7 +131,7 @@ class ApplicationController < ActionController::Base
       @promoted_posts += Page.includes(:subsites).by_subsite(@subsite.id).published.promoted
       @promoted_posts.compact!
       if @background_image.nil?
-        @background_image = Background.published.order_by_rand
+        @background_image = Background.published.order("RANDOM()")
       end
       @site_year = Year.all.sort_by(&:year).reverse.first
     end

@@ -3,7 +3,7 @@ class ExhibitorsController < ApplicationController
   def show
     @year = Year.find_by(:year => params[:year])
     if @year.nil?
-      redirect_to '/'
+      redirect_to '/' and return
     else
       @application = Application.find_by(:space => Space.friendly.find(params[:space]), :year => @year)
       if @application.nil?
@@ -27,10 +27,14 @@ class ExhibitorsController < ApplicationController
   
   def year
     @year = Year.includes(:applications => :space).find_by(:year => params[:year])
-    @page = Page.friendly.find('history') unless @year.year == Year.where(:reveal_decisions => true).order("year DESC").first.year rescue nil
-    if current_user
-      if current_user.is_staff?
-        @year.reveal_decisions = true
+    if @year.nil?
+      redirect_to '/' and return
+    else
+      @page = Page.friendly.find('history') unless @year.year == Year.where(:reveal_decisions => true).order("year DESC").first.year rescue nil
+      if current_user
+        if current_user.is_staff?
+          @year.reveal_decisions = true
+        end
       end
     end
   end

@@ -29,9 +29,10 @@ class Application < ActiveRecord::Base
 
   scope :by_year, ->(x) { where(:year_id => x)}
   scope :approved, -> { includes(:year).where("booth_granted >= 1 and booth_granted <= 3 and years.reveal_decisions is true").references(:years)}
-  scope :approved_preview, -> { where("booth_granted >= 1 and booth_granted <= 3 ")}
+  scope :approved_preview, -> { where('booth_granted >= 1 and booth_granted <= 3 or booth_granted = 7')}
   scope :stands, -> { where(booth_granted: 3)}
   scope :booths, -> { where("booth_granted = 1 OR booth_granted = 2")}
+  scope :associates, -> { where(booth_granted: 7) }
   scope :accepted_terms, -> { where(accepted_terms: true)}
   # attr_accessible :status, :year_id, :organisation_name, :contact_email, :contact_first_name, :contact_last_name, :space_id, :user_id, :application_image, :space_attributes, :hometown, :staff, :exhibitor_address1, :exhibitor_address2, :exhibitor_city, :exhibitor_state, :exhibitor_country, :exhibitor_postcode, :form_direction, :contact_phone
 
@@ -57,7 +58,6 @@ class Application < ActiveRecord::Base
     end
   end
 
-
   def granted_result
     case booth_granted
     when 1
@@ -72,6 +72,8 @@ class Application < ActiveRecord::Base
       'maybe'
     when 6
       'yes - PNP'
+    when 7
+      'yes - associate gallery'
     else
       'not decided yet'
     end

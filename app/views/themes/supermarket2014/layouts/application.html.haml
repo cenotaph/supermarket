@@ -4,7 +4,7 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       = display_meta_tags :site => 'Supermarket Art Fair'
       %meta{property: 'og:description', content: 'SUPERMARKET - Stockholm Independent Art Fair, an international artist-run art fair' }
-      %link{:href => theme_image_path('favicon_32.ico'), :rel => "shortcut icon"}/
+      %link{:href => asset_url('supermarket2014/images/favicon_32.ico'), :rel => "shortcut icon"}/
       %meta{:content => content_for?(:description) ? yield(:description) : "Supermarket", :name => "description"}
       %link{:href => posts_path(:format => :rss), :rel => "alternate", :title => "Supermarket Art Fair", :type => "application/rss+xml"}/
       = stylesheet_link_tag :application
@@ -34,7 +34,7 @@
         .container
           .sixteen.columns.header_main.alpha
             .two.columns.alpha.header_logo
-              = link_to image_tag(theme_image_path('2019siaf_black_200.png')), '/'
+              = link_to image_tag(asset_url('supermarket2014/images/2019siaf_black_200.png')), '/'
             
             .dates.six.columns
               - if @site_year.header_html.blank?
@@ -83,9 +83,9 @@
 
                 %nav.social_icons
                   %ul
-                    %li= link_to image_tag(theme_image_path('fb_30_r.png')), 'https://www.facebook.com/supermarketartfair', target: :_blank
-                    %li= link_to image_tag(theme_image_path('tw_30_r.png')), 'https://twitter.com/supermarketart', target: :_blank
-                    %li= link_to image_tag(theme_image_path('ig_icon.png')), 'http://instagram.com/supermarketart/', target: :_blank
+                    %li= link_to image_tag(asset_url('supermarket2014/images/fb_30_r.png')), 'https://www.facebook.com/supermarketartfair', target: :_blank
+                    %li= link_to image_tag(asset_url('supermarket2014/images/tw_30_r.png')), 'https://twitter.com/supermarketart', target: :_blank
+                    %li= link_to image_tag(asset_url('supermarket2014/images/ig_icon.png')), 'http://instagram.com/supermarketart/', target: :_blank
         #menu_base
           .container
             .sixteen_columns.horiz_menu
@@ -140,8 +140,7 @@
               %br/
               %em Stockholm Independent Art Fair
               .small_text 4–7 April 2019
-              %p
-                Applications open 1-31 October 2018              
+          
               -# Slakthusområdet, Metro Globen, Stockholm
             - else
               = raw @site_year.footer_html
@@ -161,7 +160,7 @@
               %li= link_to t(:disclaimer), page_path('disclaimer')
               %li= link_to t(:contact_us), page_path('contact-and-accreditation')
               %li.last= link_to t(:subscribe_to_newsletter), 'http://admin.getanewsletter.com/subscription/RAaDe8sxcYaWuhKev/add/', :target => :_blank
-          .three.columns.alpha= link_to image_tag(theme_image_path('2019siaf_white.png'), width: 100), '/'
+          .three.columns.alpha= link_to image_tag(asset_url('supermarket2014/images/2019siaf_white.png'), width: 100), '/'
           
   :javascript
     $(document).ready(function() {

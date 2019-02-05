@@ -4,6 +4,9 @@ class Admin::YearsController < Admin::BaseController
     create! { admin_years_path }
   end
   
+  def index
+    @years = Year.all.order(:year)
+  end
   def update 
     update! { '/admin' }
   end

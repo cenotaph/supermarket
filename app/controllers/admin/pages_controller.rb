@@ -1,5 +1,5 @@
 class Admin::PagesController < Admin::BaseController
-  before_filter :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
   has_scope :by_subsite
   handles_sortable_columns
