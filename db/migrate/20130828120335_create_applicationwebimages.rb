@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateApplicationwebimages < ActiveRecord::Migration
   def change
     create_table :applicationwebimages do |t|

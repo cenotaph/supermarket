@@ -1,13 +1,15 @@
-# -*- encoding : utf-8 -*-
+# frozen_string_literal: true
+
 module ActionView
   module Helpers
     class FormBuilder
       def globalize_fields_for(locale, *args, &proc)
-        raise ArgumentError, "Missing block" unless block_given?
-          @index = @index.to_i ? @index.to_i + 1 : 1
+        raise ArgumentError, 'Missing block' unless block_given?
+
+        @index = @index.to_i ? @index.to_i + 1 : 1
         object_name = "#{@object_name}[translations_attributes][#{@index}]"
         object = @object.translations.find_by_locale locale.to_s
-        @template.concat @template.hidden_field_tag("#{object_name}[id]", object ? object.id : "")
+        @template.concat @template.hidden_field_tag("#{object_name}[id]", object ? object.id : '')
         @template.concat @template.hidden_field_tag("#{object_name}[locale]", locale)
         @template.fields_for(object_name, object, *args, &proc)
       end
@@ -28,13 +30,14 @@ module Globalize
           def after_save
             init_translations
           end
-          # Builds an empty translation for each available 
+
+          # Builds an empty translation for each available
           # locale not in use after creation
           def init_translations
-            I18n.translated_locales.reject{|key| key == :root }.each do |locale|
-              translation = self.translations.find_by_locale locale.to_s
+            I18n.translated_locales.reject { |key| key == :root }.each do |locale|
+              translation = translations.find_by_locale locale.to_s
               if translation.nil?
-                translations.build :locale => locale
+                translations.build locale: locale
                 save
               end
             end

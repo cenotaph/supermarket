@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBackgrounds < ActiveRecord::Migration
   def change
     create_table :backgrounds do |t|

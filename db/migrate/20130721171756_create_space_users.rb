@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSpaceUsers < ActiveRecord::Migration
   def change
     create_table :space_users do |t|
@@ -5,6 +7,6 @@ class CreateSpaceUsers < ActiveRecord::Migration
       t.references :user, index: true
       t.timestamps
     end
-    add_index :space_users, [:space_id, :user_id], unique: true 
+    add_index :space_users, %i[space_id user_id], unique: true
   end
 end

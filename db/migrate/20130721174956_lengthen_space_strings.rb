@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LengthenSpaceStrings < ActiveRecord::Migration
   def change
     change_column :spaces, :email, :string

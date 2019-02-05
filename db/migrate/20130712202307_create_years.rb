@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateYears < ActiveRecord::Migration
   def change
     create_table :years do |t|
@@ -8,8 +10,8 @@ class CreateYears < ActiveRecord::Migration
       t.timestamps
     end
     2014.downto(2010).each do |year|
-      execute("INSERT INTO years (year, published, is_legacy) VALUES (#{year.to_s}, true, true)")
+      execute("INSERT INTO years (year, published, is_legacy) VALUES (#{year}, true, true)")
     end
-    execute("UPDATE years SET is_legacy=false where year = 2014")
+    execute('UPDATE years SET is_legacy=false where year = 2014')
   end
 end

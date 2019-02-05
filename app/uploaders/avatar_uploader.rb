@@ -1,7 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 class AvatarUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -24,13 +23,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
   version :standard do
-    process :resize_to_fill => [120, 120]
+    process resize_to_fill: [120, 120]
   end
-  
+
   version :small do
-    process :resize_to_fill => [50, 50]
+    process resize_to_fill: [50, 50]
   end
-  
+
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
@@ -54,5 +53,4 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePerformanceapplications < ActiveRecord::Migration
   def change
     create_table :performanceapplications do |t|
@@ -20,7 +22,7 @@ class CreatePerformanceapplications < ActiveRecord::Migration
       t.integer :decision
       t.string :attachment
       t.string :attachment_content_type
-      t.string :attachment_file_size, :length => 8
+      t.string :attachment_file_size, length: 8
       t.timestamps
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddContactStateToApplications < ActiveRecord::Migration
   def change
     add_column :applications, :contact_state, :string

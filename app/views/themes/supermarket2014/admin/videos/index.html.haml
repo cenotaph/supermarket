@@ -12,4 +12,4 @@
         %p= raw vid.description
         .delete= link_to '[delete]', [:admin, @video], :method => :delete, :confirm => "Are you sure?"
         = link_to 'edit details', edit_admin_video_path(vid)
-      .eight.columns.omega= figure_video_type(vid,  600, 400)
+      .eight.columns.omega= raw figure_video_type(vid,  600, 400)

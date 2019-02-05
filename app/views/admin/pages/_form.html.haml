@@ -26,7 +26,8 @@
   = f.input :background, :label => 'Force background image for this page', :hint => "Leave blank for a random one"
   = f.input :is_private, :label => 'Protected page? Only signed-in members can see this'
   = f.input :published
-  = f.submit
+  %br{clear: :all}
+  = f.submit 'Save'
 :javascript
   $('#language-tabs').tabs();
   $('form.page').validate();

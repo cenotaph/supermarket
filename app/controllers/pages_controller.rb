@@ -1,15 +1,10 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
-  
   def show
     @page = Page.friendly.find(params[:id])
-    if @page.is_private == true
-      authenticate_user!
-    end
-    unless @page.background.nil?
-      @background_image = @page.background
-    end
+    authenticate_user! if @page.is_private == true
+    @background_image = @page.background unless @page.background.nil?
     @nofilters = 1
   end
-  
-
 end

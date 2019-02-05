@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePerformanceapplicationcomments < ActiveRecord::Migration
   def change
     create_table :performanceapplicationcomments do |t|
@@ -8,6 +10,5 @@ class CreatePerformanceapplicationcomments < ActiveRecord::Migration
       t.timestamps
     end
     # add_index :performanceapplicationcomments, :performanceapplication_id, name: "app_id"
-
   end
 end

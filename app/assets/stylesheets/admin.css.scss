@@ -154,6 +154,9 @@ span.delete, .delete {
   input[type=text] {
     width: 100px;
   }
+  input[type=submit] {
+    margin-left: initial !important;
+  }
 }
 .search_hit {
   padding: 20px 0px;

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateVideos < ActiveRecord::Migration
   def change
     create_table :videohosts do |t|
@@ -12,7 +14,7 @@ class CreateVideos < ActiveRecord::Migration
       t.boolean :published
       t.references :year, index: true
       t.string :thumbnail
-      t.integer :thumbnail_size, :length => 8
+      t.integer :thumbnail_size, length: 8
       t.integer :thumbnail_width
       t.integer :thumbnail_height
       t.string :thumbnail_content_type

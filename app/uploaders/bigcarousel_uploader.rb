@@ -1,13 +1,12 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 class BigcarouselUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
- 
+
   storage :aws
 
   # Override the directory where uploaded files will be stored.
@@ -17,21 +16,21 @@ class BigcarouselUploader < CarrierWave::Uploader::Base
   end
 
   version :twelvehundred do
-    process :resize_to_fill => [1200, 400]
+    process resize_to_fill: [1200, 400]
   end
-  
+
   version :eighteighty do
-    process :resize_to_fill => [880, 292]
+    process resize_to_fill: [880, 292]
   end
-  
+
   version :sidebar do
-    process :resize_to_fit => [280, 210]
+    process resize_to_fit: [280, 210]
   end
-  
+
   version :frontsmall do
-    process :resize_to_fill => [172, 90]
+    process resize_to_fill: [172, 90]
   end
-  
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -63,5 +62,4 @@ class BigcarouselUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end

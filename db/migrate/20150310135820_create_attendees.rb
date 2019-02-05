@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAttendees < ActiveRecord::Migration
   def change
     create_table :attendees do |t|
@@ -11,7 +13,7 @@ class CreateAttendees < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :attendees, :verification_code, unique: true
   end
 end

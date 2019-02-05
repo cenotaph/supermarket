@@ -72,11 +72,11 @@
         = link_to admin_users_path do
           = fa_icon 'male'
           All users
-    - if can? :manage, Background
-      %li
-        = link_to admin_backgrounds_path do
-          = fa_icon 'picture-o'
-          Backgrounds
+    -# - if can? :manage, Background
+    -#   %li
+    -#     = link_to admin_backgrounds_path do
+    -#       = fa_icon 'picture-o'
+    -#       Backgrounds
     - if can? :manage, Frontcarousel
       %li
         = link_to admin_frontcarousels_path do

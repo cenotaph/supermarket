@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFrontcarousels < ActiveRecord::Migration
   def change
     create_table :frontcarousels do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # class Oldcmscmscontentfieldapporganization < ActiveRecord::Base
 #   establish_connection(
 #     :adapter  => "mysql2",

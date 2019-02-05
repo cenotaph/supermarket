@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RenameSitesToSubsites < ActiveRecord::Migration
   def change
     rename_table :sites, :subsites

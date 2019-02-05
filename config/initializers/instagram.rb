@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 InstagramApi.config do |config|
   config.access_token = ENV['instagram_api']
   config.client_id = ENV['insta_client']

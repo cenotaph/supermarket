@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFunders < ActiveRecord::Migration
   def change
     create_table :funders do |t|

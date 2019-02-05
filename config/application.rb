@@ -1,4 +1,6 @@
-require File.expand_path('../boot', __FILE__)
+# frozen_string_literal: true
+
+require File.expand_path('boot', __dir__)
 
 require 'rails/all'
 
@@ -12,8 +14,8 @@ module Aim
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
-    
+    config.autoload_paths += %W[#{config.root}/app/models/ckeditor]
+
     config.secret_key_base = ENV['SECRETKEY']
     config.sass.load_paths += [
       "#{Gem.loaded_specs['foundation-rails'].full_gem_path}/vendor/assets/stylesheets/foundation/components",
@@ -29,5 +31,4 @@ module Aim
   end
 end
 
-I18n.enforce_available_locales = false 
-
+I18n.enforce_available_locales = false

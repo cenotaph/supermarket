@@ -1,5 +1,7 @@
-class PressreleasesController < InheritedResources::Base
+# frozen_string_literal: true
 
-  actions :index
-  
+class PressreleasesController < ApplicationController
+  def index
+    @pressreleases = Pressrelease.all
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateVideolinks < ActiveRecord::Migration
   def change
     create_table :videolinks do |t|
@@ -6,7 +8,7 @@ class CreateVideolinks < ActiveRecord::Migration
       t.string :video_provider
       t.text :title
       t.string :sortorder
-      
+
       t.timestamps
     end
   end

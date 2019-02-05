@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddOptionsToYears < ActiveRecord::Migration
   def change
     add_column :years, :header_html, :text

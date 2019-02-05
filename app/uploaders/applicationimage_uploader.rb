@@ -1,16 +1,15 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 class ApplicationimageUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :aws
-  
+
   def default_url
-    ActionController::Base.helpers.asset_path("" + [version_name, "missing.png"].compact.join('_'))
+    ActionController::Base.helpers.asset_path('' + [version_name, 'missing.png'].compact.join('_'))
   end
 
   def store_dir
@@ -18,18 +17,18 @@ class ApplicationimageUploader < CarrierWave::Uploader::Base
   end
 
   version :sidebar do
-    process :resize_to_fit => [150, 150]
+    process resize_to_fit: [150, 150]
   end
-  
+
   version :slide do
-    process :resize_to_fill => [240, 240]
+    process resize_to_fill: [240, 240]
   end
 
   version :normal do
-    process :resize_to_fit => [640, 480]
+    process resize_to_fit: [640, 480]
   end
-  
-  process :resize_to_limit => [1180,885]
+
+  process resize_to_limit: [1180, 885]
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -61,5 +60,4 @@ class ApplicationimageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end

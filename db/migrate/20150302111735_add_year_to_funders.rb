@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddYearToFunders < ActiveRecord::Migration
   def change
     create_join_table :funders, :years
@@ -6,5 +8,4 @@ class AddYearToFunders < ActiveRecord::Migration
       f.save
     end
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTimestampsToSpaces < ActiveRecord::Migration
   def change
     add_column :spaces, :created_at, :datetime

@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class Website < ActiveRecord::Base
   belongs_to :application
-  
+
   def url_safe
-    if self.url[/^http:\/\//] || self.url[/^https:\/\//]
-      self.url
+    if url[%r{^http://}] || url[%r{^https://}]
+      url
     else
-      self.url = 'http://' + self.url
+      self.url = 'http://' + url
     end
   end
-  
 end

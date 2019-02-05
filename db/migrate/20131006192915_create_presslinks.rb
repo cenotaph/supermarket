@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePresslinks < ActiveRecord::Migration
   def change
     create_table :presslinks do |t|

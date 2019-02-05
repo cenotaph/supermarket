@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDeliveringTalkToPnps < ActiveRecord::Migration
   def change
     add_column :pnps, :delivering_talk, :boolean

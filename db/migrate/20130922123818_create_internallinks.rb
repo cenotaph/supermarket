@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateInternallinks < ActiveRecord::Migration
   def change
     create_table :internallinks do |t|

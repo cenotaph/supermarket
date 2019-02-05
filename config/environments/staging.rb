@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Aim::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -59,7 +61,7 @@ Aim::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( admin.css admin.js)
+  config.assets.precompile += %w[admin.css admin.js]
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -78,17 +80,17 @@ Aim::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
   config.action_mailer.default_url_options = {
-    :host => 'www.supermarketartfair.com',
+    host: 'www.supermarketartfair.com'
   }
 end
 
 Rails.application.routes.default_url_options[:host] = 'supermarketartfair.com'
 ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.sendgrid.net',
-  :port           => '587',
-  :authentication => :plain,
-  :user_name      => ENV['SENDGRID_USERNAME'],
-  :password       => ENV['SENDGRID_PASSWORD'],
-  :domain         => 'heroku.com',
-  :enable_starttls_auto => true
+  address: 'smtp.sendgrid.net',
+  port: '587',
+  authentication: :plain,
+  user_name: ENV['SENDGRID_USERNAME'],
+  password: ENV['SENDGRID_PASSWORD'],
+  domain: 'heroku.com',
+  enable_starttls_auto: true
 }

@@ -69,3 +69,12 @@ table.checklist {
     }
   }
 }
+
+form {
+  input[type="submit"] {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 0.3rem;
+    margin-left: 275px;
+  }
+}

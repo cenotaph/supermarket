@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCashes < ActiveRecord::Migration
   def change
     create_table :cashes do |t|

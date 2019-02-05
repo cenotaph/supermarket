@@ -38,16 +38,6 @@ GIT
       rails (>= 4.2.2)
 
 GIT
-  remote: git://github.com/josevalim/inherited_resources.git
-  revision: 7f86f6044e050350188a85e00543929afbcd1652
-  specs:
-    inherited_resources (1.9.0)
-      actionpack (>= 5.0, < 5.3)
-      has_scope (~> 0.6)
-      railties (>= 5.0, < 5.3)
-      responders
-
-GIT
   remote: git://github.com/justinfrench/formtastic.git
   revision: caeac7716a9620c6507e43135e3d24f500b2a77e
   branch: master
@@ -595,7 +585,6 @@ DEPENDENCIES
   has_scope
   http_accept_language
   httpclient
-  inherited_resources!
   instagram_api_client
   jquery-easing-rails
   jquery-rails

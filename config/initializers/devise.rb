@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'devise/encryptors/legacy'
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
@@ -6,7 +8,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "info@supermarketartfair.com"
+  config.mailer_sender = 'info@supermarketartfair.com'
   config.secret_key = 'ac43581aaa587271774c1ea899bf6c7c2578a35744a447c43d940bee7e50b2c6d4446a073fd20f4f2832c087c14be27e8f90a39ce6d1a06c37ce58309f861b0fb'
 
   # Configure the class responsible to send e-mails.
@@ -38,7 +40,7 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [ :email ]
+  config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or

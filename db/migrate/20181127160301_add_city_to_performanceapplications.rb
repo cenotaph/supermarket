@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCityToPerformanceapplications < ActiveRecord::Migration
   def change
     add_column :performanceapplications, :city, :string

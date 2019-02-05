@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Aim::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -23,13 +25,13 @@ Aim::Application.configure do
   config.serve_static_files = false
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor =  :uglifier # Uglifier.new(compress: { unused: false}) if defined? Uglifier
+  config.assets.js_compressor = :uglifier # Uglifier.new(compress: { unused: false}) if defined? Uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
   config.assets.cache_store = :dalli_store
-  
+
   # Generate digests for assets URLs.
   config.assets.digest = true
 
@@ -60,7 +62,7 @@ Aim::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( admin.css admin.js print.css)
+  config.assets.precompile += %w[admin.css admin.js print.css]
   config.assets.precompile += Ckeditor.assets
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -80,20 +82,16 @@ Aim::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_url_options = {
-    :host => 'www.supermarketartfair.com',
+    host: 'www.supermarketartfair.com'
   }
 
   config.cache_store = :dalli_store,
-                      (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                      {:username => ENV["MEMCACHIER_USERNAME"],
-                       :password => ENV["MEMCACHIER_PASSWORD"],
-                       :failover => true,
-                       :socket_timeout => 1.5,
-                       :socket_failure_delay => 0.2
-                      }
-                      
-                      
+                       (ENV['MEMCACHIER_SERVERS'] || '').split(','),
+                       { username: ENV['MEMCACHIER_USERNAME'],
+                         password: ENV['MEMCACHIER_PASSWORD'],
+                         failover: true,
+                         socket_timeout: 1.5,
+                         socket_failure_delay: 0.2 }
 end
 
 Rails.application.routes.default_url_options[:host] = 'supermarketartfair.com'
-

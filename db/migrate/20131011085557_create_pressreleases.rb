@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePressreleases < ActiveRecord::Migration
   def change
     create_table :pressreleases do |t|
@@ -8,7 +10,7 @@ class CreatePressreleases < ActiveRecord::Migration
       t.string :attachment_swe
       t.string :image
       t.boolean :published
-      t.references :year, index:true
+      t.references :year, index: true
       t.references :subsite, index: true
 
       t.timestamps

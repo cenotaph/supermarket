@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMoreToApplications < ActiveRecord::Migration
   def change
     add_column :applications, :supermarket_proposal, :text

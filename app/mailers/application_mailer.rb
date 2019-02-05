@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ApplicationMailer < ActionMailer::Base
-  default from: "info@supermarketartfair.com"
+  default from: 'info@supermarketartfair.com'
 
   def acceptance(application, user)
     @application = application
@@ -9,8 +11,8 @@ class ApplicationMailer < ActionMailer::Base
   def application_confirmation(application, user)
     @application = application
     @user = user
-    mail(to: user.email, cc: 'info@supermarketartfair.com', subject: "Your application for Supermarket #{@application.year.year.to_s}: #{@application.space.name}") do |format|
-      format.html {
+    mail(to: user.email, cc: 'info@supermarketartfair.com', subject: "Your application for Supermarket #{@application.year.year}: #{@application.space.name}") do |format|
+      format.html do
         if @application.booth_granted == 1
           render 'large_stand_acceptance'
         elsif @application.booth_granted == 2
@@ -24,7 +26,7 @@ class ApplicationMailer < ActionMailer::Base
         elsif @application.booth_granted == 7
           render 'associate_gallery'
         end
-      }
+      end
     end
   end
 end

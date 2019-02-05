@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rollbar.configure do |config|
   # Without configuration, Rollbar is enabled in all environments.
   # To disable in specific environments, set config.enabled=false.
@@ -5,9 +7,7 @@ Rollbar.configure do |config|
   config.access_token = ENV['rollbar_api']
 
   # Here we'll disable in 'test':
-  if Rails.env.test?
-    config.enabled = false
-  end
+  config.enabled = false if Rails.env.test?
 
   # By default, Rollbar will try to call the `current_user` controller method
   # to fetch the logged-in user object, and then call that object's `id`
@@ -61,7 +61,7 @@ Rollbar.configure do |config|
   #   user: 'username_if_auth_required',
   #   password: 'password_if_auth_required'
   # }
-  config.exception_level_filters.merge!({
+  config.exception_level_filters.merge!(
     'ActionController::RoutingError' => 'ignore',
     'NoMethodError' => 'critical',
     'AbstractController::ActionNotFound' => 'ignore',
@@ -75,7 +75,7 @@ Rollbar.configure do |config|
     'Mongoid::Errors::DocumentNotFound' => 'ignore',
     'SignalException' => 'ignore',
     'SystemExit' => 'ignore'
-  })
+  )
   # If you run your staging application instance in production environment then
   # you'll want to override the environment reported by `Rails.env` with an
   # environment variable like this: `ROLLBAR_ENV=staging`. This is a recommended

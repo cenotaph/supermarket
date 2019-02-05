@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSpecialNeedsToApplications < ActiveRecord::Migration
   def change
     add_column :applications, :special_needs, :text

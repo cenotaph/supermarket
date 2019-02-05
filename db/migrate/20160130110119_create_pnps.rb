@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePnps < ActiveRecord::Migration
   def change
     create_table :pnps do |t|

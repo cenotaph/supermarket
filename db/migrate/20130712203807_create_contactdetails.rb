@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateContactdetails < ActiveRecord::Migration
   def change
     create_table :contactdetails do |t|
