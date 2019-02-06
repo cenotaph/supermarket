@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   theme :get_site
 
+  rescue_from Wicked::Wizard::InvalidStepError do |exception|
+    redirect_to view_application_path(params[:id])
+  end
+
   before_action do
     resource = controller_path.singularize.tr('/', '_').to_sym
     method = "#{resource}_params"
