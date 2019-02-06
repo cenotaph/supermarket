@@ -49,7 +49,7 @@
                     .submitted_at
                       = t(:submitted) + ": "
                       = l space.applications.where(:year_id => Year.find_by(:year => 2019).id).first.submitted_at, :format => :long rescue nil
-                    = link_to t(:view_application), space.applications.where(:year_id => Year.find_by(:year => 2019).id).first
+                    = link_to t(:view_application), view_application_url(space.applications.where(:year_id => Year.find_by(:year => 2019).id).first)
                     - if @site_year.allow_editing? || space.applications.where(:year_id => @site_year.id).first.allow_late == true
                       %br/
                       = link_to t(:edit_your_application), edit_application_path(space.applications.where(:year_id => @site_year.id).first) # '/apply/2015/' + space.slug.to_s                    
@@ -60,7 +60,7 @@
                   = t :you_did_not_apply_this_year
                 - else
                   .view
-                    = link_to t(:view_application), space.applications.where(:year_id => @site_year.id).first
+                    = link_to t(:view_application), view_application_url(space.applications.where(:year_id => @site_year.id).first)
                     - if space.applications.where(:year_id => Year.find_by(:year => 2019).id).first.approved_pending_reveal? == true
                       - if space.applications.where(:year_id => Year.find_by(:year => 2019).id).first.accepted_terms != true
                         %p= link_to "Terms and conditions", terms_application_path(space.applications.where(:year_id => Year.find_by(:year => 2019).id).first)
@@ -79,7 +79,7 @@
                         = t(:submitted) + ": "
                         = l sa.submitted_at, :format => :long rescue nil
                     .view
-                      = link_to t(:view_application), sa
+                      = link_to t(:view_application), view_application_url(sa)
                     - if sa.year.year == 2019
                       .view
                       - if sa.approved_pending_reveal?

@@ -72,6 +72,7 @@ Aim::Application.routes.draw do
     end
     member do
       get :terms
+      get :view
       get :notify_of_decision
       post :accept_terms
     end

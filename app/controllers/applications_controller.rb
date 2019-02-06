@@ -5,7 +5,7 @@ class ApplicationsController < ApplicationController
   before_action :authenticate_user!
   skip_before_action :setup_wizard, only: %i[applylanding accept_terms
                                              notify_of_decision allow_late
-                                             check_invited edit new show invited
+                                             check_invited edit new view invited
                                              terms]
   steps :address_and_location, :basic_info, :proposals, :secondary_info, :media, :supermarket_particulars, :confirm
 
@@ -119,7 +119,26 @@ class ApplicationsController < ApplicationController
     redirect_to @application
   end
 
+  def view
+    if params[:application_id].nil?
+      @application = Application.find(params[:id])
+      unless @application.space.approved_users.include?(current_user) || current_user.has_role?(:god)
+        flash[:error] = 'This is not your application to view'
+        redirect_to '/'
+      end
+    else
+      @application = Application.find(params[:application_id])
+      if @application.space.approved_users.include?(current_user) || current_user.has_role?(:god)
+        render_wizard
+      else
+        flash[:error] = 'This is not your application to view'
+        redirect_to '/'
+      end
+    end
+  end
+
   def show
+
     if params[:application_id].nil?
       @application = Application.find(params[:id])
       unless @application.space.approved_users.include?(current_user) || current_user.has_role?(:god)

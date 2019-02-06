@@ -29,7 +29,7 @@
       .one.column.alpha= app.id.to_s
       .one.column= app.year.year
       .two.columns
-        = link_to app.organisation_name, app
+        = link_to app.organisation_name, view_application_url(app)
         - if can? :edit, Application
           .small_link
             %i.icon-pencil
