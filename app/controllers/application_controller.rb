@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: exception.message
   end
 
+  def default_url_options
+    { protocol: :https }
+  end
+  
   def after_sign_in_path_for(resource)
     stored_location_for(resource) ||
       if resource.has_role?(:staff) || resource.has_role?(:god)

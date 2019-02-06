@@ -82,7 +82,8 @@ Aim::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_url_options = {
-    host: 'www.supermarketartfair.com'
+    host: 'www.supermarketartfair.com',
+    protocol: 'https'
   }
 
   config.cache_store = :dalli_store,

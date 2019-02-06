@@ -2,7 +2,7 @@
 
 Aim::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-
+  default_url_options protocol: :https
   resources :spaces do
     # resources :build, controller: 'spaces/build'
     get :request_access
