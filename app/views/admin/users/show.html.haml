@@ -17,7 +17,7 @@
       - unless space.applications.empty?
         %ul
           - space.applications.each do |app|
-            %li= link_to app.year.year, app
+            %li= link_to app.year.year, view_application_path(app)
           
 %p
   Last signed in:
