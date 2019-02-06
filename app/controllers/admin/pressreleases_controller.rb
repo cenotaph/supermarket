@@ -38,7 +38,7 @@ class Admin::PressreleasesController < Admin::BaseController
   end
 
   def new
-    @pressrelease = Pressrelease.new(pressreleaseed_by_id: current_user.id)
+    @pressrelease = Pressrelease.new
   end
 
   protected
