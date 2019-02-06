@@ -6,7 +6,7 @@ class Menu < ActiveRecord::Base
   validates_presence_of :subsite_id
   belongs_to :item, polymorphic: true
   before_save :check_sort_order
-
+  validates :item, presence: true
   scope :published, -> { where(published: true) }
   scope :by_subsite, ->(x) { where(subsite_id: x) }
 
