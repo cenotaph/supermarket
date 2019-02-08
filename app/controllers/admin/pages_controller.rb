@@ -42,7 +42,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def new
-    @page = Page.new(posted_by_id: current_user.id)
+    @page = Page.new
   end
 
   def index
