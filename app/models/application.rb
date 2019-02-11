@@ -113,7 +113,8 @@ class Application < ActiveRecord::Base
   end
 
   def exhibitor_full_address
-    wouldbe = [exhibitor_address1, exhibitor_address2, exhibitor_postcode.to_s + ' ' + exhibitor_city.to_s, exhibitor_state, exhibitor_country.blank? ? nil : (Country[exhibitor_country].class == FalseClass ? exhibitor_country : Country[exhibitor_country].name)].delete_if(&:blank?)
+    wouldbe = [exhibitor_address1, exhibitor_address2, exhibitor_postcode.to_s + ' ' + exhibitor_city.to_s, exhibitor_state, exhibitor_country.blank? ? nil : written_country ].delete_if(&:blank?)
+     # (Country[exhibitor_country].class == FalseClass ? exhibitor_country : Country[exhibitor_country].name)]
     wouldbe.empty? ? contact_full_address : wouldbe.join('<br />')
   end
 
