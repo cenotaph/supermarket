@@ -38,7 +38,7 @@ class Admin::PresslinksController < Admin::BaseController\
   end
 
   def new
-    @presslink = Presslink.new(presslinked_by_id: current_user.id)
+    @presslink = Presslink.new
   end
 
   protected
