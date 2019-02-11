@@ -25,6 +25,7 @@
     = f.input :exhibitor_country, :as => :country, :iso_codes => true, :priority_countries => [], :include_blank => t("supermarket2014.please_choose_a_country")
     
   = f.input :hometown
+  = f.input :informal_country, as: :string
   = f.input :staff
   = f.input :supermarket_proposal
   = f.input :organisation_description, label: 'Presentation text for website'

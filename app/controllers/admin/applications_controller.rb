@@ -80,7 +80,7 @@ class Admin::ApplicationsController < Admin::BaseController
     params.require(:application).permit(:booth_granted, :red_spot, :space_id, :year_id, :user_id, :accepted_terms, :organisation_name, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :contact_address1, :contact_address2, :contact_city, :contact_state, :contact_country,
                                 :contact_postcode, :form_direction, :exhibitor_address1, :exhibitor_address2,
                                 :organisation_description, :exhibitor_city, :exhibitor_state, :exhibitor_country, :allow_late,
-                                :exhibitor_postcode, :hometown, :staff, :application_image, :apply_to_malongen, :malongen_use,
+                                :exhibitor_postcode, :hometown, :staff, :informal_country, :application_image, :apply_to_malongen, :malongen_use,
                                 :upload1, :upload2, :remove_upload1, :remove_upload2, :supermarket_proposal, :need_darker_room,
                                 :wants_open_structure, :booth_applied, :vat_number, :special_needs, :text_2019,
                                 space_attributes: %i[exhibitors id exhibitionspacetype_id short_description logo website1 website2],

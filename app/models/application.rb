@@ -192,23 +192,26 @@ class Application < ActiveRecord::Base
     else
       out = hometown + ', '
     end
-
-    out += if exhibitor_country.blank?
-             if space.country.blank?
-               space.visiting_country
-             else
-               out += if Country[space.country].class == FalseClass
-                        space.country
-                      else
-                        Country[space.country].name
+    if informal_country.blank?
+      out += if exhibitor_country.blank?
+               if space.country.blank?
+                 space.visiting_country
+               else
+                 out += if Country[space.country].class == FalseClass
+                          space.country
+                        else
+                          Country[space.country].name
+                        end
                       end
-                    end
-           else
-             if Country[exhibitor_country].class == FalseClass
-               exhibitor_country
              else
-               Country[exhibitor_country].name
-                    end
-           end
+               if Country[exhibitor_country].class == FalseClass
+                 exhibitor_country
+               else
+                 Country[exhibitor_country].name
+                      end
+             end
+    else
+      out += informal_country
+    end
   end
 end
