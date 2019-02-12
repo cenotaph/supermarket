@@ -29,7 +29,7 @@ class Application < ActiveRecord::Base
   before_save :sync_with_space
 
   scope :by_year, ->(x) { where(year_id: x) }
-  scope :approved, -> { includes(:year).where('booth_granted >= 1 and booth_granted <= 3 and years.reveal_decisions is true').references(:years) }
+  scope :approved, -> { includes(:year).where('booth_granted >= 1 and booth_granted <= 3 or booth_granted = 7 and years.reveal_decisions is true').references(:years) }
   scope :approved_preview, -> { where('booth_granted >= 1 and booth_granted <= 3 or booth_granted = 7') }
   scope :stands, -> { where(booth_granted: 3) }
   scope :booths, -> { where('booth_granted = 1 OR booth_granted = 2') }
@@ -42,7 +42,7 @@ class Application < ActiveRecord::Base
   def approved?
     if booth_granted.nil?
       false
-    elsif booth_granted >= 1 && booth_granted <= 4
+    elsif (booth_granted >= 1 && booth_granted <= 4 ) || booth_granted == 7
       year.reveal_decisions
     else
       false
