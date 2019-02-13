@@ -12,8 +12,11 @@
         - @application.websites.each do |website|
           %br/
           = link_to website.url.gsub(/^http\:\/\//i, ''), website.url_safe
-      - unless @application.contact_email.blank?
-        %p= link_to @application.contact_email, 'mailto:' + @application.contact_email
+      - if @application.organisation_email.blank?
+        - unless @application.contact_email.blank?
+          %p= link_to @application.contact_email, 'mailto:' + @application.contact_email
+      - else
+        %p= link_to @application.organisation_email, 'mailto:' + @application.organisation_email
   .columns.alpha.eleven
     - if @application.text_2018.blank?
       %p 
