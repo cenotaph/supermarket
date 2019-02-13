@@ -47,10 +47,10 @@
           %br/
           = image_tag ff.object.logo.url(:sidebar)
         = ff.input :logo, label: 'Logo for initiative (will remain for multiple years and appear on ARM)'
-        = ff.input :short_description, :input_html => {:class => :tinymce, :rows => 40, :cols => 120}
+        = ff.input :short_description, :input_html => {:class => :ckeditor, :rows => 40, :cols => 120}
         = ff.input :website1
         = ff.input :website2
-      = tinymce
+
     = f.input :booth_granted, :as => :select, :collection => [['Accepted - large booth', 1], ['Accepted - small booth', 2], ['Accepted - presentation stand', 3], ['Accepted - associate gallery', 7], ['Not accepted', 4], ['Maybe', 5]], :label => t("supermarket2014.the_decision_is")
   
   %h2 Application web images:
