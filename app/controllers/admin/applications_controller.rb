@@ -81,7 +81,7 @@ class Admin::ApplicationsController < Admin::BaseController
                                 :contact_postcode, :form_direction, :exhibitor_address1, :exhibitor_address2,
                                 :organisation_description, :exhibitor_city, :exhibitor_state, :exhibitor_country, :allow_late,
                                 :exhibitor_postcode, :hometown, :staff, :informal_country, :application_image, :apply_to_malongen, :malongen_use,
-                                :upload1, :upload2, :remove_upload1, :remove_upload2, :supermarket_proposal, :need_darker_room,
+                                :upload1, :upload2, :remove_upload1, :text_2018, :remove_upload2, :supermarket_proposal, :need_darker_room,
                                 :wants_open_structure, :booth_applied, :vat_number, :special_needs, :text_2019,
                                 space_attributes: %i[exhibitors id exhibitionspacetype_id short_description logo website1 website2],
                                 website_attributes: %i[id url application_id],
