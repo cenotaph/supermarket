@@ -2,8 +2,8 @@
 
 class SpacesController < ApplicationController
   include Wicked::Wizard
-  skip_before_action :setup_wizard, only: %i[select_existing aim_profile browse
-                                             grant_access show_history clear_filters map]
+  skip_before_action :setup_wizard, only: %i[select_existing aim_profile browse edit add_to_scope 
+                                             grant_access show_history clear_filters map ]
   autocomplete :space, :business_name
   before_action :authenticate_user!, except: %i[grant_access map clear_filters browse add_to_scope aim_profile]
   steps :find_name, :basic_details, :secondary_details
