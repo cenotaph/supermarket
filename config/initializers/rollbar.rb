@@ -4,7 +4,7 @@ Rollbar.configure do |config|
   # Without configuration, Rollbar is enabled in all environments.
   # To disable in specific environments, set config.enabled=false.
 
-  config.access_token = ENV['rollbar_api']
+  config.access_token = ENV['ROLLBAR_ACCESS_TOKEN']
 
   # Here we'll disable in 'test':
   config.enabled = false if Rails.env.test?
@@ -74,6 +74,7 @@ Rollbar.configure do |config|
     'CGI::Session::CookieStore::TamperedWithCookie' => 'ignore',
     'Mongoid::Errors::DocumentNotFound' => 'ignore',
     'SignalException' => 'ignore',
+    'OAuth::Unauthorized' => 'ignore',
     'SystemExit' => 'ignore'
   )
   # If you run your staging application instance in production environment then

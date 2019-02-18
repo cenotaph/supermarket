@@ -21,8 +21,8 @@
     - if @application.text_2018.blank?
       %p 
         = raw @application.space.short_description
-        - unless @application.organisation_description.blank?
-          = raw @application.organisation_description
+      - unless @application.organisation_description.blank?
+        %p= raw @application.organisation_description
     - else
       %p= @application.text_2018
 
