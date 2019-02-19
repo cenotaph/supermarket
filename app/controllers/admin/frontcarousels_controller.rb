@@ -38,7 +38,7 @@ class Admin::FrontcarouselsController < Admin::BaseController
   end
 
   def new
-    @frontcarousel = Frontcarousel.new(frontcarouseled_by_id: current_user.id)
+    @frontcarousel = Frontcarousel.new
   end
 
   protected

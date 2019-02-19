@@ -37,7 +37,7 @@ class Admin::FundersController < Admin::BaseController
   end
 
   def new
-    @funder = Funder.new(fundered_by_id: current_user.id)
+    @funder = Funder.new
   end
 
   protected

@@ -39,7 +39,7 @@ class Admin::FundertypesController < Admin::BaseController
   end
 
   def new
-    @fundertype = Fundertype.new(fundertypeed_by_id: current_user.id)
+    @fundertype = Fundertype.new
   end
 
 
