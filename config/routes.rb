@@ -56,7 +56,9 @@ Aim::Application.routes.draw do
   get '/admin', to: 'admin/dashboard#index', as: :admin_dashboard
   get '/exhibitors/:year', to: 'exhibitors#year'
   get '/pnp', to: 'pnps#index'
+  get '/preview2019', to: 'pages#show', id: 'preview2019'
   get '/press', to: 'pressreleases#index'
+  get '/vip', to: 'pages#show', id: 'vip'
   get '/browse', to: 'spaces#browse'
   get '/filter_by/:filter_type/:value', to: 'spaces#add_to_scope'
   get '/initiatives/:id', to: 'spaces#aim_profile', as: 'initiatives'
