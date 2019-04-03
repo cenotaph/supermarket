@@ -27,12 +27,7 @@
             .caption
               .title= fc.title
               .subtitle= fc.caption
-  .container.history_container
-    .sixteen.columns.history
-      .blurb
-        %h3 
-          Follow our 10 year anniversary celebration on social media! 
-          = link_to '#supermarkethistory', 'https://www.facebook.com/hashtag/supermarkethistory'
+'
 
   .container.posts_container    
     - @posts.take(3).each do |post|
