@@ -26,6 +26,7 @@
 //= require jquery.slick
 //= require rails-timeago
 //= require plyr
+
 var CKEDITOR_BASEPATH = '/assets/ckeditor/';
 
 function scrollToId(id){
