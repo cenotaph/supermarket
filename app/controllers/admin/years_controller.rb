@@ -11,6 +11,9 @@ class Admin::YearsController < Admin::BaseController
     end
   end
 
+  def new
+    @year = Year.new
+  end
   def edit
     @year = Year.find(params[:id])
   end
