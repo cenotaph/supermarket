@@ -48,15 +48,15 @@ Aim::Application.routes.draw do
 
   get '/user', to: 'users#profile'
   root 'application#frontpage'
-  get '/apply/2019/:space_id', to: 'applications#new', year: 2019
-  get '/apply/2019', to: 'applications#applylanding'
+  get '/apply/2020/:space_id', to: 'applications#new', year: 2020
+  get '/apply/2020', to: 'applications#applylanding'
   get '/invited', to: 'applications#invited'
   post '/invited', to: 'applications#check_invited'
-  get '/invited/2019/:space_id', to: 'applications#allow_late', year: 2019
+  get '/invited/2020/:space_id', to: 'applications#allow_late', year: 2020
   get '/admin', to: 'admin/dashboard#index', as: :admin_dashboard
   get '/exhibitors/:year', to: 'exhibitors#year'
   get '/pnp', to: 'pnps#index'
-  get '/preview2019', to: 'pages#show', id: 'preview2019'
+  get '/preview2020', to: 'pages#show', id: 'preview2020'
   get '/press', to: 'pressreleases#index'
   get '/vip', to: 'pages#show', id: 'vip'
   get '/browse', to: 'spaces#browse'

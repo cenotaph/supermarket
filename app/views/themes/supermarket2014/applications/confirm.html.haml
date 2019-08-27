@@ -4,7 +4,7 @@
   %p= t("supermarket2014.confirm_contact_details")
   = f.input :contact_email
   = f.input :contact_phone, :input_html => {:required => true}
-  = f.input :vat_number, :input_html => {:value => "Not registered for VAT"}, :label => t("supermarket2014.vat_number")
+  = f.input :vat_number, :input_html => {:value => "Not registered for VAT"}, :label => t("supermarket2014.vat_number"), hint: 'Participants outside of EU who has a VAT # or similar business number will not have to pay 25% VAT.'
   = f.input :form_direction, :input_html => { :value => "forward"}, :as => :hidden
   = f.actions do
     = f.action :submit, :label => raw("<i class='fa fa-arrow-circle-left icon-large'></i>") + t(:back), :as => :button,  :button_html => {:class => :previous}

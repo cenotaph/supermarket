@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_11_103816) do
+ActiveRecord::Schema.define(version: 2019_08_27_120433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -45,12 +45,6 @@ ActiveRecord::Schema.define(version: 2019_02_11_103816) do
     t.integer "activity_id", null: false
     t.string "locale", limit: 50, null: false
     t.index ["activity_id", "locale"], name: "unique_activity_translations_locales", unique: true
-  end
-
-  create_table "add_informalcountry_to_applications", force: :cascade do |t|
-    t.string "informal_country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "applicationcomments", id: :serial, force: :cascade do |t|
@@ -123,6 +117,7 @@ ActiveRecord::Schema.define(version: 2019_02_11_103816) do
     t.boolean "networking_only", default: false, null: false
     t.text "text_2018"
     t.string "informal_country"
+    t.string "organisation_contact_email"
     t.index ["year_id"], name: "index_applications_on_year_id"
   end
 

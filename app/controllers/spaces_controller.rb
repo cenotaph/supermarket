@@ -163,8 +163,8 @@ class SpacesController < ApplicationController
     flash[:notice] += t 'supermarket2014.finished_space_blurb'
     # if current_user.applications
     @space = Space.find(params[:space_id])
-    if @space.applications.where(year: Year.where(year: 2019)).empty?
-      redirect_to '/apply/2019/' + @space.slug
+    if @space.applications.where(year: Year.where(year: 2020)).empty?
+      redirect_to '/apply/2020/' + @space.slug
     else
       redirect_to '/'
     end

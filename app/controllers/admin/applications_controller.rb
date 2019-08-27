@@ -77,7 +77,7 @@ class Admin::ApplicationsController < Admin::BaseController
   protected
 
   def application_params
-    params.require(:application).permit(:booth_granted, :red_spot, :space_id, :year_id, :user_id, :accepted_terms, :organisation_name, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :contact_address1, :contact_address2, :contact_city, :contact_state, :contact_country,
+    params.require(:application).permit(:booth_granted, :organisation_contact_email, :red_spot, :space_id, :year_id, :user_id, :accepted_terms, :organisation_name, :contact_first_name, :contact_last_name, :contact_email, :contact_phone, :contact_address1, :contact_address2, :contact_city, :contact_state, :contact_country,
                                 :contact_postcode, :form_direction, :exhibitor_address1, :exhibitor_address2,
                                 :organisation_description, :exhibitor_city, :exhibitor_state, :exhibitor_country, :allow_late,
                                 :exhibitor_postcode, :hometown, :staff, :informal_country, :application_image, :apply_to_malongen, :malongen_use,
