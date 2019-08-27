@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_120433) do
+ActiveRecord::Schema.define(version: 2019_02_11_103816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -117,7 +117,6 @@ ActiveRecord::Schema.define(version: 2019_08_27_120433) do
     t.boolean "networking_only", default: false, null: false
     t.text "text_2018"
     t.string "informal_country"
-    t.string "organisation_contact_email"
     t.index ["year_id"], name: "index_applications_on_year_id"
   end
 

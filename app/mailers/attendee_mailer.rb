@@ -5,6 +5,6 @@ class AttendeeMailer < ActionMailer::Base
 
   def preview_registration(attendee)
     @attendee = attendee
-    mail(to: attendee.email, from: 'info@supermarketartfair.com', subject: 'Welcome to Supermarket 2019')
+    mail(to: attendee.email, from: 'info@supermarketartfair.com', subject: 'Welcome to Supermarket 2020')
   end
 end
