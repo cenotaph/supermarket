@@ -14,11 +14,13 @@
 
     %br{clear: :all}
     %p
-      We would like to make you aware of the possibility to take part in the SUPERMARKET Professional Networking Participant programme (PNP). PNPs do not exhibit but get invited to the Meetings Programme, Exhibitor gatherings, Exhibitor party, special programme of seminars and presentations. PNPs have access to the Exhibitor lounge. The application should be made by an organisation that selects one person as their representative.
+      We would like to make you aware of the possibility to take part in the Professional Networking Participants programme (PNP). PNPs do not exhibit but get invited to the Meetings Programme, Exhibitor gatherings, Exhibitor party, Supermarket Forum and have a special programme of seminars and presentations. PNPs have access to the Exhibitor lounge. The application should be made by an organisation that selects one or max. two persons as their representative.
       %br/
       You can apply for an exhibition booth primarily and take part as a PNP as a second option in case you do not get selected as exhibitor; or if your organisation would like to take part both as exhibitors and delegate a PNP participant. Please note that the exhibitor’s fee does not include the PNP participation fee.
+
     %p
-      Professional Networking Participation fee: SEK 1500 + VAT (SEK 1850)
+      Professional Networking Participants fee: SEK 2000 + VAT (SEK 2500). The fee includes participation in the Supermarket Forum.
+
     = f.input :networking_only, as: :boolean, label: 'This organisation is applying for the Professional Networking Programme. (Also tick if you want this to be a second option in case you are not selected with your application for an exhibition stand.)'
 
     = f.input :booth_applied, :as => :select, :label => t("supermarket2014.exhibition_stand_type_wanted"), :collection => {"Large exhibition stand (12–15 m2)" => "2", "Small exhibition stand (6-7 m2)" => "3", "Presentation stand (2 m2)" => "4", "No exhibition stand" => "5"}, :input_html => {:disabled => (!@application.year.open? ? false : false), :required => ''}
