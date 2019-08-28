@@ -1,39 +1,45 @@
 .show_view
   .nine.columns
     %h1 Your information
+  .nine.columns
+    %h2 Your initiatives
 
-  - unless @user.spaces.empty?
-    .nine.columns
-      %h2 Your initiatives
-    - @user.spaces.each do |space|
-      %fieldset{style: 'margin-bottom: 2rem;'}
-        .nine.columns
-          %h3= space.business_name
-          %p= space.full_contact_address
+    - if @user.spaces.empty?
+      .nine.columns
+        %p You have not told us about your exhibition space, gallery or initiative. After adding your gallery, you can easily apply to Supermarket Art Fair.
 
-        - unless space.applications.empty?
+        %p
+          = link_to 'Add a gallery or space that you manage', new_space_path, class: [:button]
+    - else
+      - @user.spaces.each do |space|
+        %fieldset{style: 'margin-bottom: 2rem;'}
           .nine.columns
-            %h4 Applications:
-          - space.applications.sort_by{|x| x.year.year}.reverse.each do |app|
+            %h3= space.business_name
+            %p= space.full_contact_address
+
+          - unless space.applications.empty?
             .nine.columns
-              %strong= app.year.year
-              - unless app.year.reveal_decisions != true
-                = ": #{app.granted_result}"
-              = link_to '[View application]', app
+              %h4 Applications:
+            - space.applications.sort_by{|x| x.year.year}.reverse.each do |app|
+              .nine.columns
+                %strong= app.year.year
+                - unless app.year.reveal_decisions != true
+                  = ": #{app.granted_result}"
+                = link_to '[View application]', app
 
-              - if (app.year.allow_editing? || app.allow_late == true) && app.year == @site_year
-                = link_to "[Edit your #{app.year.year} application]", edit_application_path(app)
-              %br/
-              - if app.approved_pending_reveal?
-                - if app.accepted_terms != true
-                  You have not accepted the terms and conditions yet.
-                  = link_to '[Accept terms]', terms_application_path(app)
-                  %br/
-                  %br/
+                - if (app.year.allow_editing? || app.allow_late == true) && app.year == @site_year
+                  = link_to "[Edit your #{app.year.year} application]", edit_application_path(app)
+                %br/
+                - if app.approved_pending_reveal?
+                  - if app.accepted_terms != true
+                    You have not accepted the terms and conditions yet.
+                    = link_to '[Accept terms]', terms_application_path(app)
+                    %br/
+                    %br/
 
 
-        %br/
-        %br/
+          %br/
+          %br/
 
 
 
