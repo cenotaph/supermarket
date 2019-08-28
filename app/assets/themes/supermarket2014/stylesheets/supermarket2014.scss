@@ -94,6 +94,7 @@ button {
 header {
   background-color: $orange1;
   padding-top: 2rem;
+  color: white;
   a {
     img {
       float: left;
@@ -103,7 +104,7 @@ header {
   .dates, .dates_mobile {
     padding-top: 10px;
     float: left;
-    color: $menu;
+    color: white;
     
     p {
       margin: 0px 0px 3px 0px;

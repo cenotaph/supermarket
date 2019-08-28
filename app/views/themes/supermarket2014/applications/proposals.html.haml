@@ -1,9 +1,9 @@
 = semantic_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014}, :method => :put) do |f|
   %p
     = t "supermarket2014.proposal_blurb"
-  = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), hint: raw(t("supermarket2014.network_nevermind") + "<div id='remain_proposal' class='counter'></div>"), input_html: {disabled: (!@application.approved? ? :disabled : false ) }
+  = f.input :supermarket_proposal, :label => t("supermarket2014.supermarket_proposal"), hint: raw(t("supermarket2014.network_nevermind") + "<div id='remain_proposal' class='counter'></div>"), input_html: {disabled: ( (Date.today <= @application.year.registration_deadline || @application.approved? ) ? false : :disabled  ) }
 
-  = f.input :organisation_description, :label => "Presentation text (what you will exhibit this year at Supermarket):", hint: raw(t("supermarket2014.network_nevermind")+ "<div id='presentation_proposal' class='counter'></div>"), input_html: {disabled: (!@application.approved? ? :disabled : false ) }
+  = f.input :organisation_description, :label => "Presentation text (who and what do you plan to exhibit this year at Supermarket?):", hint: raw(t("supermarket2014.network_nevermind")+ "<div id='presentation_proposal' class='counter'></div>"), input_html: {disabled: (!@application.approved? ? :disabled : false ) }
 
   - unless @application.space.applications.to_a.delete_if{|x| x == @application}.empty?
     %li

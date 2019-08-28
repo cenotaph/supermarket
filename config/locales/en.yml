@@ -254,10 +254,10 @@ en:
     space_additional_details: 'Additional details'
     space_basic_details: 'Basic details'    
     space_handoff_needed: 'This gallery/space already exists in our database, but your user account is not authorised to update or change the information for it.'
-    supermarket_proposal: 'How will you utilise your booth at Supermarket 2020? You can write in English or Swedish.'
-    network_nevermind: 'If applying just as a professional networking participant, you can leave this blank!'
+    supermarket_proposal: 'How do you plan to use your booth/stand at Supermarket 2020? You can write in English or Swedish.'
+    network_nevermind: 'If applying as a professional networking participant, you can leave this blank!'
     proposal_blurb: ''
-    visiting_address_different: 'Visiting address (if different than contact address):'
+    visiting_address_different: 'Visiting address (required, even if the same as your contact address)'
     we_sent_emails_blurb: 'We have sent emails to the owners of the %{space} account, asking them to approve your access. You will receive an email notification when this has been done.'
     year_of_closing: 'If not active, what year did it close?'
     your_applications: 'Your applications'
@@ -265,7 +265,7 @@ en:
     staff_comments: 'Staff comments:'
     approval_decision: 'Decision:'
     leave_comment_blurb: 'You may enter a comment on this application here. The comments will be seen by other Supermarket staff, but will NOT be seen by the public or person who filled out the application.'
-    documents_blurb: 'Here you can attach material that will guide us when selecting the exhibitors. Please include materials relevant to what you will show.'
+    documents_blurb: 'Here you can attach material that will help us in the selection process. Please include materials relevant to your gallery and what you will show. This makes your application stronger and more likely to be successful!'
     image_or_logo: 'Image or logo'
     press_releases: 'Press releases'
     subscribe_press_releases: 'Subscribe to our press releases'
@@ -275,7 +275,7 @@ en:
     need_darker_room: 'Would you prefer a darker space?'
     invoice_address: "This is the address we will issue the invoice to, so be sure it's correct!"
     darker_room_hint: 'If you are using a video projector and would like a stand located in an area without too much ambient light, check this box.'
-    supermarket_particulars_blurb: "Just a few more questions before we're finished!"
+    supermarket_particulars_blurb: "Just a few more questions before the application is finished!"
     your_control_panel: 'Your control panel'
     media_fields: 'Websites, images and videos'
     wants_open_structure: 'Would you like to have a more open structure, instead of a regular exhibition stand that has 3 walls?'
