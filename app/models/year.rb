@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Year < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :registration_deadline, presence: true
   has_many :applications
   has_many :videos
