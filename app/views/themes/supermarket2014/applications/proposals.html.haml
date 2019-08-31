@@ -13,11 +13,11 @@
     = f.fields_for :space do |ff|
       = ff.input :short_description, input_html: { value: strip_tags(ff.object.short_description) }, hint: 'Please keep this description under 1200 characters.', label: "Overall description of your initiative (do not write about this specific year's exhibition at Supermarket): "
     
-      = ff.input :decisionmakers_organisation, :label => t("supermarket2014.decision_makers_organisation"), input_html: {disabled: (!@application.approved? ? :disabled : false ) }
-      = ff.input :decisionmakers_programming, :label => t("supermarket2014.decision_makers_programming"), input_html: {disabled: (!@application.approved? ? :disabled : false ) }
-      = ff.input :founding_year, :label => t("supermarket2014.founding_year"), :input_html => {:required => true, disabled: (!@application.approved? ? :disabled : false ) }
-      = ff.input :is_active, :label => t("supermarket2014.is_active"), input_html: {disabled: (!@application.approved? ? :disabled : false ) }
-      = ff.input :year_of_closing, :label => t("supermarket2014.year_of_closing"), input_html: {disabled: (!@application.approved? ? :disabled : false ) }
+      = ff.input :decisionmakers_organisation, :label => t("supermarket2014.decision_makers_organisation"), input_html: {disabled:  ( (Date.today <= @application.year.registration_deadline || @application.approved? ) ? false : :disabled  ) }
+      = ff.input :decisionmakers_programming, :label => t("supermarket2014.decision_makers_programming"), input_html: {disabled:  ( (Date.today <= @application.year.registration_deadline || @application.approved? ) ? false : :disabled  ) }
+      = ff.input :founding_year, :label => t("supermarket2014.founding_year"), :input_html => {:required => true, disabled:  ( (Date.today <= @application.year.registration_deadline || @application.approved? ) ? false : :disabled  ) }
+      = ff.input :is_active, :label => t("supermarket2014.is_active"), input_html: {disabled:  ( (Date.today <= @application.year.registration_deadline || @application.approved? ) ? false : :disabled  ) }
+      = ff.input :year_of_closing, :label => t("supermarket2014.year_of_closing"), input_html: {disabled:  ( (Date.today <= @application.year.registration_deadline || @application.approved? ) ? false : :disabled  ) }
       - unless @application.approved?
         = ff.input :organisationtypes, :as => :check_boxes, :label => t("aim.organisation_type_fieldset"), :hint => t("aim.organisation_type_hint")
     
