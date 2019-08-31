@@ -2,5 +2,5 @@
 
 %ul
   - current_user.approved_space_users.map(&:space).each do |space|
-    %li= link_to "Apply to Supermarket for #{space.name}", '/apply/2015/' + space.slug
+    %li= link_to "Apply to Supermarket for #{space.name}", '/apply/' +  Year.where(applications_open: true).order(year: :desc).first.year.to_s + '/' + space.slug
     
