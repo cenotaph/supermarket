@@ -24,7 +24,7 @@ class Admin::YearsController < Admin::BaseController
 
   def update
     @year = Year.find(params[:id])
-    if @year.update(year_params)
+    if @year.update_attributes(year_params)
       flash[:notice] = 'Year updated.'
       redirect_to admin_years_url
     else
