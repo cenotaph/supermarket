@@ -55,6 +55,15 @@
     .six.columns.alpha
       %ul.application_show
         %li
+          %label Application type
+          .appval
+            - if @application.networking_only
+              PNP
+            - else
+              Exhibitor
+            - if @application.wants_forum
+              (with Supermarket Forum)
+        %li
           %label= t("supermarket2014.type_of_initiative")
           .appval= @application.space.businesstypes.map(&:name).join(' / ')
         %li
