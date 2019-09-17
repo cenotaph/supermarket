@@ -35,7 +35,8 @@ class Admin::UsersController < Admin::BaseController
         flash[:notice] = 'Profile updated.'
         redirect_to '/admin'
       else
-        flash[:error] = 'Error saving profile: ' + @user.errors.full_messages
+        flash[:error] = 'Error saving profile: ' + @user.errors.full_messages.join
+        render template: 'admin/users/edit'
       end
     else
       flash[:error] = 'You cannot edit another user.'
