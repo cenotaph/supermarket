@@ -23,6 +23,8 @@ class ApplicationMailer < ActionMailer::Base
           render 'maybe'
         elsif @application.booth_granted == 4
           render 'no'
+        elsif @application.booth_granted == 6
+          render 'pnp'
         elsif @application.booth_granted == 7
           render 'associate_gallery'
         end
