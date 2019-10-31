@@ -47,6 +47,7 @@ Aim::Application.configure do
 
   # Set to :debug to see everything in the log.
   config.log_level = :error
+  config.log_formatter = ::Logger::Formatter.new
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
