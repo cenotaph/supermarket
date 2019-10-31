@@ -13,8 +13,8 @@
   %fieldset.pnp
     %legend Which parts of Supermarket and PNP programme are you most interested in? (select max. 5)
     = f.input :programme_meetings, label: 'Meetings Programme', as: :boolean, input_html: { class: :limit_5 }
-    = f.input :programme_party, label: 'Exhibitor gatherings and Exhibitor party', as: :boolean, input_html: { class: :limit_5 }
-    = f.input :programme_discussion, label: 'Special discussion seminar', as: :boolean, input_html: { class: :limit_5 }
+    = f.input :programme_party, label: 'Exhibitor gathering and Exhibitor party', as: :boolean, input_html: { class: :limit_5 }
+    = f.input :programme_discussion, label: 'Special PNP programme of talks, discussions and workshops', as: :boolean, input_html: { class: :limit_5 }
     = f.input :programme_lounge, label: 'Access to Exhibitor lounge', as: :boolean, input_html: { class: :limit_5 }
     = f.input :programme_exhibitions, label: 'Exhibition', as: :boolean, input_html: { class: :limit_5 }
     = f.input :programme_exhibitors, label: 'Being able to meet exhibitors', input_html: { class: :limit_5 }
@@ -22,36 +22,45 @@
     = f.input :programme_performances, label: 'Performances', input_html: { class: :limit_5 }
     = f.input :delivering_talk, label: 'Delivering a talk or presentation', as: :boolean, input_html: {class: :limit_5 }
     = f.input :writing_about_supermarket, label: 'Writing about Supermarket', as: :boolean, input_html: { class: :limit_5 }
+    = f.input :supermarket_forum, label: 'Supermarket Forum', as: :boolean, input_html: { class: :limit_5 }    
   %fieldset.pnp
     %legend What would you hope to obtain?
 
-    = f.input :hope_newpartners, label: 'New partners, new artists', as: :boolean
+    = f.input :hope_newpartners, label: 'Gaining new contacts and getting to know new artists', as: :boolean
     = f.input :hope_newknowledge, label: 'New knowledge about how to run an art space', as: :boolean
     = f.input :hope_othercountries, label: 'Knowledge about the situation in other countries', as: :boolean
     = f.input :hope_exhibitionpossibilities, label: 'Contacts for my own exhibition possibilities', as: :boolean
     = f.input :hope_supermarketoverall, label: 'As much of the Supermarket experience as possible', as: :boolean
-
+    = f.input :hope_newcollabs, label: 'New opportunities for collaboration'
 
 
   = f.input :role_in_scene, as: :select, collection: [['Artist', 1], ['Curator', 2], ['Art theorist', 3], ['Writer/critic', 4], ['Entrepreneur', 5], ['Institution/gallery/museum employee', 6], ['Arts administrator', 7], ['Art lecturer/teacher', 8], ['Other', 9]],  label: 'How do you best describe your role in the art scene?', include_blank: 'Please choose...', input_html: {:required => true }
+  = f.input :other_role_explanation, label: 'If other, please specify what it is: '
   -#, Art theorist, Writer/critic, Entrepreneur, Institution/gallery/museum employee, Arts administrator, Art lecturer/teacher, Other
 
   = f.input :languages, label: 'What languages do you speak?', input_html: {:required => true }
 
-  = f.input :willing_to_do_survey, label: 'By applying to PNP programme I agree to spend up to an hour to fill in a survey and write down feedback on my participation.', input_html: {required: true}
 
   = f.input :planning_to_write, label: 'Are you planning to write something about the event? If so, what?', hint: 'A report, article, blog, photo reportage, etc.?'
 
   = f.input :other_comments, label: 'Any other comments that you think could help us to plan a good PNP experience for you and the others?'
-  = f.input :vegetable, as: :select, collection: ['Aubergine', 'Broccoli', 'Carrot', 'Garlic', 'Radish'], input_html: {required: true}, label: 'If you were a vegetable, what vegetable would you be?'
+  = f.input :vegetable, as: :select, collection: ['A magic unicorn', 'Pikachu', 'Falkor (the luck dragon from The Neverending Story', 'a talking sponge', 'Chewbacca'], input_html: {required: true}, label: 'If you could choose one fictional creature to be your best friend and follow you around everywhere, who would it be?'
+
+
   .pnp_submit
+    = f.input :willing_to_do_survey, label: 'By applying to PNP programme I agree to spend up to an hour to fill in a survey and write down feedback on my participation.', input_html: {required: true}
     = f.actions do
       = f.action :submit, :label => raw("<i class='fa fa-check icon-large'></i> ") + t(:submit_your_application), :as => :button,  :button_html => {:class => :completed}
   
 = content_for :jquery do
   :plain
     $('form#new_pnp').validate();
-  
+    $('form#new_pnp').on('submit', function(event) {
+      event.preventDefault();
+      if (!$('#pnp_willing_to_do_survey').is(':checked')) {
+        event.preventDefault();
+      }
+    })
     $('input.limit_5').on('change', function(evt) {
    
        if($('input.limit_5:checked').length > 5) {

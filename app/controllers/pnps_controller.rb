@@ -25,7 +25,7 @@ class PnpsController < ApplicationController
   protected
 
   def pnp_params
-    params.require(:pnp).permit(%i[name email phone_number postal_address city country postcode
+    params.require(:pnp).permit(%i[name email phone_number postal_address city country postcode supermarket_forum hope_newcollabs other_role_explanation
                                    organisation other_organisations others_from_same programme_meetings programme_party programme_discussion
                                    programme_lounge programme_exhibitions programme_exhibitors programme_talks programme_performances
                                    hope_newpartners delivering_talk writing_about_supermarket vegetable hope_newknowledge hope_othercountries hope_exhibitionpossibilities

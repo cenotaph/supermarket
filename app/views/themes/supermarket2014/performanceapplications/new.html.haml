@@ -17,8 +17,10 @@
     = f.input :contact_name, :input_html => {required: true }
     = f.input :contact_email, :input_html => {required: true }
     = f.input :contact_phone, :input_html => {required: true }
+    = f.input :postal_address, :input_html => {required: true }    
     = f.input :city, input_html: { required: true }
     = f.input :country, input_html: { required: true }
+    = f.input :postcode, :input_html => {required: true }
 
   %fieldset
     %legend About your performance
@@ -40,10 +42,17 @@
     = f.input :weblink1, label: 'URL #4:'
     = f.input :connection_to_visual_arts, as: :text, label: 'What is your connection to the visual arts? (max 500 characters)'
     = f.input :attachment
-
+  = f.input :willing_to_do_survey, as: :boolean, label: 'By applying to the Performance Programme I agree to spend up to an hour to fill in a survey and write down feedback on my participation.', input_html: {required: true}
   = f.actions do
+
     = f.action :submit, :label => raw("<i class='fa fa-check icon-large'></i>") + t(:complete_your_application), :as => :button,  :button_html => {:class => :completed}
 :javascript
   $(document).ready(function() {
     $('#new_performanceapplication').validate();
+    $('form#new_performanceapplication').on('submit', function(event) {
+      event.preventDefault();
+      if (!$('#performanceapplication_willing_to_do_survey').is(':checked')) {
+        event.preventDefault();
+      }
+    })
   });

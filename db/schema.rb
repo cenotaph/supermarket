@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_07_090636) do
+ActiveRecord::Schema.define(version: 2019_10_31_104004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -413,6 +413,8 @@ ActiveRecord::Schema.define(version: 2019_09_07_090636) do
     t.string "city"
     t.string "country"
     t.string "assistants_prep"
+    t.string "postcode"
+    t.string "postal_address"
     t.index ["user_id"], name: "index_performanceapplications_on_user_id"
     t.index ["year_id"], name: "index_performanceapplications_on_year_id"
   end
@@ -452,6 +454,9 @@ ActiveRecord::Schema.define(version: 2019_09_07_090636) do
     t.boolean "delivering_talk"
     t.boolean "writing_about_supermarket"
     t.string "vegetable"
+    t.boolean "supermarket_forum"
+    t.boolean "hope_newcollabs"
+    t.string "other_role_explanation"
     t.index ["year_id"], name: "index_pnps_on_year_id"
   end
 
