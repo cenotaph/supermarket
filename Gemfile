@@ -55,7 +55,7 @@ gem 'capistrano3-puma'
 # gem 'acts_as_tree', '1.4.0'
 gem 'auto_html', '2.0.0'
 gem 'aws-s3', github: 'bartoszkopinski/aws-s3'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sass-rails', '>= 3.2'
 gem 'twitter-text'
 # gem "bullet", :group => "development"
