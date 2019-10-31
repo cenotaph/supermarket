@@ -26,7 +26,7 @@ class ApplicationsController < ApplicationController
         flash[:notice] = 'You have accepted the terms. Thank you.'
         render template: 'applications/terms'
       else
-        flash[:error] = 'There was an error saving your term acceptance. Please try again'
+        flash[:error] = 'There was an error saving your term acceptance: ' + @application.errors.full_messages.join + '. Please try again'
       end
     else
       flash[:error] = 'This is not your application.'
