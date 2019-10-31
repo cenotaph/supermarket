@@ -11,7 +11,7 @@
 
   -# %p You will be notified by email when you have made your agreement.
 
-  = semantic_form_for(@application, :url => accept_terms_application_path(@application), :method => :post) do |f|
+  = semantic_form_for(@application, :url => accept_terms_application_url(@application), :method => :post) do |f|
     - if @application.accepting_name.blank?
       = f.input :accepting_name, :label => 'Your full name', :input_html => {:required => true}
     - else

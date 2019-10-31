@@ -33,7 +33,7 @@
                 - if app.approved_pending_reveal?
                   - if app.accepted_terms != true
                     You have not accepted the terms and conditions yet.
-                    = link_to '[Accept terms]', terms_application_path(app)
+                    = link_to '[Accept terms]', terms_application_url(app)
                     %br/
                     %br/
 

@@ -20,7 +20,7 @@ Aim::Application.configure do
   config.action_mailer.delivery_method = :letter_opener
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
-
+  config.force_ssl = false
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
   config.action_mailer.default_url_options = {
