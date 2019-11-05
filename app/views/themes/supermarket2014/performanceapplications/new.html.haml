@@ -50,7 +50,7 @@
   $(document).ready(function() {
     $('#new_performanceapplication').validate();
     $('form#new_performanceapplication').on('submit', function(event) {
-      event.preventDefault();
+
       if (!$('#performanceapplication_willing_to_do_survey').is(':checked')) {
         event.preventDefault();
       }
