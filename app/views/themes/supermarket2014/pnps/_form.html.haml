@@ -56,7 +56,8 @@
   :plain
     $('form#new_pnp').validate();
     $('form#new_pnp').on('submit', function(event) {
-      event.preventDefault();
+      
+      
       if (!$('#pnp_willing_to_do_survey').is(':checked')) {
         event.preventDefault();
       }
