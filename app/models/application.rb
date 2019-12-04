@@ -43,7 +43,7 @@ class Application < ActiveRecord::Base
     if booth_granted.nil?
       false
     elsif (booth_granted >= 1 && booth_granted <= 4 ) || booth_granted == 7
-      year.reveal_decisions
+      year.allow_editing == true ? true : year.reveal_decisions
     else
       false
     end
