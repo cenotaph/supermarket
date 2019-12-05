@@ -1,6 +1,7 @@
 = semantic_form_for(@application, :url => wizard_path(step, :application_id => @application.id), :html => {:multipart => true, :id => :application_2014}, :method => :put) do |f|
   %p
     = t "supermarket2014.proposal_blurb"
+    -# - die
   = f.input :supermarket_proposal, label: 'Please write your exhibition proposal. How do you plan to use your booth/stand at Supermarket 2020? Who and what will you exhibit?', hint: raw('Your proposal will be considered as a part of the assessment criteria. You can write in English or Swedish.' + "<div id='remain_proposal' class='counter'></div>"), input_html: {disabled: ( (Date.today <= @application.year.registration_deadline || @application.approved? ) ? false : :disabled  ) }
 
   = f.input :organisation_description, label: 'Please write your presentation text.', hint: raw('Describe your exhibition at Supermarket 2020. Note that this text will be made public on our website on your presentation page in January. Until then you can edit this text.' + "<div id='presentation_proposal' class='counter'></div>"), input_html: {disabled:  ( (Date.today <= @application.year.registration_deadline || @application.approved? ) ? false : :disabled  ) }

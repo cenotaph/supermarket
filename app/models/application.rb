@@ -40,7 +40,9 @@ class Application < ActiveRecord::Base
   attr_accessor :form_direction
 
   def approved?
-    if booth_granted.nil?
+    if year.allow_editing == true && submitted_at && submitted_at > year.registration_deadline
+      true
+    elsif booth_granted.nil?
       false
     elsif (booth_granted >= 1 && booth_granted <= 4 ) || booth_granted == 7
       year.allow_editing == true ? true : year.reveal_decisions
