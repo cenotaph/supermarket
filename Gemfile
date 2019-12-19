@@ -8,7 +8,7 @@ gem 'rails', '5.2.2'
 ruby '2.6.1'
 
 gem 'pg', '~> 0.21'
-gem 'puma', '3.11.4', group: :production
+gem 'puma', '~> 4.3.1', group: :production
 
 # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 4.0.0'
@@ -55,7 +55,7 @@ gem 'capistrano3-puma'
 # gem 'acts_as_tree', '1.4.0'
 gem 'auto_html', '2.0.0'
 gem 'aws-s3', github: 'bartoszkopinski/aws-s3'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sass-rails', '>= 3.2'
 gem 'twitter-text'
 # gem "bullet", :group => "development"
