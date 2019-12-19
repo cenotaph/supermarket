@@ -8,3 +8,4 @@ class Admin::SearchController < Admin::BaseController
     @hits += Space.fuzzy_search(params[:searchterm])
   end
 end
+
