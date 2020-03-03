@@ -385,7 +385,7 @@ GEM
       i18n (>= 0.5.0)
       railties (>= 3.0.0)
     public_suffix (4.0.1)
-    puma (4.3.1)
+    puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.0.8)
     rack-contrib (2.1.0)
@@ -622,7 +622,7 @@ DEPENDENCIES
   pg (~> 0.21)
   plyr-rails
   public_activity
-  puma (~> 4.3.1)
+  puma (~> 4.3.3)
   rails (= 5.2.2)
   rails-i18n
   rails-timeago (~> 2.0)

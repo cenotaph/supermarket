@@ -8,7 +8,7 @@ gem 'rails', '5.2.2'
 ruby '2.6.1'
 
 gem 'pg', '~> 0.21'
-gem 'puma', '~> 4.3.1', group: :production
+gem 'puma', '~> 4.3.3', group: :production
 
 # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 4.0.0'
