@@ -59,6 +59,24 @@
       display: none;
     }
   }
+
+  footer {
+    padding: 1rem 0;
+    max-height: 4rem;
+    .container {
+
+      .links1 {
+        width: 100% !important;
+      }
+      .alpha { 
+        display: none;
+      }
+      li {
+        float: left;
+        margin-right: 30px;
+      }
+    }
+  }
   
   nav.top_bar {
     margin-bottom: 10px;
