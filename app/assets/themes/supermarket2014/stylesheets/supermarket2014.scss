@@ -205,6 +205,11 @@ header {
 .application {
   padding-bottom: 18rem;
 
+  &.container {
+    .posts_container {
+      padding: 3rem 0;
+    }
+  }
 }
 
 .post_front {

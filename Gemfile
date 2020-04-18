@@ -3,9 +3,9 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.2'
+gem 'rails', '5.2.4.2'
 
-ruby '2.6.1'
+ruby '2.7.1'
 
 gem 'pg', '~> 0.21'
 gem 'puma', '~> 4.3.1', group: :production
