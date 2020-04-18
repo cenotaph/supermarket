@@ -47,7 +47,7 @@ Aim::Application.routes.draw do
   themes_for_rails
 
   get '/user', to: 'users#profile'
-  root 'application#frontpage'
+  root 'posts#index'
   get '/apply/2020/:space_id', to: 'applications#new', year: 2020
   get '/apply/2020', to: 'applications#applylanding'
   get '/invited', to: 'applications#invited'
