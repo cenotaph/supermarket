@@ -3,6 +3,9 @@
   = "posted on #{l post.published_at.to_date, :format => :long} by "
   = post.post_as_supermarket == true ? 'Supermarket Art Fair' : post.posted_by.display_name
 
+- if post.postimage?
+  .post_image= image_tag post.postimage_url
+  
 .body
   = raw post.body
 
