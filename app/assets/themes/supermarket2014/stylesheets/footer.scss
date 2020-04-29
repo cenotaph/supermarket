@@ -7,11 +7,15 @@
   position:relative;
 }
 
+#container {
+  padding-bottom: 7rem;
+}
 footer {
   min-height: 6rem;
   padding: 30px 0px;
   background-color: $orange2;
-  position:fixed ;
+  position:absolute;
+
   bottom:0;
   width:100%;
   ul {

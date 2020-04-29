@@ -124,43 +124,44 @@
         = yield
 
       - elsif !content_for?(:sidebar)   || controller.controller_name == 'videos'
-        .container#main{:class => controller.controller_name}= yield        
+        #main{:class => controller.controller_name}
+          .container= yield        
       - else
         #main{:class => controller.controller_name}
           .container
             .twelve.columns.alpha= yield
             .four.columns.omega= yield :sidebar
 
-    %footer
-      .container
-      
-        .five.columns.omega.footer_credits
-          - if @site_year.footer_html.blank?
-            %strong Supermarket 2020
-            %br/
-            %em Stockholm Independent Art Fair
-            -# .small_text 4–7 April 2019
+      %footer
+        .container
         
-            -# Slakthusområdet, Metro Globen, Stockholm
-          - else
-            = raw @site_year.footer_html
-        
-      
-        .four.columns.links1
-          %ul
-            %li= link_to 'About', page_path('about-supermarket')
-            %li= link_to 'FAQ', page_path('faq')
-            -# %li= link_to 'Tickets', page_path('future-dates')
-            %li= link_to 'Super-TV', '/tv'
-            -# %li= link_to 'Exhibitors 2014', '/exhibitors/2014'
-            -# %li= link_to 'Talks and Performances 2014', page_path('talks-performance-2014')
-        .four.columns.links2
-          %ul
-            %li= link_to t(:disclaimer), page_path('disclaimer')
-            %li= link_to t(:contact_us), page_path('contact-and-accreditation')
-            %li.last= link_to t(:subscribe_to_newsletter), 'http://admin.getanewsletter.com/subscription/RAaDe8sxcYaWuhKev/add/', :target => :_blank
-        .three.columns.alpha= link_to image_tag(asset_url('supermarket2014/images/2020siaf_black_200.png'), width: 100), '/'
+          .five.columns.omega.footer_credits
+            - if @site_year.footer_html.blank?
+              %strong Supermarket 2020
+              %br/
+              %em Stockholm Independent Art Fair
+              -# .small_text 4–7 April 2019
           
+              -# Slakthusområdet, Metro Globen, Stockholm
+            - else
+              = raw @site_year.footer_html
+          
+        
+          .four.columns.links1
+            %ul
+              %li= link_to 'About', page_path('about-supermarket')
+              %li= link_to 'FAQ', page_path('faq')
+              -# %li= link_to 'Tickets', page_path('future-dates')
+              %li= link_to 'Super-TV', '/tv'
+              -# %li= link_to 'Exhibitors 2014', '/exhibitors/2014'
+              -# %li= link_to 'Talks and Performances 2014', page_path('talks-performance-2014')
+          .four.columns.links2
+            %ul
+              %li= link_to t(:disclaimer), page_path('disclaimer')
+              %li= link_to t(:contact_us), page_path('contact-and-accreditation')
+              %li.last= link_to t(:subscribe_to_newsletter), 'http://admin.getanewsletter.com/subscription/RAaDe8sxcYaWuhKev/add/', :target => :_blank
+          .three.columns.alpha= link_to image_tag(asset_url('supermarket2014/images/2020siaf_black_200.png'), width: 100), '/'
+            
   :javascript
     $(document).ready(function() {
       $('input#searchterm').clearField();
