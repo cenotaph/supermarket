@@ -638,7 +638,7 @@ ul.existing_accounts {
   margin-top: 25px;
 }
 .post {
-  img {
+  img, iframe , p img, p iframe {
     max-width: 100%;
     height: auto;
   }
