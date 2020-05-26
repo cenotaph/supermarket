@@ -97,22 +97,22 @@ class ApplicationController < ActionController::Base
     out.flatten.uniq
   end
 
-  def render(*args)
-    if @site == 'aim'
-      unless @nofilters == true
-        @filters_businesstype = Businesstype.all
-        @filters_organisationtype = Organisationtype.all
-        @tree = Space.approved.to_a.delete_if { |x| x.country.blank? && x.visiting_country.blank? }.group_by { |x| Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].region }
-        @tree.each do |region|
-          @tree[region.first] = region.last.group_by { |x| Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].subregion }
-          @tree[region.first].each do |subregion|
-            @tree[region.first][subregion.first] = subregion.last.group_by { |x| x.country.downcase }
-          end
-        end
-      end
-    end
-    super
-  end
+  # def render(*args)
+  #   if @site == 'aim'
+  #     unless @nofilters == true
+  #       @filters_businesstype = Businesstype.all
+  #       @filters_organisationtype = Organisationtype.all
+  #       @tree = Space.approved.to_a.delete_if { |x| x.country.blank? && x.visiting_country.blank? }.group_by { |x| Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].region }
+  #       @tree.each do |region|
+  #         @tree[region.first] = region.last.group_by { |x| Country[(x.visiting_country.blank? ? x.country.downcase : x.visiting_country.downcase)].subregion }
+  #         @tree[region.first].each do |subregion|
+  #           @tree[region.first][subregion.first] = subregion.last.group_by { |x| x.country.downcase }
+  #         end
+  #       end
+  #     end
+  #   end
+  #   super
+  # end
 
   def get_locale
     session[:locale] = params[:locale] if params[:locale]

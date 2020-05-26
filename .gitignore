@@ -56,4 +56,5 @@ config/deploy/*
 lib/capistrano/*
 
 # Ignore application configuration
-/config/application.yml
+config/application.yml
+config/initializers/better_errors.rb
