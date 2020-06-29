@@ -95,7 +95,8 @@ button {
 header {
   background-color: $orange1;
   padding-top: 2rem;
-  color: white;
+  // color: white;
+  color: $localyellow;
   a {
     img {
       float: left;
@@ -105,8 +106,8 @@ header {
   .dates, .dates_mobile {
     padding-top: 10px;
     float: left;
-    color: white;
-    
+    // color: white;
+    color: $localyellow;
     p {
       margin: 0px 0px 3px 0px;
       font-size: 14px;
@@ -127,7 +128,8 @@ header {
     input#searchterm {
       width: 150px;
       padding-left: 8px;
-      color: #EEE;
+      // color: #EEE;
+      color: $localyellow;
       background: url('/assets/supermarket2014/images/search_glass.png') no-repeat top right;
       background-color: $orange2;
     }
@@ -143,7 +145,8 @@ header {
           font-weight: bold;
         }
         a {
-          color: white;
+          // color: white;
+          color: $localyellow;
           &:hover {
             color: #efefef;
           }
@@ -567,6 +570,7 @@ header {
       margin: 0px !important;
       li {
          margin-right: 10px !important;
+         
       }
     }
   }
