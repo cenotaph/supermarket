@@ -10,8 +10,8 @@
 
 
 
-  .container.posts_container
-    %center= image_tag 'https://s3-eu-west-1.amazonaws.com/supermarket-docs/2020/superlocal_map_eng.png'
+  -# .container.posts_container
+    -# %center= image_tag 'https://s3-eu-west-1.amazonaws.com/supermarket-docs/2020/superlocal_map_eng.png'
   - unless @front_carousel.empty?
     #front_carousel
       - @front_carousel.shuffle.each do |fc|
