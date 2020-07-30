@@ -9,23 +9,9 @@
         = raw @site_year.above_carousel_html
 
 
-  .container.posts_container    
-    - @posts.take(3).each do |post|
-      .one-third.column 
-        .post_front
-          .post_image
-            - if post.postimage?
-              = image_tag post.postimage.url(:standard).gsub(/development/, 'production')
-            - elsif !post.postslides.empty?
-              = image_tag post.postslides.first.image.url(:slide).gsub(/development/, 'production')
-          .title= link_to post.subject, post
-          .date= time_ago_in_words(post.published_at) + " ago"
-          .excerpt
-            = truncate_html(simple_format(post.body), :length => 75)
-            = link_to "Read more...", post
-    .sixteen.columns
-      %h3= link_to "More Supermarket blog ...", posts_path
 
+  .container.posts_container
+    %center= image_tag 'https://s3-eu-west-1.amazonaws.com/supermarket-docs/2020/superlocal_map_eng.png'
   - unless @front_carousel.empty?
     #front_carousel
       - @front_carousel.shuffle.each do |fc|
@@ -66,7 +52,22 @@
   -# .container
   -#   %video#player{"playsinline" => '', "controls" => ''}
   -#     %source{src: 'https://s3-eu-west-1.amazonaws.com/supermarket-press/2019/SMIAF2018.mp4'}
-
+  .container.posts_container    
+    - @posts.take(3).each do |post|
+      .one-third.column 
+        .post_front
+          .post_image
+            - if post.postimage?
+              = image_tag post.postimage.url(:standard).gsub(/development/, 'production')
+            - elsif !post.postslides.empty?
+              = image_tag post.postslides.first.image.url(:slide).gsub(/development/, 'production')
+          .title= link_to post.subject, post
+          .date= time_ago_in_words(post.published_at) + " ago"
+          .excerpt
+            = truncate_html(simple_format(post.body), :length => 75)
+            = link_to "Read more...", post
+    .sixteen.columns
+      %h3= link_to "More Supermarket blog ...", posts_path
   .container
     .sixteen.columns.front_three
       .eight.columns.alpha
