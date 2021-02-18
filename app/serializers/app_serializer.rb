@@ -1,6 +1,6 @@
 class AppSerializer
   include JSONAPI::Serializer
-  attributes :organisation_name, :written_country, :exhibitor_full_address, :organisation_email, :contact_email
+  attributes :organisation_name, :booth_granted, :granted_result, :booth_type, :written_country, :exhibitor_full_address, :organisation_email, :contact_email
   attribute :logo do |app|
     app.space.logo? ? app.space.logo.url(:profile) : nil
   end
