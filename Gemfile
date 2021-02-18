@@ -3,9 +3,9 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.4.2'
+gem 'rails', '5.2.4.5'
 
-ruby '2.7.1'
+ruby '2.7.2'
 
 gem 'pg', '~> 0.21'
 gem 'puma', '~> 4.3.5', group: :production
@@ -92,6 +92,7 @@ gem 'jquery-easing-rails'
 gem 'jquery-slick-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-validation-rails'
+gem 'jsonapi-serializer'
 gem 'kaminari'
 # gem 'kaminari-themes'
 gem 'meta-tags', require: 'meta_tags'

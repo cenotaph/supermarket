@@ -43,6 +43,10 @@ class ExhibitorsController < ApplicationController
       if current_user
         @year.reveal_decisions = true if current_user.is_staff?
       end
+      respond_to do |format|
+        format.html
+        format.json { render json: AppSerializer.new(@year.applications).serializable_hash.to_json, status: 200 }
+      end
     end
   end
 end
