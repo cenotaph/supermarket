@@ -45,7 +45,7 @@ class ExhibitorsController < ApplicationController
       end
       respond_to do |format|
         format.html
-        format.json { render json: AppSerializer.new(@year.applications.approved_preview).serializable_hash.to_json, status: 200 }
+        format.json { render json: AppSerializer.new(@year.applications.approved_preview.sort_by(&:organisation_name)).serializable_hash.to_json, status: 200 }
       end
     end
   end
