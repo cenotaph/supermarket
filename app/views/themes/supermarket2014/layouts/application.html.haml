@@ -34,7 +34,7 @@
         .container
           .sixteen.columns.header_main.alpha
             .two.columns.alpha.header_logo
-              = link_to image_tag(asset_url('supermarket2014/images/2020superlocal_400x320.png'), width: 200), '/'
+              = link_to image_tag(asset_url('supermarket2014/images/logo_noyear_bw_504.png'), width: 200), '/'
             
             .dates.six.columns
               - if @site_year.header_html.blank?
@@ -160,7 +160,7 @@
               %li= link_to t(:disclaimer), page_path('disclaimer')
               %li= link_to t(:contact_us), page_path('contact-and-accreditation')
               %li.last= link_to t(:subscribe_to_newsletter), 'http://admin.getanewsletter.com/subscription/RAaDe8sxcYaWuhKev/add/', :target => :_blank
-          .three.columns.alpha= link_to image_tag(asset_url('supermarket2014/images/2020superlocal_400x320.png'), width: 100), '/'
+          .three.columns.alpha= link_to image_tag(asset_url('supermarket2014/images/logo_noyear_bw_504.png'), width: 100), '/'
             
   :javascript
     $(document).ready(function() {
