@@ -66,9 +66,9 @@
                   - else
                     %li= link_to t(:login), new_user_session_path
                     %li= link_to t(:sign_up), new_user_registration_path
-                  %li
-                    = form_tag('/search') do |f|
-                      = text_field_tag :searchterm,  t(:search)
+                  -# %li
+                    -# = form_tag('/search') do |f|
+                      -# = text_field_tag :searchterm,  t(:search)
                 - if current_user
                   %br/
                   %ul
@@ -81,11 +81,11 @@
                   - else
                     = raw @site_year.header_html
 
-                %nav.social_icons
-                  %ul
-                    %li= link_to image_tag(asset_url('supermarket2014/images/fb_2020.png')), 'https://www.facebook.com/supermarketartfair', target: :_blank
-                    %li= link_to image_tag(asset_url('supermarket2014/images/tw_2020.png')), 'https://twitter.com/supermarketart', target: :_blank
-                    %li= link_to image_tag(asset_url('supermarket2014/images/insta_2020.png')), 'http://instagram.com/supermarketart/', target: :_blank
+        -#         %nav.social_icons
+        -#           %ul
+        -#             %li= link_to image_tag(asset_url('supermarket2014/images/fb_2020.png')), 'https://www.facebook.com/supermarketartfair', target: :_blank
+        -#             %li= link_to image_tag(asset_url('supermarket2014/images/tw_2020.png')), 'https://twitter.com/supermarketart', target: :_blank
+        -#             %li= link_to image_tag(asset_url('supermarket2014/images/insta_2020.png')), 'http://instagram.com/supermarketart/', target: :_blank
         #menu_base
           .container
             .sixteen_columns.horiz_menu
