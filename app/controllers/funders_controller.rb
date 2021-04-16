@@ -14,7 +14,7 @@ class FundersController < ApplicationController
     set_meta_tags title: 'Funders & supporters ' + @year.year.to_s
     respond_to do |format|
       format.html
-      format.json { render json: FunderSerializer.new(@year.funders, include: [:fundertype]).serializable_hash.to_json, status: 200 }
+      format.json { render json: FunderSerializer.new(@year.funders.sort_by{|x| [x.fundertype_id, x.name]}, include: [:fundertype]).serializable_hash.to_json, status: 200 }
     end
   end
 end

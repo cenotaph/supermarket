@@ -9,5 +9,9 @@ class FunderSerializer
     obj.years.map(&:year)
   end
 
+  attribute :fundertype_name do |obj|
+    obj.fundertype.name
+  end
+  
   belongs_to :fundertype
 end
