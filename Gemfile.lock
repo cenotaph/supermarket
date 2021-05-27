@@ -131,6 +131,7 @@ GEM
     aws-sigv4 (1.2.2)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
+    bcrypt_pbkdf (1.1.0)
     better_errors (2.9.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -214,6 +215,7 @@ GEM
       devise (>= 2.1.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    ed25519 (1.2.4)
     equalizer (0.0.11)
     erubi (1.10.0)
     erubis (2.7.0)
@@ -582,6 +584,7 @@ DEPENDENCIES
   activemodel-serializers-xml
   auto_html (= 2.0.0)
   aws-s3!
+  bcrypt_pbkdf
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.4.1)
@@ -602,6 +605,7 @@ DEPENDENCIES
   dalli
   devise
   devise-encryptable
+  ed25519
   figaro
   font-awesome-rails
   formtastic!
