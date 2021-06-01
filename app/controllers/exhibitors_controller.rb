@@ -27,6 +27,7 @@ class ExhibitorsController < ApplicationController
         nil
       end
       set_meta_tags title: @application.space.business_name
+      render layout: params[:alternate] ? 'alternate' : 'application'
     end
   end
 
@@ -44,7 +45,9 @@ class ExhibitorsController < ApplicationController
         @year.reveal_decisions = true if current_user.is_staff?
       end
       respond_to do |format|
+
         format.html
+
         format.json { render json: AppSerializer.new(@year.applications.approved_preview.sort_by(&:organisation_name)).serializable_hash.to_json, status: 200 }
       end
     end

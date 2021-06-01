@@ -1,0 +1,11 @@
+/*
+ *= require_self
+ *= require layout
+ *= require skeleton1200
+ *= require supermarket2014/stylesheets/supermarket2014
+ */
+
+*, #main {
+  background-color: white !important;
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
